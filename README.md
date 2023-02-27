@@ -1,18 +1,19 @@
-# Nome do projeto
+# AvaliAí
 
-Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
+O aplicativo busca dar aos alunos, inicialmente, do curso de engenharia de software uma maneira de avaliar, discutir sobre e criticar matérias disponibilizadas pelo curso. Visando promover um maior entendimento sobre as disciplinas existentes, principalmente para optativas, das quais muitas não têm relação direta com nossa área. Além disso, os dados acumulados poderiam, posteriormente, serem disponibilizados para uso da instituição que poderia utilizar para quaisquer fins desejados.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Gabriel Victor Couto Martins de Paula
+* João Victor Guerra Prata Lima
+* Luís Antônio de Souza e Sousa
+* Luiz Gustavo Santos Soares
+* Pedro Henrique Fernandes Machado
 
 ## Orientadores
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Aline Noberta de Brito
+* Cleiton Silva Tavares
 
 ## Instruções de utilização
 
