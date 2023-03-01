@@ -96,11 +96,19 @@ _Enumere os requisitos funcionais previstos para a sua aplicação. Concentre-se
 
 | **ID** | **Descrição** | **Prioridade** |
 | --- | --- | --- |
-| RF001 | | |
-| RF002 | | |
-| | | |
-| | | |
-| | | |
+| RF001  | O usuário deve conseguir avaliar uma determinada disciplina com uma nota de 1 a 5             | Essencial |
+| RF002  | O Usuário pode incluir em sua avaliação um texto para justificar a nota daquela matéria.      | Essencial |
+| RF003  | O usuário deve conseguir aprovar ou desaprovar a avaliação de outros usuários através de um sistema de upvote e downvote | Essencial |
+| RF004  | O sistema deve ser capaz de apresentar a lista de diciplinas ofertadas pelo curso de engenharia de software.| Essencial |
+| RF005  | O usuário deve ser capaz de pesquisar determinada disciplina por seu nome no sistema.| Essencial|
+| RF006  | O usuário deve ser capaz de filtrar disciplinas por período no sistema.| Desejável |
+| RF007  | Ter dados das disciplinas, como carga horária, modalidade(síncrona)| Essencial |
+| RF008  | O sistema deve manter anonimato do usuário | Essencial |
+| RF009  | O sistema deve apenas permitir a criação de conta com email puc | Essencial |
+| RF010  | O sistema deve possuir pontuação baseada em like/dislike dos comentários. | Essencial |
+| RF011  | O sistema deve permitir denúncia de comentário, restrição de comentar e dar nota.| Essencial |
+| RF012  | O sistema deve possuir formulário de requisição para adicionar disciplinas. | Essencial |
+| RF013  | O sistema deve permitir preenchimento de formulário de requisição para adicionar disciplinas | Essencial |
 
 Obs: acrescente mais linhas, se necessário.
 
@@ -110,11 +118,11 @@ _Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre o
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | |
-| RNF002 | |
-| | |
-| | |
-| | |
+| RNF001 | O sistema deve prover serviços no ambiente web e móvel. |
+| RNF002 | O sistema deve possuir uma implementação do front-end em tecnologias móveis e/ou híbridas (multiplataforma). |
+| RNF003 | O sistema deve permitir que múltiplos clientes se conectem a um único servidor e realizem operações de forma concorrente. |
+| RNF004 | O sistema deve tratar erros de cliente e de servidor corretamente. Por exemplo: falhas de comunicação, servidor indisponível, timeouts etc. Mostre como esses erros são tratados com estratégias tais como reenvio de mensagens. |
+| RNF005 | O sistema deve possuir implementação de estratégias de testes. |
 
 Obs: acrescente mais linhas, se necessário.
 
@@ -124,7 +132,9 @@ _Enumere as restrições arquiteturais. Lembre-se de que as restrições arquite
 
 As restrições impostas ao projeto que afetam sua arquitetura são (por exemplo):
 
-- O software deverá ser desenvolvido em Python/Django;
+- O sistema deve utilizar um modelo baseado em Web Service.
+- O sistema deve fazer uso de middlewares e tecnologias associadas no contexto de processamento de mensagens em tempo real (mensageria).
+- O sistema deve possuir ou utilizar serviços em nuvem.
 - A comunicação da API deve seguir o padrão RESTful.
 
 ## 2.4. Mecanismos Arquiteturais
@@ -134,13 +144,13 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 | **Análise** | **Design** | **Implementação** |
 | --- | --- | --- |
-| Persistência | | |
-| Front end | | |
-| Back end | | |
+| Persistência |Banco de dados não relacional |Firebase |
+| Front end |Interface de comunicação com o usuário web | |
+| Back end | Plataforma de desenvolvimento orientada a objeto | Spring boot |
 | Integração | | |
 | Log do sistema | | |
-| Teste de Software | | |
-| Deploy | | |
+| Teste de Software |Camada para tratar as exceções criando interações diferentes para usuários | |
+| Deploy | Configuração da IDE de deploy  | Visual Studio |
 
 <a name="modelagem"></a>
 
