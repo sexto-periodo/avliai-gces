@@ -1,19 +1,22 @@
 # TITULO DO PROJETO
 
+**Gabriel Victor Couto Martins de Paula, email do aluno 1**
 
-**Nome completo do Aluno 1, email do aluno 1**
+**João Victor Guerra Prata Lima, jvgplhg@@gmail.com 2**
 
-**Nome completo do Aluno 2, email do aluno 2**
+**Luís Antônio de Souza e Sousa, email do aluno 3**
 
-**Nome completo do Aluno 3, email do aluno 3**
+**Luiz Gustavo Santos Soares, email do aluno 4**
+
+**Pedro Henrique Fernandes Machado, email do aluno 5**
 
 ---
 
 Professores:
 
-**Prof. Nome do Prof 1**
+**Aline Noberta de Brito**
 
-**Prof. Nome do Prof 2**
+**Cleiton Silva Tavares**
 
 
 ---
@@ -140,6 +143,7 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 | Deploy | | |
 
 <a name="modelagem"></a>
+
 # 3. Modelagem e projeto arquitetural
 
 _Apresente uma visão geral da solução proposta para o projeto e explique brevemente esse diagrama de visão geral, de forma textual. Esse diagrama não precisa seguir os padrões da UML, e deve ser completo e tão simples quanto possível, apresentando a macroarquitetura da solução._
@@ -152,45 +156,125 @@ Obs: substitua esta imagem por outra, adequada ao seu projeto (cada arquitetura 
 
 ## 3.1. Visão de Negócio (Funcionalidades)
 
-_Apresente uma lista simples com as funcionalidades previstas no projeto (escopo do produto)._
+1. O sistema deve possibilitar avaliação de disciplinas.
+2. O sistema deve permitir textos justificando a avaliação
+3. O sistema deve possibilitar Like e dislike do comentário/avaliação.
+4. O sistema deve possibilitar listar todas as disciplinas.
+5. Deve ser possível pesquisar disciplinas pelo nome
+6. Deve ser possível pesquisar disciplinas pelo período.
+7. O sistema deve poder apresentar dados da disciplina.
+8. O sistema deve manter o anonimato do usuário.
+9. O sistema deve permitir a criação de contas apenas com o puc mail.
+10. O sistema deve garantir um sistema de pontuação baseado em likes/dislikes.
+11. O sistema deve apresentar moderação e diretrizes.
+12. O sistema deve permitir denúncia de comentários e restrições.
+13. O usuário deve possuir um nome gerado aleatoriamente.
+14. O usuário deve possuir uma foto gerada aleatoriamente.
+15. O sistema deve disponibilizar um formulário para requisição de disciplinas.
 
-1. O sistema deve...
-2. O sistema deve...
-3. ...
 
-Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os professores/orientadores do trabalho.
-
-### Descrição resumida dos Casos de Uso / Histórias de Usuário
-
-_Nesta seção, os casos de uso devem ser resumidos. Esse detalhamento pode ser na forma de um texto sintético ou, alternativamente, você pode optar por descrever estórias de usuários seguindo os métodos ágeis. Neste caso a seção deve chamar &quot;Histórias de usuários&quot;. Lembre-se das características de qualidade das estórias de usuários, ou seja, o que é preciso para descrever boas histórias de usuários._
+### Descrição resumida dos Casos de Uso
 
 Exemplos de resumo de Casos de Uso:
 
-#### UC01 – NOME DO CASO DE USO 01
+#### UC01 – AVALIAR DISCIPLINAS
 
-| **Descrição** | |
+| **Descrição** | Permitir ao usuário avaliar as disciplinas da universidade  |
 | --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
+| **Atores** | Usuário |
+| **Prioridade** | Alta |
+| **Requisitos associados** | RF 1, RF 2,  |
+| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas, juntamente com um campo de busca
+			2. O usuário escolhe a disciplina que deseja avaliar
+			3. A partir desse contexto, é solicitado que o usuário atribua uma nota de 1 a 5 à disciplina e redija um comentário a respeito  |
 
-#### UC02 – NOME DO CASO DE USO 02
+#### UC02 – AVALIAR COMENTÁRIOS EM DISCIPLINA
 
-| **Descrição** | |
+| **Descrição** | O usuário deve ser capaz de avaliar - com likes ou dislikes - outros comentários na página da disciplina |
 | --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
+| **Atores** | Usuário |
+| **Prioridade** | Média |
+| **Requisitos associados** | 3 |
+| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas, juntamente com um campo de busca
+			2. O usuário escolhe a disciplina que deseja avaliar
+			3. Os comentários dos usuários são mostrados na página da disciplina, permitindo que o usuário atribua um "Like" ou "Dislike" aos mesmos |
 
-Exemplos de Histórias de Usuário:
+#### UC03 – LISTAR DISCIPLINAS
 
-- Como Fulano eu quero poder convidar meus amigos para que a gente possa se reunir...
+| **Descrição** | O sistema deve ser capaz de listar todas as disciplinas cadastradas |
+| --- | --- |
+| **Atores** | Usuário |
+| **Prioridade** | Alta |
+| **Requisitos associados** | 4 |
+| **Fluxo Principal** | 1. O usuário entra na página inicial e encontra uma lista de disciplinas já cadastradas no sistema |
+			
 
-- Como Cicrano eu quero poder organizar minhas tarefas diárias, para que...
+#### UC04 – PESQUISAR DISCIPLINAS 
 
-- Como gerente eu quero conseguir entender o progresso do trabalho do meu time, para que eu possa ter relatórios periódicos dos nossos acertos e falhas.
+| **Descrição** | O usuário deve ser capaz de pesquisar disciplinas por nome ou período |
+| --- | --- |
+| **Atores** | Usuário |
+| **Prioridade** | Baixa |
+| **Requisitos associados** | 4, 5 |
+| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas, juntamente com um campo de busca
+			2. O usuário seleciona o campo de busca na página e insere o nome ou período da disciplina |
+
+#### UC05 – CRIAR CONTA COM PUCMAIL 
+
+| **Descrição** | O sistema deve permitir que o usuário se cadastre na plataforma com seu pucmail (@sga) |
+| --- | --- |
+| **Atores** | Usuário |
+| **Prioridade** | Alta |
+| **Requisitos associados** | 9 |
+| **Fluxo Principal** | 1. O sistema apresenta a opção de *Cadastro* e *Login*
+			2. Selecionando a opção de cadastro, o usuário informa seu e-mail da instituição PUC Minas |
+
+#### UC06 – DENUNCIAR COMENTÁRIOS
+
+| **Descrição** | O sistema deve permitir que o usuário denuncie outros comentários publicados em disciplinas |
+| --- | --- |
+| **Atores** | Usuário |
+| **Prioridade** | Média |
+| **Requisitos associados** | 12 |
+| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas, juntamente com um campo de busca
+			2. O usuário escolhe a disciplina que deseja avaliar
+			3. Os comentários dos usuários são mostrados na página da disciplina, permitindo que o usuário denuncie os mesmos e atribua uma justificativa |
+
+
+#### UC07 – MOSTRAR DADOS DA DISCIPLINA
+
+| **Descrição** | O sistema deve mostrar os dados da disciplina selecionada (período, carga horária, ementa, etc) |
+| --- | --- |
+| **Atores** | Usuário |
+| **Prioridade** | Alta |
+| **Requisitos associados** | 7 |
+| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas, juntamente com um campo de busca
+			2. O usuário escolhe a disciplina que deseja avaliar
+			3. Os dados da disciplina são mostrados na página |
+
+
+#### UC08 – REQUISITAR DISCIPLINA
+
+| **Descrição** | O sistema deve disponibilizar um formulário para requisição de disciplinas |
+| --- | --- |
+| **Atores** | Usuário |
+| **Prioridade** | Alta |
+| **Requisitos associados** | 15 |
+| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas e um botão "Requisitar Disciplina"
+			2. O usuário seleciona essa opção
+			3. O usuário é direcionado para uma página de cadastro de disciplina, devendo preencher todos os campos requisitados
+			4. Após preenchidas as informações, o usuário deve selecionar a opção "solicitar requisição" |
+			
+			
+#### UC09 – GERAR IDENTIDADE VISUAL
+
+| **Descrição** | O sistema deve gerar um nome e foto aleatórios para o usuário recém cadastrado  |
+| --- | --- |
+| **Atores** | Sistema |
+| **Prioridade** | Média |
+| **Requisitos associados** | 13, 14 |
+| **Fluxo Principal** | 1. O usuário se cadastra no sistema
+			2. Um nome aleatório e uma foto de perfil são geradas pelo sistema |
 
 ## 3.2. Visão Lógica
 
