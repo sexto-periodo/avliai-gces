@@ -148,10 +148,10 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 A arquitetura do sistema Avaliaí utiliza o protocolo de rede HTTP para se comunicar com outros serviços e ferramentas. A requisição do usuário passa pelo RabbitMQ, um serviço de mensagens aberto que notificará o restante da aplicação, modelada em arquitetura MVC (Model, View, Controller). A primeira camada, view, composta pelos frameworks Next.JS (web) e Flutter (mobile), se comunica com o controller, composto pelo serviço Firebase e o framework Spring. Esse último  se comunica com a camada de dados, em PostgreSQL. Todo esse processo é disponibilizado em containers, tarefa realizada pelo Docker.
 
-![Arquitetura Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223144709-a03cd8c7-91a6-4aaf-a932-799c5360abe6.png)
+![Arquitetura Avaliaí drawio (1)](https://user-images.githubusercontent.com/84593164/223147012-2e294e31-d566-48c8-9f06-fa60ceb1a019.png)
 
 
-**Figura 1 - Visão Geral da Solução (fonte: https://medium.com)**
+**Figura 1 - Visão Geral da Solução**
 
 
 ## 3.1. Visão de Negócio (Funcionalidades)
