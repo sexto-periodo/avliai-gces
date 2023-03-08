@@ -156,13 +156,13 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 # 3. Modelagem e projeto arquitetural
 
-_Apresente uma visão geral da solução proposta para o projeto e explique brevemente esse diagrama de visão geral, de forma textual. Esse diagrama não precisa seguir os padrões da UML, e deve ser completo e tão simples quanto possível, apresentando a macroarquitetura da solução._
+A arquitetura do sistema Avaliaí utiliza o protocolo de rede HTTP para se comunicar com outros serviços e ferramentas. A requisição do usuário passa pelo RabbitMQ, um serviço de mensagens aberto que notificará o restante da aplicação, modelada em arquitetura MVC (Model, View, Controller). A primeira camada, view, composta pelos frameworks Next.JS (web) e Flutter (mobile), se comunica com o controller, composto pelo serviço Firebase e o framework Spring. Esse último  se comunica com a camada de dados, em PostgreSQL. Todo esse processo é disponibilizado em containers, tarefa realizada pelo Docker.
 
-![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
+![Arquitetura Avaliaí drawio (1)](https://user-images.githubusercontent.com/84593164/223147012-2e294e31-d566-48c8-9f06-fa60ceb1a019.png)
 
-**Figura 1 - Visão Geral da Solução (fonte: https://medium.com)**
 
-Obs: substitua esta imagem por outra, adequada ao seu projeto (cada arquitetura é única).
+**Figura 1 - Visão Geral da Solução**
+
 
 ## 3.1. Visão de Negócio (Funcionalidades)
 
@@ -292,7 +292,8 @@ _Apresente os artefatos que serão utilizados descrevendo em linhas gerais as mo
 
 ### Diagrama de Classes
 
-![Diagrama de classes](imagens/classes.gif "Diagrama de classes")
+![Diagrama de Classes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796282-dbb51f04-e9c7-452d-926f-0d91893eba92.png)
+
 
 
 **Figura 2 – Diagrama de classes (exemplo). Fonte: o próprio autor.**
@@ -303,7 +304,8 @@ Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
 
 _Apresente o diagrama de componentes da aplicação, indicando, os elementos da arquitetura e as interfaces entre eles. Liste os estilos/padrões arquiteturais utilizados e faça uma descrição sucinta dos componentes indicando o papel de cada um deles dentro da arquitetura/estilo/padrão arquitetural. Indique também quais componentes serão reutilizados (navegadores, SGBDs, middlewares, etc), quais componentes serão adquiridos por serem proprietários e quais componentes precisam ser desenvolvidos._
 
-![Diagrama de componentes](imagens/componentes.png "Diagrama de componentes")
+![Diagrama de Componentes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796339-0d652d01-5473-47f5-a5f6-837eb3a25c62.png)
+
 
 **Figura 3 – Diagrama de Componentes (exemplo). Fonte: o próprio autor.**
 
