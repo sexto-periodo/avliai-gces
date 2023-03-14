@@ -2,7 +2,7 @@
 
 **Gabriel Victor Couto Martins de Paula, email do aluno 1**
 
-**João Victor Guerra Prata Lima, jvgplhg@@gmail.com 2**
+**João Victor Guerra Prata Lima, jvgplhg@gmail.com 2**
 
 **Luís Antônio de Souza e Sousa, email do aluno 3**
 
@@ -287,39 +287,36 @@ Exemplos de resumo de Casos de Uso:
 
 ## 3.2. Visão Lógica
 
-_Apresente os artefatos que serão utilizados descrevendo em linhas gerais as motivações que levaram a equipe a utilizar estes diagramas._
-
 ### Diagrama de Classes
+
+O diagrama de classes foi utilizado para modelar a aplicação do ponto de vista do backend, tendo como referência a linguagem de programação Java, visto que o grupo optou pelo uso do framework Spring. 
 
 ![Diagrama de Classes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796282-dbb51f04-e9c7-452d-926f-0d91893eba92.png)
 
 
-
-**Figura 2 – Diagrama de classes (exemplo). Fonte: o próprio autor.**
-
-Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
+As classes identificadas para cumprir com o propósito e os requisitos do sistema foram:
+1. **User** - Referente ao usuário, sua conta e perfil.
+2. **Moderator** - Um tipo de usuário com permissões especiais, capaz de banir temporariamente ou intermitentemente usuários e apagar comentários.
+3. **Comment** - Se trata dos comentários postados pelos usuários, apresentando quantidade de likes e dislikes
+4. **University** - Referente à universidade, que contém cursos e um CNPJ associado.
+5. **Course** - Abstração dos cursos ofertados pelas universidades; os cursos possuem um conjunto de disciplinas.
+6. **Subject** - Referente às disciplinas ofertadas pelos cursos. É o foco das avaliações dos usuários. 
 
 ### Diagrama de componentes
-
-_Apresente o diagrama de componentes da aplicação, indicando, os elementos da arquitetura e as interfaces entre eles. Liste os estilos/padrões arquiteturais utilizados e faça uma descrição sucinta dos componentes indicando o papel de cada um deles dentro da arquitetura/estilo/padrão arquitetural. Indique também quais componentes serão reutilizados (navegadores, SGBDs, middlewares, etc), quais componentes serão adquiridos por serem proprietários e quais componentes precisam ser desenvolvidos._
 
 ![Diagrama de Componentes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796339-0d652d01-5473-47f5-a5f6-837eb3a25c62.png)
 
 
-**Figura 3 – Diagrama de Componentes (exemplo). Fonte: o próprio autor.**
+**Figura 3 – Diagrama de Componentes.**
 
 _Apresente uma descrição detalhada dos artefatos que constituem o diagrama de implantação._
 
 Ex: conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
 
-- **Componente 1** - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nunc magna, accumsan eget porta a, tincidunt sed mauris. Suspendisse orci nulla, sagittis a lorem laoreet, tincidunt imperdiet ipsum. Morbi malesuada pretium suscipit.
-- **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+- **People** - O componente people compreende as classes User e Moderator, referentes aos cargos do sistema e às suas respectivas permissões.
+- **Institutional** - O componente institutional, composto pelas classes University, Course e Subject agrupa todos os módulos institucionais.
+- **Interaction** - O componente interaction compreende a classe Comment, referente à comunicação entre os usuários.
 
-## 3.3. Modelo de dados (opcional)
-
-_Caso julgue necessário para explicar a arquitetura, apresente o diagrama de classes ou diagrama de Entidade/Relacionamentos ou tabelas do banco de dados. Este modelo pode ser essencial caso a arquitetura utilize uma solução de banco de dados distribuídos ou um banco NoSQL._
-
-![Diagrama de Entidade Relacionamento (ER) ](imagens/der.png "Diagrama de Entidade Relacionamento (ER) ")
 
 **Figura 4 – Diagrama de Entidade Relacionamento (ER) - exemplo. Fonte: o próprio autor.**
 
