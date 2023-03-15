@@ -309,9 +309,9 @@ As classes identificadas para cumprir com o propósito e os requisitos do sistem
 
 **Figura 3 – Diagrama de Componentes.**
 
-_Apresente uma descrição detalhada dos artefatos que constituem o diagrama de implantação._
+O grupo optou por modelar o diagrama de componentes, subdividindo e agrupando as classes identificadas no diagrama de classes em componentes.
 
-Ex: conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
+Conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
 
 - **People** - O componente people compreende as classes User e Moderator, referentes aos cargos do sistema e às suas respectivas permissões.
 - **Institutional** - O componente institutional, composto pelas classes University, Course e Subject agrupa todos os módulos institucionais.
