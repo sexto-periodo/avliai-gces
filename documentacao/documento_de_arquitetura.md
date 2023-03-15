@@ -1,4 +1,4 @@
-# AVALIAAÍ
+# AVALIAÍ
 
 **Gabriel Victor Couto Martins de Paula, gabriel.paula.1265840@sga.pucminas.br**
 
@@ -171,8 +171,7 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 A arquitetura do sistema Avaliaí utiliza o protocolo de rede HTTP para se comunicar com outros serviços e ferramentas. A requisição do usuário passa pelo RabbitMQ, um serviço de mensagens aberto que notificará o restante da aplicação, modelada em arquitetura MVC (Model, View, Controller). A primeira camada, view, composta pelos frameworks Next.JS (web) e Flutter (mobile), se comunica com o controller, composto pelo serviço Firebase e o framework Spring. Esse último  se comunica com a camada de dados, em PostgreSQL. Todo esse processo é disponibilizado em containers, tarefa realizada pelo Docker.
 
-![Arquitetura Avaliaí drawio (1)](https://user-images.githubusercontent.com/84593164/223147012-2e294e31-d566-48c8-9f06-fa60ceb1a019.png)
-
+![Arquitetura Avaliaí drawio (2)](https://user-images.githubusercontent.com/84593164/225097440-178d9a83-8ecf-4572-8cff-ebf7ee79e209.png)
 
 **Figura 1 - Visão Geral da Solução**
 
@@ -218,9 +217,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Usuário |
 | **Prioridade** | Média |
 | **Requisitos associados** | 3 |
-| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas, juntamente com um campo de busca
-			2. O usuário escolhe a disciplina que deseja avaliar
-			3. Os comentários dos usuários são mostrados na página da disciplina, permitindo que o usuário atribua um "Like" ou "Dislike" aos mesmos |
+| **Fluxo Principal** | 1. O sistema apresenta uma lista de disciplinas, juntamente com um campo de busca                                                                                       2. O usuário escolhe a disciplina que deseja avaliar                                                                                                                   3. Os comentários dos usuários são mostrados na página da disciplina, permitindo que o usuário atribua um "Like" ou "Dislike" aos mesmos |
 
 #### UC03 – LISTAR DISCIPLINAS
 
@@ -301,39 +298,36 @@ Exemplos de resumo de Casos de Uso:
 
 ## 3.2. Visão Lógica
 
-_Apresente os artefatos que serão utilizados descrevendo em linhas gerais as motivações que levaram a equipe a utilizar estes diagramas._
-
 ### Diagrama de Classes
+
+O diagrama de classes foi utilizado para modelar a aplicação do ponto de vista do backend, tendo como referência a linguagem de programação Java, visto que o grupo optou pelo uso do framework Spring. 
 
 ![Diagrama de Classes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796282-dbb51f04-e9c7-452d-926f-0d91893eba92.png)
 
 
-
-**Figura 2 – Diagrama de classes (exemplo). Fonte: o próprio autor.**
-
-Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
+As classes identificadas para cumprir com o propósito e os requisitos do sistema foram:
+1. **User** - Referente ao usuário, sua conta e perfil.
+2. **Moderator** - Um tipo de usuário com permissões especiais, capaz de banir temporariamente ou intermitentemente usuários e apagar comentários.
+3. **Comment** - Se trata dos comentários postados pelos usuários, apresentando quantidade de likes e dislikes
+4. **University** - Referente à universidade, que contém cursos e um CNPJ associado.
+5. **Course** - Abstração dos cursos ofertados pelas universidades; os cursos possuem um conjunto de disciplinas.
+6. **Subject** - Referente às disciplinas ofertadas pelos cursos. É o foco das avaliações dos usuários. 
 
 ### Diagrama de componentes
-
-_Apresente o diagrama de componentes da aplicação, indicando, os elementos da arquitetura e as interfaces entre eles. Liste os estilos/padrões arquiteturais utilizados e faça uma descrição sucinta dos componentes indicando o papel de cada um deles dentro da arquitetura/estilo/padrão arquitetural. Indique também quais componentes serão reutilizados (navegadores, SGBDs, middlewares, etc), quais componentes serão adquiridos por serem proprietários e quais componentes precisam ser desenvolvidos._
 
 ![Diagrama de Componentes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796339-0d652d01-5473-47f5-a5f6-837eb3a25c62.png)
 
 
-**Figura 3 – Diagrama de Componentes (exemplo). Fonte: o próprio autor.**
+**Figura 3 – Diagrama de Componentes.**
 
-_Apresente uma descrição detalhada dos artefatos que constituem o diagrama de implantação._
+O grupo optou por modelar o diagrama de componentes, subdividindo e agrupando as classes identificadas no diagrama de classes em componentes.
 
-Ex: conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
+Conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
 
-- **Componente 1** - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nunc magna, accumsan eget porta a, tincidunt sed mauris. Suspendisse orci nulla, sagittis a lorem laoreet, tincidunt imperdiet ipsum. Morbi malesuada pretium suscipit.
-- **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+- **People** - O componente people compreende as classes User e Moderator, referentes aos cargos do sistema e às suas respectivas permissões.
+- **Institutional** - O componente institutional, composto pelas classes University, Course e Subject agrupa todos os módulos institucionais.
+- **Interaction** - O componente interaction compreende a classe Comment, referente à comunicação entre os usuários.
 
-## 3.3. Modelo de dados (opcional)
-
-_Caso julgue necessário para explicar a arquitetura, apresente o diagrama de classes ou diagrama de Entidade/Relacionamentos ou tabelas do banco de dados. Este modelo pode ser essencial caso a arquitetura utilize uma solução de banco de dados distribuídos ou um banco NoSQL._
-
-![Diagrama de Entidade Relacionamento (ER) ](imagens/der.png "Diagrama de Entidade Relacionamento (ER) ")
 
 **Figura 4 – Diagrama de Entidade Relacionamento (ER) - exemplo. Fonte: o próprio autor.**
 
@@ -406,3 +400,4 @@ http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
 # 6. APÊNDICES
 
 _Inclua o URL do repositório (Github, Bitbucket, etc) onde você armazenou o código da sua prova de conceito/protótipo arquitetural da aplicação como anexos. A inclusão da URL desse repositório de código servirá como base para garantir a autenticidade dos trabalhos._
+
