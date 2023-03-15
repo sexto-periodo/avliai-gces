@@ -1,14 +1,14 @@
-# TITULO DO PROJETO
+# AVALIAAÍ
 
-**Gabriel Victor Couto Martins de Paula, email do aluno 1**
+**Gabriel Victor Couto Martins de Paula, gabriel.paula.1265840@sga.pucminas.br**
 
-**João Victor Guerra Prata Lima, jvgplhg@@gmail.com 2**
+**João Victor Guerra Prata Lima, joao.lima.1322940@sga.pucminas.br**
 
-**Luís Antônio de Souza e Sousa, email do aluno 3**
+**Luís Antônio de Souza e Sousa, lassousa@sga.pucminas.br**
 
-**Luiz Gustavo Santos Soares, email do aluno 4**
+**Luiz Gustavo Santos Soares, luiz.soares.1310151@sga.pucminas.br**
 
-**Pedro Henrique Fernandes Machado, email do aluno 5**
+**Pedro Henrique Fernandes Machado, pedro.machado.1277720@sga.pucminas.br**
 
 ---
 
@@ -70,18 +70,31 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 <a name="apresentacao"></a>
 # 1. Apresentação
 
-_Faça uma introdução ao projeto, apresentando o contexto onde o projeto se situa. É importante deixar claro para o leitor os aspectos que configuram o problema que será apresentado na sequência. Apresente, se possível, números reais que demonstram a relevância do problema apresentado._
+É muito comum em cursos de graduação que seus alunos não saibam sua grade por completo e, como consequência, não estejam preparados para estas, ou ainda pior, nem sabem o que esperar de cada matéria que está cursando e isto pode levar os alunos a se dedicarem pouco a uma matéria de extrema importância ao curso. Para mais, alunos também precisam decidir sobre matérias optativas e, atualmente, não existe nenhum meio facilitador para conseguir informações a respeito destas matérias e suas respectivas relevância ao curso.
 
 
 ## 1.1. Problema
 
-_Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação._
+O principal detrator da situação atual é a falta de um local adequado para busca de informações, além da falta de contato com colegas da universidade ou até mesmo do próprio curso. Além disso, não existe qualquer tipo de registro histórico para acesso dos alunos, deste modo é difícil saber se a ementa da matéria foi alterada antes que realmente comece a cursar. 
+
+Em adição, o atual formato de avaliação de disciplinas, ou seja, a CPA, não é de agrado dos alunos, tanto pelo seu valor institucional, dando uma sensação de obrigatoriedade, quanto pela quantidade exaustiva de perguntas. Sendo assim, os dados coletados através da CPA perdem parte do valor, já que são escassos e, possivelmente, respondidos de maneira leviana, no intuito de finalizar rapidamente a avaliação.
+
 
 ## 1.2. Objetivos do trabalho
 
-_Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é apresentar a descrição do projeto arquitetural da aplicação escolhida. Apresente também os objetivos específicos do projeto, descrevendo onde você vai concentrar sua atenção na descrição arquitetural, ou seja, os pontos onde você vai aprofundar no seu trabalho._
+Para o desenvolvimento da aplicação teremos como objetivo geral desenvolver um aplicativo mobile e uma página web que auxilia alunos e universidades a terem melhor compreensão dos cursos e disciplinas fornecidos.
+
+A partir de avaliações e comentários de alunos que já cursaram, além de descrição da ementa, carga horária, período, entre outras informações da disciplina; um aluno será capaz de julgar seu curso e de se organizar para uma experiência acadêmica otimizada. Enquanto as universidades poderiam usar os dados das avaliações para agregar valor às decisões sobre seus cursos ofertados.
+
+Como objetivos específicos temos os seguintes:
+- Criar base de dados de disciplinas, cursos e universidades
+- Disponibilizar comentários sobre disciplinas
+- Permitir que os usuários avaliem comentários de outros usuários
+- Disponibilizar inserção de novas disciplinas
+
 
 ## 1.3. Definições e Abreviaturas
+- CPA: Comissão Própria de Avaliação
 
 Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
 
