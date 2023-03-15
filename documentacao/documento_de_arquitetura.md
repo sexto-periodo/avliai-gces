@@ -160,8 +160,6 @@ A arquitetura do sistema Avaliaí utiliza o protocolo de rede HTTP para se comun
 
 ![Arquitetura Avaliaí drawio (2)](https://user-images.githubusercontent.com/84593164/225097440-178d9a83-8ecf-4572-8cff-ebf7ee79e209.png)
 
-
-
 **Figura 1 - Visão Geral da Solução**
 
 
