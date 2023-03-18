@@ -142,15 +142,15 @@ As restrições impostas ao projeto que afetam sua arquitetura são (por exemplo
 _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se em três estados: (1) análise, (2) design e (3) implementação. Em termos de Análise devem ser listados os aspectos gerais que compõem a arquitetura do software como: persistência, integração com sistemas legados, geração de logs do sistema, ambiente de front end, tratamento de exceções, formato dos testes, formato de distribuição/implantação (deploy), entre outros. Em Design deve-se identificar o padrão tecnológico a seguir para cada mecanismo identificado na análise. Em Implementação, deve-se identificar o produto a ser utilizado na solução.
  Ex: Análise (Persistência), Design (ORM), Implementação (Hibernate)._
 
-| **Análise** | **Design** | **Implementação** |
-| --- | --- | --- |
-| Persistência |Banco de dados não relacional |Firebase |
-| Front end |Interface de comunicação com o usuário web | |
-| Back end | Plataforma de desenvolvimento orientada a objeto | Spring boot |
-| Integração | | |
-| Log do sistema | | |
-| Teste de Software |Camada para tratar as exceções criando interações diferentes para usuários | |
-| Deploy | Configuração da IDE de deploy  | Visual Studio |
+| **Análise** | **Design**                                                                 | **Implementação** |
+| --- |----------------------------------------------------------------------------|-------------------|
+| Persistência | Banco de dados não relacional                                              | Firebase          |
+| Front end | Interface de comunicação com o usuário web                                 | TypesCript, React, Sass                  |
+| Back end | Plataforma de desenvolvimento orientada a objeto                           | Spring boot       |
+| Integração |                                                                            |                   |
+| Log do sistema | Implementação dos recursos de log do componente de persistência            | Rest APIs         | |
+| Teste de Software | Camada para tratar as exceções criando interações diferentes para usuários | Visual Studio     |
+| Deploy | Configuração da IDE de deploy                                              | Visual Studio     |
 
 <a name="modelagem"></a>
 
