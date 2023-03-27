@@ -29,11 +29,7 @@ interface SignInFormElement extends HTMLFormElement {
 export default function SignIn() {
 
     return (
-        <CssVarsProvider
-            defaultMode="dark"
-            disableTransitionOnChange
-            theme={customTheme}
-        >
+        <div>
             <CssBaseline />
             <GlobalStyles
                 styles={{
@@ -56,7 +52,7 @@ export default function SignIn() {
                     display: 'flex',
                     justifyContent: 'flex-end',
                     backdropFilter: 'blur(4px)',
-                    backgroundColor: 'rgba(255 255 255 / 0.6)',
+                    backgroundColor: 'rgba(255 255 255 / 1)',
                     [theme.getColorSchemeSelector('dark')]: {
                         backgroundColor: 'rgba(19 19 24 / 0.4)',
                     },
@@ -199,6 +195,6 @@ export default function SignIn() {
                     },
                 })}
             />
-        </CssVarsProvider>
+        </div>
     );
 }

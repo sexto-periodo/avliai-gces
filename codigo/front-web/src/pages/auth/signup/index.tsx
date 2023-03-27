@@ -28,10 +28,10 @@ export default function SignUp() {
 
 
     return (
-        <CssVarsProvider
-            defaultMode="light"
-            disableTransitionOnChange
-            theme={customTheme}
+        <div
+            // defaultMode="light"
+            // disableTransitionOnChange
+            // theme={customTheme}
         >
             <CssBaseline />
             <GlobalStyles
@@ -55,7 +55,7 @@ export default function SignUp() {
                     display: 'flex',
                     justifyContent: 'flex-end',
                     backdropFilter: 'blur(4px)',
-                    backgroundColor: 'rgba(255 255 255 / 0.6)',
+                    backgroundColor: 'rgba(255 255 255 / 1)',
                     [theme.getColorSchemeSelector('dark')]: {
                         backgroundColor: 'rgba(19 19 24 / 0.4)',
                     },
@@ -187,6 +187,6 @@ export default function SignUp() {
                     },
                 })}
             />
-        </CssVarsProvider>
+        </div>
     );
 }
