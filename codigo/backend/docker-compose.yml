@@ -1,0 +1,41 @@
+version: '3'
+services:
+ 
+  postgres_container:
+    restart: always
+    container_name: postgres_container
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: avaliaibd
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+  avaliai_container:
+    restart: always
+    build: ./avaliai
+    working_dir: /avaliai
+    container_name: avaliai_container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_container:5432/avaliaibd
+    volumes:
+      - ./avaliai:/avaliai
+      - ~/.m2:/root/.m2
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    command: mvn clean spring-boot:run
+    depends_on:
+      - postgres_container
