@@ -1,45 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:front_mobile/home_page.dart';
 
-class login_page extends StatefulWidget {
-  const login_page({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<login_page> createState() => _login_pageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _login_pageState extends State<login_page> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children:
-         [TextField(
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            labelText: 'Email',
-             border: OutlineInputBorder()
-          ),
-        ),
-        SizedBox(height: 10,),
-        TextField(
-          obscureText: true,
-          decoration: InputDecoration(
-            labelText: 'Password',
-             border: OutlineInputBorder()
-          ),
-        ),
-         SizedBox(height: 15,),
-        ElevatedButton(onPressed:() {} , child: const Text('entrar'))
+        children: [
+          ElevatedButton(onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
+          }, child: const Text('Entrar', style: TextStyle(fontSize: 20),))
         ],
       ),
-    ),
-    ),
     );
   }
 }
