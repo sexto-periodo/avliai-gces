@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_mobile/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,10 +12,9 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final List<Widget> _telas = [
-    NewPageScreen("AvaliAí"),
-    NewPageScreen("Profile")];
-  
+  static const List<Widget> _telas = [
+    NewWidget(),
+    Profile()];
 
   @override
   Widget build(BuildContext context) {
