@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -60,11 +61,9 @@ export default function Home() {
         </div>
 
         <div className={styles.grid}>
-          <a
+          <Link
             href="/auth/signin"
             className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
               LOGIN
@@ -72,13 +71,11 @@ export default function Home() {
             <p className={inter.className}>
              Tela de login
             </p>
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/auth/signup"
             className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
               CADASTRO
@@ -86,7 +83,19 @@ export default function Home() {
             <p className={inter.className}>
              Tela de cadastro
             </p>
-          </a>
+          </Link>
+
+          <Link
+            href="/subjects"
+            className={styles.card}
+          >
+            <h2 className={inter.className}>
+              DISCIPLINAS
+            </h2>
+            <p className={inter.className}>
+             Listagem de disciplinas
+            </p>
+          </Link>
         </div>
       </main>
     </>
