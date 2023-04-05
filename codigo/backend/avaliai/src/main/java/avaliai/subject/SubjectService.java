@@ -39,7 +39,9 @@ public class SubjectService {
     public void updateSubject(long subjectId, String name, String picUrl, String campus) {
         Subject subject = subjectRepository.findById(subjectId).orElseThrow(() -> new IllegalStateException(
                 "Não conseguimos encontra a disciplina"));// exceção própria
-        subjectRepository.save(subject);
+        subject.setName(name);
+        subject.setPicUrl(picUrl);
+        subject.setCampus(campus);
     }
 
 }
