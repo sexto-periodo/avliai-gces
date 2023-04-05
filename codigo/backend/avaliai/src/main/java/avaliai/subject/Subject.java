@@ -15,6 +15,17 @@ public class Subject {
     private String picUrl;
     private String campus;
     private double grade;
-    //private List<Comment> comments
-    
+    // private List<Comment> comments
+
+    public Subject() {
+
+    }
+
+    public Subject(String name, String picUrl, String campus, double grade) {
+        setName(name);
+        setPicUrl(picUrl);
+        setCampus(campus);
+        setGrade(grade);
+    }
+
 }
