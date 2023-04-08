@@ -1,8 +1,17 @@
-import { extendTheme } from '@mui/joy/styles';
+import { ThemeOptions } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-export default extendTheme({
-  fontFamily: {
-    display: "'Inter', var(--joy-fontFamily-fallback)",
-    body: "'Inter', var(--joy-fontFamily-fallback)",
-  },
-});
+const themeOptions: ThemeOptions = {
+    palette: {
+        mode: 'light',
+        primary: {
+            main: '#7457b1',
+        },
+        secondary: {
+            main: '#c397ff',
+        },
+    },
+};
+
+const theme = createTheme(themeOptions);
+export default theme;
