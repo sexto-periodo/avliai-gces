@@ -23,7 +23,7 @@ public class SubjectController extends BasicController {
     @Autowired
     private SubjectService subjectService;
 
-    @Operation(method = "GET", summary = "Buscar por disciplinas", description = "Buscar por disciplinas.")
+    @Operation(method = "GET", summary = "Buscar por Disciplinas", description = "Buscar por Disciplinas.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
     public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> getSubject() {
@@ -32,7 +32,7 @@ public class SubjectController extends BasicController {
     }
 
 
-    @Operation(method = "POST", summary = "Cria uma nova disciplina", description = "Cria uma nova disciplina.")
+    @Operation(method = "POST", summary = "Cria uma nova Disciplina", description = "Cria uma nova Disciplina.")
     @ApiResponse(responseCode = "201", description = "CREATED")
     @PostMapping
     public ResponseEntity<NoPayloadSuccessResponse201> createSubject(@RequestBody @Valid SubjectCreateRequestDTO subjectCreateRequest) {
@@ -41,7 +41,7 @@ public class SubjectController extends BasicController {
     }
 
 
-    @Operation(method = "GET", summary = "Busca uma disciplina pelo id", description = "Busca uma disciplina pelo id.")
+    @Operation(method = "GET", summary = "Busca uma Disciplina pelo id", description = "Busca uma Disciplina pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(path = "{id}")
     public ResponseEntity<SubjectDTO> findOneById(@PathVariable("id") long id) {
@@ -49,7 +49,7 @@ public class SubjectController extends BasicController {
         return ok(response);
     }
 
-    @Operation(method = "GET", summary = "Deleta uma disciplina pelo id", description = "Deleta uma disciplina pelo id.")
+    @Operation(method = "GET", summary = "Deleta uma Disciplina pelo id", description = "Deleta uma Disciplina pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
     @DeleteMapping(path = "{id}")
     public ResponseEntity<BaseSucessResponse> deleteSubject(@PathVariable("id") long id) {
@@ -57,7 +57,7 @@ public class SubjectController extends BasicController {
         return deleted();
     }
 
-    @Operation(method = "PUT", summary = "Atualiza uma disciplina", description = "Atualiza uma disciplina.")
+    @Operation(method = "PUT", summary = "Atualiza uma Disciplina", description = "Atualiza uma Disciplina.")
     @ApiResponse(responseCode = "200", description = "OK")
     @PutMapping
     public ResponseEntity<BaseSucessResponse<SubjectDTO>> updateSubject( @RequestBody SubjectDTO subjectUpdateRequest ) {
