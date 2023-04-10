@@ -23,7 +23,7 @@ public class SubjectController extends BasicController {
     @Autowired
     private SubjectService subjectService;
 
-    @Operation(method = "GET", summary = "Burcar por disciplkinas", description = "Buscar por disciplinas")
+    @Operation(method = "GET", summary = "Buscar por disciplinas", description = "Buscar por disciplinas.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
     public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> getSubject() {
