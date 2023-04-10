@@ -1,4 +1,4 @@
-package avaliai.subject;
+package com.ti.avaliai.subject;
 
 import java.util.Optional;
 
