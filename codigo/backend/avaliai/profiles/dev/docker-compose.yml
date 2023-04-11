@@ -5,7 +5,7 @@ services:
   #DATABASE
   avaliai:
     container_name: avaliai
-    image: postgres:12.6
+    image: postgres:latest
     networks:
       - avaliai_net
     ports:

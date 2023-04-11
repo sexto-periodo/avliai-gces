@@ -43,13 +43,13 @@ public class SubjectController extends BasicController {
 
     @Operation(method = "GET", summary = "Busca uma Disciplina pelo id", description = "Busca uma Disciplina pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<SubjectDTO> findOneById(@PathVariable("id") long id) {
         SubjectDTO response = subjectService.findOneById(id);
         return ok(response);
     }
 
-    @Operation(method = "GET", summary = "Deleta uma Disciplina pelo id", description = "Deleta uma Disciplina pelo id.")
+    @Operation(method = "DELETE", summary = "Deleta uma Disciplina pelo id", description = "Deleta uma Disciplina pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
     @DeleteMapping(path = "{id}")
     public ResponseEntity<BaseSucessResponse> deleteSubject(@PathVariable("id") long id) {
