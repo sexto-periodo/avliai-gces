@@ -1,8 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { environment } from '../../../config/enviroments/enviroment';
-import { UserAuth } from '../models/User';
+import { environment } from '../../../config/enviroments/enviroment'
 import { endUserSession, getUserAuth, haveAuthStateChanged, startUserSession } from '../services/AuthService';
-
+import { UserAuth } from '../../../models/User';
 
 
 
@@ -33,7 +32,7 @@ export const AuthContextProvider = ({
 }: {
   children: React.ReactNode
 }) => {
-  const [user, setUser] = useState<UserAuth>({} as UserAuth)
+  const [user, setUser] = useState<UserAuth>(null)
   const [loading, setLoading] = useState(true)
 
 
@@ -48,7 +47,7 @@ export const AuthContextProvider = ({
    
     let usr = getUserAuth();
     console.log("useEffect User: "+usr)
-    //usr ? setUser(usr) : setUser({} as UserAuth)
+    usr ? setUser(usr) : setUser(null)
     setLoading(false)
   }, [])
 
@@ -76,7 +75,7 @@ export const AuthContextProvider = ({
       senha: password,
     })
 
-    return fetch(environment.AVALIAI_BACKEND + '/login', {
+    return fetch(BACKEND_ADDRESS + '/login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -98,7 +97,7 @@ export const AuthContextProvider = ({
    */
   const logout = () => {
     endUserSession();
-    setUser({} as UserAuth);
+    setUser(null);
     //await signOut(auth)
   }
 
