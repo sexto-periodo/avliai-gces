@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_mobile/profile.dart';
+import 'package:front_mobile/src/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

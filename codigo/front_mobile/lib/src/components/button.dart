@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_mobile/cores.dart';
+import 'package:front_mobile/src/components/color_palette.dart';
 
 class button extends StatelessWidget {
   const button({super.key});
@@ -14,8 +14,8 @@ class button extends StatelessWidget {
         alignment: Alignment.center,
         height: 55,
         decoration: BoxDecoration(
-          color: cores.mainColor,
-          borderRadius: BorderRadius.circular(6),
+          color: ColorPalette.mainColor,
+          borderRadius: BorderRadius.circular(100),
           boxShadow: [
             BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10)
           ],
