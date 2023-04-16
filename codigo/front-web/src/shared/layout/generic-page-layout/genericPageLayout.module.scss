@@ -1,0 +1,19 @@
+/*Smartphone*/
+@media (max-width: 600px) {
+
+}
+
+/*Tablet*/
+@media (min-width: 601px) and (max-width: 840px) {
+
+}
+
+/*desktop*/
+@media (min-width: 841px) {
+
+  .genericPageLayoutConteiner{
+    display: grid;
+    grid-template-rows: 100px auto;
+  }
+
+}

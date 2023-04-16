@@ -1,4 +1,10 @@
 :root {
+  /*Color shortcut*/
+
+  --general-bg: #F6EDFF;
+
+
+
   --md-source: #6750A4;
   /* primary */
   --md-ref-palette-primary0: #000000;

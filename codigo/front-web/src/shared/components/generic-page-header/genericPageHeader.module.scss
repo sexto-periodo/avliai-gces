@@ -1,0 +1,24 @@
+
+
+/*Smartphone*/
+@media (max-width: 600px) {
+
+}
+
+/*Tablet*/
+@media (min-width: 601px) and (max-width: 840px) {
+
+}
+
+/*desktop*/
+@media (min-width: 841px) {
+
+  .genericPageHeaderContainer{
+    padding: 20px;
+    h1{
+      color: var(--md-ref-palette-secondary20);
+      font-size: 3rem;
+    }
+  }
+
+}
