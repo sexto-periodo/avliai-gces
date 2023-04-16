@@ -5,6 +5,9 @@ import styles from './subject.module.scss'
 import {Subject} from "@mui/icons-material";
 import SubjectDetails from "@/shared/components/subject-details";
 import {ISubject} from "@/shared/models/ISubject";
+import SubjectReview from "@/shared/components/subject-review";
+import {ISubjectReview} from "@/shared/models/ISubjectReview";
+import {number} from "prop-types";
 
 
 const subject: ISubject = {
@@ -17,6 +20,16 @@ const subject: ISubject = {
 
 }
 
+const reviews: ISubjectReview = {
+    text: 'Lorem ipsume',
+    score: 4,
+    votes: 30,
+    voted: false,
+    upvotedByUser: false,
+    downvotedByUser: false,
+    reviewerImage: 'https://static.wixstatic.com/media/1ab2b6_7b9e460b47e54b34aaeec1607dd9b607~mv2.jpg/v1/fill/w_640,h_640,al_c,q_85/1ab2b6_7b9e460b47e54b34aaeec1607dd9b607~mv2.jpg'
+}
+
 export default function Disciplinas() {
     return (
         <GenericPageLayout title="Disciplina">
@@ -27,7 +40,7 @@ export default function Disciplinas() {
                 </div>
 
                 <div className={styles.rightView}>
-                    <SubjectDetails subject={subject}/>
+                    <SubjectReview review={reviews}/>
                 </div>
             </div>
         </GenericPageLayout>

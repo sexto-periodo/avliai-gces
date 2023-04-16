@@ -1,0 +1,42 @@
+.subjectReviewContainer{
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  .header{
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    .headerLeft{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .userImageContainer{
+        height: 50px;
+        width: 50px;
+        border-radius: 10px;
+        overflow: hidden;
+        img{
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .userInfoText{
+        h4{
+          margin-left: 20px;
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    .headerRight{
+
+    }
+  }
+  .content{
+    margin-top: 20px;
+    .reviewText{
+      p{
+        margin: 10px 0;
+      }
+    }
+  }
+}
