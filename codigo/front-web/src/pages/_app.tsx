@@ -5,7 +5,8 @@ import type {AppProps} from 'next/app'
 import {useRouter} from 'next/router';
 import theme from '../shared/theme/theme';
 import '@/styles/global.css'
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import {createTheme, ThemeProvider, styled} from '@mui/material/styles';
+import AppLayout from "@/shared/layout/app-layout/AppLayout";
 
 const noAuthRequired = ['/auth/signin', '/auth/signup']
 
@@ -21,9 +22,9 @@ export default function App({Component, pageProps}: AppProps) {
                 ) : (
                     <>
                         <ProtectedRoute>
-                            <Layout>
+                            <AppLayout>
                                 <Component {...pageProps} />
-                            </Layout>
+                            </AppLayout>
                         </ProtectedRoute>
                     </>
                 )}

@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 
 
+// @ts-ignore
 export default function Layout({ children }) {
     return (
         <div>

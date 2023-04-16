@@ -1,0 +1,39 @@
+/*Smartphone*/
+@media (max-width: 600px) {
+
+}
+
+/*Tablet*/
+@media (min-width: 601px) and (max-width: 840px) {
+
+}
+
+/*desktop*/
+@media (min-width: 841px) {
+
+
+}
+
+.itemContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  margin: 10px 0;
+
+  .iconContainer {
+    display: grid;
+    place-items: center;
+    border-radius: 300px;
+    padding: 3px 15px;
+
+    &:hover {
+      background-color: var(--md-ref-palette-primary80);
+      cursor: pointer;
+    }
+  }
+
+  .labelContainer {
+    font-size: 12px;
+  }
+}
+
