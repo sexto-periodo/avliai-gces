@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:front_mobile/src/home_page.dart';
+import 'package:front_mobile/src/components/appbar_widget.dart';
 import 'package:front_mobile/src/components/text.dart';
 
 import 'components/button.dart';
@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_email == 'admin@admin.com' && _password == 'admin') {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const AppBarWidget()),
       );
     }
   }
