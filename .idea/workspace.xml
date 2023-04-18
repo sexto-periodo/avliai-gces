@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1078930-ce64-4c0a-bc1a-6e2715f2b522" name="Changes" comment="feat: curso controller, repository, service" />
+    <list default="true" id="f1078930-ce64-4c0a-bc1a-6e2715f2b522" name="Changes" comment="feat: curso controller, repository, service">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/course/dto/CourseCreateRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/course/dto/CourseCreateRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/course/dto/CourseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/course/dto/CourseDTO.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +49,17 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: curso controller, repository, service" />
