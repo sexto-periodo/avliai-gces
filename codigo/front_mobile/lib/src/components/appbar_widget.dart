@@ -32,7 +32,6 @@ class AppBarWidgetState extends State<AppBarWidget> {
         onDestinationSelected: onTabTapped,
       ),
     );
-    throw UnimplementedError();
   }
 
   void onTabTapped(int index) {

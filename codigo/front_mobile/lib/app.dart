@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_mobile/src/login_page.dart';
 import 'package:get/get.dart';
 
 import 'src/splash_view.dart';
@@ -9,7 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: splashView(),
+      home: LoginPage(),
     );
   }
 }
