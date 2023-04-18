@@ -23,10 +23,10 @@ class AppBarWidgetState extends State<AppBarWidget> {
       body: _telas[_currentIndex],
       bottomNavigationBar: NavigationBar(
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: ''),
-          NavigationDestination(icon: Icon(Icons.library_add), label: ''),
-          NavigationDestination(icon: Icon(Icons.info), label: ''),
-          NavigationDestination(icon: Icon(Icons.person),label: '')
+          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.library_add), label: 'Requisitar'),
+          NavigationDestination(icon: Icon(Icons.info), label: 'Info'),
+          NavigationDestination(icon: Icon(Icons.person),label: 'Usuário')
         ],
         selectedIndex: _currentIndex,
         onDestinationSelected: onTabTapped,
