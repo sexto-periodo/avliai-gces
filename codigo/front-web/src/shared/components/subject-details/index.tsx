@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useState } from 'react'
 import {ISubject} from '@/shared/models/ISubject'
 import styles from './subjectDetails.module.scss'
 import {AiFillStar} from "react-icons/ai";
@@ -10,6 +9,7 @@ interface ISubjectDetails {
 }
 
 export default function SubjectDetails(props: ISubjectDetails) {
+
     return (
         <div className={styles.subjectDetailsContainer}>
                 <div className={styles.header}>
