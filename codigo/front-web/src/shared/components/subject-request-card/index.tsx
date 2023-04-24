@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './subjectRequestCard.module.scss'
 import {BiDotsVerticalRounded} from "react-icons/bi";
+import {
+    IUserProfileChip,
+    UserProfileChip
+} from "@/shared/components/user-profile-chip";
 
 
 
-export interface IUserProfileSubjectRequestCard{
-    username: string,
-    userUniversity: string,
-    userProfilePhoto: string
-}
+
 export interface ISubjectRequestCard {
-    userProfile: IUserProfileSubjectRequestCard,
+    userProfile: IUserProfileChip,
     subjectCoverImage:string
     subjectTitle: string,
     subjectSubtitle: string,
@@ -18,28 +18,17 @@ export interface ISubjectRequestCard {
 
 }
 
-const UserProfile = (props: IUserProfileSubjectRequestCard) => {
-    return(
-        <div className={styles.userProfileContainer}>
-            <div className={styles.userProfileImageContainer}>
-                <img src={props.userProfilePhoto} alt=""/>
-            </div>
-            <div className={styles.userInfoBox}>
-                <p>{props.username}</p>
-                <p>{props.userUniversity}</p>
-            </div>
-        </div>
-    )
-}
+
 export default function SubjectRequestCard(props: ISubjectRequestCard) {
     return (
         <div className={styles.cardContainer}>
             <div className={styles.cardHeader}>
                 <div className={styles.headerLeft}>
-                    <UserProfile
+                    <UserProfileChip
                         username={props.userProfile.username}
                         userProfilePhoto={props.userProfile.userProfilePhoto}
                         userUniversity={props.userProfile.userUniversity}
+                        imageSize={40}
                     />
                 </div>
                 <div className={styles.headerRight}>
