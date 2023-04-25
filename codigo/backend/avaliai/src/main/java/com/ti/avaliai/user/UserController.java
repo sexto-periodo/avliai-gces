@@ -27,11 +27,6 @@ public class UserController {
         return new ResponseEntity<>(this.userService.getAllUsers(), HttpStatus.OK);
     }
 
-    /*@RequestMapping(value = "/create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> create(@RequestBody UserCreateRequestDTO userCreateRequest) {
-        User user = this.userService.createUser(userCreateRequest);
-        return ResponseEntity.ok(user);
-    }*/
 
     @Transactional
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)

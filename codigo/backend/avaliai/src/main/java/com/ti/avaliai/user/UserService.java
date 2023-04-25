@@ -13,16 +13,11 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    //private final BCryptPasswordEncoder passwordEncoder;
-
 
     @Autowired
-    public UserService(UserRepository userRepository/*, BCryptPasswordEncoder passwordEncoder*/) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        //this.passwordEncoder = passwordEncoder;
     }
-
-
 
     public List<User> getAllUsers() {
         return this.userRepository.findAll();
@@ -32,20 +27,6 @@ public class UserService {
         return this.userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
                 "Não conseguimos encontrar o usuário com este email"));
     }
-
-    /*public User createUser(UserCreateRequestDTO userCreateRequest) {
-        User user = new User();
-        Optional<User> email = this.userRepository.findByEmail(userCreateRequest.getEmail());
-
-        if (email.isPresent()) {
-            throw new RuntimeException("Usário ja cadastrado!");
-        }
-        user.setEmail(userCreateRequest.getEmail());
-        user.setName(userCreateRequest.getName());
-        user.setPassword(passwordEncoder.encode(userCreateRequest.getPassword()));
-
-        return this.userRepository.save(user);
-    }*/
 
     public void deleteUser(UserDeleteRequestDTO userDeleteRequest) {
         Optional<User> user = this.userRepository.findByEmail(userDeleteRequest.getEmail());
