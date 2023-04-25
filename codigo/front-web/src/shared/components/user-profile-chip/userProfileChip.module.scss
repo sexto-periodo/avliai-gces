@@ -1,0 +1,17 @@
+.userProfileContainer{
+  display: flex;
+  flex-direction: row;
+  .userProfileImageContainer{
+    overflow: hidden;
+    border-radius: 200px;
+    img{
+      height: 100%;
+    }
+  }
+  .userInfoBox{
+    margin-left: 5px;
+    &>p:first-child{
+      font-weight: bolder;
+    }
+  }
+}
