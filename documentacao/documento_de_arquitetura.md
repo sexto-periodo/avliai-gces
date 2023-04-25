@@ -111,17 +111,17 @@ _Enumere os requisitos funcionais previstos para a sua aplicação. Concentre-se
 | --- | --- | --- |
 | RF001  | O usuário deve conseguir avaliar uma determinada disciplina com uma nota de 1 a 5             | Essencial |
 | RF002  | O Usuário pode incluir em sua avaliação um texto para justificar a nota daquela matéria.      | Essencial |
-| RF003  | O usuário deve conseguir aprovar ou desaprovar a avaliação de outros usuários através de um sistema de upvote e downvote | Essencial |
-| RF004  | O sistema deve ser capaz de apresentar a lista de diciplinas ofertadas pelo curso de engenharia de software.| Essencial |
+| RF003  | O usuário deve conseguir aprovar ou desaprovar a avaliação de outros usuários através de um sistema de upvote e downvote | Desejável |
+| RF004  | O usuário deve ser capaz de visualizar a lista de diciplinas ofertadas pelo curso de engenharia de software.| Essencial |
 | RF005  | O usuário deve ser capaz de pesquisar determinada disciplina por seu nome no sistema.| Essencial|
 | RF006  | O usuário deve ser capaz de filtrar disciplinas por período no sistema.| Desejável |
-| RF007  | Ter dados das disciplinas, como carga horária, modalidade(síncrona)| Essencial |
-| RF008  | O sistema deve manter anonimato do usuário | Essencial |
-| RF009  | O sistema deve apenas permitir a criação de conta com email puc | Essencial |
-| RF010  | O sistema deve possuir pontuação baseada em like/dislike dos comentários. | Essencial |
-| RF011  | O sistema deve permitir denúncia de comentário, restrição de comentar e dar nota.| Essencial |
-| RF012  | O sistema deve possuir formulário de requisição para adicionar disciplinas. | Essencial |
-| RF013  | O sistema deve permitir preenchimento de formulário de requisição para adicionar disciplinas | Essencial |
+| RF007  | O usuário deve visualizar dados das disciplinas, como carga horária, modalidade(síncrona)| Essencial |
+| RF008  | O usuário deve possuir anonimato quanto a sua identidade | Desejável |
+| RF009  | O usuário deve ser capaz de criar a conta com email puc | Essencial |
+| RF010  | O usuário deve ser capaz de denunciar comentários.| Desejável |
+| RF011  | O usuário preenche formulários de requisição para adicionar disciplinas. | Desejável |
+| RF012  | O moderador valida o banimento de um usuário. | Desejável |
+| RF013  | O moderador valida a adição de uma disciplina. | Desejável |
 
 Obs: acrescente mais linhas, se necessário.
 
@@ -131,11 +131,11 @@ _Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre o
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | O sistema deve prover serviços no ambiente web e móvel. |
-| RNF002 | O sistema deve possuir uma implementação do front-end em tecnologias móveis e/ou híbridas (multiplataforma). |
-| RNF003 | O sistema deve permitir que múltiplos clientes se conectem a um único servidor e realizem operações de forma concorrente. |
-| RNF004 | O sistema deve tratar erros de cliente e de servidor corretamente. Por exemplo: falhas de comunicação, servidor indisponível, timeouts etc. Mostre como esses erros são tratados com estratégias tais como reenvio de mensagens. |
-| RNF005 | O sistema deve possuir implementação de estratégias de testes. |
+| RNF001 | O sistema deve ser avaliado quanto ao tempo de carregamento da página ou do aplicativo móvel, taxa de erros, número de usuários ativos, taxa de rejeição e tempo médio de uso, a fim de garantir que esteja cumprindo o requisito de prover serviços no ambiente web e móvel de forma satisfatória. |
+| RNF002 | O front-end deve ser em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 99,9%, tempo de resposta <2s e usabilidade avaliada com média de 8/10 |
+| RNF003 | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo, suportando pelo menos 100 operações concorrentes por cliente. O tempo médio de resposta do servidor deve ser inferior a 500 ms e a taxa de erros não deve exceder 1%. |
+| RNF004 | O sistema deve registrar erros, reenviar mensagens, ter tempo limite de resposta e taxa de sucesso de tratamento de erro de 95% |
+| RNF005 | O requisito não funcional do sistema de possuir implementação de estratégias de testes será medido por meio de métricas como a cobertura de testes em pelo menos 90% das funcionalidades e requisitos, e pelo menos 70% dos testes devem ser automatizados. |
 
 Obs: acrescente mais linhas, se necessário.
 
