@@ -12,9 +12,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  static const List<Widget> _telas = [
-    NewWidget(),
-    Profile()];
+  static const List<Widget> _telas = [NewWidget(), Profile()];
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +23,10 @@ class HomePageState extends State<HomePage> {
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
           NavigationDestination(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Perfil',
           )
-        ], selectedIndex: _currentIndex,
+        ],
+        selectedIndex: _currentIndex,
         onDestinationSelected: onTabTapped,
       ),
     );
@@ -40,7 +39,6 @@ class HomePageState extends State<HomePage> {
     });
   }
 }
-
 
 class NewWidget extends StatelessWidget {
   const NewWidget({
@@ -57,7 +55,6 @@ class NewWidget extends StatelessWidget {
     ));
   }
 }
-
 
 class NewPageScreen extends StatelessWidget {
   final String texto;
