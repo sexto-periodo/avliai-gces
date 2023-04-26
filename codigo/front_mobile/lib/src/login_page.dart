@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/home_page.dart';
 import 'package:front_mobile/src/components/text.dart';
+import 'package:front_mobile/src/userRegistration.dart';
 
 import 'components/button.dart';
 import 'components/color_palette.dart';
@@ -66,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   onChanged: (value) {
                     setState(() {
                       _email = value;
+                      print(_email);
                     });
                   },
                 ),
@@ -89,26 +91,45 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
                 Container(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: onLoginButtonPressed,
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorPalette.mainColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                          onPressed: onLoginButtonPressed,
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorPalette.mainColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              )),
+                          child: const Text(
+                            'Entrar',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24,
+                            ),
                           )),
-                      child: const Text(
-                        'Entrar',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24,
-                        ),
-                      )),)
-                )
+                    )),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => userRegistration()),
+                        );
+                      },
+                      child: Text("Criar nova conta",
+                          style: TextStyle(color: ColorPalette.mainColor)),
+                    )
+                  ],
+                ),
               ],
             ),
           ),
