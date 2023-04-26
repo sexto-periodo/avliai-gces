@@ -1,0 +1,47 @@
+/*Smartphone*/
+@media (max-width: 600px) {
+
+}
+
+/*Tablet*/
+@media (min-width: 601px) and (max-width: 840px) {
+
+}
+
+/*desktop*/
+@media (min-width: 841px) {
+
+
+}
+
+.sidebarContainer {
+  color: var(--md-ref-palette-secondary20);
+  padding: 30px 10px;
+  .sandwichMenuContainer {
+    display: grid;
+    place-items: center;
+    span{
+      font-size: 1.8rem;
+    }
+  }
+
+  .actionButtonContainer {
+    display: grid;
+    place-items: center;
+
+    .actionButton {
+      background-color: var(--md-ref-palette-tertiary90);
+      color: var(--md-ref-palette-secondary20);
+      height: 60px;
+      width: 60px;
+      border-radius: 15px;
+      margin: 0 auto;
+      font-size: 1.3rem;
+      &:hover{
+        cursor: pointer;
+        box-shadow: 1px 2px 7px #ccc;
+      }
+    }
+  }
+
+}

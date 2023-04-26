@@ -1,49 +1,26 @@
-import { UserAuth } from "../models/User";
+import { UserAuth } from "../../../models/User";
 
-export class AuthService {
-
-    // Busca o token de autenticação nos cookies
-    getToken() {
-        
-    }
-
-    // Faz login de usuário
-    login(){
-
-    }
-
-    // Faz logout de usuário
-    logout(){
-
-    }
-
-    // Verifica email academico
-    verifyCredential(){
-
-    }
-
-    // Faz o registro de usuário
-    private register(){
-
-    }
-}
 
 export function getEmail(){
-    
+    return JSON.parse(localStorage.getItem('auth')).email as string
 }
 
 export function getActualToken(){
-    
+    return JSON.parse(localStorage.getItem('auth')).token as string
 }
-export function startUserSession(user: UserAuth){
-    
+export async function startUserSession(user: UserAuth){
+    localStorage.setItem('auth', JSON.stringify(user));
 }
 export function getUserAuth(){
-    
+    return JSON.parse(localStorage.getItem('auth')) as UserAuth
 }
 export function haveAuthStateChanged(){
-    
+    let auth = JSON.parse(localStorage.getItem('auth'));
+    if( auth ){
+        return false;
+    }
+    return true;
 }
 export function endUserSession(){
-    
+    localStorage.setItem('auth', null);
 }

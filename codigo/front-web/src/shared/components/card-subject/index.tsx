@@ -1,0 +1,36 @@
+import React from 'react'
+
+import {ISubject} from '@/shared/models/ISubject'
+import styles from './style.module.scss'
+import {AiFillStar} from 'react-icons/ai';
+
+export default function CardSubject(props: ISubject) {
+    return (
+        <div className={styles.cardContainer}>
+            <div className={styles.cardImageContainer}>
+                <img src={props.imageUrl} alt=""/>
+            </div>
+            <div className={styles.cardContentContainer}>
+                <div className={styles.primaryInfo}>
+                    <div className={styles.titlesWrapper}>
+                        <h3>{props.name}</h3>
+                        <h4>{props.university}</h4>
+                    </div>
+                    <div className={styles.scoreWrapper}>
+                        <div className={styles.scoreBox}>
+                            <p className={styles.score}>
+                                {props.score}
+                            </p>
+                            <p className={styles.starIcon}><AiFillStar/></p>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.secondaryInfo}>
+                    <p>
+                        {props.shortDescription}
+                    </p>
+                </div>
+            </div>
+        </div>
+    )
+}
