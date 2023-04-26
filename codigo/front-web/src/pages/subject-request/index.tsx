@@ -14,7 +14,7 @@ const request: ISubjectRequestCard = {
     },
     subjectShortDescription: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada euismod egestas. ",
     subjectTitle: "Alguma disciplina",
-    subjectCoverImage: "https://s2.glbimg.com/exBLrKtkDLLGNrEaO84KMGKkeB8=/0x0:1451x968/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/Z/D/QhAd4ZTbmaRbbeNirkkQ/imagem-release-1683514.jpg",
+    subjectCoverImage: "https://www.shutterstock.com/image-photo/young-african-american-man-using-260nw-2064750014.jpg",
     subjectSubtitle: "Subtitulo da disciplina"
 }
 export default function SubjectRequests() {
