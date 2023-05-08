@@ -1,5 +1,6 @@
 package com.ti.avaliai.subject;
 
+import com.ti.avaliai.course.Course;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,10 +11,10 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 
 @Data
 @Entity
-@Table
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "t_subeject")
 public class Subject {
     @Id
     @SequenceGenerator(name = "subject_sequence", sequenceName = "subject_sequence", allocationSize = 1)
@@ -21,15 +22,23 @@ public class Subject {
     @Column
     private long id;
 
-    @Column
-    private String hash_id = generateHash();
-    @Column
+    @Column(name="hash_id")
+    private String hashId = generateHash();
+
+    @Column(name = "name")
     private String name;
-    @Column
+
+    @Column(name = "pic_url")
     private String picUrl;
-    @Column
+
+    @Column(name ="campus")
     private String campus;
-    @Column
+
+    @Column(name = "grade")
     private double grade;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_course", nullable = false)
+    private Course course;
 
 }

@@ -65,7 +65,7 @@ public class SubjectService {
 
     private SubjectDTO subjectToSubjectDTO(Subject subject) {
         return SubjectDTO.builder()
-                .hashId(subject.getHash_id())
+                .hashId(subject.getHashId())
                 .id(subject.getId())
                 .grade(subject.getGrade())
                 .picUrl(subject.getPicUrl())

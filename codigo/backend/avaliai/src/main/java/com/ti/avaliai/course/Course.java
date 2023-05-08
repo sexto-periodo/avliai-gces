@@ -1,6 +1,7 @@
 package com.ti.avaliai.course;
 
 import com.ti.avaliai.subject.Subject;
+import com.ti.avaliai.university.University;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,12 +32,17 @@ public class Course {
     @Column(name="overtime")
     private int overtime;
 
-    @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Subject> subjects;
+
     @Column(name = "status_curriculum")
     private boolean statusCurriculum;
 
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_university", nullable = false)
+    private University university;
 
 }

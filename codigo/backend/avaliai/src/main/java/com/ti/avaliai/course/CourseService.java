@@ -1,15 +1,14 @@
 package com.ti.avaliai.course;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.ti.avaliai.course.dto.CourseCreateRequestDTO;
 import com.ti.avaliai.course.dto.CourseDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CourseService {
@@ -67,7 +66,7 @@ public class CourseService {
 
     private CourseDTO courseToCourseDTO(Course course) {
         return CourseDTO.builder()
-                .hashId(course.getHash_id())
+                .hashId(course.getHashId())
                 .id(course.getId())
                 .subjects(course.getSubjects())
                 .overtime(course.getOvertime())
