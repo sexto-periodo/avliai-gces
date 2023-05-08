@@ -20,7 +20,7 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "_user")
+@Table(name = "t_user")
 public class User implements UserDetails {
     @Id
     @SequenceGenerator(name = "_user_sequence", sequenceName = "_user_sequence", allocationSize = 1)
@@ -28,19 +28,24 @@ public class User implements UserDetails {
     @Column
     private long id;
 
-    @Column
-    private String hash_id = generateHash();
-    @Column
+    @Column(name = "hash_id", updatable = false)
+    private String hashId = generateHash();
+
+    @Column(name = "name")
     private String name;
-    @Column
+
+    @Column(name = "email", updatable = false)
     private String email;
-    @Column
+
+    @Column(name = "password")
     @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
+
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
-    @Column
-    private boolean deleted;
+    @Column(name = "is_deleted")
+    private boolean isDeleted = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

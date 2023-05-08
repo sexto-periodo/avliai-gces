@@ -63,7 +63,7 @@ public class UniversityService {
 
     private UniversityDTO universityToUniversityDTO(University university) {
         return UniversityDTO.builder()
-                .hashId(university.getHash_id())
+                .hashId(university.getHashId())
                 .id(university.getId())
                 .cnpj(university.getCnpj())
                 .courses(university.getCourses())

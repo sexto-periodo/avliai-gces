@@ -2,6 +2,7 @@ package com.ti.avaliai.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,4 +38,7 @@ public class UserDTO {
     @NotNull(message = "O campo 'password' não pode ser vazio")
     @JsonProperty("password")
     private String password;
+
+    @Column(name = "is_deleted")
+    private boolean isDeleted = false;
 }

@@ -12,13 +12,9 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-
-
     @Bean
     public OpenAPI baseOpenAPI() {
         return new OpenAPI().info(new Info().title("Minha Api").version("1.0.0").description("Descrição"));
     }
-
-
 
 }
