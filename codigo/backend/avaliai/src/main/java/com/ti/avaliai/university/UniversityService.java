@@ -1,15 +1,14 @@
 package com.ti.avaliai.university;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
 import com.ti.avaliai.university.dto.UniversityDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UniversityService {
@@ -64,7 +63,7 @@ public class UniversityService {
 
     private UniversityDTO universityToUniversityDTO(University university) {
         return UniversityDTO.builder()
-                .hash_id(university.getHash_id())
+                .hashId(university.getHash_id())
                 .id(university.getId())
                 .cnpj(university.getCnpj())
                 .courses(university.getCourses())
