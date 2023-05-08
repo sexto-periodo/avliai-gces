@@ -30,7 +30,7 @@ public class UniversityService {
     public void create(UniversityCreateRequestDTO universityCreateRequest) {
 
         University university = University.builder()
-                .cnpj(universityCreateRequest.getCNPJ())
+                .cnpj(universityCreateRequest.getCnpj())
                 .courses(universityCreateRequest.getCourses())
                 .name(universityCreateRequest.getName())
                 .build();
@@ -54,7 +54,7 @@ public class UniversityService {
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Não conseguimos encontrar a universidade"));
 
-        university.setCNPJ(universityUpdateRequest.getCNPJ());
+        university.setCnpj(universityUpdateRequest.getCnpj());
         university.setCourses(universityUpdateRequest.getCourses());
         university.setName(universityUpdateRequest.getName());
 
@@ -66,7 +66,7 @@ public class UniversityService {
         return UniversityDTO.builder()
                 .hash_id(university.getHash_id())
                 .id(university.getId())
-                .cnpj(university.getCNPJ())
+                .cnpj(university.getCnpj())
                 .courses(university.getCourses())
                 .name(university.getName())
                 .build();

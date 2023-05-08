@@ -1,10 +1,13 @@
 package com.ti.avaliai.university;
 
+import com.ti.avaliai.course.Course;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 import static com.ti.avaliai.utils.HashUtils.generateHash;
 
@@ -28,6 +31,7 @@ public class University {
     @Column
     private String cnpj;
     @Column
-    private ArrayList<Course> courses;
+    @OneToMany
+    private List<Course> courses;
 
 }

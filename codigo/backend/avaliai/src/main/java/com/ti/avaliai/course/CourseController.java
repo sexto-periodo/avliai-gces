@@ -1,13 +1,10 @@
 package com.ti.avaliai.course;
 
-import java.util.List;
-
-
+import com.ti.avaliai.course.dto.CourseCreateRequestDTO;
+import com.ti.avaliai.course.dto.CourseDTO;
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.BaseSucessResponse;
 import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
-import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
-import com.ti.avaliai.subject.dto.SubjectDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
@@ -15,13 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/course")
 public class CourseController extends BasicController {
 
     @Autowired
-    private CourseService CourseService;
+    private CourseService courseService;
 
     @Operation(method = "GET", summary = "Buscar por Cursos", description = "Buscar por Cursos.")
     @ApiResponse(responseCode = "200", description = "OK")
@@ -60,7 +59,7 @@ public class CourseController extends BasicController {
     @Operation(method = "PUT", summary = "Atualiza uma Disciplina", description = "Atualiza uma Disciplina.")
     @ApiResponse(responseCode = "200", description = "OK")
     @PutMapping
-    public ResponseEntity<BaseSucessResponse<CourseDTO>> updateCourse( @RequestBody CourseDTO CourseUpdateRequest ) {
+    public ResponseEntity<BaseSucessResponse<CourseDTO>> updateCourse( @RequestBody CourseDTO courseUpdateRequest ) {
 
         CourseDTO response = courseService.update(courseUpdateRequest);
         return ok(response);

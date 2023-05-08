@@ -1,8 +1,8 @@
 package com.ti.avaliai.course;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.ti.avaliai.course.dto.CourseCreateRequestDTO;
 import com.ti.avaliai.course.dto.CourseDTO;
@@ -29,17 +29,19 @@ public class CourseService {
 
     public void create(CourseCreateRequestDTO courseCreateRequest) {
 
-        Course course = course.builder()
-                .campus(courseCreateRequest.getCampus())
-                .grade(courseCreateRequest.getGrade())
-                .picUrl(courseCreateRequest.getPicUrl())
+        Course course = Course.builder()
                 .name(courseCreateRequest.getName())
                 .build();
         courseRepository.save(course);
     }
 
     public CourseDTO findOneById(long id) {
-        return courseToCourseDTO(courseRepository.findCourseById(id));
+            return courseToCourseDTO(
+                    courseRepository.findById(id).orElseThrow(
+                            () -> new EntityNotFoundException("Curso de id "+id+" não encontrado")
+                    )
+            );
+
     }
 
     public void delete(long id) {
@@ -57,7 +59,6 @@ public class CourseService {
 
         course.setSubjects(courseUpdateRequest.getSubjects());
         course.setOvertime(courseUpdateRequest.getOvertime());
-        course.setStatusCurriculum(courseUpdateRequest.getStatusCurriculum());
         course.setName(courseUpdateRequest.getName());
 
         courseRepository.save(course);
@@ -66,12 +67,11 @@ public class CourseService {
 
     private CourseDTO courseToCourseDTO(Course course) {
         return CourseDTO.builder()
-                .hash_id(course.getHash_id())
+                .hashId(course.getHash_id())
                 .id(course.getId())
                 .subjects(course.getSubjects())
                 .overtime(course.getOvertime())
                 .name(course.getName())
-                .statusCurriculum(course.getStatusCurriculum())
                 .build();
     }
 

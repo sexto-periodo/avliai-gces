@@ -27,7 +27,7 @@ public class UniversityController extends BasicController {
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
     public ResponseEntity<BaseSucessResponse<List<UniversityDTO>>> getUniversity() {
-        List<UniversityDTO> universitiesResponse = universitiesService.getUniversities();
+        List<UniversityDTO> universitiesResponse = universityService.getUniversities();
         return ok(universitiesResponse);
     }
 

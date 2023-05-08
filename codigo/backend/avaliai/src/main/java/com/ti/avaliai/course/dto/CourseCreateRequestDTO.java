@@ -1,9 +1,12 @@
 package com.ti.avaliai.course.dto;
 
+import com.ti.avaliai.subject.Subject;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -12,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class CourseCreateRequestDTO {
     private String name;
     private int overtime;
-    private ArrayList<Subjects> subjects;
+    private List<Subject> subjects;
     private boolean statusCurriculum;
 
 }
