@@ -34,17 +34,18 @@ class button extends StatelessWidget {
 }
 
 class buttonRegistration extends StatelessWidget {
-  const buttonRegistration({super.key});
+  const buttonRegistration(
+      {super.key, required Text child, required Null Function() onPressed});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         print('Login');
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
-        );
+        //  Navigator.push(
+        //  context,
+        // MaterialPageRoute(builder: (context) => LoginPage()),
+        //);
       },
       child: Container(
         alignment: Alignment.center,

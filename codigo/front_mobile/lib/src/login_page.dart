@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/home_page.dart';
-import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/userRegistration.dart';
 
-import 'components/button.dart';
 import 'components/color_palette.dart';
 
 class LoginPage extends StatefulWidget {
@@ -67,7 +64,6 @@ class _LoginPageState extends State<LoginPage> {
                   onChanged: (value) {
                     setState(() {
                       _email = value;
-                      print(_email);
                     });
                   },
                 ),

@@ -4,7 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/home_page.dart';
 import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/login_page.dart';
-
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 import 'components/button.dart';
 import 'components/color_palette.dart';
 
@@ -53,7 +54,7 @@ class Registration extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Container(
                   alignment: Alignment.center,
                   child: Text(
@@ -79,31 +80,104 @@ class Registration extends StatelessWidget {
                   height: 10,
                 ),
                 text(
-                  controller: RepeatpasswordController,
+                  controller: passwordController,
                   texto: 'Senha',
-                  obscure: false,
+                  obscure: true,
                   textInputType: TextInputType.emailAddress,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                text(
+                /* text(
                     controller: passwordController,
                     texto: 'Repita a senha',
                     textInputType: TextInputType.text,
                     obscure: true),
                 const SizedBox(
                   height: 10,
+                  
                 ),
-                buttonRegistration(),
-                const SizedBox(
-                  height: 5,
-                ),
+                */
+                ElevatedButton(
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 10)
+                        ],
+                      ),
+                      child: const Text(
+                        'Confirmar cadastro',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      _salvarDados(
+                          emailController.text, passwordController.text);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    }),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  _recuperarBancoDados() async {
+    final caminhoBancoDados = await getDatabasesPath();
+    final localBancoDados = join(caminhoBancoDados, "banco3.bd");
+    var bd = await openDatabase(localBancoDados, version: 1,
+        onCreate: (db, dbVersaoRecente) {
+      String sql =
+          "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR, senha VARCHAR) ";
+      db.execute(sql);
+    });
+    return bd;
+    //print("aberto: " + bd.isOpen.toString() );
+  }
+
+  _salvarDados(String emailController, String passwordController) async {
+    Database bd = await _recuperarBancoDados();
+    Map<String, dynamic> dadosUsuario = {
+      "email": emailController,
+      "senha": passwordController
+    };
+    int id = await bd.insert("usuarios", dadosUsuario);
+    print("Salvo: $id ");
+  }
+
+  _loginTeste(String email, String senha) async {
+    Database bd = await _recuperarBancoDados();
+    String sql = "SELECT * FROM usuarios";
+    //String sql = "SELECT * FROM usuarios WHERE idade=58";
+    //String sql = "SELECT * FROM usuarios WHERE idade >=30 AND idade <=58";
+    //String sql = "SELECT * FROM usuarios WHERE idade BETWEEN 18 AND 58";
+    //String sql = "SELECT * FROM usuarios WHERE nome='Maria Silva'";
+    List usuarios =
+        await bd.rawQuery(sql); //conseguimos escrever a query que quisermos
+    for (var usu in usuarios) {
+      print(" id: " +
+          usu['id'].toString() +
+          " email: " +
+          usu['email'] +
+          " senha: " +
+          usu['senha'].toString());
+
+      if (usu["email"] == email && usu["senha"] == senha) {
+        print("usuario encontrado");
+      } else {
+        print("usuario nao encontrado");
+      }
+    }
   }
 }
