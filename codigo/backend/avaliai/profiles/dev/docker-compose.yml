@@ -5,14 +5,14 @@ services:
   #DATABASE
   avaliai:
     container_name: avaliai
-    image: postgres:latest
+    image: postgres:12.1
     networks:
       - avaliai_net
     ports:
       - "5453:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: PstD2a5DA4fUvgXEEXX
+      POSTGRES_PASSWORD: PstD2a5DA4fUvg
       POSTGRES_DB: avaliai
     volumes:
       - database_avaliai:/var/lib/postgresql
