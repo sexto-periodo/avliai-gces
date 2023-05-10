@@ -159,10 +159,7 @@ class Registration extends StatelessWidget {
   _loginTeste(String email, String senha) async {
     Database bd = await _recuperarBancoDados();
     String sql = "SELECT * FROM usuarios";
-    //String sql = "SELECT * FROM usuarios WHERE idade=58";
-    //String sql = "SELECT * FROM usuarios WHERE idade >=30 AND idade <=58";
-    //String sql = "SELECT * FROM usuarios WHERE idade BETWEEN 18 AND 58";
-    //String sql = "SELECT * FROM usuarios WHERE nome='Maria Silva'";
+
     List usuarios =
         await bd.rawQuery(sql); //conseguimos escrever a query que quisermos
     for (var usu in usuarios) {
