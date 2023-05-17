@@ -10,6 +10,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import static com.ti.avaliai.utils.HashUtils.generateHash;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -24,6 +26,7 @@ public class AuthenticationService {
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .hashId(generateHash())
                 .role(Role.User)
                 .build();
         repository.save(user);
@@ -33,7 +36,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    public AuthenticationResponse authentication(AuthenticationRequest request) {
+    public AuthenticationResponse authentication(AuthenticationRequest request) throws Exception {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -41,7 +44,7 @@ public class AuthenticationService {
                 )
         );
         var user = repository.findByEmail(request.getEmail())
-                .orElseThrow();
+                .orElseThrow( () -> new Exception("Usuário não encontrado"));
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

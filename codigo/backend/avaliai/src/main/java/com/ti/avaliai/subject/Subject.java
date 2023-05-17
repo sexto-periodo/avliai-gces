@@ -17,8 +17,7 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @Table(name = "t_subeject")
 public class Subject {
     @Id
-    @SequenceGenerator(name = "subject_sequence", sequenceName = "subject_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subject_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private long id;
 

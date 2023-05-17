@@ -23,8 +23,7 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @Table(name = "t_user")
 public class User implements UserDetails {
     @Id
-    @SequenceGenerator(name = "_user_sequence", sequenceName = "_user_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "_user_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private long id;
 

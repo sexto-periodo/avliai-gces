@@ -20,8 +20,7 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @Table( name = "t_university")
 public class University {
     @Id
-    @SequenceGenerator(name = "university_sequence", sequenceName = "university_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "university_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private long id;
 
