@@ -18,6 +18,7 @@ services:
       - database_avaliai:/var/lib/postgresql
       - database_avaliai_data:/var/lib/postgresql/data
 
+
 networks:
   avaliai_net:
 

@@ -1,5 +1,6 @@
 package com.ti.avaliai.auth;
 
+import com.ti.avaliai.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
-    private String name;
-    private String email;
-    private String password;
+
+  private String firstname;
+  private String lastname;
+  private String email;
+  private String password;
+  private Role role;
 }
