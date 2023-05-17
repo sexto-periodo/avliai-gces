@@ -6,6 +6,7 @@ import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/login_page.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
 import 'components/button.dart';
 import 'components/color_palette.dart';
 
@@ -25,8 +26,11 @@ class Registration extends StatelessWidget {
   Registration({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController RepeatpasswordController =
-      TextEditingController();
+  final TextEditingController InstituicaoController = TextEditingController();
+  final TextEditingController cursoController = TextEditingController();
+  final TextEditingController registroController = TextEditingController();
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController sobreNomeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,7 @@ class Registration extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: [
                 Container(
                   alignment: Alignment.center,
                   child: Text(
@@ -70,6 +74,66 @@ class Registration extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: text(
+                        controller: nomeController,
+                        texto: 'Nome',
+                        obscure: false,
+                        textInputType: TextInputType.text,
+                      ),
+                    ),
+                    SizedBox(width: 10), // Espaço entre os campos de texto
+                    Expanded(
+                      child: text(
+                        controller: sobreNomeController,
+                        texto: 'Sobrenome',
+                        obscure: false,
+                        textInputType: TextInputType.text,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                text(
+                  controller: InstituicaoController,
+                  texto: 'Instituição de ensino',
+                  obscure: false,
+                  textInputType: TextInputType.text,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: text(
+                        controller: registroController,
+                        texto: 'Registro acadêmico',
+                        obscure: false,
+                        textInputType: TextInputType.text,
+                      ),
+                    ),
+                    SizedBox(width: 10), // Espaço entre os campos de texto
+                    Expanded(
+                      child: text(
+                        controller: cursoController,
+                        texto: 'Curso',
+                        obscure: false,
+                        textInputType: TextInputType.text,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 text(
                   controller: emailController,
                   texto: 'Email',
@@ -82,20 +146,24 @@ class Registration extends StatelessWidget {
                 text(
                   controller: passwordController,
                   texto: 'Senha',
-                  obscure: true,
+                  obscure: false,
                   textInputType: TextInputType.emailAddress,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                /* text(
+                /*
+                text(
                     controller: passwordController,
                     texto: 'Repita a senha',
                     textInputType: TextInputType.text,
                     obscure: true),
                 const SizedBox(
                   height: 10,
-                  
+                ),
+                buttonRegistration(),
+                const SizedBox(
+                  height: 5,
                 ),
                 */
                 ElevatedButton(
@@ -112,7 +180,7 @@ class Registration extends StatelessWidget {
                         ],
                       ),
                       child: const Text(
-                        'Confirmar cadastro',
+                        'Cadastrar',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
@@ -133,6 +201,16 @@ class Registration extends StatelessWidget {
     );
   }
 
+  _salvarDados(String emailController, String passwordController) async {
+    Database bd = await _recuperarBancoDados();
+    Map<String, dynamic> dadosUsuario = {
+      "email": emailController,
+      "senha": passwordController
+    };
+    int id = await bd.insert("usuarios", dadosUsuario);
+    print("Salvo: $id ");
+  }
+
   _recuperarBancoDados() async {
     final caminhoBancoDados = await getDatabasesPath();
     final localBancoDados = join(caminhoBancoDados, "banco3.bd");
@@ -144,37 +222,5 @@ class Registration extends StatelessWidget {
     });
     return bd;
     //print("aberto: " + bd.isOpen.toString() );
-  }
-
-  _salvarDados(String emailController, String passwordController) async {
-    Database bd = await _recuperarBancoDados();
-    Map<String, dynamic> dadosUsuario = {
-      "email": emailController,
-      "senha": passwordController
-    };
-    int id = await bd.insert("usuarios", dadosUsuario);
-    print("Salvo: $id ");
-  }
-
-  _loginTeste(String email, String senha) async {
-    Database bd = await _recuperarBancoDados();
-    String sql = "SELECT * FROM usuarios";
-
-    List usuarios =
-        await bd.rawQuery(sql); //conseguimos escrever a query que quisermos
-    for (var usu in usuarios) {
-      print(" id: " +
-          usu['id'].toString() +
-          " email: " +
-          usu['email'] +
-          " senha: " +
-          usu['senha'].toString());
-
-      if (usu["email"] == email && usu["senha"] == senha) {
-        print("usuario encontrado");
-      } else {
-        print("usuario nao encontrado");
-      }
-    }
   }
 }
