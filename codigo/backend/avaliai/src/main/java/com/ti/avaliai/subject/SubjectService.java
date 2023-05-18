@@ -1,15 +1,14 @@
 package com.ti.avaliai.subject;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SubjectService {
@@ -66,7 +65,7 @@ public class SubjectService {
 
     private SubjectDTO subjectToSubjectDTO(Subject subject) {
         return SubjectDTO.builder()
-                .hash_id(subject.getHash_id())
+                .hashId(subject.getHashId())
                 .id(subject.getId())
                 .grade(subject.getGrade())
                 .picUrl(subject.getPicUrl())

@@ -1,15 +1,14 @@
 package com.ti.avaliai.university;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
 import com.ti.avaliai.university.dto.UniversityDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UniversityService {
@@ -30,7 +29,7 @@ public class UniversityService {
     public void create(UniversityCreateRequestDTO universityCreateRequest) {
 
         University university = University.builder()
-                .cnpj(universityCreateRequest.getCNPJ())
+                .cnpj(universityCreateRequest.getCnpj())
                 .courses(universityCreateRequest.getCourses())
                 .name(universityCreateRequest.getName())
                 .build();
@@ -54,7 +53,7 @@ public class UniversityService {
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Não conseguimos encontrar a universidade"));
 
-        university.setCNPJ(universityUpdateRequest.getCNPJ());
+        university.setCnpj(universityUpdateRequest.getCnpj());
         university.setCourses(universityUpdateRequest.getCourses());
         university.setName(universityUpdateRequest.getName());
 
@@ -64,9 +63,9 @@ public class UniversityService {
 
     private UniversityDTO universityToUniversityDTO(University university) {
         return UniversityDTO.builder()
-                .hash_id(university.getHash_id())
+                .hashId(university.getHashId())
                 .id(university.getId())
-                .cnpj(university.getCNPJ())
+                .cnpj(university.getCnpj())
                 .courses(university.getCourses())
                 .name(university.getName())
                 .build();

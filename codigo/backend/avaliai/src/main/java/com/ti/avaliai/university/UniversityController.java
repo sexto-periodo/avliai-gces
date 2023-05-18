@@ -1,8 +1,5 @@
 package com.ti.avaliai.university;
 
-import java.util.List;
-
-
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.BaseSucessResponse;
 import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
@@ -10,14 +7,18 @@ import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
 import com.ti.avaliai.university.dto.UniversityDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/university")
+@Tag(name = "University - Endpoints universidades")
 public class UniversityController extends BasicController {
 
     @Autowired
@@ -27,7 +28,7 @@ public class UniversityController extends BasicController {
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
     public ResponseEntity<BaseSucessResponse<List<UniversityDTO>>> getUniversity() {
-        List<UniversityDTO> universitiesResponse = universitiesService.getUniversities();
+        List<UniversityDTO> universitiesResponse = universityService.getUniversities();
         return ok(universitiesResponse);
     }
 
