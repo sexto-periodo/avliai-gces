@@ -1,10 +1,8 @@
 package com.ti.avaliai.user;
 
-//import com.ti.avaliai.user.dto.UserCreateRequestDTO;
 import com.ti.avaliai.user.dto.UserDeleteRequestDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
