@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UniversityRepository extends JpaRepository<University,Long>{
 
-    @Query("SELECT sub FROM University sub WHERE sub.name = ?1")
     Optional<University> findUniversityByName(String name);
 
     University findUniversityById(Long id);
 
+    University findByHashId(String hashId);
 }

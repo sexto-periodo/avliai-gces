@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Schema(description = "DTO para curso")
-public class CourseDTO {
+public class CourseUpdateRequestDTO {
 
     @Schema(required = true, description = "Id do Curso.", example = "123456")
     @NotBlank(message = "O id do Curso deve ser informado.")
@@ -37,9 +37,9 @@ public class CourseDTO {
     @NotBlank(message = "A duração do Curso deve ser informada.")
     @JsonProperty("overtime")
     private int overtime;
+    private List<Long> subjects;
 
     @Schema(required = true, description = "Status do Curso.", example = "true")
     @JsonProperty("statusCurriculum")
     private boolean statusCurriculum;
-
 }

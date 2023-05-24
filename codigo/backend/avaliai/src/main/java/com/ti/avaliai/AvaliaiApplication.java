@@ -28,8 +28,8 @@ public class AvaliaiApplication {
 			var admin = RegisterRequest.builder()
 					.firstname("Admin")
 					.lastname("Admin")
-					.email("string")
-					.password("string")
+					.email("admin@sga.pucminas.br")
+					.password("1234")
 					.role(ADMIN)
 					.build();
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());

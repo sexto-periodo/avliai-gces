@@ -31,7 +31,7 @@ public class Course {
     @Column(name="overtime")
     private int overtime;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Subject> subjects;
 
     @Column(name = "status_curriculum")

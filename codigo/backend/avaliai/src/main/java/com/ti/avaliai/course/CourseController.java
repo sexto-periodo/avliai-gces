@@ -2,6 +2,7 @@ package com.ti.avaliai.course;
 
 import com.ti.avaliai.course.dto.CourseCreateRequestDTO;
 import com.ti.avaliai.course.dto.CourseDTO;
+import com.ti.avaliai.course.dto.CourseUpdateRequestDTO;
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.BaseSucessResponse;
 import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
@@ -61,7 +62,7 @@ public class CourseController extends BasicController {
     @Operation(method = "PUT", summary = "Atualiza uma Disciplina", description = "Atualiza uma Disciplina.")
     @ApiResponse(responseCode = "200", description = "OK")
     @PutMapping
-    public ResponseEntity<BaseSucessResponse<CourseDTO>> updateCourse( @RequestBody CourseDTO courseUpdateRequest ) {
+    public ResponseEntity<BaseSucessResponse<CourseDTO>> updateCourse(@RequestBody CourseUpdateRequestDTO courseUpdateRequest ) {
 
         CourseDTO response = courseService.update(courseUpdateRequest);
         return ok(response);
