@@ -6,6 +6,5 @@ export interface IUser {
 }
 
 export interface UserAuth {
-    email: string,
-    token: string,
+    access_token: string,
 }

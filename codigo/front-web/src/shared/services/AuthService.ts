@@ -1,26 +1,25 @@
-import { UserAuth } from "../../../models/User";
+import { UserAuth } from '../models/User';
+import {getCookie, hasCookie, setCookie} from "cookies-next";
 
 
-export function getEmail(){
-    return JSON.parse(localStorage.getItem('auth')).email as string
-}
 
 export function getActualToken(){
-    return JSON.parse(localStorage.getItem('auth')).token as string
+    if ( hasCookie('auth')){
+        return getCookie('auth');
+    }
 }
 export async function startUserSession(user: UserAuth){
-    localStorage.setItem('auth', JSON.stringify(user));
+    setCookie('auth', JSON.stringify(user));
 }
 export function getUserAuth(){
-    return JSON.parse(localStorage.getItem('auth')) as UserAuth
+    return getCookie('auth');
 }
 export function haveAuthStateChanged(){
-    let auth = JSON.parse(localStorage.getItem('auth'));
-    if( auth ){
+    if( hasCookie('auth')){
         return false;
     }
     return true;
 }
 export function endUserSession(){
-    localStorage.setItem('auth', null);
+    setCookie('auth', null);
 }

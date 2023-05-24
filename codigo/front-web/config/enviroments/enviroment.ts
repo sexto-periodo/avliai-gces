@@ -1,3 +1,3 @@
 export const environment = {
-    AVALIAI_BACKEND: "https://avaliai.api.url/api/v1"
+    AVALIAI_BACKEND: "http:localhost:8080/avaliai"
 };
