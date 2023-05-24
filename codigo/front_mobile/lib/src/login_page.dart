@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/components/appbar_widget.dart';
-import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/userRegistration.dart';
 
-import 'components/button.dart';
 import 'components/color_palette.dart';
 
 class LoginPage extends StatefulWidget {
@@ -60,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   controller: emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Email Acadêmico',
                     border: OutlineInputBorder(),
                   ),
@@ -77,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                   controller: passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Senha',
                     border: OutlineInputBorder(),
                   ),
@@ -122,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => userRegistration()),
+                              builder: (context) => const userRegistration()),
                         );
                       },
                       child: Text("Criar nova conta",

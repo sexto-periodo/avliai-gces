@@ -43,7 +43,7 @@ class buttonRegistration extends StatelessWidget {
         print('Login');
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => const LoginPage()),
         );
       },
       child: Container(

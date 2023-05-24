@@ -1,8 +1,5 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/Discipline.dart';
 import 'package:front_mobile/src/discipline_page.dart';
 

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/components/discpline_card.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 import 'Discipline.dart';
 
@@ -60,12 +57,12 @@ class _HomePageState extends State<HomePage> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
              Container(
-              padding: EdgeInsets.only(top: 12,),
+              padding: const EdgeInsets.only(top: 12,),
               child: TextField(
                 controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search',
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30))
                 ),
@@ -88,4 +85,4 @@ class _HomePageState extends State<HomePage> {
         ),
         ));
   }
-};}}
+}

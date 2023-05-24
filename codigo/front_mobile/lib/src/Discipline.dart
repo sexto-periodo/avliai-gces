@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 class Discipline {
   String name;
@@ -7,5 +6,5 @@ class Discipline {
   String imgUrl;
   double score;
 
-  Discipline(String this.name, String this.course, String this.shortDesc, String this.imgUrl, double this.score);
+  Discipline(this.name, this.course, this.shortDesc, this.imgUrl, this.score);
 }

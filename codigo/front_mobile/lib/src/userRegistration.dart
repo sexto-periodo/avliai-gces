@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:front_mobile/src/home_page.dart';
 import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/login_page.dart';
 
@@ -31,17 +28,17 @@ class Registration extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastro de usuário'),
+        title: const Text('Cadastro de usuário'),
         backgroundColor: ColorPalette.mainColor,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => LoginPage()),
+              MaterialPageRoute(builder: (context) => const LoginPage()),
             );
           },
         ),
@@ -95,7 +92,7 @@ class Registration extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                buttonRegistration(),
+                const buttonRegistration(),
                 const SizedBox(
                   height: 5,
                 ),

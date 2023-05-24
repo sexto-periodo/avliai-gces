@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/components/color_palette.dart';
 import 'package:front_mobile/src/home_page.dart';
-import 'package:front_mobile/src/login_page.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -31,23 +28,23 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perfil'),
+        title: const Text('Perfil'),
         backgroundColor: ColorPalette.mainColor,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HomePage()),
+              MaterialPageRoute(builder: (context) => const HomePage()),
             );
           },
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -69,15 +66,15 @@ class _ProfileState extends State<Profile> {
                                 color: Colors.black.withOpacity(0.1)),
                           ],
                           shape: BoxShape.circle,
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
                                   'https://i1.rgstatic.net/ii/profile.image/272734387175449-1442036353375_Q512/Zenilton-Patrocinio-Jr.jpg'))),
                     ),
-                    Positioned(
+                    const Positioned(
                       bottom: 0,
                       right: 0,
-                      child: Container(
+                      child: SizedBox(
                         height: 40,
                         width: 40,
                       ),
@@ -85,7 +82,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               buildTextField("Nome", "Zenilton", false),
@@ -102,24 +99,24 @@ class _ProfileState extends State<Profile> {
   Widget buildTextField(
       String labelText, String placeHolder, bool ispassworld) {
     return Padding(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         child: TextField(
           obscureText: ispassworld ? isObscurePassword : false,
           decoration: InputDecoration(
               suffixIcon: ispassworld
                   ? IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.remove_red_eye,
                         color: Colors.grey,
                       ))
                   : null,
               enabled: false,
-              contentPadding: EdgeInsets.only(bottom: 5),
+              contentPadding: const EdgeInsets.only(bottom: 5),
               labelText: labelText,
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintText: placeHolder,
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey)),
