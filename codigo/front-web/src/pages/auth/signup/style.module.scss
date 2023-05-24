@@ -10,37 +10,38 @@
 
 /*desktop*/
 @media (min-width: 841px) {
-  .container {
+
+}
+.container {
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  height: 100vh;
+
+  .leftView {
     display: grid;
-    grid-template-columns: 4fr 3fr;
-    height: 100vh;
-
-    .leftView {
-      display: grid;
-      place-items: center;
-      .appTitle {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 20px 40px;
-      }
-
-      .centerForm {
-        h2{
-          margin-bottom: 20px;
-        }
-        .form {
-          display: flex;
-          flex-direction: column;
-        }
-
-
-      }
+    place-items: center;
+    .appTitle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 20px 40px;
     }
 
-    .rightView {
-      background-color: var(--md-sys-color-primary-light);
+    .centerForm {
+      h2{
+        margin-bottom: 20px;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+      }
+
+
     }
+  }
+
+  .rightView {
+    background-color: var(--md-sys-color-primary-light);
   }
 }
 

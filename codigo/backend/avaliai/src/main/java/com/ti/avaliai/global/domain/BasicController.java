@@ -2,12 +2,14 @@ package com.ti.avaliai.global.domain;
 
 import com.ti.avaliai.global.response.BaseSucessResponse;
 import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.LocalDateTime;
 
+//@SecurityRequirement(name = "bearerAuth")
 public abstract class BasicController {
 
     protected static ResponseEntity created(){

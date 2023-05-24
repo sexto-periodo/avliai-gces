@@ -1,8 +1,5 @@
 package com.ti.avaliai.subject;
 
-import java.util.List;
-
-
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.BaseSucessResponse;
 import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
@@ -10,14 +7,18 @@ import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/subject")
+@Tag(name = "Subject - Endpoints de Disciplinas")
 public class SubjectController extends BasicController {
 
     @Autowired
@@ -43,13 +44,13 @@ public class SubjectController extends BasicController {
 
     @Operation(method = "GET", summary = "Busca uma Disciplina pelo id", description = "Busca uma Disciplina pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<SubjectDTO> findOneById(@PathVariable("id") long id) {
         SubjectDTO response = subjectService.findOneById(id);
         return ok(response);
     }
 
-    @Operation(method = "GET", summary = "Deleta uma Disciplina pelo id", description = "Deleta uma Disciplina pelo id.")
+    @Operation(method = "DELETE", summary = "Deleta uma Disciplina pelo id", description = "Deleta uma Disciplina pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
     @DeleteMapping(path = "{id}")
     public ResponseEntity<BaseSucessResponse> deleteSubject(@PathVariable("id") long id) {

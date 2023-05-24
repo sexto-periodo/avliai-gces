@@ -3,6 +3,7 @@ import 'package:front_mobile/src/login_page.dart';
 import 'package:get/get.dart';
 
 import 'src/splash_view.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 

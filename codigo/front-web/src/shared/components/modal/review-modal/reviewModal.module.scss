@@ -1,0 +1,35 @@
+.reviewModalContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 5fr 1fr;
+  place-items: center;
+
+  .reviewTextContainer {
+    width: 80%;
+  }
+
+  .modalHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 30px;
+    .closeIconContainer {
+      font-size: 3rem;
+      height: 50px;
+      width: 50px;
+      border-radius: 10000px;
+      &:hover{
+        cursor: pointer;
+        background-color: #4A445822;
+      }
+    }
+  }
+
+  .reviewButtonsContainer{
+    display: flex;
+    flex-direction: row ;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+  }
+}

@@ -1,0 +1,17 @@
+.modalOverLay{
+  background-color: #3338;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  z-index: 3000;
+  .modalLayoutContainer{
+    background-color: #FFF;
+    min-height: 600px;
+    width: 60%;
+    padding: 20px;
+    border-radius: 30px;
+  }
+}
