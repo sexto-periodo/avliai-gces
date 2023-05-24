@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { environment } from '../../../config/enviroments/enviroment'
 import { endUserSession, getUserAuth, haveAuthStateChanged, startUserSession } from '../services/AuthService';
-import { UserAuth } from '../../../models/User';
+import { UserAuth } from '../../models/User';
 
 
 
