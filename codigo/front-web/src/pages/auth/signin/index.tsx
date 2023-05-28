@@ -1,11 +1,18 @@
 import React, {useState} from 'react'
 import styles from './style.module.scss'
 import TextField from '@mui/material/TextField';
-import {FormControl, InputAdornment, InputLabel, OutlinedInput} from "@mui/material";
+import {
+    FormControl,
+    Grid,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput
+} from "@mui/material";
 import Button from '@mui/material/Button';
 import FormGroup from '@mui/material/FormGroup';
 import {useRouter} from "next/router";
 import {useAuth} from "@/shared/contexts/Auth";
+import Link from "next/link";
 
 export default function SignIn() {
 
@@ -67,6 +74,18 @@ export default function SignIn() {
                         >
                             Entrar
                         </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                <Link href="#" >
+                                    Esqueci minha senha
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="/auth/signup">
+                                    {"Cadastro"}
+                                </Link>
+                            </Grid>
+                        </Grid>
                     </form>
                 </div>
             </div>
