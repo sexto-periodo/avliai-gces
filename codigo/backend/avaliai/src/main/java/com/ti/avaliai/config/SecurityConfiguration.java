@@ -39,8 +39,7 @@ public class SecurityConfiguration {
         http
                 .cors()
                 .and()
-                .csrf()
-                .disable()
+                .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/auth/**",
@@ -54,6 +53,7 @@ public class SecurityConfiguration {
                         "/swagger-ui/**",
                         "/webjars/**",
                         "/swagger-ui.html"
+
                 )
                 .permitAll()
 
@@ -102,5 +102,6 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
+
 
 }
