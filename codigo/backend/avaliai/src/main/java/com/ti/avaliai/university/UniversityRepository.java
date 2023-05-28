@@ -1,13 +1,9 @@
 package com.ti.avaliai.university;
 
-import java.util.Optional;
-
-/* import org.springframework.data.jpa.repository.cdi.JpaRepositoryExtension;
-import org.springframework.stereotype.Repository;
- */
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface UniversityRepository extends JpaRepository<University,Long>{
@@ -16,5 +12,5 @@ public interface UniversityRepository extends JpaRepository<University,Long>{
 
     University findUniversityById(Long id);
 
-    University findByHashId(String hashId);
+    Optional<University> findByHashId(String hashId);
 }
