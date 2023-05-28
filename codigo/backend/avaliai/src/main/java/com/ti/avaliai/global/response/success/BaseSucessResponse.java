@@ -1,12 +1,11 @@
-package com.ti.avaliai.global.response;
+package com.ti.avaliai.global.response.success;
 
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.ti.avaliai.global.response.BaseResponse;
 import lombok.NonNull;
 
 import java.time.LocalDateTime;
 
-public class BaseSucessResponse<T> extends  BaseResponse {
+public class BaseSucessResponse<T> extends BaseResponse {
 
     @NonNull
     protected T object;

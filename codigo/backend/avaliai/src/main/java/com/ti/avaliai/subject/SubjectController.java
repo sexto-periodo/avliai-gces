@@ -1,8 +1,8 @@
 package com.ti.avaliai.subject;
 
 import com.ti.avaliai.global.domain.BasicController;
-import com.ti.avaliai.global.response.BaseSucessResponse;
-import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
+import com.ti.avaliai.global.response.success.BaseSucessResponse;
+import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
 import io.swagger.v3.oas.annotations.Operation;

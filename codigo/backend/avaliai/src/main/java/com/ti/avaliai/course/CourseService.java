@@ -4,6 +4,7 @@ import com.ti.avaliai.course.dto.CourseCreateRequestDTO;
 import com.ti.avaliai.course.dto.CourseDTO;
 import com.ti.avaliai.course.dto.CourseUpdateRequestDTO;
 import com.ti.avaliai.subject.SubjectService;
+import com.ti.avaliai.university.University;
 import com.ti.avaliai.university.UniversityService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.ti.avaliai.utils.HashUtils.generateHash;
 
@@ -50,11 +52,11 @@ public class CourseService {
     }
 
     public CourseDTO findOneById(long id) {
-            return courseToCourseDTO(
-                    courseRepository.findById(id).orElseThrow(
-                            () -> new EntityNotFoundException("Curso de id "+id+" não encontrado")
-                    )
-            );
+        return courseToCourseDTO(
+                courseRepository.findById(id).orElseThrow(
+                        () -> new EntityNotFoundException("Curso de id " + id + " não encontrado")
+                )
+        );
 
     }
 
@@ -90,5 +92,17 @@ public class CourseService {
 
     public List<Course> findAllByIdIn(List<Long> coursesIds) {
         return courseRepository.findAllByIdIn(coursesIds);
+    }
+
+    public List<CourseDTO> findAllByUniversityHashId(String univesityHashId) {
+        University university = universityService.findByHashId(univesityHashId);
+        List<Course> courses = courseRepository.findAllByUniversity(university);
+
+        return courses.stream()
+                .map(course ->
+                        courseToCourseDTO(course)
+                )
+                .collect(Collectors.toList());
+
     }
 }

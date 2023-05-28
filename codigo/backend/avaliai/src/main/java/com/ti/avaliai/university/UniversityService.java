@@ -2,7 +2,7 @@ package com.ti.avaliai.university;
 
 import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
-import com.ti.avaliai.university.dto.UniversityDTO;
+import com.ti.avaliai.university.dto.UniversityResponseDTO;
 import com.ti.avaliai.university.dto.UniversityUpdateRequestDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,9 @@ public class UniversityService {
     @Autowired
     private CourseService courseService;
 
-    public List<UniversityDTO> getUniversities() {
+    public List<UniversityResponseDTO> getUniversities() {
         List<University> universities = universityRepository.findAll();
-        List<UniversityDTO> universityDTOs = new ArrayList<>();
+        List<UniversityResponseDTO> universityDTOs = new ArrayList<>();
 
         universities.forEach(university -> {
             universityDTOs.add(universityToUniversityDTO(university));
@@ -52,7 +52,7 @@ public class UniversityService {
     }
 
     @Transactional
-    public UniversityDTO update(UniversityUpdateRequestDTO universityUpdateRequest) {
+    public UniversityResponseDTO update(UniversityUpdateRequestDTO universityUpdateRequest) {
         University university = universityRepository
                 .findById(universityUpdateRequest.getId())
                 .orElseThrow(() -> new EntityNotFoundException(
@@ -66,8 +66,8 @@ public class UniversityService {
         return universityToUniversityDTO(university);
     }
 
-    private UniversityDTO universityToUniversityDTO(University university) {
-        return UniversityDTO.builder()
+    private UniversityResponseDTO universityToUniversityDTO(University university) {
+        return UniversityResponseDTO.builder()
                 .hashId(university.getHashId())
                 .id(university.getId())
                 .cnpj(university.getCnpj())
@@ -75,7 +75,13 @@ public class UniversityService {
                 .build();
     }
 
-    public UniversityDTO findOneByHashId(String hashId) {
-        return universityToUniversityDTO(universityRepository.findByHashId(hashId));
+    public UniversityResponseDTO findOneByHashId(String hashId) {
+        return universityToUniversityDTO(universityRepository.findByHashId(hashId)
+                .orElseThrow(() -> new EntityNotFoundException()));
+    }
+
+    public University findByHashId(String hashId) {
+        return universityRepository.findByHashId(hashId)
+                .orElseThrow(() -> new EntityNotFoundException("Universidade não encontrada"));
     }
 }

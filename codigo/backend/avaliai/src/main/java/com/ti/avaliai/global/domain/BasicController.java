@@ -1,7 +1,7 @@
 package com.ti.avaliai.global.domain;
 
-import com.ti.avaliai.global.response.BaseSucessResponse;
-import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
+import com.ti.avaliai.global.response.success.BaseSucessResponse;
+import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -42,6 +42,7 @@ public abstract class BasicController {
 
         return new ResponseEntity(
                 BaseSucessResponse.builder()
+                        .sucsses(true)
                         .status(status.value())
                         .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                         .reason(status.getReasonPhrase())
@@ -52,6 +53,7 @@ public abstract class BasicController {
     private static <T> ResponseEntity<T> buildSucessResponseWithoutPayload201(HttpStatus status){
         return new ResponseEntity(
                 NoPayloadSuccessResponse201.builder()
+                        .sucsses(true)
                         .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                         .reason(status.getReasonPhrase())
                         .timestamp(LocalDateTime.now())

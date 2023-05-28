@@ -2,8 +2,8 @@ package com.ti.avaliai.user;
 
 //import com.ti.avaliai.user.dto.UserCreateRequestDTO;
 import com.ti.avaliai.global.domain.BasicController;
-import com.ti.avaliai.global.response.BaseSucessResponse;
-import com.ti.avaliai.global.response.NoPayloadSuccessResponse200;
+import com.ti.avaliai.global.response.success.BaseSucessResponse;
+import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse200;
 import com.ti.avaliai.user.dto.UserDeleteRequestDTO;
 import com.ti.avaliai.user.dto.VerifyEmailRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;

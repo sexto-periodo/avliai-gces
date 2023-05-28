@@ -2,13 +2,13 @@ package com.ti.avaliai;
 
 import com.ti.avaliai.auth.AuthenticationService;
 import com.ti.avaliai.auth.RegisterRequest;
-import com.ti.avaliai.user.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 
 import static com.ti.avaliai.user.Role.ADMIN;
 import static com.ti.avaliai.user.Role.MANAGER;
@@ -46,5 +46,12 @@ public class AvaliaiApplication {
 			System.out.println("Manager token: " + service.register(manager).getAccessToken());
 
 		};
+	}
+
+	@Bean
+	public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
+		Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
+		factory.setResources(new Resource[]{new ClassPathResource("data.json")});
+		return factory;
 	}
 }

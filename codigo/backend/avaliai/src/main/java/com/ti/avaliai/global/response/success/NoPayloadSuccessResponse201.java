@@ -1,11 +1,8 @@
-package com.ti.avaliai.global.response;
+package com.ti.avaliai.global.response.success;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NonNull;
 
 import java.time.LocalDateTime;
 

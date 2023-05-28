@@ -1,4 +1,4 @@
-package com.ti.avaliai.global.response;
+package com.ti.avaliai.global.response.success;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.Hidden;

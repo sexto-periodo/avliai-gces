@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Schema(description = "DTO para universidade")
-public class UniversityDTO {
+public class UniversityResponseDTO {
 
     @Schema(description = "ID da universidade", example = "1")
     @JsonProperty("id")
