@@ -1,24 +1,24 @@
-package com.bezkoder.springjwt.security.jwt;
+package com.ti.avaliai.security.jwt;
 
 import java.util.Date;
 
+import com.ti.avaliai.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.bezkoder.springjwt.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 
 @Component
 public class JwtUtils {
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-  @Value("${bezkoder.app.jwtSecret}")
+  @Value("${application.security.jwt.secret-key}")
   private String jwtSecret;
 
-  @Value("${bezkoder.app.jwtExpirationMs}")
+  @Value("${application.security.jwt.expiration}")
   private int jwtExpirationMs;
 
   public String generateJwtToken(Authentication authentication) {

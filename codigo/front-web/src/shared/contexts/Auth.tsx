@@ -77,6 +77,8 @@ export const AuthContextProvider = ({
 
     console.log(body)
 
+    console.log(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`);
+
     return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`, {
       method: 'POST',
       headers: {

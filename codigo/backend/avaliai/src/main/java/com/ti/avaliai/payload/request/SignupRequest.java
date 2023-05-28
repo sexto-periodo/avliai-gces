@@ -1,8 +1,10 @@
-package com.bezkoder.springjwt.payload.request;
+package com.ti.avaliai.payload.request;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.Set;
-
-import javax.validation.constraints.*;
 
 public class SignupRequest {
   @NotBlank
