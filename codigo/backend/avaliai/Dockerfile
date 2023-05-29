@@ -1,8 +1,12 @@
-FROM openjdk:17-jdk-alpine
+FROM maven:3.8.4-openjdk-17 as maven-builder
+COPY src /app/src
+COPY pom.xml /app
 
-WORKDIR /app
+RUN mvn -f /app/pom.xml clean package -DskipTests
+FROM openjdk:17-alpine
 
-COPY target/avaliai-0.0.1-SNAPSHOT.jar .
+COPY --from=maven-builder app/target/avaliai-0.0.1-SNAPSHOT.jar /app-service/avaliai-0.0.1-SNAPSHOT.jar
+WORKDIR /app-service
 
-#CMD ["java", "-jar", "avaliai-0.0.1-SNAPSHOT.jar"]
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=container", "-jar", "/app/avaliai-0.0.1-SNAPSHOT.jar"]
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","avaliai-0.0.1-SNAPSHOT.jar"]
