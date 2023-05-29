@@ -1,19 +1,26 @@
 package com.ti.avaliai.global.domain;
 
-import com.ti.avaliai.global.response.BaseSucessResponse;
-import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import com.ti.avaliai.global.response.success.BaseSucessResponse;
+import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.LocalDateTime;
 
-//@SecurityRequirement(name = "bearerAuth")
+
 public abstract class BasicController {
 
     protected static ResponseEntity created(){
         return buildSucessResponseWithoutPayload201(HttpStatus.CREATED);
+    }
+
+    protected static ResponseEntity ok(){
+        return buildSucessResponseWithoutPayload200();
+    }
+
+    private static ResponseEntity buildSucessResponseWithoutPayload200() {
+        return buildSucessResponseWithoutPayload(HttpStatus.OK);
     }
 
     protected static ResponseEntity deleted(){
@@ -35,6 +42,7 @@ public abstract class BasicController {
 
         return new ResponseEntity(
                 BaseSucessResponse.builder()
+                        .sucsses(true)
                         .status(status.value())
                         .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                         .reason(status.getReasonPhrase())
@@ -45,6 +53,7 @@ public abstract class BasicController {
     private static <T> ResponseEntity<T> buildSucessResponseWithoutPayload201(HttpStatus status){
         return new ResponseEntity(
                 NoPayloadSuccessResponse201.builder()
+                        .sucsses(true)
                         .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                         .reason(status.getReasonPhrase())
                         .timestamp(LocalDateTime.now())

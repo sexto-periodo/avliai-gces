@@ -1,6 +1,9 @@
 package com.ti.avaliai.user;
 
 import com.ti.avaliai.user.dto.UserDeleteRequestDTO;
+import com.ti.avaliai.user.dto.VerifyEmailRequestDTO;
+import com.ti.avaliai.user.dto.VerifyEmailResponseDTO;
+import com.ti.avaliai.utils.EmailUtils;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +35,12 @@ public class UserService {
             throw new RuntimeException("Usário inexistente!");
         }
         this.userRepository.deleteById(user.get().getId());
+    }
+
+    public VerifyEmailResponseDTO verifyEmail(VerifyEmailRequestDTO verifyEmailRequestDTO) {
+        return VerifyEmailResponseDTO.builder()
+                .validEmail(EmailUtils.isValidEmail(verifyEmailRequestDTO.getEmail()))
+                .email(verifyEmailRequestDTO.getEmail())
+                .build();
     }
 }

@@ -37,7 +37,6 @@ public class CourseDTO {
     @NotBlank(message = "A duração do Curso deve ser informada.")
     @JsonProperty("overtime")
     private int overtime;
-    private List<Subject> subjects;
 
     @Schema(required = true, description = "Status do Curso.", example = "true")
     @JsonProperty("statusCurriculum")

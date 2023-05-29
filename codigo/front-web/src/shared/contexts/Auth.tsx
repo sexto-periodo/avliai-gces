@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { environment } from '../../../config/enviroments/enviroment'
-import { endUserSession, getUserAuth, haveAuthStateChanged, startUserSession } from '../services/AuthService';
-import { UserAuth } from '../../../models/User';
+import { endUserSession, getUserAuth, haveAuthStateChanged, startUserSession } from '../services/Auth/AuthService';
+import { UserAuth } from '../domain/User/User';
 
 
 
@@ -9,7 +8,7 @@ import { UserAuth } from '../../../models/User';
 
 /**
  * Esse conjunto de funções é responsável pelo gerenciamento
- * do contexto de autenticação da aplicação. Com o contexto, 
+ * do contexto de autenticação da aplicação. Com o contexto,
  * conseguimos saber se um usuário está logado e tomar decisões
  * a partir disso
  */
@@ -22,17 +21,17 @@ const AuthContext = createContext<any>({})
 export const useAuth = () => useContext(AuthContext)
 
 /**
- * Provedor de contexto que ecapsula toda a apliacação, todas 
+ * Provedor de contexto que ecapsula toda a apliacação, todas
  * as rotas e acessos.
- * @param param0 
- * @returns 
+ * @param param0
+ * @returns
  */
 export const AuthContextProvider = ({
   children,
 }: {
   children: React.ReactNode
 }) => {
-  const [user, setUser] = useState<UserAuth>(null)
+  const [user, setUser] = useState<UserAuth|null>(null);
   const [loading, setLoading] = useState(true)
 
 
@@ -44,10 +43,10 @@ export const AuthContextProvider = ({
    * o contexto é alterado para que todos reconheçam o usuário logado
    */
   useEffect(() => {
-   
+
     let usr = getUserAuth();
     console.log("useEffect User: "+usr)
-    usr ? setUser(usr) : setUser(null)
+    usr ? setUser(usr as any) : setUser(null)
     setLoading(false)
   }, [])
 
@@ -70,26 +69,31 @@ export const AuthContextProvider = ({
    */
   const login = (email: string, password: string) => {
 
+
     const body = JSON.stringify({
       email: email,
-      senha: password,
+      password: password,
     })
 
-    return fetch(BACKEND_ADDRESS + '/login', {
+    console.log(body)
+
+    console.log(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`);
+
+    return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      //mode: 'no-cors',
       body: body
     }).then(res => res.json()).
-    then( data => {      
+    then( data => {
       console.log(data)
-        startUserSession({email: email, token: data.token} as UserAuth)
-        setUser({email: email, token: data.token} as UserAuth)
-      });
-      
+      startUserSession({access_token: data.access_token} as UserAuth).then(() =>
+          setUser({access_token: data.access_token} as UserAuth)
+      )
+    });
+
   }
 
   /**
@@ -97,12 +101,12 @@ export const AuthContextProvider = ({
    */
   const logout = () => {
     endUserSession();
-    setUser(null);
+    setUser({} as UserAuth);
     //await signOut(auth)
   }
 
   /*****
-   * Retornando o JSX estrutural do contexto. 
+   * Retornando o JSX estrutural do contexto.
    * o parâmetro children, diz respesti a literalmente todos
    * os componentes filhos.
    */

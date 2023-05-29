@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {ISubject} from '@/shared/models/ISubject'
+import {ISubject} from '@/shared/domain/Subject/ISubject'
 import styles from './style.module.scss'
 import {AiFillStar} from 'react-icons/ai';
 

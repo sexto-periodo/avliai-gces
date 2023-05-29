@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {ISubject} from '@/shared/models/ISubject'
+import {ISubject} from '@/shared/domain/Subject/ISubject'
 import styles from './subjectDetails.module.scss'
 import {AiFillStar} from "react-icons/ai";
 import { BiDotsVerticalRounded } from 'react-icons/bi';

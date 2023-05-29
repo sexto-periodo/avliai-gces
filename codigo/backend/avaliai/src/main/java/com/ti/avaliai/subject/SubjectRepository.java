@@ -1,5 +1,6 @@
 package com.ti.avaliai.subject;
 
+import java.util.List;
 import java.util.Optional;
 
 /* import org.springframework.data.jpa.repository.cdi.JpaRepositoryExtension;
@@ -16,5 +17,6 @@ public interface SubjectRepository extends JpaRepository<Subject,Long>{
     Optional<Subject> findSubjectByName(String name);
 
     Subject findSubjectById(Long id);
-    
+
+    List<Subject> findAllByIdIn(List<Long> subjectsIds);
 }
