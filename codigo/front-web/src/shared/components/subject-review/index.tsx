@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './subjectReview.module.scss'
-import {ISubjectReview} from "@/shared/models/ISubjectReview";
+import {ISubjectReview} from "@/shared/domain/Subject/ISubjectReview";
 import Vote from "@/shared/components/subject-review/vote/vote";
 
 

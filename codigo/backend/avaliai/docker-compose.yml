@@ -3,8 +3,8 @@ version: "3.8"
 services:
 
   #DATABASE
-  avaliai:
-    container_name: avaliai
+  database:
+    container_name: database_avaliai
     image: postgres:14.1
     networks:
       - avaliai_net

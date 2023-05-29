@@ -36,8 +36,5 @@ public class Subject {
     @Column(name = "grade")
     private double grade;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_course", nullable = false)
-    private Course course;
 
 }

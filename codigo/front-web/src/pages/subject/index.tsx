@@ -4,9 +4,9 @@ import React from 'react'
 import styles from './subject.module.scss'
 import {Subject} from "@mui/icons-material";
 import SubjectDetails from "@/shared/components/subject-details";
-import {ISubject} from "@/shared/models/ISubject";
+import {ISubject} from "@/shared/domain/Subject/ISubject";
 import SubjectReview from "@/shared/components/subject-review";
-import {ISubjectReview} from "@/shared/models/ISubjectReview";
+import {ISubjectReview} from "@/shared/domain/Subject/ISubjectReview";
 import {number} from "prop-types";
 
 

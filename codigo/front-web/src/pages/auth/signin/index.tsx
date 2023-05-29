@@ -1,19 +1,44 @@
 import React, {useState} from 'react'
 import styles from './style.module.scss'
 import TextField from '@mui/material/TextField';
-import {FormControl, InputAdornment, InputLabel, OutlinedInput} from "@mui/material";
+import {
+    FormControl,
+    Grid,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput
+} from "@mui/material";
 import Button from '@mui/material/Button';
 import FormGroup from '@mui/material/FormGroup';
+import {useRouter} from "next/router";
+import {useAuth} from "@/shared/contexts/Auth";
+import Link from "next/link";
 
 export default function SignIn() {
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
-        console.log(`Email: ${email}, Password: ${password}`);
-    };
+    const router = useRouter()
+    const { user, login } = useAuth()
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    /**
+     * Essa função detecta a submissão do formulário e chama a função
+     * de login do contexto para que o usuário seja altenticado e
+     * para que o contexto mude de maneira asincrona
+     * @param HTMLFormElement
+     */
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        try {
+            await login(email, password)
+            router.push('/')
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
 
     return (
         <div className={styles.container}>
@@ -49,6 +74,18 @@ export default function SignIn() {
                         >
                             Entrar
                         </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                <Link href="#" >
+                                    Esqueci minha senha
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="/auth/signup">
+                                    {"Cadastro"}
+                                </Link>
+                            </Grid>
+                        </Grid>
                     </form>
                 </div>
             </div>

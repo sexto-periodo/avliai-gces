@@ -1,5 +1,6 @@
 package com.ti.avaliai.subject;
 
+import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,6 +16,9 @@ public class SubjectService {
 
     @Autowired
     private SubjectRepository subjectRepository;
+
+    @Autowired
+    private CourseService courseService;
 
     public List<SubjectDTO> getSubjects() {
         List<Subject> subjects = subjectRepository.findAll();
@@ -74,4 +78,7 @@ public class SubjectService {
                 .build();
     }
 
+    public List<Subject> findAllByIdIn(List<Long> subjectsIds) {
+        return subjectRepository.findAllByIdIn(subjectsIds);
+    }
 }
