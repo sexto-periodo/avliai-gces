@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { endUserSession, getUserAuth, haveAuthStateChanged, startUserSession } from '../services/AuthService';
-import { UserAuth } from '../models/User';
+import { endUserSession, getUserAuth, haveAuthStateChanged, startUserSession } from '../services/Auth/AuthService';
+import { UserAuth } from '../domain/User/User';
 
 
 

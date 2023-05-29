@@ -11,29 +11,103 @@ import {
 } from "@mui/material";
 import Button from '@mui/material/Button';
 import FormGroup from '@mui/material/FormGroup';
-import {IUniversityDTO} from "@/shared/models/IUniversity";
-import {UniversityService} from "@/shared/services/UniversityService";
+import {IUniversityDTO} from "@/shared/domain/University/IUniversity";
+import {UniversityService} from "@/shared/domain/University/UniversityService";
+import {ICourseDTO} from "@/shared/domain/Course/ICourseDTO";
+import {CourseService} from "@/shared/domain/Course/CourseService";
+import {UserService} from "@/shared/domain/User/UserService";
+import {AuthService} from "@/shared/services/Auth/AuthService";
+import {useRouter} from "next/router";
+import {useAuth} from "@/shared/contexts/Auth";
+import {UserAuth} from "@/shared/domain/User/User";
 
-export default function SignUn() {
 
-    const handleSubmit = (event: any) => {
+export interface ISignUpForm{
+    firstname: string
+    lastname: string
+    email: string
+    password:string
+    academicRegister: string
+    university: IUniversityDTO | null
+    course: ICourseDTO | null
+    role: string
+}
+export default function SignUp() {
+
+
+    const [universities, setUniversities]= useState<IUniversityDTO[]>([]);
+    const [courses, setCourses] = useState<ICourseDTO[]>([]);
+
+    const [selectedUniversity, setSelectedUniversity]= useState<IUniversityDTO>({
+        cnpj: "",
+        hashId: "",
+        id: 0,
+        name: ""
+    });
+    const [selectedCourse, setSelectedCourse]= useState<ICourseDTO>({
+        hashId: "",
+        id: 0,
+        name: "",
+        overtime: 0,
+        statusCurriculum: false
+    });
+
+    const [ signUpFormData, setSignUpFormData ] = useState<ISignUpForm>({
+        academicRegister: "",
+        email: "",
+        lastname: "",
+        firstname: "",
+        password: "",
+        course: null,
+        university: null,
+        role: "USER"
+    })
+
+
+    const router = useRouter()
+    const { user, setUser, login } = useAuth();
+    const universityService: UniversityService = new UniversityService();
+    const courseService: CourseService = new CourseService();
+    const userService: UserService = new UserService();
+    const authService: AuthService = new AuthService();
+
+    useEffect(() => {
+        universityService.getUniversities().then((universities) => setUniversities(universities));
+    }, [])
+
+    useEffect(() => {
+        courseService.getCoursesByUniversityHashId((selectedUniversity as IUniversityDTO).hashId).then((courses) => setCourses(courses));
+    }, [selectedUniversity])
+
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
-        console.log(`Email: ${email}, Password: ${password}`);
+        console.log(`Email: ${signUpFormData.email}, Password: ${signUpFormData.password}`);
+
+        let isEmailValid = await userService.validateEmail(signUpFormData.email);
+        if (!isEmailValid) {
+            console.log("EMAIL INVÀLIDO")
+            return
+        }
+
+        try {
+            await authService.register(signUpFormData);
+            await login(signUpFormData.email, signUpFormData.password)
+            router.push('/')
+        } catch (err) {
+            console.log(err)
+        }
+
     };
 
     const handleUniversityChange = (event: SelectChangeEvent) => {
-        setUniversity(event.target.value as string);
+        let selectedUniversity = universities.find(u => u.hashId === event.target.value);
+        setSignUpFormData({...signUpFormData, university: selectedUniversity as IUniversityDTO});
+        setSelectedUniversity(selectedUniversity as IUniversityDTO);
     };
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [university, setUniversity] = useState<string>()
-
-    const universityService: UniversityService = new UniversityService();
-
-    useEffect(() => {
-        universityService.getUniversities().then((universities) => console.log(universities));
-    }, [])
+    const handleCourseChange = (event: SelectChangeEvent) => {
+        let selectedCourse = courses.find(c => c.hashId === event.target.value);
+        setSelectedCourse(selectedCourse as ICourseDTO);
+    };
 
     return (
         <div className={styles.container}>
@@ -55,7 +129,10 @@ export default function SignUn() {
                                 id="outlined-basic"
                                 label="Nome"
                                 variant="outlined"
-                                onChange={(event) => setEmail(event.target.value)}
+                                onChange={(event) => setSignUpFormData({
+                                    ...signUpFormData,
+                                    firstname: event.target.value
+                                })}
                             />
                             <TextField
                                 sx={{ml: 1, width: '19ch'}}
@@ -63,7 +140,10 @@ export default function SignUn() {
                                 id="outlined-basic"
                                 label="Sobrenome"
                                 variant="outlined"
-                                onChange={(event) => setEmail(event.target.value)}
+                                onChange={(event) => setSignUpFormData({
+                                    ...signUpFormData,
+                                    lastname: event.target.value
+                                })}
                             />
                         </div>
 
@@ -75,14 +155,15 @@ export default function SignUn() {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={university}
+                                    defaultValue={""}
+                                    value={selectedUniversity?.hashId}
                                     label="Instituição de Ensino"
                                     onChange={handleUniversityChange}
                                 >
-                                    <MenuItem value="543b45c583bfff6c30e44a751103a24f">PUC
-                                        Minas</MenuItem>
-                                    <MenuItem value="e6379fe087f9853f4c55a6bcb3f22093">AvaliAi
-                                        University</MenuItem>
+                                    {
+                                        universities?.map((item, key) =>
+                                            <MenuItem key={key} value={item.hashId}>{item.name}</MenuItem> )
+                                    }
                                 </Select>
                             </FormControl>
                         </Box>
@@ -91,21 +172,35 @@ export default function SignUn() {
                         <div>
                             <TextField
                                 sx={{mr: 1, width: '19ch', mt: 2}}
-
+                                fullWidth
                                 type="text"
                                 id="outlined-basic"
                                 label="Registro acadêmico"
                                 variant="outlined"
-                                onChange={(event) => setEmail(event.target.value)}
+                                onChange={(event) => setSignUpFormData({
+                                    ...signUpFormData,
+                                    academicRegister: event.target.value
+                                })}
                             />
-                            <TextField
-                                sx={{ml: 1, width: '19ch', mt: 2}}
-                                type="text"
-                                id="outlined-basic"
-                                label="Curso"
-                                variant="outlined"
-                                onChange={(event) => setEmail(event.target.value)}
-                            />
+                            <Box sx={{minWidth: 120, mt: 2}}>
+
+                                <FormControl fullWidth>
+                                    <InputLabel id="course-input-label">Curso</InputLabel>
+                                    <Select
+                                        labelId="course-input"
+                                        id="course-input-label"
+                                        defaultValue={""}
+                                        value={selectedCourse?.hashId}
+                                        label="Curso"
+                                        onChange={handleCourseChange}
+                                    >
+                                        {
+                                            courses?.map((item, key) =>
+                                                <MenuItem key={key} value={item.hashId}>{item.name}</MenuItem> )
+                                        }
+                                    </Select>
+                                </FormControl>
+                            </Box>
                         </div>
                         <TextField
                             sx={{width: '40ch', mt: 2}}
@@ -114,7 +209,10 @@ export default function SignUn() {
                             id="outlined-basic"
                             label="e-mail"
                             variant="outlined"
-                            onChange={(event) => setEmail(event.target.value)}
+                            onChange={(event) => setSignUpFormData({
+                                ...signUpFormData,
+                                email: event.target.value
+                            })}
                         />
                         <TextField
                             sx={{width: '40ch', mt: 2}}
@@ -123,7 +221,10 @@ export default function SignUn() {
                             id="outlined-basic"
                             label="senha"
                             variant="outlined"
-                            onChange={(event) => setPassword(event.target.value)}
+                            onChange={(event) => setSignUpFormData({
+                                ...signUpFormData,
+                                password: event.target.value
+                            })}
                         />
                         <Button variant="contained"
                                 disableElevation

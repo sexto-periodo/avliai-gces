@@ -57,6 +57,9 @@ public class SecurityConfiguration {
                 )
                 .permitAll()
 
+                .requestMatchers(GET,"/course/university/**").permitAll()
+                .requestMatchers(GET,"/university").permitAll()
+                .requestMatchers(POST,"/user/verify-email").permitAll()
 
                 .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
 

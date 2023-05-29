@@ -1,21 +1,55 @@
 
 [
+
+
   {
     "_class": "com.ti.avaliai.university.University",
-    "id": 1,
+    "@id": 1,
     "hashId": "543b45c583bfff6c30e44a751103a24f",
     "name": "PUC Minas",
     "cnpj": "17.178.195/0001-67",
-    "courses": [],
+    "courses": [
+      {
+        "id":1
+      }
+    ],
     "isDeleted": false
   },
   {
     "_class": "com.ti.avaliai.university.University",
-    "id": 2,
+    "@id": 2,
     "hashId": "e6379fe087f9853f4c55a6bcb3f22093",
     "name": "AvaliAi University",
     "cnpj": "12.345.678/0001-91",
-    "courses": [],
+    "courses": [{
+      "id":2
+    }],
     "isDeleted": false
+  },
+  {
+    "_class": "com.ti.avaliai.course.Course",
+    "@id": 1,
+    "hashId": "eb5ed7359d0bc0df70e6b7abf8584c5e",
+    "name": "Engenharia de Diagramas",
+    "overtime": 10,
+    "subjects": [],
+    "statusCurriculum": true,
+    "isDeleted": false,
+    "university":{
+      "id": 1
+    }
+  },
+  {
+    "_class": "com.ti.avaliai.course.Course",
+    "@id": 2,
+    "hashId": "1f061de68a7a0da8378fd30974dd1a98",
+    "name": "Engenharia de Software",
+    "overtime": 10,
+    "subjects": [],
+    "statusCurriculum": true,
+    "isDeleted": false,
+    "university": {
+      "id": 2
+    }
   }
 ]

@@ -40,8 +40,8 @@ public class Course {
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_university", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_university")
     private University university;
 
 }

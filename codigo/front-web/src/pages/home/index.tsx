@@ -4,7 +4,7 @@ import CardSubject from '../../shared/components/card-subject';
 import Masonry from '@mui/lab/Masonry';
 
 import styles from './home.module.scss'
-import {ISubject} from "@/shared/models/ISubject";
+import {ISubject} from "@/shared/domain/Subject/ISubject";
 import {FormControl, InputAdornment, InputLabel, OutlinedInput} from '@mui/material';
 import {ImSearch} from 'react-icons/im'
 

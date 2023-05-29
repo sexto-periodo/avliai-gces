@@ -51,7 +51,7 @@ public class AvaliaiApplication {
 	@Bean
 	public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
 		Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-		factory.setResources(new Resource[]{new ClassPathResource("data.json")});
+		factory.setResources(new Resource[]{new ClassPathResource("data.json"), new ClassPathResource("course.json")});
 		return factory;
 	}
 }
