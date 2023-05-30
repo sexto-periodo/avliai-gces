@@ -51,6 +51,4 @@ public class UserCreateRequestDTO {
     @JsonProperty("role")
     private Role role;
 
-
-
 }

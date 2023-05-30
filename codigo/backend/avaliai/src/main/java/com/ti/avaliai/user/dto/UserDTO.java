@@ -1,9 +1,8 @@
 package com.ti.avaliai.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ti.avaliai.user.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,21 +23,27 @@ public class UserDTO {
     @JsonProperty("hashId")
     private String hashId;
 
-    @Schema(description = "Nome do usuário")
-    @NotNull(message = "O campo 'name' não pode ser vazio")
-    @JsonProperty("name")
-    private String name;
+    @Schema(description = "Primeiro nome do usuário", example = "Bruce")
+    @JsonProperty("firstname")
+    private String firstname;
+
+    @Schema(description = "Sobrenome do usuário", example = "Wayne")
+    @JsonProperty("lastname")
+    private String lastname;
 
     @Schema(description = "E-mail do usuário")
-    @NotNull(message = "O campo 'email' não pode ser vazio")
     @JsonProperty("email")
     private String email;
 
-    @Schema(description = "Senha do usuário")
-    @NotNull(message = "O campo 'password' não pode ser vazio")
-    @JsonProperty("password")
-    private String password;
+    @Schema(description = "HashId do Curso do usuário.", example = "1234124314n32j1l4h321432143214gfdsa")
+    @JsonProperty("courseHashId")
+    private String courseHashId;
 
-    @Column(name = "is_deleted")
-    private boolean isDeleted = false;
+    @Schema(description = "HashId da universidade do usuário.", example = "080712093214nhc21hh12c3hcx12hlsd")
+    @JsonProperty("universityHashId")
+    private String universityHashId;
+
+    @Schema(description = "Role de permissão do usuário")
+    @JsonProperty("role")
+    private Role role;
 }

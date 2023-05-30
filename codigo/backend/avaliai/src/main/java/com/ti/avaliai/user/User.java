@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+import static com.ti.avaliai.utils.HashUtils.generateHash;
+
 @Getter
 @Setter
 @Builder
@@ -24,6 +26,9 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
+    @Column(name = "hash_id")
+    private String hashId = generateHash();
 
     @Column(name = "firstname")
     private String firstname;
