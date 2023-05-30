@@ -14,11 +14,11 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "t_subeject")
+@Table(name = "t_subject")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column
+    @Column(name="id")
     private long id;
 
     @Column(name="hash_id")
@@ -33,8 +33,7 @@ public class Subject {
     @Column(name ="campus")
     private String campus;
 
-    @Column(name = "grade")
-    private double grade;
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_course")
+    private Course course;
 }

@@ -1,7 +1,5 @@
 
 [
-
-
   {
     "_class": "com.ti.avaliai.university.University",
     "@id": 1,
@@ -32,7 +30,32 @@
     "hashId": "eb5ed7359d0bc0df70e6b7abf8584c5e",
     "name": "Engenharia de Diagramas",
     "overtime": 10,
-    "subjects": [],
+    "subjects": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      }
+    ],
     "statusCurriculum": true,
     "isDeleted": false,
     "university":{
@@ -45,11 +68,190 @@
     "hashId": "1f061de68a7a0da8378fd30974dd1a98",
     "name": "Engenharia de Software",
     "overtime": 10,
-    "subjects": [],
+    "subjects": [
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      },
+      {
+        "id": 11
+      },
+      {
+        "id": 12
+      },
+      {
+        "id": 13
+      },
+      {
+        "id": 14
+      },
+      {
+        "id": 15
+      },
+      {
+        "id": 16
+      }
+    ],
     "statusCurriculum": true,
     "isDeleted": false,
     "university": {
       "id": 2
     }
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 1,
+    "hashId": "46b4a35d3d2b2b46b22260317dfebabb",
+    "name": "Algoritmos e Estruturas de Dados I",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 2,
+    "hashId": "bbf5f7f3f3cbceb99ab38c29e0e4a6f7",
+    "name": "Algoritmos e Estruturas de Dados II",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 3,
+    "hashId": "07d1914ac9d8f0b2a1099f124d92c54e",
+    "name": "Fundamentos de Engenharia de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 4,
+    "hashId": "f25e46b2ebe1b297f658df2a4f5ca63c",
+    "name": "Desenvolvimento de Interfaces Web",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 5,
+    "hashId": "a0e4a3da1e3bfbf69910059f4e17d8d9",
+    "name": "Trabalho Interdisciplinar V",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 6,
+    "hashId": "ff4b5a68598b3eb2b86fbbe9a574c211",
+    "name": "Banco de Dados",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 7,
+    "hashId": "54b5711e7b6e876c3b9828bfe04d5e5b",
+    "name": "Projeto de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 8,
+    "hashId": "1a3c23a7e014c3aee8814a108c4eb2e9",
+    "name": "Engenharia de Requisitos",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id": 1 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 9,
+    "hashId": "85a7b3f51645f54d0428e9ca63dbca0d",
+    "name": "Programação Modular",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 9,
+    "hashId": "d8da0c383033c9de51017aef7bfe520d",
+    "name": "Programação Modular",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 10,
+    "hashId": "d3d9446802a44259755d38e6d163e820",
+    "name": "Laboratório de Programação Modular",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 11,
+    "hashId": "6512bd43d9caa6e02c990b0a82652dca",
+    "name": "Laboratório de Desenvolvimento de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 12,
+    "hashId": "2ef7bde608ce5404e97d5f042f95f89f",
+    "name": "Testes de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 13,
+    "hashId": "89f595c8f59ac6f6c5e058f1e3aef740",
+    "name": "Arquitetura de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 14,
+    "hashId": "ae51f98c55f6f9f00670e71b14ff51b5",
+    "name": "Modelagem de Processos de Negócios",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 15,
+    "hashId": "5c22c64c5c1a55b125cb8723e5f2fdcb",
+    "name": "Cálculo I",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 16,
+    "hashId": "840f122c4f99f0eac12c6a5d564d24ce",
+    "name": "Cálculo II",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "course": { "id":  2 }
   }
 ]

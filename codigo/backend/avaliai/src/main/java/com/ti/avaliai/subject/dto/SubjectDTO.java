@@ -19,7 +19,7 @@ public class SubjectDTO {
     private Long id;
 
     @Schema(description = "Hash ID da disciplina", example = "abc123")
-    @JsonProperty("hash_id")
+    @JsonProperty("hashId")
     private String hashId;
 
     @Schema(description = "Nome da disciplina", example = "Matemática")
@@ -34,8 +34,7 @@ public class SubjectDTO {
     @JsonProperty("campus")
     private String campus;
 
-    @Schema(description = "Nota da disciplina", example = "8.5")
-    @JsonProperty("grade")
-    private double grade;
-
+    @Schema(description = "HashId do curso", example = "12345678910112134h3j21kl44321f")
+    @JsonProperty("courseHashId")
+    private String courseHashId;
 }

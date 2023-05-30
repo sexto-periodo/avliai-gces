@@ -1,5 +1,6 @@
 package com.ti.avaliai.subject;
 
+import com.ti.avaliai.course.Course;
 import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SubjectService {
@@ -25,8 +27,8 @@ public class SubjectService {
         List<SubjectDTO> subjectDTOs = new ArrayList<>();
 
         subjects.forEach(subject -> {
-                    subjectDTOs.add(subjectToSubjectDTO(subject));
-                });
+            subjectDTOs.add(subjectToSubjectDTO(subject));
+        });
         return subjectDTOs;
     }
 
@@ -34,7 +36,6 @@ public class SubjectService {
 
         Subject subject = Subject.builder()
                 .campus(subjectCreateRequest.getCampus())
-                .grade(subjectCreateRequest.getGrade())
                 .picUrl(subjectCreateRequest.getPicUrl())
                 .name(subjectCreateRequest.getName())
                 .build();
@@ -60,25 +61,37 @@ public class SubjectService {
 
         subject.setCampus(subjectUpdateRequest.getCampus());
         subject.setPicUrl(subjectUpdateRequest.getPicUrl());
-        subject.setGrade(subjectUpdateRequest.getGrade());
         subject.setName(subjectUpdateRequest.getName());
 
         subjectRepository.save(subject);
         return subjectToSubjectDTO(subject);
     }
 
+    public List<Subject> findAllByIdIn(List<Long> subjectsIds) {
+        return subjectRepository.findAllByIdIn(subjectsIds);
+    }
+
+    public List<SubjectDTO> findAllByCourseHashId(String coursHashId) {
+        Course course = courseService.findByHashId(coursHashId);
+        List<Subject> subjects = subjectRepository.findAllByCourse(course);
+
+        return subjects.stream()
+                .map(subject ->
+                        subjectToSubjectDTO(subject)
+                )
+                .collect(Collectors.toList());
+
+    }
+
     private SubjectDTO subjectToSubjectDTO(Subject subject) {
         return SubjectDTO.builder()
                 .hashId(subject.getHashId())
                 .id(subject.getId())
-                .grade(subject.getGrade())
                 .picUrl(subject.getPicUrl())
                 .name(subject.getName())
                 .campus(subject.getCampus())
+                .courseHashId(subject.getCourse().getHashId())
                 .build();
     }
-
-    public List<Subject> findAllByIdIn(List<Long> subjectsIds) {
-        return subjectRepository.findAllByIdIn(subjectsIds);
-    }
 }
+

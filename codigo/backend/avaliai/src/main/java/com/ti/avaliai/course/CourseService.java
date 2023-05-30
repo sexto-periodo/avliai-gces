@@ -105,4 +105,9 @@ public class CourseService {
                 .collect(Collectors.toList());
 
     }
+
+    public Course findByHashId(String coursHashId) {
+        return courseRepository.findByHashId(coursHashId)
+                .orElseThrow(() -> new EntityNotFoundException("Universidade não encontrada"));
+    }
 }
