@@ -17,14 +17,14 @@ import { useAuth } from '../../contexts/Auth'
  * @returns null em caso de acesso não autorizado a uma página 
  */
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user } = useAuth()
+  const { userAuth } = useAuth()
   const router = useRouter()
 
  useEffect(() => {
-    if (!user) {
+    if (!userAuth) {
       router.push('/auth/signin')
     }
-  }, [router, user ])
+  }, [router, userAuth ])
 
   return <>{
       true  ? children : null}</>

@@ -1,6 +1,4 @@
 import {IUniversityDTO} from "@/shared/domain/University/IUniversity";
-import {getActualToken, startUserSession} from "@/shared/services/Auth/AuthService";
-import {UserAuth} from "@/shared/domain/User/User";
 
 
 export class UniversityService{

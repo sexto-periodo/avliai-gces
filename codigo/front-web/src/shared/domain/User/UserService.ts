@@ -1,6 +1,10 @@
 import {ICourseDTO} from "@/shared/domain/Course/ICourseDTO";
+import {IUser} from "@/shared/domain/User/User";
+import {AuthService} from "@/shared/services/Auth/AuthService";
 
 export class UserService{
+
+    authService: AuthService = new AuthService();
     validateEmail(email:string):Promise<boolean>{
         const body = JSON.stringify({
             email: email,
@@ -18,4 +22,6 @@ export class UserService{
                 return data.validEmail as boolean
             });
     }
+
+
 }
