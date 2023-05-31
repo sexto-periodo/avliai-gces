@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:front_mobile/src/components/discpline_card.dart';
+import 'package:front_mobile/src/components/subject_card.dart';
 
-import 'Discipline.dart';
+import '_subject.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,33 +11,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Discipline> disciplines = [
-    Discipline('Testes de Software', "Engenharia de Software", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut sagittis sapien. Praesent nibh ipsum, bibendum non tempus eget, consectetur id nunc.',
-        'https://placehold.co/400.png', 3.5),
-    Discipline(
-        'Arquitetura de Software',
-        "Engenharia de Software",
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut sagittis sapien. Praesent nibh ipsum, bibendum non tempus eget, consectetur id nunc.',
-        'https://placehold.co/400.png', 4),
-    Discipline('Trabalho Interdisciplinar', "Engenharia de Software", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut sagittis sapien. Praesent nibh ipsum, bibendum non tempus eget, consectetur id nunc.',
-        'https://placehold.co/400.png', 2.4),
-    Discipline('Matéria Genérica de Placeholder', "Engenharia de Software", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut sagittis sapien. Praesent nibh ipsum, bibendum non tempus eget, consectetur id nunc.',
-        'https://placehold.co/400.png', 5),
+  List<Subject> subjects = [
+   
   ];
 
-  List<Discipline> filtered = [];
+  List<Subject> filtered = [];
 
   TextEditingController searchController = TextEditingController();
 
    @override
   void initState() {
     super.initState();
-    filtered = disciplines;
+    filtered = subjects;
   }
 
   void search(String query) {
     setState(() {
-      filtered = disciplines.where((object) {
+      filtered = subjects.where((object) {
         final nameLower = object.name.toLowerCase();
         final descriptionLower = object.course.toLowerCase();
         final searchLower = query.toLowerCase();
@@ -76,8 +66,8 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
               itemCount: filtered.length,
               itemBuilder: (context, index) {
-                return DisciplineCard(
-                  discipline: filtered[index],
+                return SubjectCard(
+                  subject: filtered[index],
                 );
               },
             ),)
