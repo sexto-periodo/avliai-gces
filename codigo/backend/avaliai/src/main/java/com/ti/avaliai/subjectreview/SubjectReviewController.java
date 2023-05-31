@@ -2,8 +2,6 @@ package com.ti.avaliai.subjectreview;
 
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.success.BaseSucessResponse;
-import com.ti.avaliai.subject.SubjectService;
-import com.ti.avaliai.subject.dto.SubjectDTO;
 import com.ti.avaliai.subjectreview.dto.SubjectReviewDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -18,7 +16,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/subject-review")
-@Tag(name = "Subject - Endpoints de Avalição de Disciplinas")
+@Tag(name = "SubjectReview - Endpoints de Avalição de Disciplinas")
 public class SubjectReviewController extends BasicController {
 
     @Autowired
