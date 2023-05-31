@@ -303,8 +303,7 @@ Exemplos de resumo de Casos de Uso:
 
 O diagrama de classes foi utilizado para modelar a aplicação do ponto de vista do backend, tendo como referência a linguagem de programação Java, visto que o grupo optou pelo uso do framework Spring. 
 
-![Diagrama de Classes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796282-dbb51f04-e9c7-452d-926f-0d91893eba92.png)
-
+![Diagrama de classes - AvaliAí](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/72470621/c5d35134-538c-468e-9437-bd10b6d3ce24)
 
 As classes identificadas para cumprir com o propósito e os requisitos do sistema foram:
 1. **User** - Referente ao usuário, sua conta e perfil.
