@@ -4,6 +4,7 @@ import com.ti.avaliai.course.Course;
 import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
+import com.ti.avaliai.subjectreview.SubjectReviewService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ public class SubjectService {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private SubjectReviewService subjectReviewService;
 
     public List<SubjectDTO> getSubjects() {
         List<Subject> subjects = subjectRepository.findAll();
@@ -83,6 +87,13 @@ public class SubjectService {
 
     }
 
+    public Subject findByHashId(String hashId) {
+        return subjectRepository.findByHashId(hashId)
+                .orElseThrow(() ->
+                        new EntityNotFoundException("Não conseguimos encontrar a disciplina")
+                );
+    }
+
     private SubjectDTO subjectToSubjectDTO(Subject subject) {
         return SubjectDTO.builder()
                 .hashId(subject.getHashId())
@@ -91,6 +102,9 @@ public class SubjectService {
                 .name(subject.getName())
                 .campus(subject.getCampus())
                 .courseHashId(subject.getCourse().getHashId())
+                .shortDescription(subject.getShortDescription())
+                .longDescription(subject.getLongDescription())
+                .score(subjectReviewService.getSubjectAverageScore(subject))
                 .build();
     }
 }

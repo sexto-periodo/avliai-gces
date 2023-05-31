@@ -31,30 +31,14 @@
     "name": "Engenharia de Diagramas",
     "overtime": 10,
     "subjects": [
-      {
-        "id": 1
-      },
-      {
-        "id": 2
-      },
-      {
-        "id": 3
-      },
-      {
-        "id": 4
-      },
-      {
-        "id": 5
-      },
-      {
-        "id": 6
-      },
-      {
-        "id": 7
-      },
-      {
-        "id": 8
-      }
+      { "id": 1 },
+      { "id": 2 },
+      { "id": 3 },
+      { "id": 4 },
+      { "id": 5 },
+      { "id": 6 },
+      { "id": 7 },
+      { "id": 8 }
     ],
     "statusCurriculum": true,
     "isDeleted": false,
@@ -69,30 +53,14 @@
     "name": "Engenharia de Software",
     "overtime": 10,
     "subjects": [
-      {
-        "id": 9
-      },
-      {
-        "id": 10
-      },
-      {
-        "id": 11
-      },
-      {
-        "id": 12
-      },
-      {
-        "id": 13
-      },
-      {
-        "id": 14
-      },
-      {
-        "id": 15
-      },
-      {
-        "id": 16
-      }
+      { "id": 9 },
+      { "id": 10 },
+      { "id": 11 },
+      { "id": 12 },
+      { "id": 13 },
+      { "id": 14 },
+      { "id": 15 },
+      { "id": 16 }
     ],
     "statusCurriculum": true,
     "isDeleted": false,
@@ -108,7 +76,12 @@
     "name": "Algoritmos e Estruturas de Dados I",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -117,7 +90,12 @@
     "name": "Algoritmos e Estruturas de Dados II",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -126,7 +104,12 @@
     "name": "Fundamentos de Engenharia de Software",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -135,7 +118,12 @@
     "name": "Desenvolvimento de Interfaces Web",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -144,7 +132,12 @@
     "name": "Trabalho Interdisciplinar V",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -153,7 +146,12 @@
     "name": "Banco de Dados",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -162,7 +160,12 @@
     "name": "Projeto de Software",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -171,7 +174,12 @@
     "name": "Engenharia de Requisitos",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id": 1 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -180,7 +188,12 @@
     "name": "Programação Modular",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -189,7 +202,12 @@
     "name": "Programação Modular",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -198,7 +216,12 @@
     "name": "Laboratório de Programação Modular",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -207,7 +230,12 @@
     "name": "Laboratório de Desenvolvimento de Software",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -216,7 +244,12 @@
     "name": "Testes de Software",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -225,7 +258,12 @@
     "name": "Arquitetura de Software",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -234,7 +272,12 @@
     "name": "Modelagem de Processos de Negócios",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -243,7 +286,12 @@
     "name": "Cálculo I",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -252,6 +300,11 @@
     "name": "Cálculo II",
     "picUrl": "https://source.unsplash.com/random",
     "campus": "Praça da Liberdade",
-    "course": { "id":  2 }
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
   }
 ]

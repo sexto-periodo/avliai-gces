@@ -1,12 +1,14 @@
 import GenericPageLayout from '@/shared/layout/generic-page-layout/genericPageLayout'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import CardSubject from '../../shared/components/card-subject';
 import Masonry from '@mui/lab/Masonry';
 
 import styles from './home.module.scss'
-import {ISubject} from "@/shared/domain/Subject/ISubject";
+import {ISubject, ISubjectDTO} from "@/shared/domain/Subject/ISubject";
 import {FormControl, InputAdornment, InputLabel, OutlinedInput} from '@mui/material';
 import {ImSearch} from 'react-icons/im'
+import {Subject} from "rxjs";
+import {SubjectService} from "@/shared/domain/Subject/SubjectService";
 
 
 const mockSubjects: Array<ISubject> = [
@@ -54,10 +56,15 @@ const mockSubjects: Array<ISubject> = [
         imageUrl: 'https://www.shutterstock.com/image-photo/young-african-american-man-using-260nw-2064750014.jpg',
         university: 'PUC Minas'
     }
-
-
 ]
 export default function Disciplinas() {
+
+    const subjectService: SubjectService = new SubjectService()
+    const [subjects, setSubjects] = useState<ISubjectDTO[]>()
+
+    useEffect(() => {
+        subjectService.getSubjects().then((subjects) => setSubjects(subjects))
+    }, [])
     return (
         <GenericPageLayout title="AvaliAí">
             <div className={styles.container}>

@@ -1,11 +1,14 @@
 package com.ti.avaliai.subject;
 
 import com.ti.avaliai.course.Course;
+import com.ti.avaliai.subjectreview.SubjectReview;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 import static com.ti.avaliai.utils.HashUtils.generateHash;
 
@@ -36,4 +39,13 @@ public class Subject {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_course")
     private Course course;
+
+    @Column(name = "short_description", columnDefinition = "TEXT")
+    private String shortDescription;
+
+    @Column(name = "long_description", columnDefinition = "TEXT")
+    private String longDescription;
+
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
+    private List<SubjectReview> reviews;
 }

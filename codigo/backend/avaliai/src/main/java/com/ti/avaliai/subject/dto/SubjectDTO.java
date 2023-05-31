@@ -37,4 +37,17 @@ public class SubjectDTO {
     @Schema(description = "HashId do curso", example = "12345678910112134h3j21kl44321f")
     @JsonProperty("courseHashId")
     private String courseHashId;
+
+    @Schema(description = "Descrição curta da disciplina.", example = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla")
+    @JsonProperty("shortDescription")
+    private String shortDescription;
+
+    @Schema(description = "Descrição longa da disciplina.", example = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla")
+    @JsonProperty("longDescription")
+    private String longDescription;
+
+    @Schema(description = "Avaliação média da disciplina.", example = "4.9")
+    @JsonProperty("score")
+    private double score;
+
 }
