@@ -131,11 +131,9 @@ _Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre o
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | O sistema deve ser avaliado quanto ao tempo de carregamento da página ou do aplicativo móvel, taxa de erros, número de usuários ativos, taxa de rejeição e tempo médio de uso, a fim de garantir que esteja cumprindo o requisito de prover serviços no ambiente web e móvel de forma satisfatória. |
-| RNF002 | O front-end deve ser em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 99,9%, tempo de resposta <2s e usabilidade avaliada com média de 8/10 |
-| RNF003 | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo, suportando pelo menos 100 operações concorrentes por cliente. O tempo médio de resposta do servidor deve ser inferior a 500 ms e a taxa de erros não deve exceder 1%. |
-| RNF004 | O sistema deve registrar erros, reenviar mensagens, ter tempo limite de resposta e taxa de sucesso de tratamento de erro de 95% |
-| RNF005 | O requisito não funcional do sistema de possuir implementação de estratégias de testes será medido por meio de métricas como a cobertura de testes em pelo menos 90% das funcionalidades e requisitos, e pelo menos 70% dos testes devem ser automatizados. |
+| RNF001 | O front-end deve ser em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%.|
+| RNF002 | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo, suportando pelo menos 100 operações concorrentes por cliente. O tempo médio de resposta do servidor deve ser inferior a 500 ms. |
+| RNF003 | O requisito não funcional do sistema de possuir implementação de estratégias de testes será medido por meio de métricas como a cobertura de testes em pelo menos 60% das funcionalidades e requisitos. |
 
 Obs: acrescente mais linhas, se necessário.
 
