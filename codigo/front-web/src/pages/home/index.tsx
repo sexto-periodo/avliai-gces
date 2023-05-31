@@ -62,9 +62,9 @@ export default function Disciplinas() {
     const subjectService: SubjectService = new SubjectService()
     const [subjects, setSubjects] = useState<ISubjectDTO[]>()
 
-    useEffect(() => {
-        subjectService.getSubjects().then((subjects) => setSubjects(subjects))
-    }, [])
+    // useEffect(() => {
+    //     subjectService.getSubjects().then((subjects) => setSubjects(subjects))
+    // }, [])
     return (
         <GenericPageLayout title="AvaliAí">
             <div className={styles.container}>

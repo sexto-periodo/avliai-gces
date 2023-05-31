@@ -13,7 +13,7 @@ export interface ISubject{
     score?:number
     shortDescription?: string
     longDescription?: string
-    picUrl?: string
+    imageUrl?: string
     university?: String
 }
 
