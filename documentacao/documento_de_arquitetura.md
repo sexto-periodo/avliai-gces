@@ -131,9 +131,12 @@ _Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre o
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | O front-end deve ser em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%.|
-| RNF002 | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo, suportando pelo menos 100 operações concorrentes por cliente. O tempo médio de resposta do servidor deve ser inferior a 500 ms. |
-| RNF003 | O requisito não funcional do sistema de possuir implementação de estratégias de testes será medido por meio de métricas como a cobertura de testes em pelo menos 60% das funcionalidades e requisitos. |
+| RNF001 | O sistema deve ser implementado em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%. |
+| RNF002 | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo. |
+| RNF003 | O tempo médio de resposta do servidor deve ser inferior a 500 ms. |
+| RNF004 | A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos. |
+| RNF005 | O sistema deve utilizar Spring Security com JWT para garantir criptografia dos dados dos clientes. |
+
 
 Obs: acrescente mais linhas, se necessário.
 
