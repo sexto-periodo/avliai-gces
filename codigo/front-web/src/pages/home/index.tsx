@@ -9,6 +9,8 @@ import {FormControl, InputAdornment, InputLabel, OutlinedInput} from '@mui/mater
 import {ImSearch} from 'react-icons/im'
 import {Subject} from "rxjs";
 import {SubjectService} from "@/shared/domain/Subject/SubjectService";
+import { UserService } from '@/shared/domain/User/UserService';
+import { IUser } from '@/shared/domain/User/User';
 
 
 const mockSubjects: Array<ISubject> = [
@@ -60,11 +62,20 @@ const mockSubjects: Array<ISubject> = [
 export default function Disciplinas() {
 
     const subjectService: SubjectService = new SubjectService()
-    const [subjects, setSubjects] = useState<ISubjectDTO[]>()
+    const userService: UserService = new UserService()
 
-    // useEffect(() => {
-    //     subjectService.getSubjects().then((subjects) => setSubjects(subjects))
-    // }, [])
+    const [subjects, setSubjects] = useState<ISubjectDTO[]>()
+    const [user, setUser] = useState<IUser>()
+
+
+
+    useEffect(() => {
+         //userService.getUserData()
+         let user = userService.getUserData() as IUser;
+
+         subjectService.getSubjectsByCourse(user.courseHashId).then((subjects) => setSubjects(subjects))
+         setUser(user as IUser)
+     }, [])
     return (
         <GenericPageLayout title="AvaliAí">
             <div className={styles.container}>

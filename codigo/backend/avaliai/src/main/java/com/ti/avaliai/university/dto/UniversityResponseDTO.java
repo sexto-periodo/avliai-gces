@@ -33,9 +33,5 @@ public class UniversityResponseDTO {
     @JsonProperty("cnpj")
     private String cnpj;
 
-    @Schema(description = "Lista de cursos oferecidos pela universidade")
-    @JsonProperty("courses")
-    private List<Course> courses;
-
 
 }

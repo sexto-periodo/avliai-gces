@@ -1,6 +1,9 @@
+import { getCookie, hasCookie } from 'cookies-next';
 import {ICourseDTO} from "@/shared/domain/Course/ICourseDTO";
 import {IUser} from "@/shared/domain/User/User";
 import {AuthService} from "@/shared/services/Auth/AuthService";
+
+const USER_DATA_COOKIE = 'user_data';
 
 export class UserService{
 
@@ -21,6 +24,13 @@ export class UserService{
             .then(data => {
                 return data.validEmail as boolean
             });
+    }
+
+    getUserData() {
+        if (hasCookie(USER_DATA_COOKIE)){
+            console.log(getCookie(USER_DATA_COOKIE));
+            return getCookie(USER_DATA_COOKIE) as unknown as IUser;
+        }
     }
 
 
