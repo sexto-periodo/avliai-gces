@@ -1,10 +1,32 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import {ISubject} from '@/shared/domain/Subject/ISubject'
 import styles from './style.module.scss'
 import {AiFillStar} from 'react-icons/ai';
+import Image from "next/image";
+import axios from 'axios';
 
 export default function CardSubject(props: ISubject) {
+    // const [imageUrl, setImageUrl] = useState<string>('');
+    //
+    // useEffect(() => {
+    //     async function fetchRandomImage() {
+    //         try {
+    //             let response: any = {};
+    //             if (props.imageUrl != null) {
+    //                 response = await axios.get(props.imageUrl);
+    //             }
+    //             const randomImageUrl = response.data.url as string; // Ajuste para o formato correto de acordo com a API que você estiver usando
+    //             setImageUrl(randomImageUrl);
+    //         } catch (error) {
+    //             console.error('Erro ao buscar a imagem:', error);
+    //         }
+    //     }
+    //
+    //     fetchRandomImage();
+    // }, []);
+
+
     return (
         <div className={styles.cardContainer}>
             <div className={styles.cardImageContainer}>

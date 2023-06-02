@@ -39,7 +39,7 @@ export class AuthService{
 
     getActualToken(){
         if ( hasCookie(USER_AUTH_COOKIE)){
-            return getCookie(USER_AUTH_COOKIE);
+            return (JSON.parse(<string>getCookie(USER_AUTH_COOKIE)) as UserAuth).access_token;
         }
     }
 
