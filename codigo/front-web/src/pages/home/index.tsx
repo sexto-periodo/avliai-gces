@@ -1,12 +1,18 @@
 import GenericPageLayout from '@/shared/layout/generic-page-layout/genericPageLayout'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import CardSubject from '../../shared/components/card-subject';
 import Masonry from '@mui/lab/Masonry';
 
 import styles from './home.module.scss'
-import {ISubject} from "@/shared/domain/Subject/ISubject";
+import {ISubject, ISubjectDTO} from "@/shared/domain/Subject/ISubject";
 import {FormControl, InputAdornment, InputLabel, OutlinedInput} from '@mui/material';
 import {ImSearch} from 'react-icons/im'
+import {Subject} from "rxjs";
+import {SubjectService} from "@/shared/domain/Subject/SubjectService";
+import {UserService} from '@/shared/domain/User/UserService';
+import {IUser} from '@/shared/domain/User/User';
+import {IUniversityDTO} from "@/shared/domain/University/IUniversity";
+import {UniversityService} from "@/shared/domain/University/UniversityService";
 
 
 const mockSubjects: Array<ISubject> = [
@@ -54,10 +60,36 @@ const mockSubjects: Array<ISubject> = [
         imageUrl: 'https://www.shutterstock.com/image-photo/young-african-american-man-using-260nw-2064750014.jpg',
         university: 'PUC Minas'
     }
-
-
 ]
 export default function Disciplinas() {
+
+    const subjectService: SubjectService = new SubjectService()
+    const universityService: UniversityService = new UniversityService()
+    const userService: UserService = new UserService()
+
+    const [subjects, setSubjects] = useState<ISubjectDTO[]>([])
+    const [university, setUniversity] = useState<IUniversityDTO>()
+    const [user, setUser] = useState<IUser>()
+
+
+    useEffect(() => {
+        //userService.getUserData()
+        let userSelected: IUser | null = userService.getUserData();
+        console.log(typeof (userSelected))
+
+        if (userSelected) {
+
+            universityService.getUniversityByHashId(userSelected.universityHashId)
+                .then((university: IUniversityDTO) => setUniversity(university));
+
+            subjectService.getSubjectsByCourse(userSelected.courseHashId)
+                .then((subjects) => setSubjects(subjects))
+
+            setUser(userSelected as IUser)
+        }
+
+
+    }, [])
     return (
         <GenericPageLayout title="AvaliAí">
             <div className={styles.container}>
@@ -74,7 +106,8 @@ export default function Disciplinas() {
                                 <ImSearch/>
                             </div>
                             <div className={styles.inputBox}>
-                                <input type="text" placeholder="Pesquise por disciplinas"/>
+                                <input type="text"
+                                       placeholder="Pesquise por disciplinas"/>
                             </div>
                             <div className={styles.inputSearchImageContainer}>
                                 <img
@@ -90,14 +123,14 @@ export default function Disciplinas() {
                         columns={{xs: 1, sm: 2, md: 2, lg: 3, xl: 4}}
                         spacing={2}
                     >
-                        {mockSubjects.map((item, key) => (
+                        {subjects.map((item, key) => (
                             <CardSubject
                                 key={key}
                                 name={item.name}
                                 score={item.score}
                                 imageUrl={item.imageUrl}
                                 shortDescription={item.shortDescription}
-                                university={item.university}
+                                university={university?.name}
                             />
                         ))}
                     </Masonry>

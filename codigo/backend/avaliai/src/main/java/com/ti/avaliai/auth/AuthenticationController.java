@@ -1,5 +1,8 @@
 package com.ti.avaliai.auth;
 
+import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
+import com.ti.avaliai.auth.dto.AuthenticationResponseDTO;
+import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +20,14 @@ public class AuthenticationController {
   private final AuthenticationService service;
 
   @PostMapping("/register")
-  public ResponseEntity<AuthenticationResponse> register(
-      @RequestBody RegisterRequest request
+  public ResponseEntity<AuthenticationResponseDTO> register(
+      @RequestBody RegisterRequestDTO request
   ) {
     return ResponseEntity.ok(service.register(request));
   }
   @PostMapping("/authenticate")
-  public ResponseEntity<AuthenticationResponse> authenticate(
-      @RequestBody AuthenticationRequest request
+  public ResponseEntity<AuthenticationResponseDTO> authenticate(
+      @RequestBody AuthenticationRequestDTO request
   ) {
     return ResponseEntity.ok(service.authenticate(request));
   }

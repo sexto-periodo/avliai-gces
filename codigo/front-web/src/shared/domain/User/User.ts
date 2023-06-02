@@ -2,14 +2,20 @@ import {IUniversityDTO} from "@/shared/domain/University/IUniversity";
 import {ICourseDTO} from "@/shared/domain/Course/ICourseDTO";
 
 export interface IUser {
-    nome: string,
-    email: string,
-    acesso: string,
-    senha: string
+    id: number;
+    firstname: string;
+    lastname: string;
+    hashId: string;
+    email: string;
+    universityHashId: string ;
+    courseHashId: string;
+    role: string;
 }
 
 export interface UserAuth {
     access_token: string,
+    refresh_token: string,
+
 }
 
 export interface IUserCreateRequest{

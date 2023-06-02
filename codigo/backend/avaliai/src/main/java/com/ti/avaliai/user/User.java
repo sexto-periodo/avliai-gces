@@ -2,6 +2,8 @@ package com.ti.avaliai.user;
 
 
 import com.ti.avaliai.course.Course;
+import com.ti.avaliai.subjectreview.SubjectReview;
+import com.ti.avaliai.subjectreviewvote.SubjectReviewVote;
 import com.ti.avaliai.token.Token;
 import com.ti.avaliai.university.University;
 import jakarta.persistence.*;
@@ -11,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+
+import static com.ti.avaliai.utils.HashUtils.generateHash;
 
 @Getter
 @Setter
@@ -24,6 +28,9 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
+    @Column(name = "hash_id")
+    private String hashId = generateHash();
 
     @Column(name = "firstname")
     private String firstname;
@@ -45,6 +52,12 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<SubjectReview> subjectReviews;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private  List<SubjectReviewVote> votes;
 
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;

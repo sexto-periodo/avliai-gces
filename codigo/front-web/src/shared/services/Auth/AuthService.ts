@@ -1,9 +1,10 @@
-import {IUserCreateRequest, UserAuth} from '../../domain/User/User';
+import {IUser, IUserCreateRequest, UserAuth} from '../../domain/User/User';
 import {getCookie, hasCookie, setCookie} from "cookies-next";
 import {ISignUpForm} from "@/pages/auth/signup";
 import {AuthContextProvider, useAuth} from "@/shared/contexts/Auth";
 
-
+export const USER_AUTH_COOKIE = 'auth';
+export const USER_DATA_COOKIE = 'user_data'
 
 export class AuthService{
 
@@ -35,25 +36,49 @@ export class AuthService{
             role: formData.role
         } as IUserCreateRequest;
     }
-}
 
-export function getActualToken(){
-    if ( hasCookie('auth')){
+    getActualToken(){
+        if ( hasCookie(USER_AUTH_COOKIE)){
+            return (JSON.parse(<string>getCookie(USER_AUTH_COOKIE)) as UserAuth).access_token;
+        }
+    }
+
+    /*TODO:
+    - Fazer um GET dos dados do usuário e salver em cookies
+     */
+    async startUserSession(userAuth: UserAuth, user: IUser){
+        setCookie(USER_AUTH_COOKIE, JSON.stringify(userAuth));
+        setCookie(USER_DATA_COOKIE, JSON.stringify(user));
+    }
+
+    getUserAuth(){
         return getCookie('auth');
     }
-}
-export async function startUserSession(user: UserAuth){
-    setCookie('auth', JSON.stringify(user));
-}
-export function getUserAuth(){
-    return getCookie('auth');
-}
-export function haveAuthStateChanged(){
-    if( hasCookie('auth')){
-        return false;
+
+    haveAuthStateChanged(){
+        if( hasCookie('auth')){
+            return false;
+        }
+        return true;
     }
-    return true;
+
+    endUserSession(){
+        setCookie('auth', null);
+    }
+
+    getUserData(): Promise<IUser>{
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.getActualToken()}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                return data as IUser
+            });
+    }
 }
-export function endUserSession(){
-    setCookie('auth', null);
-}
+

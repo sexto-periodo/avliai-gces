@@ -2,10 +2,15 @@ package com.ti.avaliai.auth;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
+import com.ti.avaliai.auth.dto.AuthenticationResponseDTO;
+import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import com.ti.avaliai.config.JwtService;
+import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.token.Token;
 import com.ti.avaliai.token.TokenRepository;
 import com.ti.avaliai.token.TokenType;
+import com.ti.avaliai.university.UniversityService;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,25 +33,30 @@ public class AuthenticationService {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
 
-  public AuthenticationResponse register(RegisterRequest request) {
+  private final UniversityService universityService;
+  private final CourseService courseService;
+
+  public AuthenticationResponseDTO register(RegisterRequestDTO request) {
     var user = User.builder()
         .firstname(request.getFirstname())
         .lastname(request.getLastname())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(request.getRole())
+            .university(universityService.findByHashId(request.getUniversityHashId()))
+            .course(courseService.findByHashId(request.getCourseHashId()))
         .build();
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);
     var refreshToken = jwtService.generateRefreshToken(user);
     saveUserToken(savedUser, jwtToken);
-    return AuthenticationResponse.builder()
+    return AuthenticationResponseDTO.builder()
         .accessToken(jwtToken)
             .refreshToken(refreshToken)
         .build();
   }
 
-  public AuthenticationResponse authenticate(AuthenticationRequest request) {
+  public AuthenticationResponseDTO authenticate(AuthenticationRequestDTO request) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
             request.getEmail(),
@@ -59,7 +69,7 @@ public class AuthenticationService {
     var refreshToken = jwtService.generateRefreshToken(user);
     revokeAllUserTokens(user);
     saveUserToken(user, jwtToken);
-    return AuthenticationResponse.builder()
+    return AuthenticationResponseDTO.builder()
         .accessToken(jwtToken)
             .refreshToken(refreshToken)
         .build();
@@ -106,7 +116,7 @@ public class AuthenticationService {
         var accessToken = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, accessToken);
-        var authResponse = AuthenticationResponse.builder()
+        var authResponse = AuthenticationResponseDTO.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .build();
