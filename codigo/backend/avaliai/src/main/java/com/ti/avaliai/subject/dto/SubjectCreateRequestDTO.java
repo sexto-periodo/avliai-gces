@@ -7,8 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,8 +17,8 @@ public class SubjectCreateRequestDTO {
     private String name;
 
     @Schema(description = "URL da imagem da disciplina", example = "https://example.com/image.jpg")
-    @JsonProperty("picUrl")
-    private String picUrl;
+    @JsonProperty("imageUrl")
+    private String imageUrl;
 
     @Schema(description = "Campus da disciplina", example = "Campus A")
     @JsonProperty("campus")

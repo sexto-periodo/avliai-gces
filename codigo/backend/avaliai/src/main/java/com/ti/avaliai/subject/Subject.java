@@ -30,8 +30,8 @@ public class Subject {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "pic_url")
-    private String picUrl;
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @Column(name ="campus")
     private String campus;

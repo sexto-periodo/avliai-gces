@@ -26,11 +26,11 @@ export class UserService{
             });
     }
 
-    getUserData() {
+    getUserData() : IUser | null{
         if (hasCookie(USER_DATA_COOKIE)){
-            console.log(getCookie(USER_DATA_COOKIE));
-            return getCookie(USER_DATA_COOKIE) as unknown as IUser;
+            return JSON.parse(getCookie(USER_DATA_COOKIE) as any) as IUser;
         }
+        return null
     }
 
 

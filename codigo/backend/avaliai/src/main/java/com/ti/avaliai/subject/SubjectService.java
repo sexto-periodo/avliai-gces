@@ -40,7 +40,7 @@ public class SubjectService {
 
         Subject subject = Subject.builder()
                 .campus(subjectCreateRequest.getCampus())
-                .picUrl(subjectCreateRequest.getPicUrl())
+                .imageUrl(subjectCreateRequest.getImageUrl())
                 .name(subjectCreateRequest.getName())
                 .build();
         subjectRepository.save(subject);
@@ -64,7 +64,7 @@ public class SubjectService {
                         "Não conseguimos encontrar a disciplina"));
 
         subject.setCampus(subjectUpdateRequest.getCampus());
-        subject.setPicUrl(subjectUpdateRequest.getPicUrl());
+        subject.setImageUrl(subjectUpdateRequest.getImageUrl());
         subject.setName(subjectUpdateRequest.getName());
 
         subjectRepository.save(subject);
@@ -98,7 +98,7 @@ public class SubjectService {
         return SubjectDTO.builder()
                 .hashId(subject.getHashId())
                 .id(subject.getId())
-                .picUrl(subject.getPicUrl())
+                .imageUrl(subject.getImageUrl())
                 .name(subject.getName())
                 .campus(subject.getCampus())
                 .courseHashId(subject.getCourse().getHashId())
