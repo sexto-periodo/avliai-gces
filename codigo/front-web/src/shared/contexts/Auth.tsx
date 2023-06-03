@@ -98,10 +98,7 @@ export const AuthContextProvider = ({
 
         let userAuthResult: UserAuth = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`, {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
+            headers: authService.buildBasicHeaderApplicationJson(),
             body: body
         }).then(res => res.json()).then(data => {
             return data as UserAuth
@@ -109,11 +106,7 @@ export const AuthContextProvider = ({
 
         let userResult: IUser = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${userAuthResult.access_token}`
-            },
+            headers: authService.buildDefaultHeaderApplicationJson(userAuthResult.access_token),
         }).then(res => res.json()).then(data => {
             return data as IUser
         });
@@ -139,11 +132,7 @@ export const AuthContextProvider = ({
     const startUserSession = async (userAuth: UserAuth) => {
         let userResult: IUser = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${userAuth.access_token}`
-            },
+            headers: authService.buildDefaultHeaderApplicationJson(userAuth.access_token),
         }).then(res => res.json()).then(data => {
             return data as IUser
         });

@@ -8,7 +8,7 @@ export class UniversityService {
     getUniversities(): Promise<IUniversityDTO[]> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/university`, {
             method: 'GET',
-            headers: this.authService.buildBasicHeader()
+            headers: this.authService.buildBasicHeaderPlainText()
         })
             .then(res => res.json())
             .then(data => {
@@ -21,7 +21,7 @@ export class UniversityService {
     getUniversityByHashId(hashId:string): Promise<IUniversityDTO> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/university/${hashId}`, {
             method: 'GET',
-            headers: this.authService.buildDefaultHeader(),
+            headers: this.authService.buildDefaultHeaderPlainText(),
         })
             .then(res => res.json())
             .then(data => {

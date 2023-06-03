@@ -14,10 +14,7 @@ export class UserService{
         })
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user/verify-email`, {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
+            headers: this.authService.buildBasicHeaderApplicationJson(),
             body: body
         })
             .then(res => res.json())

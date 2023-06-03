@@ -8,7 +8,7 @@ export class CourseService{
     getCoursesByUniversityHashId(universityHashId: string){
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/course/university/${universityHashId}`, {
             method: 'GET',
-            headers: this.authService.buildBasicHeader(),
+            headers: this.authService.buildBasicHeaderPlainText(),
         })
             .then(res => res.json())
             .then(data => {

@@ -7,9 +7,9 @@ export const USER_DATA_COOKIE = 'user_data'
 
 export class AuthService {
 
-    buildDefaultHeader(): Headers;
-    buildDefaultHeader(access_token: string): Headers;
-    buildDefaultHeader(access_token?: string): Headers {
+    buildDefaultHeaderPlainText(): Headers;
+    buildDefaultHeaderPlainText(access_token: string): Headers;
+    buildDefaultHeaderPlainText(access_token?: string): Headers {
         return new Headers({
             'Accept': 'application/json',
             'Content-Type': 'text/plain',
@@ -18,13 +18,30 @@ export class AuthService {
 
     }
 
+    buildDefaultHeaderApplicationJson(): Headers;
+    buildDefaultHeaderApplicationJson(access_token: string): Headers;
+    buildDefaultHeaderApplicationJson(access_token?: string): Headers {
+        return new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${access_token || this.getActualToken()}`
+        });
 
-    buildBasicHeader(): Headers {
+    }
+
+
+    buildBasicHeaderPlainText(): Headers {
         return new Headers({
             'Accept': 'application/json',
             'Content-Type': 'text/plain',
         });
+    }
 
+    buildBasicHeaderApplicationJson(): Headers {
+        return new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        });
     }
 
     register(request: ISignUpForm): Promise<UserAuth> {
@@ -90,7 +107,7 @@ export class AuthService {
     getUserData(): Promise<IUser> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
-            headers: this.buildDefaultHeader(),
+            headers: this.buildDefaultHeaderPlainText(),
         })
             .then(res => res.json())
             .then(data => {
