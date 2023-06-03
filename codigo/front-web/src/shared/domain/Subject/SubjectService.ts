@@ -8,11 +8,7 @@ export class SubjectService{
     getSubjectsByCourse(courseHashId: string): Promise<ISubjectDTO[]> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject/course/${courseHashId}`, {
             method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization' : `Bearer ${this.authService.getActualToken()}`
-            },
+            headers: this.authService.buildDefaultHeader(),
         })
             .then(res => res.json())
             .then(data => {

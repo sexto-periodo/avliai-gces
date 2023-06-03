@@ -18,16 +18,17 @@ import { useAuth } from '../../contexts/Auth'
  */
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { userAuth } = useAuth()
+    debugger
   const router = useRouter()
 
  useEffect(() => {
+
     if (!userAuth) {
       router.push('/auth/signin')
     }
   }, [router, userAuth ])
 
-  return <>{
-      true  ? children : null}</>
+  return <>{children}</>
 }
 
 export default ProtectedRoute

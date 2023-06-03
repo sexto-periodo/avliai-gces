@@ -1,14 +1,33 @@
 import {IUser, IUserCreateRequest, UserAuth} from '../../domain/User/User';
 import {getCookie, hasCookie, setCookie} from "cookies-next";
 import {ISignUpForm} from "@/pages/auth/signup";
-import {AuthContextProvider, useAuth} from "@/shared/contexts/Auth";
 
 export const USER_AUTH_COOKIE = 'auth';
 export const USER_DATA_COOKIE = 'user_data'
 
 export class AuthService {
 
-    register(request: ISignUpForm) {
+    buildDefaultHeader(): Headers;
+    buildDefaultHeader(access_token: string): Headers;
+    buildDefaultHeader(access_token?: string): Headers {
+        return new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'text/plain',
+            'Authorization': `Bearer ${access_token || this.getActualToken()}`
+        });
+
+    }
+
+
+    buildBasicHeader(): Headers {
+        return new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'text/plain',
+        });
+
+    }
+
+    register(request: ISignUpForm): Promise<UserAuth> {
         const body = JSON.stringify(this.ISignUpFormToIUserCreateRequest(request))
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/register`, {
             method: 'POST',
@@ -21,6 +40,7 @@ export class AuthService {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                return data as UserAuth
             });
     }
 
@@ -51,8 +71,8 @@ export class AuthService {
         setCookie(USER_DATA_COOKIE, JSON.stringify(user));
     }
 
-    getUserAuth() {
-        return getCookie(USER_AUTH_COOKIE);
+    getUserAuth() : UserAuth {
+        return JSON.parse(<string>getCookie(USER_AUTH_COOKIE)) as UserAuth
     }
 
     haveAuthStateChanged() {
@@ -64,16 +84,13 @@ export class AuthService {
 
     endUserSession() {
         setCookie(USER_AUTH_COOKIE, null);
+        setCookie(USER_DATA_COOKIE, null);
     }
 
     getUserData(): Promise<IUser> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.getActualToken()}`
-            },
+            headers: this.buildDefaultHeader(),
         })
             .then(res => res.json())
             .then(data => {
@@ -81,19 +98,28 @@ export class AuthService {
             });
     }
 
-    validateUserSession(){
-        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/validate-session`, {
+  async validateUserSession() {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${this.getActualToken()}`
             },
-        })
-            .then(r =>  r.json().then(data => ({status: r.status, body: data})))
-            .then(obj => obj.status == 200)
-            .catch((e) => false);
+            // Não esperar um corpo na resposta
+            // Se o servidor não retornar um corpo, isso evita a tentativa de fazer parse do JSON vazio
+            // e permite verificar apenas o código de status
+            body: null
+        });
 
+      if (response.status === 200) {
+          // Token de usuário válido
+          console.log('Token válido');
+          return true;
+      } else {
+          // Token de usuário inválido ou erro na requisição
+          console.log('Token inválido ou erro na requisição');
+          return false;
+      }
     }
 }
 

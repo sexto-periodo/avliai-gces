@@ -33,7 +33,7 @@ export const AuthContextProvider = ({
 
     const authService: AuthService = new AuthService();
     const userService: UserService = new UserService();
-    const [userAuth, setUserAuth] = useState<UserAuth | null>(null);
+    const [userAuth, setUserAuth] = useState<UserAuth | null>();
     const [loading, setLoading] = useState(true)
 
 
@@ -44,16 +44,23 @@ export const AuthContextProvider = ({
      * o contexto é alterado para que todos reconheçam o usuário logado
      */
     useEffect(() => {
-
         let usr = authService.getUserAuth();
+        setUserAuth(usr);
         console.log("useEffect User: " + usr)
         if (usr) {
-            let session;
-            authService.validateUserSession().then((sessionStatus) => session = sessionStatus)
-            if(session){
-                setUserAuth(usr as any)
-            }
-        } else {
+            authService.validateUserSession().then((sessionStatus) => {
+                console.log("A SESSÃO:" +sessionStatus)
+                if(sessionStatus){
+                    setUserAuth(usr)
+                    debugger
+                } else{
+                    console.log("Teerminando e setando null")
+                    authService.endUserSession();
+                    setUserAuth(null)
+                }
+            })
+        }else {
+            console.log("Segundo Else")
             authService.endUserSession();
             setUserAuth(null)
         }
@@ -129,13 +136,33 @@ export const AuthContextProvider = ({
         //await signOut(auth)
     }
 
+    const startUserSession = async (userAuth: UserAuth) => {
+        let userResult: IUser = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userAuth.access_token}`
+            },
+        }).then(res => res.json()).then(data => {
+            return data as IUser
+        });
+
+        authService.startUserSession(
+            userAuth,
+            userResult
+        ).then(() =>
+            setUserAuth(userAuth)
+        )
+    }
+
     /*****
      * Retornando o JSX estrutural do contexto.
      * o parâmetro children, diz respesti a literalmente todos
      * os componentes filhos.
      */
     return (
-        <AuthContext.Provider value={{userAuth, login, signup, logout}}>
+        <AuthContext.Provider value={{userAuth, login, signup, logout, startUserSession}}>
             {loading ? null : children}
         </AuthContext.Provider>
     )
