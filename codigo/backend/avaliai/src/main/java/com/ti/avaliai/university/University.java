@@ -2,10 +2,7 @@ package com.ti.avaliai.university;
 
 import com.ti.avaliai.course.Course;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class University {
     @Column(name = "cnpj")
     private String cnpj;
 
-    @OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "university", fetch = FetchType.EAGER)
     private List<Course> courses;
 
     @Column(name = "is_deleted")

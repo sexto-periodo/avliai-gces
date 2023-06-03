@@ -41,12 +41,12 @@ public class RegisterRequestDTO {
   private Role role;
 
   @NotNull
-  @Schema(description = "HashId da universidade", example = "bru4i3oqhrf4839wbg9bngv7f69s8dv")
+  @Schema(description = "HashId da universidade", example = "543b45c583bfff6c30e44a751103a24f")
   @JsonProperty("universityHashId")
   private String universityHashId;
 
   @NotNull
-  @Schema(description = "HashId do curso", example = "fdsgfv34w56t2t5233465v436v5346543")
+  @Schema(description = "HashId do curso", example = "eb5ed7359d0bc0df70e6b7abf8584c5e")
   @JsonProperty("courseHashId")
   private String courseHashId;
 }

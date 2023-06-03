@@ -1,34 +1,24 @@
 import React, {useEffect, useState} from 'react'
 
-import {ISubject} from '@/shared/domain/Subject/ISubject'
+import {ISubjectDTO} from '@/shared/domain/Subject/ISubject'
 import styles from './style.module.scss'
 import {AiFillStar} from 'react-icons/ai';
-import Image from "next/image";
-import axios from 'axios';
+import {useRouter} from "next/router";
 
-export default function CardSubject(props: ISubject) {
-    // const [imageUrl, setImageUrl] = useState<string>('');
-    //
-    // useEffect(() => {
-    //     async function fetchRandomImage() {
-    //         try {
-    //             let response: any = {};
-    //             if (props.imageUrl != null) {
-    //                 response = await axios.get(props.imageUrl);
-    //             }
-    //             const randomImageUrl = response.data.url as string; // Ajuste para o formato correto de acordo com a API que você estiver usando
-    //             setImageUrl(randomImageUrl);
-    //         } catch (error) {
-    //             console.error('Erro ao buscar a imagem:', error);
-    //         }
-    //     }
-    //
-    //     fetchRandomImage();
-    // }, []);
+export default function CardSubject(props: ISubjectDTO) {
+    const router = useRouter()
 
-
+    const params = {
+        subjectHashId: props.hashId
+    };
+    const subjectDetails = () => {
+        router.push({
+            pathname: '/subject',
+            query: params
+        })
+    }
     return (
-        <div className={styles.cardContainer}>
+        <div className={styles.cardContainer} onClick={subjectDetails}>
             <div className={styles.cardImageContainer}>
                 <img src={props.imageUrl} alt=""/>
             </div>

@@ -3,6 +3,7 @@ package com.ti.avaliai.subjectreview;
 
 import com.ti.avaliai.subject.Subject;
 import com.ti.avaliai.subject.SubjectService;
+import com.ti.avaliai.subject.dto.SubjectDTO;
 import com.ti.avaliai.subjectreview.dto.SubjectReviewDTO;
 import com.ti.avaliai.subjectreviewvote.SubjectReviewVote;
 import com.ti.avaliai.user.SubjectReviewRepository;
@@ -22,7 +23,8 @@ public class SubjectReviewService {
     private SubjectService subjectService;
 
     public List<SubjectReviewDTO> findAllBySubjectHashId(String subjectHashId) {
-        Subject subject = subjectService.findByHashId(subjectHashId);
+        SubjectDTO subjectDTO = subjectService.findByHashId(subjectHashId);
+        Subject subject = subjectService.findById(subjectDTO.getId());
         return subjectReviewRepository.findAllBySubject(subject).stream()
                 .map(subjectReview ->
                         subjectReviewToSubjectReviewDTO(subjectReview)

@@ -1,14 +1,14 @@
 import {ICourseDTO} from "@/shared/domain/Course/ICourseDTO";
+import {AuthService} from "@/shared/services/Auth/AuthService";
 
 
 export class CourseService{
+
+    authService: AuthService = new AuthService()
     getCoursesByUniversityHashId(universityHashId: string){
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/course/university/${universityHashId}`, {
             method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
+            headers: this.authService.buildBasicHeaderPlainText(),
         })
             .then(res => res.json())
             .then(data => {
