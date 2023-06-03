@@ -6,9 +6,9 @@ import {AuthContextProvider, useAuth} from "@/shared/contexts/Auth";
 export const USER_AUTH_COOKIE = 'auth';
 export const USER_DATA_COOKIE = 'user_data'
 
-export class AuthService{
+export class AuthService {
 
-    register(request: ISignUpForm){
+    register(request: ISignUpForm) {
         const body = JSON.stringify(this.ISignUpFormToIUserCreateRequest(request))
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/register`, {
             method: 'POST',
@@ -24,12 +24,12 @@ export class AuthService{
             });
     }
 
-    ISignUpFormToIUserCreateRequest(formData: ISignUpForm): IUserCreateRequest{
+    ISignUpFormToIUserCreateRequest(formData: ISignUpForm): IUserCreateRequest {
         return {
             firstname: formData.firstname,
             lastname: formData.lastname,
             email: formData.email,
-            password:formData.password,
+            password: formData.password,
             academicRegister: formData.academicRegister,
             universityHashId: formData.university?.hashId,
             courseHashId: formData.course?.hashId,
@@ -37,8 +37,8 @@ export class AuthService{
         } as IUserCreateRequest;
     }
 
-    getActualToken(){
-        if ( hasCookie(USER_AUTH_COOKIE)){
+    getActualToken() {
+        if (hasCookie(USER_AUTH_COOKIE)) {
             return (JSON.parse(<string>getCookie(USER_AUTH_COOKIE)) as UserAuth).access_token;
         }
     }
@@ -46,27 +46,27 @@ export class AuthService{
     /*TODO:
     - Fazer um GET dos dados do usuário e salver em cookies
      */
-    async startUserSession(userAuth: UserAuth, user: IUser){
+    async startUserSession(userAuth: UserAuth, user: IUser) {
         setCookie(USER_AUTH_COOKIE, JSON.stringify(userAuth));
         setCookie(USER_DATA_COOKIE, JSON.stringify(user));
     }
 
-    getUserAuth(){
-        return getCookie('auth');
+    getUserAuth() {
+        return getCookie(USER_AUTH_COOKIE);
     }
 
-    haveAuthStateChanged(){
-        if( hasCookie('auth')){
+    haveAuthStateChanged() {
+        if (hasCookie(USER_AUTH_COOKIE)) {
             return false;
         }
         return true;
     }
 
-    endUserSession(){
-        setCookie('auth', null);
+    endUserSession() {
+        setCookie(USER_AUTH_COOKIE, null);
     }
 
-    getUserData(): Promise<IUser>{
+    getUserData(): Promise<IUser> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
             headers: {
@@ -80,5 +80,21 @@ export class AuthService{
                 return data as IUser
             });
     }
+
+    validateUserSession(){
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/validate-session`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.getActualToken()}`
+            },
+        })
+            .then(r =>  r.json().then(data => ({status: r.status, body: data})))
+            .then(obj => obj.status == 200)
+            .catch((e) => false);
+
+    }
 }
+
 
