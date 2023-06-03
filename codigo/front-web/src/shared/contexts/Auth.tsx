@@ -52,7 +52,6 @@ export const AuthContextProvider = ({
                 console.log("A SESSÃO:" +sessionStatus)
                 if(sessionStatus){
                     setUserAuth(usr)
-                    debugger
                 } else{
                     console.log("Teerminando e setando null")
                     authService.endUserSession();

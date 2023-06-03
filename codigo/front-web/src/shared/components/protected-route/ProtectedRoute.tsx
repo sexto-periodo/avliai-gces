@@ -18,7 +18,6 @@ import { useAuth } from '../../contexts/Auth'
  */
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { userAuth } = useAuth()
-    debugger
   const router = useRouter()
 
  useEffect(() => {

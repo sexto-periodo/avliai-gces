@@ -16,4 +16,16 @@ export class SubjectService{
                 return data as ISubjectDTO[];
             });
     }
+
+    getSubjectByHashId(hashId: string | string[] | undefined):  Promise<ISubjectDTO> {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject/${hashId}`, {
+            method: 'GET',
+            headers: this.authService.buildDefaultHeaderPlainText(),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                return data as ISubjectDTO;
+            });
+    }
 }

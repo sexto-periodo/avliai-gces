@@ -34,9 +34,21 @@ public class SubjectDTO {
     @JsonProperty("campus")
     private String campus;
 
-    @Schema(description = "HashId do curso", example = "12345678910112134h3j21kl44321f")
+    @Schema(description = "Nome do Curso", example = "Engenharia de Software")
+    @JsonProperty("course")
+    private String course;
+
+    @Schema(description = "Nome da universidade.", example = "PUC Minas")
+    @JsonProperty("university")
+    private String university;
+
+    @Schema(description = "HashId do curso", example = "1f061de68a7a0da8378fd30974dd1a98")
     @JsonProperty("courseHashId")
     private String courseHashId;
+
+    @Schema(description = "HashId da universidade", example = "543b45c583bfff6c30e44a751103a24f")
+    @JsonProperty("universityHashId")
+    private String universityHashId;
 
     @Schema(description = "Descrição curta da disciplina.", example = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla")
     @JsonProperty("shortDescription")
@@ -49,5 +61,7 @@ public class SubjectDTO {
     @Schema(description = "Avaliação média da disciplina.", example = "4.9")
     @JsonProperty("score")
     private double score;
+
+
 
 }

@@ -24,7 +24,7 @@ public class SubjectReviewController extends BasicController {
 
     @Operation(method = "GET", summary = "Buscar por avaliaição através do HashId de Disciplina.", description = "Buscar por avaliaição através do HashId de Disciplina.")
     @ApiResponse(responseCode = "200", description = "OK")
-    @GetMapping
+    @GetMapping(value = "/subject/{subjectHashId}")
     public ResponseEntity<BaseSucessResponse<List<SubjectReviewDTO>>> getReviewsBySubjectHashId(@PathVariable("subjectHashId") String subjectHashId) {
         List<SubjectReviewDTO> reviews = subjectReviewService.findAllBySubjectHashId(subjectHashId);
         return ok(reviews);
