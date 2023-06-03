@@ -19,7 +19,7 @@ public class SubjectDTO {
     private Long id;
 
     @Schema(description = "Hash ID da disciplina", example = "abc123")
-    @JsonProperty("hash_id")
+    @JsonProperty("hashId")
     private String hashId;
 
     @Schema(description = "Nome da disciplina", example = "Matemática")
@@ -28,14 +28,26 @@ public class SubjectDTO {
 
     @Schema(description = "URL da imagem da disciplina", example = "https://example.com/image.jpg")
     @JsonProperty("picUrl")
-    private String picUrl;
+    private String imageUrl;
 
     @Schema(description = "Campus da disciplina", example = "Campus A")
     @JsonProperty("campus")
     private String campus;
 
-    @Schema(description = "Nota da disciplina", example = "8.5")
-    @JsonProperty("grade")
-    private double grade;
+    @Schema(description = "HashId do curso", example = "12345678910112134h3j21kl44321f")
+    @JsonProperty("courseHashId")
+    private String courseHashId;
+
+    @Schema(description = "Descrição curta da disciplina.", example = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla")
+    @JsonProperty("shortDescription")
+    private String shortDescription;
+
+    @Schema(description = "Descrição longa da disciplina.", example = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla")
+    @JsonProperty("longDescription")
+    private String longDescription;
+
+    @Schema(description = "Avaliação média da disciplina.", example = "4.9")
+    @JsonProperty("score")
+    private double score;
 
 }

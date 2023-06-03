@@ -1,10 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { endUserSession, getUserAuth, haveAuthStateChanged, startUserSession } from '../services/Auth/AuthService';
-import { UserAuth } from '../domain/User/User';
-
-
-
-
+import {
+  AuthService
+} from '../services/Auth/AuthService';
+import {IUser, UserAuth} from '../domain/User/User';
+import {UserService} from "@/shared/domain/User/UserService";
 
 /**
  * Esse conjunto de funções é responsável pelo gerenciamento
@@ -31,7 +30,10 @@ export const AuthContextProvider = ({
 }: {
   children: React.ReactNode
 }) => {
-  const [user, setUser] = useState<UserAuth|null>(null);
+
+  const authService: AuthService = new AuthService();
+  const userService: UserService = new UserService();
+  const [userAuth, setUserAuth] = useState<UserAuth|null>(null);
   const [loading, setLoading] = useState(true)
 
 
@@ -44,9 +46,9 @@ export const AuthContextProvider = ({
    */
   useEffect(() => {
 
-    let usr = getUserAuth();
+    let usr = authService.getUserAuth();
     console.log("useEffect User: "+usr)
-    usr ? setUser(usr as any) : setUser(null)
+    usr ? setUserAuth(usr as any) : setUserAuth(null)
     setLoading(false)
   }, [])
 
@@ -67,7 +69,7 @@ export const AuthContextProvider = ({
    * @param password Senha do usuário
    * @returns Função do firebase que faz a autenticação do usuário
    */
-  const login = (email: string, password: string) => {
+  const login = async (email: string, password: string) => {
 
 
     const body = JSON.stringify({
@@ -79,20 +81,34 @@ export const AuthContextProvider = ({
 
     console.log(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`);
 
-    return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`, {
+    let userAuthResult: UserAuth = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/auth/authenticate`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: body
-    }).then(res => res.json()).
-    then( data => {
-      console.log(data)
-      startUserSession({access_token: data.access_token} as UserAuth).then(() =>
-          setUser({access_token: data.access_token} as UserAuth)
-      )
+    }).then(res => res.json()).then(data => {
+      return data as UserAuth
     });
+
+    let userResult: IUser = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization' : `Bearer ${userAuthResult.access_token}`
+      },
+    }).then(res => res.json()).then(data => {
+      return data as IUser
+    });
+
+    authService.startUserSession(
+        userAuthResult,
+        userResult
+    ).then(() =>
+        setUserAuth(userAuthResult)
+    )
 
   }
 
@@ -100,8 +116,8 @@ export const AuthContextProvider = ({
    * Essa função faz logout do uauário
    */
   const logout = () => {
-    endUserSession();
-    setUser({} as UserAuth);
+    authService.endUserSession();
+    setUserAuth({} as UserAuth);
     //await signOut(auth)
   }
 
@@ -111,7 +127,7 @@ export const AuthContextProvider = ({
    * os componentes filhos.
    */
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ userAuth, login, signup, logout }}>
       {loading ? null : children}
     </AuthContext.Provider>
   )

@@ -67,6 +67,11 @@ public class SubjectController extends BasicController {
         return ok(response);
     }
 
-
-
+    @Operation(method = "GET", summary = "Busca por disciplinas relacionados ao curso.", description = "Busca por disciplinas relacionados ao curso.")
+    @ApiResponse(responseCode = "200", description = "OK")
+    @GetMapping(path = "/course/{courseHashId}")
+    public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> findByUniversity(@PathVariable("courseHashId") String courseHashId) {
+        List<SubjectDTO> response = subjectService.findAllByCourseHashId(courseHashId);
+        return ok(response);
+    }
 }

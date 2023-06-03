@@ -1,5 +1,3 @@
-import {getActualToken} from "@/shared/services/Auth/AuthService";
-import {IUniversityDTO} from "@/shared/domain/University/IUniversity";
 import {ICourseDTO} from "@/shared/domain/Course/ICourseDTO";
 
 
