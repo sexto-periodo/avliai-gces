@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:front_mobile/src/home_page.dart';
-import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/userRegistration.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
-import 'components/button.dart';
 import 'components/color_palette.dart';
 
 class LoginPage extends StatefulWidget {
@@ -67,7 +66,6 @@ class _LoginPageState extends State<LoginPage> {
                   onChanged: (value) {
                     setState(() {
                       _email = value;
-                      print(_email);
                     });
                   },
                 ),
@@ -96,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                          onPressed: onLoginButtonPressed,
+                          onPressed: () => onLoginButtonPressed(context),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: ColorPalette.mainColor,
                               shape: RoundedRectangleBorder(
@@ -138,12 +136,46 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void onLoginButtonPressed() {
-    if (_email == 'admin@admin.com' && _password == 'admin') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
+  void onLoginButtonPressed(BuildContext context) async {
+    await _submit(context);
+  }
+
+  Future<void> _submit(BuildContext context) async {
+    Database bd = await _recuperarBancoDados();
+    String sql = "SELECT * FROM usuarios";
+
+    List usuarios =
+        await bd.rawQuery(sql); //conseguimos escrever a query que quisermos
+    for (var usu in usuarios) {
+      print(" id: " +
+          usu['id'].toString() +
+          " email: " +
+          usu['email'] +
+          " senha: " +
+          usu['senha'].toString());
+
+      if (usu["email"] == emailController.text &&
+          usu["senha"] == passwordController.text) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+        print("usuario encontrado");
+      } else {
+        print("usuario nao encontrado");
+      }
     }
   }
+}
+
+Future<Database> _recuperarBancoDados() async {
+  final caminhoBancoDados = await getDatabasesPath();
+  final localBancoDados = join(caminhoBancoDados, "banco3.bd");
+  var bd = await openDatabase(localBancoDados, version: 1,
+      onCreate: (db, dbVersaoRecente) {
+    String sql =
+        "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR, senha VARCHAR) ";
+    db.execute(sql);
+  });
+  return bd;
 }
