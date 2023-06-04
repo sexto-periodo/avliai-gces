@@ -13,16 +13,31 @@ import static com.ti.avaliai.user.Role.ADMIN;
 public class UserTestUtils {
 
     @Autowired
-    private static AuthenticationService authenticationService;
+    private AuthenticationService authenticationService;
 
     @Autowired
-    private static UserService userService;
+    private UserService userService;
 
-    public static User createTestUser(){
+    public User createDefaultTestUser(){
         var user = RegisterRequestDTO.builder()
                 .firstname("User")
                 .lastname("User")
                 .email("testuser@sga.pucminas.br")
+                .password("1234")
+                .universityHashId("543b45c583bfff6c30e44a751103a24f")
+                .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+                .role(ADMIN)
+                .build();
+
+        authenticationService.register(user);
+        return userService.findByEmail(user.getEmail());
+    }
+
+    public User createRandomTestUser(){
+        var user = RegisterRequestDTO.builder()
+                .firstname("User")
+                .lastname("User")
+                .email("randomuser@sga.pucminas.br")
                 .password("1234")
                 .universityHashId("543b45c583bfff6c30e44a751103a24f")
                 .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")

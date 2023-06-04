@@ -106,4 +106,8 @@ public class SubjectReviewService {
 
 
     }
+
+    public List<SubjectReview> findAll() {
+        return subjectReviewRepository.findAll();
+    }
 }
