@@ -1,15 +1,18 @@
 package com.ti.avaliai.subject;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.ti.avaliai.course.Course;
+import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
+import com.ti.avaliai.subjectreview.SubjectReviewService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SubjectService {
@@ -17,13 +20,19 @@ public class SubjectService {
     @Autowired
     private SubjectRepository subjectRepository;
 
+    @Autowired
+    private CourseService courseService;
+
+    @Autowired
+    private SubjectReviewService subjectReviewService;
+
     public List<SubjectDTO> getSubjects() {
         List<Subject> subjects = subjectRepository.findAll();
         List<SubjectDTO> subjectDTOs = new ArrayList<>();
 
         subjects.forEach(subject -> {
-                    subjectDTOs.add(subjectToSubjectDTO(subject));
-                });
+            subjectDTOs.add(subjectToSubjectDTO(subject));
+        });
         return subjectDTOs;
     }
 
@@ -31,8 +40,7 @@ public class SubjectService {
 
         Subject subject = Subject.builder()
                 .campus(subjectCreateRequest.getCampus())
-                .grade(subjectCreateRequest.getGrade())
-                .picUrl(subjectCreateRequest.getPicUrl())
+                .imageUrl(subjectCreateRequest.getImageUrl())
                 .name(subjectCreateRequest.getName())
                 .build();
         subjectRepository.save(subject);
@@ -40,6 +48,10 @@ public class SubjectService {
 
     public SubjectDTO findOneById(long id) {
         return subjectToSubjectDTO(subjectRepository.findSubjectById(id));
+    }
+
+    public Subject findById(long id) {
+        return subjectRepository.findSubjectById(id);
     }
 
     public void delete(long id) {
@@ -56,23 +68,57 @@ public class SubjectService {
                         "Não conseguimos encontrar a disciplina"));
 
         subject.setCampus(subjectUpdateRequest.getCampus());
-        subject.setPicUrl(subjectUpdateRequest.getPicUrl());
-        subject.setGrade(subjectUpdateRequest.getGrade());
+        subject.setImageUrl(subjectUpdateRequest.getImageUrl());
         subject.setName(subjectUpdateRequest.getName());
 
         subjectRepository.save(subject);
         return subjectToSubjectDTO(subject);
     }
 
-    private SubjectDTO subjectToSubjectDTO(Subject subject) {
-        return SubjectDTO.builder()
-                .hash_id(subject.getHash_id())
-                .id(subject.getId())
-                .grade(subject.getGrade())
-                .picUrl(subject.getPicUrl())
-                .name(subject.getName())
-                .campus(subject.getCampus())
-                .build();
+    public List<Subject> findAllByIdIn(List<Long> subjectsIds) {
+        return subjectRepository.findAllByIdIn(subjectsIds);
     }
 
+    public List<SubjectDTO> findAllByCourseHashId(String coursHashId) {
+        Course course = courseService.findByHashId(coursHashId);
+        List<Subject> subjects = subjectRepository.findAllByCourse(course);
+
+        return subjects.stream()
+                .map(this::subjectToSubjectDTO)
+                .collect(Collectors.toList());
+
+    }
+
+    public Subject findByHashId(String hashId) {
+        Subject subject = subjectRepository.findByHashId(hashId)
+                .orElseThrow(() ->
+                        new EntityNotFoundException("Não conseguimos encontrar a disciplina")
+                );
+        return subject;
+    }
+
+    public SubjectDTO findByHashIdDTO(String hashId) {
+        Subject subject = findByHashId(hashId);
+        return subjectToSubjectDTO(subject);
+    }
+
+
+
+    private SubjectDTO subjectToSubjectDTO(Subject subject) {
+        return SubjectDTO.builder()
+                .hashId(subject.getHashId())
+                .id(subject.getId())
+                .imageUrl(subject.getImageUrl())
+                .name(subject.getName())
+                .campus(subject.getCampus())
+                .course(subject.getCourse().getName())
+                .courseHashId(subject.getCourse().getHashId())
+                .university(subject.getCourse().getUniversity().getName())
+                .universityHashId(subject.getCourse().getUniversity().getHashId())
+                .shortDescription(subject.getShortDescription())
+                .longDescription(subject.getLongDescription())
+                .score(subjectReviewService.getSubjectAverageScore(subject))
+                .build();
+    }
 }
+

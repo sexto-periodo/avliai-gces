@@ -131,11 +131,12 @@ _Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre o
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | O sistema deve ser avaliado quanto ao tempo de carregamento da página ou do aplicativo móvel, taxa de erros, número de usuários ativos, taxa de rejeição e tempo médio de uso, a fim de garantir que esteja cumprindo o requisito de prover serviços no ambiente web e móvel de forma satisfatória. |
-| RNF002 | O front-end deve ser em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 99,9%, tempo de resposta <2s e usabilidade avaliada com média de 8/10 |
-| RNF003 | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo, suportando pelo menos 100 operações concorrentes por cliente. O tempo médio de resposta do servidor deve ser inferior a 500 ms e a taxa de erros não deve exceder 1%. |
-| RNF004 | O sistema deve registrar erros, reenviar mensagens, ter tempo limite de resposta e taxa de sucesso de tratamento de erro de 95% |
-| RNF005 | O requisito não funcional do sistema de possuir implementação de estratégias de testes será medido por meio de métricas como a cobertura de testes em pelo menos 90% das funcionalidades e requisitos, e pelo menos 70% dos testes devem ser automatizados. |
+| RNF001 | O sistema deve ser implementado em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%. |
+| RNF002 | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo. |
+| RNF003 | O tempo médio de resposta do servidor deve ser inferior a 500 ms. |
+| RNF004 | A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos. |
+| RNF005 | O sistema deve utilizar Spring Security com JWT para garantir criptografia dos dados dos clientes. |
+
 
 Obs: acrescente mais linhas, se necessário.
 
@@ -302,8 +303,7 @@ Exemplos de resumo de Casos de Uso:
 
 O diagrama de classes foi utilizado para modelar a aplicação do ponto de vista do backend, tendo como referência a linguagem de programação Java, visto que o grupo optou pelo uso do framework Spring. 
 
-![Diagrama de Classes - Avaliaí drawio](https://user-images.githubusercontent.com/84593164/223796282-dbb51f04-e9c7-452d-926f-0d91893eba92.png)
-
+![Diagrama de classes - AvaliAí](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/72470621/c5d35134-538c-468e-9437-bd10b6d3ce24)
 
 As classes identificadas para cumprir com o propósito e os requisitos do sistema foram:
 1. **User** - Referente ao usuário, sua conta e perfil.

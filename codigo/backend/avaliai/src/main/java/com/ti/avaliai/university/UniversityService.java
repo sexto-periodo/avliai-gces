@@ -1,21 +1,25 @@
 package com.ti.avaliai.university;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
 import com.ti.avaliai.university.dto.UniversityDTO;
+import com.ti.avaliai.university.dto.UniversityUpdateRequestDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UniversityService {
 
     @Autowired
     private UniversityRepository universityRepository;
+
+    @Autowired
+    private CourseService courseService;
 
     public List<UniversityDTO> getUniversities() {
         List<University> universities = universityRepository.findAll();
@@ -30,15 +34,16 @@ public class UniversityService {
     public void create(UniversityCreateRequestDTO universityCreateRequest) {
 
         University university = University.builder()
-                .cnpj(universityCreateRequest.getCNPJ())
-                .courses(universityCreateRequest.getCourses())
+                .cnpj(universityCreateRequest.getCnpj())
+                .courses(courseService.findAllByIdIn(universityCreateRequest.getCourses()))
                 .name(universityCreateRequest.getName())
                 .build();
         universityRepository.save(university);
     }
 
-    public UniversityDTO findOneById(long id) {
-        return universityToUniversityDTO(universityRepository.findUniversityById(id));
+    public University findOneById(long id) {
+        return universityRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Universidade não encontrada"));
     }
 
     public void delete(long id) {
@@ -48,14 +53,14 @@ public class UniversityService {
     }
 
     @Transactional
-    public UniversityDTO update(UniversityDTO universityUpdateRequest) {
+    public UniversityDTO update(UniversityUpdateRequestDTO universityUpdateRequest) {
         University university = universityRepository
                 .findById(universityUpdateRequest.getId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Não conseguimos encontrar a universidade"));
 
-        university.setCNPJ(universityUpdateRequest.getCNPJ());
-        university.setCourses(universityUpdateRequest.getCourses());
+        university.setCnpj(universityUpdateRequest.getCnpj());
+        university.setCourses(courseService.findAllByIdIn(universityUpdateRequest.getCoursesIds()));
         university.setName(universityUpdateRequest.getName());
 
         universityRepository.save(university);
@@ -64,12 +69,20 @@ public class UniversityService {
 
     private UniversityDTO universityToUniversityDTO(University university) {
         return UniversityDTO.builder()
-                .hash_id(university.getHash_id())
+                .hashId(university.getHashId())
                 .id(university.getId())
-                .cnpj(university.getCNPJ())
-                .courses(university.getCourses())
+                .cnpj(university.getCnpj())
                 .name(university.getName())
                 .build();
     }
 
+    public UniversityDTO findOneByHashId(String hashId) {
+        return universityToUniversityDTO(universityRepository.findByHashId(hashId)
+                .orElseThrow(() -> new EntityNotFoundException()));
+    }
+
+    public University findByHashId(String hashId) {
+        return universityRepository.findByHashId(hashId)
+                .orElseThrow(() -> new EntityNotFoundException("Universidade não encontrada"));
+    }
 }

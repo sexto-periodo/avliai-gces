@@ -1,21 +1,32 @@
 package com.ti.avaliai.course;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ti.avaliai.course.dto.CourseCreateRequestDTO;
 import com.ti.avaliai.course.dto.CourseDTO;
+import com.ti.avaliai.course.dto.CourseUpdateRequestDTO;
+import com.ti.avaliai.subject.SubjectService;
+import com.ti.avaliai.university.University;
+import com.ti.avaliai.university.UniversityService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.ti.avaliai.utils.HashUtils.generateHash;
 
 @Service
 public class CourseService {
 
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private SubjectService subjectService;
+
+    @Autowired
+    private UniversityService universityService;
 
     public List<CourseDTO> getCourses() {
         List<Course> courses = courseRepository.findAll();
@@ -29,17 +40,24 @@ public class CourseService {
 
     public void create(CourseCreateRequestDTO courseCreateRequest) {
 
-        Course course = course.builder()
-                .campus(courseCreateRequest.getCampus())
-                .grade(courseCreateRequest.getGrade())
-                .picUrl(courseCreateRequest.getPicUrl())
+        Course course = Course.builder()
                 .name(courseCreateRequest.getName())
+                .university(universityService.findOneById(courseCreateRequest.getUniversityId()))
+                .overtime(courseCreateRequest.getOvertime())
+                .hashId(generateHash())
+                .isDeleted(false)
+                .statusCurriculum(true)
                 .build();
         courseRepository.save(course);
     }
 
     public CourseDTO findOneById(long id) {
-        return courseToCourseDTO(courseRepository.findCourseById(id));
+        return courseToCourseDTO(
+                courseRepository.findById(id).orElseThrow(
+                        () -> new EntityNotFoundException("Curso de id " + id + " não encontrado")
+                )
+        );
+
     }
 
     public void delete(long id) {
@@ -49,15 +67,14 @@ public class CourseService {
     }
 
     @Transactional
-    public CourseDTO update(CourseDTO courseUpdateRequest) {
+    public CourseDTO update(CourseUpdateRequestDTO courseUpdateRequest) {
         Course course = courseRepository
                 .findById(courseUpdateRequest.getId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Não conseguimos encontrar o curso"));
 
-        course.setSubjects(courseUpdateRequest.getSubjects());
+        course.setSubjects(subjectService.findAllByIdIn(courseUpdateRequest.getSubjects()));
         course.setOvertime(courseUpdateRequest.getOvertime());
-        course.setStatusCurriculum(courseUpdateRequest.getStatusCurriculum());
         course.setName(courseUpdateRequest.getName());
 
         courseRepository.save(course);
@@ -66,13 +83,31 @@ public class CourseService {
 
     private CourseDTO courseToCourseDTO(Course course) {
         return CourseDTO.builder()
-                .hash_id(course.getHash_id())
+                .hashId(course.getHashId())
                 .id(course.getId())
-                .subjects(course.getSubjects())
                 .overtime(course.getOvertime())
                 .name(course.getName())
-                .statusCurriculum(course.getStatusCurriculum())
                 .build();
     }
 
+    public List<Course> findAllByIdIn(List<Long> coursesIds) {
+        return courseRepository.findAllByIdIn(coursesIds);
+    }
+
+    public List<CourseDTO> findAllByUniversityHashId(String univesityHashId) {
+        University university = universityService.findByHashId(univesityHashId);
+        List<Course> courses = courseRepository.findAllByUniversity(university);
+
+        return courses.stream()
+                .map(course ->
+                        courseToCourseDTO(course)
+                )
+                .collect(Collectors.toList());
+
+    }
+
+    public Course findByHashId(String hashId) {
+        return courseRepository.findByHashId(hashId)
+                .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado"));
+    }
 }

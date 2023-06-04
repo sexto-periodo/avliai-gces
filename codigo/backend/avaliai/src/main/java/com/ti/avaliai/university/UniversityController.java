@@ -1,23 +1,25 @@
 package com.ti.avaliai.university;
 
-import java.util.List;
-
-
 import com.ti.avaliai.global.domain.BasicController;
-import com.ti.avaliai.global.response.BaseSucessResponse;
-import com.ti.avaliai.global.response.NoPayloadSuccessResponse201;
+import com.ti.avaliai.global.response.success.BaseSucessResponse;
+import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
 import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
 import com.ti.avaliai.university.dto.UniversityDTO;
+import com.ti.avaliai.university.dto.UniversityUpdateRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/university")
+@Tag(name = "University - Endpoints universidades")
 public class UniversityController extends BasicController {
 
     @Autowired
@@ -27,7 +29,7 @@ public class UniversityController extends BasicController {
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
     public ResponseEntity<BaseSucessResponse<List<UniversityDTO>>> getUniversity() {
-        List<UniversityDTO> universitiesResponse = universitiesService.getUniversities();
+        List<UniversityDTO> universitiesResponse = universityService.getUniversities();
         return ok(universitiesResponse);
     }
 
@@ -41,11 +43,11 @@ public class UniversityController extends BasicController {
     }
 
 
-    @Operation(method = "GET", summary = "Busca uma Universidade pelo id", description = "Busca uma Universidade pelo id.")
+    @Operation(method = "GET", summary = "Busca uma Universidade pelo HashId", description = "Busca uma Universidade pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
-    @GetMapping(path = "{id}")
-    public ResponseEntity<UniversityDTO> findOneById(@PathVariable("id") long id) {
-        UniversityDTO response = universityService.findOneById(id);
+    @GetMapping(path = "{hashId}")
+    public ResponseEntity<UniversityDTO> findOneByHashId(@PathVariable("hashId") String hashId) {
+        UniversityDTO response = universityService.findOneByHashId(hashId);
         return ok(response);
     }
 
@@ -60,7 +62,7 @@ public class UniversityController extends BasicController {
     @Operation(method = "PUT", summary = "Atualiza uma Universidade", description = "Atualiza uma Universidade.")
     @ApiResponse(responseCode = "200", description = "OK")
     @PutMapping
-    public ResponseEntity<BaseSucessResponse<UniversityDTO>> updateUniversity( @RequestBody UniversityDTO universityUpdateRequest ) {
+    public ResponseEntity<BaseSucessResponse<UniversityDTO>> updateUniversity(@RequestBody UniversityUpdateRequestDTO universityUpdateRequest ) {
 
         UniversityDTO response = universityService.update(universityUpdateRequest);
         return ok(response);

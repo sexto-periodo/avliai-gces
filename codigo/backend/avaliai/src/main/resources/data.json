@@ -1,0 +1,806 @@
+
+[
+  {
+    "_class": "com.ti.avaliai.university.University",
+    "@id": 1,
+    "hashId": "543b45c583bfff6c30e44a751103a24f",
+    "name": "PUC Minas",
+    "cnpj": "17.178.195/0001-67",
+    "courses": [
+      {
+        "id":1
+      }
+    ],
+    "isDeleted": false
+  },
+  {
+    "_class": "com.ti.avaliai.university.University",
+    "@id": 2,
+    "hashId": "e6379fe087f9853f4c55a6bcb3f22093",
+    "name": "AvaliAi University",
+    "cnpj": "12.345.678/0001-91",
+    "courses": [{
+      "id":2
+    }],
+    "isDeleted": false
+  },
+  {
+    "_class": "com.ti.avaliai.course.Course",
+    "@id": 1,
+    "hashId": "eb5ed7359d0bc0df70e6b7abf8584c5e",
+    "name": "Engenharia de Diagramas",
+    "overtime": 10,
+    "subjects": [
+      { "id": 1 },
+      { "id": 2 },
+      { "id": 3 },
+      { "id": 4 },
+      { "id": 5 },
+      { "id": 6 },
+      { "id": 7 },
+      { "id": 8 }
+    ],
+    "statusCurriculum": true,
+    "isDeleted": false,
+    "university":{
+      "id": 1
+    }
+  },
+  {
+    "_class": "com.ti.avaliai.course.Course",
+    "@id": 2,
+    "hashId": "1f061de68a7a0da8378fd30974dd1a98",
+    "name": "Engenharia de Software",
+    "overtime": 10,
+    "subjects": [
+      { "id": 9 },
+      { "id": 10 },
+      { "id": 11 },
+      { "id": 12 },
+      { "id": 13 },
+      { "id": 14 },
+      { "id": 15 },
+      { "id": 16 },
+      { "id": 17 },
+      { "id": 18 },
+      { "id": 19 },
+      { "id": 20 },
+      { "id": 21 },
+      { "id": 22 },
+      { "id": 23 },
+      { "id": 24 },
+      { "id": 25 },
+      { "id": 26 },
+      { "id": 27 },
+      { "id": 28 },
+      { "id": 29 },
+      { "id": 30 },
+      { "id": 31 },
+      { "id": 32 },
+      { "id": 33 },
+      { "id": 34 },
+      { "id": 35 },
+      { "id": 36 },
+      { "id": 37 },
+      { "id": 38 },
+      { "id": 39 },
+      { "id": 40 },
+      { "id": 41 },
+      { "id": 42 },
+      { "id": 43 },
+      { "id": 44 },
+      { "id": 45 },
+      { "id": 46 },
+      { "id": 47 }
+    ],
+    "statusCurriculum": true,
+    "isDeleted": false,
+    "university": {
+      "id": 2
+    }
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 1,
+    "hashId": "46b4a35d3d2b2b46b22260317dfebabb",
+    "name": "Algoritmos e Estruturas de Dados I",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 2,
+    "hashId": "bbf5f7f3f3cbceb99ab38c29e0e4a6f7",
+    "name": "Algoritmos e Estruturas de Dados II",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 3,
+    "hashId": "07d1914ac9d8f0b2a1099f124d92c54e",
+    "name": "Fundamentos de Engenharia de Software",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 4,
+    "hashId": "f25e46b2ebe1b297f658df2a4f5ca63c",
+    "name": "Desenvolvimento de Interfaces Web",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 5,
+    "hashId": "a0e4a3da1e3bfbf69910059f4e17d8d9",
+    "name": "Trabalho Interdisciplinar V",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 6,
+    "hashId": "ff4b5a68598b3eb2b86fbbe9a574c211",
+    "name": "Banco de Dados",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 7,
+    "hashId": "54b5711e7b6e876c3b9828bfe04d5e5b",
+    "name": "Projeto de Software",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 8,
+    "hashId": "1a3c23a7e014c3aee8814a108c4eb2e9",
+    "name": "Engenharia de Requisitos",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 1
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 9,
+    "hashId": "85a7b3f51645f54d0428e9ca63dbca0d",
+    "name": "Programação Modular",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 9,
+    "hashId": "d8da0c383033c9de51017aef7bfe520d",
+    "name": "Programação Modular",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 10,
+    "hashId": "d3d9446802a44259755d38e6d163e820",
+    "name": "Laboratório de Programação Modular",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 11,
+    "hashId": "6512bd43d9caa6e02c990b0a82652dca",
+    "name": "Laboratório de Desenvolvimento de Software",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 12,
+    "hashId": "2ef7bde608ce5404e97d5f042f95f89f",
+    "name": "Testes de Software",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 13,
+    "hashId": "89f595c8f59ac6f6c5e058f1e3aef740",
+    "name": "Arquitetura de Software",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 14,
+    "hashId": "ae51f98c55f6f9f00670e71b14ff51b5",
+    "name": "Modelagem de Processos de Negócios",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 15,
+    "hashId": "5c22c64c5c1a55b125cb8723e5f2fdcb",
+    "name": "Cálculo I",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 16,
+    "hashId": "840f122c4f99f0eac12c6a5d564d24ce",
+    "name": "Cálculo II",
+    "imageUrl": "https://static.wikia.nocookie.net/demi-lovato/images/4/43/Fall_out_boy.jpg/revision/latest?cb=20151016175854",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla",
+    "longDescription": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium lorem vitae libero vulputate, sed gravida arcu eleifend. Phasellus euismod tristique malesuada. Vestibulum quis lacus vitae ligula consectetur fringilla. Nullam suscipit elit at enim tempus, sit amet volutpat tortor maximus. Mauris non lacinia nulla. Donec consequat ligula eu aliquet vestibulum. Fusce suscipit, mi id blandit consectetur, erat velit bibendum ante, vitae interdum quam neque vel nunc. Quisque ac nunc vitae nisi pellentesque pretium. Nulla facilisi. In ut metus vel lectus tristique feugiat at eu lectus. Ut consequat condimentum justo, a consectetur nunc. In bibendum consectetur enim at egestas. Sed tristique sagittis mauris, a rhoncus ex lacinia vel. Nulla facilisi. Sed facilisis iaculis ante sed ultrices. Integer ut justo ut elit vestibulum cursus. Fusce sed eros ac risus fermentum vulputate. Vivamus mollis massa in fermentum lobortis. Cras aliquam felis a magna pulvinar, nec aliquet arcu iaculis. Morbi cursus est in orci fermentum, sit amet pulvinar diam interdum.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 17,
+    "hashId": "204c78e2767973d6812b5290921701a8",
+    "name": "Cultura Religiosa: Fenômeno Religioso",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Cultura Religiosa é uma área de estudo que se dedica a compreender e analisar o fenômeno religioso em suas diversas manifestações ao redor do mundo. ",
+    "longDescription": " A disciplina de Cultura Religiosa é uma área de estudo que se dedica a compreender e analisar o fenômeno religioso em suas diversas manifestações ao redor do mundo. O fenômeno religioso é uma dimensão essencial da experiência humana, presente desde os primórdios da história da humanidade, e continua a desempenhar um papel significativo nas sociedades contemporâneas. O estudo da Cultura Religiosa abrange uma ampla gama de tópicos, incluindo crenças, práticas, rituais, mitos, símbolos, ética, valores e instituições religiosas. A disciplina busca explorar as diferentes religiões existentes, como o Cristianismo, o Islamismo, o Hinduísmo, o Budismo, o Judaísmo, entre muitas outras, bem como suas variantes e ramificações regionais.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 18,
+    "hashId": "6122fae0889de17ddec71cc3ac7f3e62",
+    "name": "Introdução à pesquisa em informática",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": " A disciplina de Introdução à Pesquisa em Informática é uma área de estudo que visa fornecer aos estudantes uma compreensão sólida dos princípios, metodologias e técnicas envolvidas na condução de pesquisas científicas no campo da Informática ",
+    "longDescription": " A disciplina de Introdução à Pesquisa em Informática é uma área de estudo que visa fornecer aos estudantes uma compreensão sólida dos princípios, metodologias e técnicas envolvidas na condução de pesquisas científicas no campo da Informática. Ela serve como uma introdução aos fundamentos da pesquisa, preparando os alunos para se envolverem em estudos mais avançados e aplicarem esses conhecimentos em suas carreiras acadêmicas ou profissionais. A disciplina aborda uma variedade de tópicos essenciais para a pesquisa em Informática, como a formulação de perguntas de pesquisa relevantes, o levantamento e revisão da literatura existente, a definição de objetivos claros de pesquisa, a escolha de métodos adequados para coleta e análise de dados, a elaboração de hipóteses e a avaliação de resultados. Uma parte fundamental do curso é o estudo das diferentes abordagens de pesquisa em Informática, como pesquisa experimental, pesquisa teórica, pesquisa de campo, pesquisa de desenvolvimento, entre outras. Os alunos aprendem a identificar a abordagem mais adequada para responder às suas perguntas de pesquisa e a projetar experimentos, protótipos ou modelos para testar suas hipóteses.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 19,
+    "hashId": "e53e4c8c8b308ca8d51499906006350b",
+    "name": "Sistemas Operacionais",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": " A disciplina de Sistemas Operacionais é uma área de estudo fundamental na área da Ciência da Computação e Engenharia de Computação. ",
+    "longDescription": " A disciplina de Sistemas Operacionais é uma área de estudo fundamental na área da Ciência da Computação e Engenharia de Computação. Ela se concentra no estudo dos princípios, conceitos e funcionalidades dos sistemas operacionais, que são softwares responsáveis por gerenciar os recursos e fornecer serviços essenciais para o funcionamento de um computador. A disciplina aborda uma ampla gama de tópicos relacionados aos sistemas operacionais, incluindo gerenciamento de processos, gerenciamento de memória, sistemas de arquivos, gerenciamento de dispositivos, comunicação entre processos, escalonamento de tarefas, segurança e proteção de dados, entre outros.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 20,
+    "hashId": "284cdb1e4c3cf365a20755920b86dd65",
+    "name": "Trabalho Interdisciplinar: Aplicações para Cenários Reais",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": " A disciplina de Trabalho Interdisciplinar: Aplicações para Cenários Reais é uma abordagem inovadora de aprendizado que busca integrar conhecimentos e habilidades de diferentes disciplinas para resolver problemas complexos do mundo real. ",
+    "longDescription": " A disciplina de Trabalho Interdisciplinar: Aplicações para Cenários Reais é uma abordagem inovadora de aprendizado que busca integrar conhecimentos e habilidades de diferentes disciplinas para resolver problemas complexos do mundo real. Ela tem como objetivo principal promover a colaboração e a interação entre estudantes de diferentes áreas do conhecimento, proporcionando uma experiência de aprendizado rica e diversificada. A disciplina de Trabalho Interdisciplinar enfatiza a importância da integração de conhecimentos teóricos e práticos, combinando os conceitos e abordagens de várias disciplinas acadêmicas. Por meio de projetos e estudos de caso, os alunos são desafiados a aplicar seus conhecimentos em situações reais, enfrentando desafios complexos e multifacetados. Um dos principais elementos dessa disciplina é a formação de equipes interdisciplinares. Os estudantes são agrupados em equipes compostas por membros de diferentes áreas, como Engenharia, Administração, Design, Psicologia, entre outras. Essa diversidade de perspectivas e conhecimentos permite que os alunos abordem os problemas de forma mais abrangente, incorporando diferentes pontos de vista e habilidades complementares.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 21,
+    "hashId": "d50241f301379a0b92eafbec616a63be",
+    "name": "Interação Humano Computador",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Interação Humano-Computador (IHC) é uma área de estudo que investiga a interação entre seres humanos e sistemas computacionais, com o objetivo de projetar interfaces eficientes, intuitivas e satisfatórias para os usuários.  ",
+    "longDescription": "A disciplina de Interação Humano-Computador (IHC) é uma área de estudo que investiga a interação entre seres humanos e sistemas computacionais, com o objetivo de projetar interfaces eficientes, intuitivas e satisfatórias para os usuários. Essa disciplina considera os aspectos cognitivos, emocionais e sociais da interação, buscando melhorar a usabilidade, a experiência do usuário e a eficácia dos sistemas computacionais. A IHC abrange uma variedade de tópicos e abordagens, incluindo design centrado no usuário, ergonomia, interação multimodal, acessibilidade, prototipação, avaliação de interfaces, entre outros. Ela se baseia em conhecimentos de disciplinas como Psicologia, Design, Ciência da Computação e Engenharia, a fim de compreender as necessidades, expectativas e comportamentos dos usuários e aplicar esse conhecimento no projeto de interfaces efetivas.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 22,
+    "hashId": "a11b3316163d0f9e81b9558ce48c4eb3",
+    "name": "Redes de Computadores",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Redes de Computadores é uma área de estudo que abrange os fundamentos, os princípios e as tecnologias relacionadas à comunicação e interconexão de computadores em escala global.",
+    "longDescription": "A disciplina de Redes de Computadores é uma área de estudo que abrange os fundamentos, os princípios e as tecnologias relacionadas à comunicação e interconexão de computadores em escala global. Ela visa fornecer aos estudantes o conhecimento necessário para projetar, implementar e gerenciar redes de computadores eficientes e confiáveis. A disciplina aborda uma ampla gama de tópicos relacionados às redes de computadores, incluindo modelos de referência, protocolos de comunicação, topologias de rede, arquiteturas de rede, segurança de rede, serviços de rede, administração de redes e tecnologias emergentes.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 23,
+    "hashId": "aefad1fc6a3ec1d925f7ea41ea5c9db6",
+    "name": "Trabalho Interdisciplinar: Aplicações para Sustentabilidade",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Trabalho Interdisciplinar: Aplicações para Sustentabilidade é uma área de estudo que busca integrar conhecimentos e habilidades de diferentes disciplinas para abordar desafios relacionados à sustentabilidade ambiental, social e econômica.",
+    "longDescription": "A disciplina de Trabalho Interdisciplinar: Aplicações para Sustentabilidade é uma área de estudo que busca integrar conhecimentos e habilidades de diferentes disciplinas para abordar desafios relacionados à sustentabilidade ambiental, social e econômica. Essa disciplina tem como objetivo principal promover a conscientização e a prática de ações sustentáveis, considerando o equilíbrio entre as necessidades presentes e futuras da sociedade e do meio ambiente. A sustentabilidade é um conceito que envolve a busca por soluções que atendam às necessidades atuais sem comprometer a capacidade das gerações futuras de atenderem às suas próprias necessidades. A disciplina de Trabalho Interdisciplinar: Aplicações para Sustentabilidade explora esse conceito e a aplicação prática de princípios sustentáveis em diferentes contextos.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 24,
+    "hashId": "130dc4b2ce02d133505afd716294bd12",
+    "name": "Desenvolvimento de Aplicações Móveis e Distribuídas",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Desenvolvimento de Aplicações Móveis e Distribuídas é voltada para o estudo e prática do desenvolvimento de aplicativos para dispositivos móveis e sistemas distribuídos.",
+    "longDescription": "A disciplina de Desenvolvimento de Aplicações Móveis e Distribuídas é voltada para o estudo e prática do desenvolvimento de aplicativos para dispositivos móveis e sistemas distribuídos. Essa disciplina abrange conceitos, tecnologias e práticas relacionadas à criação de aplicativos que operam em ambientes móveis e se comunicam com outros dispositivos e serviços. O desenvolvimento de aplicações móveis envolve a criação de softwares que são executados em dispositivos móveis, como smartphones e tablets. Os alunos aprendem a utilizar frameworks e plataformas populares, como Android (para dispositivos Android) e iOS (para dispositivos Apple), para desenvolver aplicativos nativos que atendam às necessidades dos usuários móveis.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 25,
+    "hashId": "5bcfbba3ae863e9aac48486add31246c",
+    "name": "Estatística e Probabilidade",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Estatística e Probabilidade é uma área de estudo que lida com a coleta, organização, análise e interpretação de dados, bem como com o estudo das probabilidades e eventos aleatórios.",
+    "longDescription": "A disciplina de Estatística e Probabilidade é uma área de estudo que lida com a coleta, organização, análise e interpretação de dados, bem como com o estudo das probabilidades e eventos aleatórios. Essa disciplina desempenha um papel fundamental na tomada de decisões baseadas em dados e na compreensão de fenômenos incertos. A estatística envolve a coleta e a organização de dados, seguidas de técnicas de análise para extrair informações relevantes. Os alunos aprendem a aplicar métodos estatísticos para resumir, descrever e visualizar conjuntos de dados, como média, mediana, moda, desvio padrão, gráficos e histogramas. Eles também aprendem sobre amostragem, inferência estatística e estimativa de parâmetros populacionais com base em amostras.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 26,
+    "hashId": "70605479a063d5415d368a5586214a9a",
+    "name": "Fundamentos de Projeto e Análise de Algoritmos",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Fundamentos de Projeto e Análise de Algoritmos é uma área de estudo que se concentra na análise teórica e prática dos algoritmos, com o objetivo de desenvolver habilidades de projeto eficiente e análise rigorosa de algoritmos para resolver problemas computacionais.",
+    "longDescription": "A disciplina de Fundamentos de Projeto e Análise de Algoritmos é uma área de estudo que se concentra na análise teórica e prática dos algoritmos, com o objetivo de desenvolver habilidades de projeto eficiente e análise rigorosa de algoritmos para resolver problemas computacionais. Os algoritmos desempenham um papel fundamental na resolução de problemas em ciência da computação e em diversas áreas da tecnologia. Eles são conjuntos de instruções bem definidas que descrevem um processo passo a passo para resolver um determinado problema. A disciplina aborda os princípios básicos necessários para projetar algoritmos eficientes e analisar sua complexidade.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 27,
+    "hashId": "28accaca32ee652537359b76e9bd3d4e",
+    "name": "Gerência de Projetos",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Gerência de Projetos aborda os conceitos, princípios e técnicas necessários para o planejamento, execução e controle eficazes de projetos.",
+    "longDescription": "A disciplina de Gerência de Projetos aborda os conceitos, princípios e técnicas necessários para o planejamento, execução e controle eficazes de projetos. Ela se concentra nas habilidades e práticas necessárias para liderar equipes, gerenciar recursos e alcançar os objetivos estabelecidos dentro de um contexto de projeto. A gerência de projetos desempenha um papel fundamental em diversos setores, como tecnologia da informação, engenharia, construção, negócios e muitos outros, onde projetos são desenvolvidos para alcançar metas específicas dentro de prazos e recursos determinados.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 28,
+    "hashId": "2dceb485c10a7871108c9180c3220c58",
+    "name": "Laboratório de Desenvolvimento de Aplicações Móveis e Distribuídas",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Laboratório de Desenvolvimento de Aplicações Móveis e Distribuídas tem como objetivo fornecer aos alunos as habilidades práticas necessárias para projetar, desenvolver e testar aplicações móveis e distribuídas.",
+    "longDescription": "A disciplina de Laboratório de Desenvolvimento de Aplicações Móveis e Distribuídas tem como objetivo fornecer aos alunos as habilidades práticas necessárias para projetar, desenvolver e testar aplicações móveis e distribuídas. Nessa disciplina, os alunos têm a oportunidade de trabalhar em projetos práticos, aplicando os conceitos e técnicas aprendidas em sala de aula para criar soluções funcionais e inovadoras. Durante o curso, os alunos são introduzidos às principais plataformas e tecnologias de desenvolvimento de aplicações móveis, como Android e iOS. Eles aprendem a utilizar as ferramentas de desenvolvimento apropriadas, como ambientes de desenvolvimento integrado (IDEs), kits de desenvolvimento de software (SDKs) e emuladores, para criar aplicações que sejam executadas em dispositivos móveis.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 29,
+    "hashId": "17da1ae431f965d839ec8eb93087fb2b",
+    "name": "Trabalho interdisciplinar: Apliações Móveis e Distribuídas",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Trabalho Interdisciplinar: Aplicações Móveis e Distribuídas é uma disciplina que busca integrar conhecimentos e habilidades de diferentes áreas para desenvolver soluções inovadoras e funcionais no contexto de aplicações móveis e distribuídas.",
+    "longDescription": "A disciplina de Trabalho Interdisciplinar: Aplicações Móveis e Distribuídas é uma disciplina que busca integrar conhecimentos e habilidades de diferentes áreas para desenvolver soluções inovadoras e funcionais no contexto de aplicações móveis e distribuídas. Nessa disciplina, os alunos têm a oportunidade de trabalhar em equipes multidisciplinares, onde são incentivados a combinar conhecimentos de programação, design de interface, gerenciamento de projetos e outras disciplinas relevantes para criar aplicações móveis e distribuídas que atendam a necessidades específicas.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 30,
+    "hashId": "1de08bf2f56c19b3cc586b3879e32145",
+    "name": "Engenharia Econômica para Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Engenharia Econômica para Software tem como objetivo fornecer aos alunos os conhecimentos e habilidades necessários para avaliar e tomar decisões econômicas relacionadas a projetos de desenvolvimento de software.",
+    "longDescription": "A disciplina de Engenharia Econômica para Software tem como objetivo fornecer aos alunos os conhecimentos e habilidades necessários para avaliar e tomar decisões econômicas relacionadas a projetos de desenvolvimento de software. Ela se baseia nos princípios da engenharia econômica, adaptados especificamente para o contexto da indústria de software. Durante o curso, os alunos são apresentados aos conceitos fundamentais da engenharia econômica, como valor do dinheiro no tempo, taxa de desconto, análise de custo-benefício e avaliação de investimentos. ",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  }, 
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 31,
+    "hashId": "eeb806bafce1f696a1daa897736304a6",
+    "name": "Gerência de Configuração e Evolução de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Gerência de Configuração e Evolução de Software tem como objetivo fornecer aos alunos os conhecimentos e habilidades necessários para gerenciar efetivamente a configuração e evolução do software ao longo do seu ciclo de vida.",
+    "longDescription": "A disciplina de Gerência de Configuração e Evolução de Software tem como objetivo fornecer aos alunos os conhecimentos e habilidades necessários para gerenciar efetivamente a configuração e evolução do software ao longo do seu ciclo de vida. Ela aborda os processos, técnicas e ferramentas utilizados para controlar e coordenar as mudanças realizadas em um sistema de software, garantindo a integridade e a qualidade do produto final. ",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 32,
+    "hashId": "46e920bd267fe619cde1c06b6b361248",
+    "name": "Laboratório de Experimentação de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "Laboratório de Experimentação de Software é uma disciplina que faz parte dos cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins.",
+    "longDescription": " Laboratório de Experimentação de Software é uma disciplina que faz parte dos cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins. Essa disciplina tem como objetivo fornecer aos estudantes uma experiência prática na execução de experimentos relacionados ao desenvolvimento de software. O Laboratório de Experimentação de Software visa fornecer uma abordagem científica para a análise e avaliação de técnicas, metodologias, ferramentas e práticas utilizadas no desenvolvimento de software.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 33,
+    "hashId": "3d7cc4972edcf0486789f90e2a0bd715",
+    "name": "Medição e Experimentação em Engenharia de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Medição e Experimentação em Engenharia de Software é uma área de estudo que se concentra na aplicação de técnicas quantitativas e qualitativas para coletar dados, analisar e tirar conclusões sobre o desenvolvimento de software",
+    "longDescription": " A disciplina de Medição e Experimentação em Engenharia de Software é uma área de estudo que se concentra na aplicação de técnicas quantitativas e qualitativas para coletar dados, analisar e tirar conclusões sobre o desenvolvimento de software. Ela tem como objetivo principal fornecer aos estudantes ferramentas e métodos para avaliar e aprimorar a qualidade dos processos e produtos de software. A disciplina de Medição e Experimentação em Engenharia de Software abrange uma variedade de tópicos relacionados à medição e experimentação. Os estudantes aprendem a definir métricas adequadas para avaliar diferentes aspectos do desenvolvimento de software, como desempenho, qualidade, manutenibilidade, usabilidade, entre outros.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 34,
+    "hashId": "10eaba2d49a7040c7fc0154a611dd86e",
+    "name": "Trabalho Interdisciplinar: Pesquisa em Engenharia de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Trabalho Interdisciplinar: Pesquisa em Engenharia de Software é uma disciplina que visa proporcionar aos estudantes a oportunidade de desenvolver habilidades de pesquisa e explorar tópicos avançados em engenharia de software",
+    "longDescription": " A disciplina de Trabalho Interdisciplinar: Pesquisa em Engenharia de Software é uma disciplina que visa proporcionar aos estudantes a oportunidade de desenvolver habilidades de pesquisa e explorar tópicos avançados em engenharia de software. Essa disciplina geralmente é oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas relacionadas. O objetivo principal da disciplina de Trabalho Interdisciplinar: Pesquisa em Engenharia de Software é incentivar os estudantes a se envolverem em atividades de pesquisa e investigação na área de engenharia de software.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 35,
+    "hashId": "0ea9eaf7c09fee7677a07ea7202ebb49",
+    "name": "Computadores e Sociedade",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Computadores e Sociedade é uma área de estudo que explora a interação entre a tecnologia da computação e os aspectos sociais, éticos, legais e políticos da sociedade",
+    "longDescription": "A disciplina de Computadores e Sociedade é uma área de estudo que explora a interação entre a tecnologia da computação e os aspectos sociais, éticos, legais e políticos da sociedade. Essa disciplina é comumente oferecida em cursos de ciência da computação, engenharia de software, tecnologia da informação e áreas relacionadas. O objetivo principal da disciplina de Computadores e Sociedade é fornecer aos estudantes uma compreensão abrangente dos impactos da tecnologia da computação na sociedade. Ela aborda questões fundamentais relacionadas ao uso e desenvolvimento de computadores, levando em consideração fatores sociais, culturais, econômicos e políticos.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 36,
+    "hashId": "6db34a859f01e654b2c9897c76ef0877",
+    "name": "Engenharia de Processos e Qualidade de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Engenharia de Processos e Qualidade de Software é uma área de estudo que se concentra na definição, implementação, melhoria e garantia da qualidade dos processos de desenvolvimento de software.",
+    "longDescription": "A disciplina de Engenharia de Processos e Qualidade de Software é uma área de estudo que se concentra na definição, implementação, melhoria e garantia da qualidade dos processos de desenvolvimento de software. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em engenharia de software, ciência da computação e áreas relacionadas. O objetivo principal da disciplina de Engenharia de Processos e Qualidade de Software é fornecer aos estudantes os conhecimentos e as habilidades necessárias para desenvolver e gerenciar processos eficientes e de alta qualidade no desenvolvimento de software.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 37,
+    "hashId": "e8a01d03688d99448f2dfc9bba4c2f04",
+    "name": "Filosofia: Antropologia e Ética",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Filosofia: Antropologia e Ética é uma área de estudo que explora questões fundamentais sobre a natureza humana, a ética e os valores morais. Essa disciplina é comumente oferecida em cursos de filosofia, ciências humanas e áreas relacionadas.",
+    "longDescription": "A disciplina de Filosofia: Antropologia e Ética é uma área de estudo que explora questões fundamentais sobre a natureza humana, a ética e os valores morais. Essa disciplina é comumente oferecida em cursos de filosofia, ciências humanas e áreas relacionadas. O objetivo principal da disciplina de Filosofia: Antropologia e Ética é fornecer aos estudantes uma compreensão profunda das questões filosóficas relacionadas à natureza humana, à conduta ética e aos valores morais. A disciplina abrange duas áreas principais: antropologia filosófica, que estuda a natureza e a essência do ser humano, e ética, que investiga os princípios morais e a tomada de decisões éticas.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 38,
+    "hashId": "9951cb75d051954192398d726b90e97a",
+    "name": "Gestão da Produção de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Gestão da Produção de Software é uma área de estudo que se concentra na aplicação de princípios de gestão e técnicas de organização na produção de software. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em engenharia de software, ciência da computação e áreas relacionadas.",
+    "longDescription": "A disciplina de Gestão da Produção de Software é uma área de estudo que se concentra na aplicação de princípios de gestão e técnicas de organização na produção de software. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em engenharia de software, ciência da computação e áreas relacionadas. O objetivo principal da disciplina de Gestão da Produção de Software é fornecer aos estudantes os conhecimentos e habilidades necessárias para planejar, organizar, controlar e otimizar a produção de software em um ambiente de projeto. Isso envolve a compreensão de princípios de gestão, estratégias de planejamento, técnicas de controle e melhoria contínua dos processos de desenvolvimento de software.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 39,
+    "hashId": "f99e9dfd42750cb7fb4329e809047903",
+    "name": "Tecnologias da Informação e do Conhecimento",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Tecnologias da Informação e do Conhecimento é uma área de estudo que abrange o uso, aplicação e gerenciamento de tecnologias relacionadas à informação e ao conhecimento.",
+    "longDescription": "A disciplina de Tecnologias da Informação e do Conhecimento é uma área de estudo que abrange o uso, aplicação e gerenciamento de tecnologias relacionadas à informação e ao conhecimento. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em áreas como ciência da computação, engenharia de software, sistemas de informação e áreas relacionadas. O objetivo principal da disciplina de Tecnologias da Informação e do Conhecimento é fornecer aos estudantes uma compreensão abrangente das diferentes tecnologias disponíveis para a coleta, armazenamento, processamento, análise e distribuição de informações e conhecimento.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 40,
+    "hashId": "63e09040e66b1f51fd0a48434030146b",
+    "name": "Tópicos em Computação I",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Tópicos em Computação é uma área de estudo que abrange assuntos avançados e emergentes relacionados à ciência da computação e às tecnologias da informação",
+    "longDescription": "A disciplina de Tópicos em Computação é uma área de estudo que abrange assuntos avançados e emergentes relacionados à ciência da computação e às tecnologias da informação. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins. O objetivo principal da disciplina de Tópicos em Computação é fornecer aos estudantes a oportunidade de explorar e aprofundar temas específicos e atualizados dentro da área de computação. Esses tópicos podem variar amplamente, refletindo os avanços rápidos e as tendências emergentes na área da tecnologia.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 41,
+    "hashId": "3376d86c9731fa980766e7ada3d5badb",
+    "name": "Tópicos em Computação II",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Tópicos em Computação é uma área de estudo que abrange assuntos avançados e emergentes relacionados à ciência da computação e às tecnologias da informação",
+    "longDescription": "A disciplina de Tópicos em Computação é uma área de estudo que abrange assuntos avançados e emergentes relacionados à ciência da computação e às tecnologias da informação. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins. O objetivo principal da disciplina de Tópicos em Computação é fornecer aos estudantes a oportunidade de explorar e aprofundar temas específicos e atualizados dentro da área de computação. Esses tópicos podem variar amplamente, refletindo os avanços rápidos e as tendências emergentes na área da tecnologia.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 42,
+    "hashId": "e80fb1999ba5fc673c258852615fe90b",
+    "name": "Trabalho de Conclusão de Curso I",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Trabalho de Conclusão de Curso 1, também conhecida como TCC 1, é uma etapa fundamental na trajetória acadêmica de estudantes de graduação.",
+    "longDescription": "A disciplina de Trabalho de Conclusão de Curso 1, também conhecida como TCC 1, é uma etapa fundamental na trajetória acadêmica de estudantes de graduação. Essa disciplina é comumente oferecida nos últimos períodos dos cursos de graduação e tem como objetivo orientar os estudantes na elaboração e desenvolvimento de um projeto de pesquisa ou trabalho prático que culminará na conclusão do curso. O principal propósito da disciplina de TCC 1 é permitir que os estudantes apliquem e aprofundem os conhecimentos adquiridos ao longo do curso, desenvolvendo um trabalho de cunho científico, tecnológico ou prático que explore uma questão relevante dentro da área de estudo. ",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 43,
+    "hashId": "4e0307a4610cfb073ed5e914b384020b",
+    "name": "Modelagem e Avaliação de Desempenho",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Modelagem e Avaliação de Desempenho é uma área de estudo que se concentra em técnicas e métodos para a modelagem, análise e avaliação do desempenho de sistemas computacionais.",
+    "longDescription": "A disciplina de Modelagem e Avaliação de Desempenho é uma área de estudo que se concentra em técnicas e métodos para a modelagem, análise e avaliação do desempenho de sistemas computacionais. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins. O objetivo principal da disciplina de Modelagem e Avaliação de Desempenho é fornecer aos estudantes os conhecimentos e habilidades necessários para compreender, quantificar e otimizar o desempenho de sistemas computacionais, como redes de computadores, sistemas distribuídos, sistemas de bancos de dados, sistemas operacionais e aplicações web.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 44,
+    "hashId": "d8b9e6f0ff68d633596d23cf5316584e",
+    "name": "Segurança e Auditoria de Sistemas",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Segurança e Auditoria de Sistemas é uma área de estudo que abrange técnicas, metodologias e práticas relacionadas à proteção, detecção e resposta a ameaças de segurança em sistemas de informação.",
+    "longDescription": "A disciplina de Segurança e Auditoria de Sistemas é uma área de estudo que abrange técnicas, metodologias e práticas relacionadas à proteção, detecção e resposta a ameaças de segurança em sistemas de informação. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software, sistemas de informação e áreas afins. O objetivo principal da disciplina de Segurança e Auditoria de Sistemas é fornecer aos estudantes uma compreensão abrangente dos princípios de segurança da informação, riscos de segurança, técnicas de proteção e ferramentas de auditoria.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 45,
+    "hashId": "07e5374cc24d1d46376c396e9c1e2123",
+    "name": "Tópicos em Engenharia de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Tópicos em Engenharia de Software é uma área de estudo que aborda temas avançados e emergentes relacionados à Engenharia de Software. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins.",
+    "longDescription": "A disciplina de Tópicos em Engenharia de Software é uma área de estudo que aborda temas avançados e emergentes relacionados à Engenharia de Software. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins. O objetivo principal da disciplina de Tópicos em Engenharia de Software é fornecer aos estudantes a oportunidade de explorar e aprofundar tópicos específicos dentro do campo da Engenharia de Software que estão além do escopo das disciplinas tradicionais do currículo.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 46,
+    "hashId": "08f28c273a33af221ac42770ea2aa1c2",
+    "name": "Tópicos em Sistemas de Software",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Tópicos em Sistemas de Software é uma área de estudo que aborda temas avançados e emergentes relacionados ao desenvolvimento, design, arquitetura e gerenciamento de sistemas de software. ",
+    "longDescription": "A disciplina de Tópicos em Sistemas de Software é uma área de estudo que aborda temas avançados e emergentes relacionados ao desenvolvimento, design, arquitetura e gerenciamento de sistemas de software. Essa disciplina é comumente oferecida em cursos de graduação e pós-graduação em ciência da computação, engenharia de software e áreas afins. O objetivo principal da disciplina de Tópicos em Sistemas de Software é fornecer aos estudantes a oportunidade de explorar e aprofundar tópicos específicos dentro do campo dos sistemas de software que estão além do escopo das disciplinas tradicionais do currículo.",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  },
+
+  {
+    "_class": "com.ti.avaliai.subject.Subject",
+    "id": 47,
+    "hashId": "2fb9b318cb97a5926a75f1b23560ba2a",
+    "name": "Trabalho de Conclusão de Curso II",
+    "picUrl": "https://source.unsplash.com/random",
+    "campus": "Praça da Liberdade",
+    "shortDescription": "A disciplina de Trabalho de Conclusão de Curso 2, também conhecida como TCC 2, é uma etapa fundamental na trajetória acadêmica de estudantes de graduação.",
+    "longDescription": "A disciplina de Trabalho de Conclusão de Curso 2, também conhecida como TCC 2, é uma etapa fundamental na trajetória acadêmica de estudantes de graduação. Essa disciplina é comumente oferecida nos últimos períodos dos cursos de graduação e tem como objetivo orientar os estudantes na elaboração e desenvolvimento de um projeto de pesquisa ou trabalho prático que culminará na conclusão do curso. O principal propósito da disciplina de TCC 2 é permitir que os estudantes apliquem e aprofundem os conhecimentos adquiridos ao longo do curso, desenvolvendo um trabalho de cunho científico, tecnológico ou prático que explore uma questão relevante dentro da área de estudo. ",
+    "course": {
+      "id": 2
+    },
+    "reviews":[]
+  }
+
+]
