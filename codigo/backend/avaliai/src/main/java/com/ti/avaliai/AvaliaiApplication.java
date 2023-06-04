@@ -25,7 +25,10 @@ public class AvaliaiApplication {
 	@Bean
 	public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
 		Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-		factory.setResources(new Resource[]{new ClassPathResource("data.json")});
+		factory.setResources(new Resource[]{
+				new ClassPathResource("data.json"),
+				new ClassPathResource("academic_mail_domain.json")
+		});
 		return factory;
 	}
 
@@ -48,7 +51,7 @@ public class AvaliaiApplication {
 			var manager = RegisterRequestDTO.builder()
 					.firstname("Admin")
 					.lastname("Admin")
-					.email("manager@mail.com")
+					.email("manager@sga.pucminas.br")
 					.password("password")
 					.role(MANAGER)
 					.universityHashId("543b45c583bfff6c30e44a751103a24f")
