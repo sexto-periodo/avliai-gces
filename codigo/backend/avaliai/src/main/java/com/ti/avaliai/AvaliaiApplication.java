@@ -43,7 +43,7 @@ public class AvaliaiApplication {
 					.email("admin@sga.pucminas.br")
 					.password("1234")
 					.universityHashId("543b45c583bfff6c30e44a751103a24f")
-					.courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+					.courseHashId("1f061de68a7a0da8378fd30974dd1a98")
 					.role(ADMIN)
 					.build();
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());
