@@ -45,7 +45,7 @@ public class SubjectController extends BasicController {
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(path = "/{hashId}")
     public ResponseEntity<SubjectDTO> findByHashId(@PathVariable("hashId") String hashId) {
-        SubjectDTO response = subjectService.findByHashId(hashId);
+        SubjectDTO response = subjectService.findByHashIdDTO(hashId);
         return ok(response);
     }
 

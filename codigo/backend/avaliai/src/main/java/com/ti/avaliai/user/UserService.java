@@ -1,11 +1,11 @@
 package com.ti.avaliai.user;
 
 import com.ti.avaliai.academicmail.AcademicMailService;
+import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
 import com.ti.avaliai.user.dto.UserDTO;
 import com.ti.avaliai.user.dto.UserDeleteRequestDTO;
 import com.ti.avaliai.user.dto.VerifyEmailRequestDTO;
 import com.ti.avaliai.user.dto.VerifyEmailResponseDTO;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +45,11 @@ public class UserService {
                 .build();
     }
 
-    public UserDTO getUser() {
+    public UserDTO getUserDTO() {
         return userToUserDTO(UserContextHolder.getUser());
+    }
+    public User getUser() {
+        return UserContextHolder.getUser();
     }
 
     private UserDTO userToUserDTO(User user) {
@@ -78,5 +81,10 @@ public class UserService {
 
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    public User findByHashId(String hashId) {
+        return userRepository.findByHashId(hashId)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário do HashId "+hashId+" não encontrado."));
     }
 }

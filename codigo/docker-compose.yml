@@ -18,6 +18,21 @@ services:
       - database_avaliai_data:/var/lib/postgresql/data
     restart: always
 
+  rabbitmq:
+    container_name: avaliai_rabbitmq
+    image: rabbitmq:management
+    networks:
+      - avaliai_net
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    volumes:
+      - rabbitmq_avaliai_vol:/var/lib/rabbitmq
+
+
   backend:
     container_name: avaliai_backend
     build:
@@ -70,6 +85,6 @@ networks:
 volumes:
   database_avaliai:
   database_avaliai_data:
-  #rabbitmq_avaliai_vol:
+  rabbitmq_avaliai_vol:
 
 
