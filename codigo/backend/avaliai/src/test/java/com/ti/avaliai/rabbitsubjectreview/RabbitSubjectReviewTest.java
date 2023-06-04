@@ -70,12 +70,6 @@ public class RabbitSubjectReviewTest {
         subjectReviewService.send(message2);
     }
 
-//    @DisplayName(value = "Teste de Sucesso - Verificar fila vazia")
-//    @Test
-//    @Order(1)
-//    void varifyExistingMessageOnQueue_Success(){
-//        assertTrue(queueStatusProcessorService.getSubjectReviewQueueSize() > 0);
-//    }
 
     @DisplayName(value = "Teste de Sucesso - Verificar o consumo e cadastro de avaliação")
     @Test
