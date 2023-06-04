@@ -27,6 +27,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+import static com.ti.avaliai.utils.HashUtils.generateHash;
+
 @Service
 public class AuthenticationService {
 
@@ -69,6 +71,7 @@ public class AuthenticationService {
         .role(request.getRole())
             .university(universityService.findByHashId(request.getUniversityHashId()))
             .course(courseService.findByHashId(request.getCourseHashId()))
+            .hashId(generateHash())
         .build();
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);

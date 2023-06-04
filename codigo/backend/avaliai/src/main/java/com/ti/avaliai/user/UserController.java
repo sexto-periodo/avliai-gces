@@ -34,7 +34,7 @@ public class UserController extends BasicController {
     @Operation(method = "GET", summary = "Retorna os dados do usuário logado.", description = "Retorna os dados do usuário logado.")
     @ApiResponse(responseCode = "200", description = "OK")
     public ResponseEntity<BaseSucessResponse<UserDTO>> getUser() {
-        return ok(this.userService.getUser());
+        return ok(this.userService.getUserDTO());
     }
 
     @GetMapping(value = "/all")

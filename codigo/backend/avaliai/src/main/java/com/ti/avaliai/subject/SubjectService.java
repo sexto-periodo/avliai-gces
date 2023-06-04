@@ -89,13 +89,20 @@ public class SubjectService {
 
     }
 
-    public SubjectDTO findByHashId(String hashId) {
+    public Subject findByHashId(String hashId) {
         Subject subject = subjectRepository.findByHashId(hashId)
                 .orElseThrow(() ->
                         new EntityNotFoundException("Não conseguimos encontrar a disciplina")
                 );
+        return subject;
+    }
+
+    public SubjectDTO findByHashIdDTO(String hashId) {
+        Subject subject = findByHashId(hashId);
         return subjectToSubjectDTO(subject);
     }
+
+
 
     private SubjectDTO subjectToSubjectDTO(Subject subject) {
         return SubjectDTO.builder()

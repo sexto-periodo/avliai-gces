@@ -57,6 +57,9 @@ public class User implements UserDetails {
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
+    @Column(name = "is_banned")
+    private boolean isBanned = false;
+
     @Column(name = "delete_date")
     private LocalDateTime deleteDate;
 
