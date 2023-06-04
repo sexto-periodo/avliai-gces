@@ -88,8 +88,11 @@ export class AuthService {
         setCookie(USER_DATA_COOKIE, JSON.stringify(user));
     }
 
-    getUserAuth() : UserAuth {
-        return JSON.parse(<string>getCookie(USER_AUTH_COOKIE)) as UserAuth
+    getUserAuth() : UserAuth | null{
+        if (hasCookie(USER_AUTH_COOKIE)) {
+            return JSON.parse(<string>getCookie(USER_AUTH_COOKIE)) as UserAuth
+        }
+        return null
     }
 
     haveAuthStateChanged() {
