@@ -2,20 +2,23 @@ package com.ti.avaliai.auth;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ti.avaliai.academicmail.AcademicMailService;
 import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
 import com.ti.avaliai.auth.dto.AuthenticationResponseDTO;
 import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import com.ti.avaliai.config.JwtService;
 import com.ti.avaliai.course.CourseService;
+import com.ti.avaliai.global.domain.exceptions.InvalidEmailException;
 import com.ti.avaliai.token.Token;
 import com.ti.avaliai.token.TokenRepository;
 import com.ti.avaliai.token.TokenType;
 import com.ti.avaliai.university.UniversityService;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserRepository;
+import com.ti.avaliai.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,18 +28,39 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService {
-  private final UserRepository repository;
-  private final TokenRepository tokenRepository;
-  private final PasswordEncoder passwordEncoder;
-  private final JwtService jwtService;
-  private final AuthenticationManager authenticationManager;
 
-  private final UniversityService universityService;
-  private final CourseService courseService;
+
+  @Autowired
+  private UserRepository repository;
+  @Autowired
+  private TokenRepository tokenRepository;
+  @Autowired
+  private PasswordEncoder passwordEncoder;
+  @Autowired
+  private JwtService jwtService;
+  @Autowired
+  private  AuthenticationManager authenticationManager;
+  @Autowired
+  private UniversityService universityService;
+  @Autowired
+  private CourseService courseService;
+  @Autowired
+  private AcademicMailService academicMailService;
+  @Autowired
+  private UserService userService;
 
   public AuthenticationResponseDTO register(RegisterRequestDTO request) {
+
+    if(!academicMailService.isValidEmail(request.getEmail())){
+      throw new InvalidEmailException("E-mail acadêmico inválido");
+    }
+
+
+    if(userService.existsByEmail(request.getEmail())){
+      throw new InvalidEmailException("E-mail já cadastrado");
+    }
+
     var user = User.builder()
         .firstname(request.getFirstname())
         .lastname(request.getLastname())
