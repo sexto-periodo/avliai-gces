@@ -8,6 +8,7 @@ import com.ti.avaliai.subject.Subject;
 import com.ti.avaliai.subject.SubjectService;
 import com.ti.avaliai.subject.dto.SubjectDTO;
 import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
+import com.ti.avaliai.subjectreview.dto.SubjectReviewByUserDTO;
 import com.ti.avaliai.subjectreview.dto.SubjectReviewDTO;
 import com.ti.avaliai.subjectreviewvote.SubjectReviewVote;
 import com.ti.avaliai.university.UniversityService;
@@ -48,11 +49,25 @@ public class SubjectReviewService {
     public List<SubjectReviewDTO> findAllBySubjectHashId(String subjectHashId) {
         SubjectDTO subjectDTO = subjectService.findByHashIdDTO(subjectHashId);
         Subject subject = subjectService.findById(subjectDTO.getId());
-        return subjectReviewRepository.findAllBySubject(subject).stream()
+
+        User user = userService.getUser();
+        List<SubjectReview> reviews = subjectReviewRepository.findAllBySubject(subject);
+        SubjectReview reviewByUser = reviews.stream()
+                .filter(r -> r.getId() == user.getId())
+                .findFirst()
+                .get();
+
+        SubjectReviewByUserDTO reviewByUserDTO = subjectReviewToSubjectReviewByUserDTO(reviewByUser);
+
+        List<SubjectReviewDTO> reviewsDTO = reviews.stream()
                 .map(subjectReview ->
                         subjectReviewToSubjectReviewDTO(subjectReview)
                 )
                 .collect(Collectors.toList());
+
+        reviewsDTO.add(0, reviewByUserDTO);
+        return reviewsDTO;
+
     }
 
     public void send(CreateSubjectReviewRequestDTO request) {
@@ -71,25 +86,49 @@ public class SubjectReviewService {
 
     }
 
+    private SubjectReviewByUserDTO subjectReviewToSubjectReviewByUserDTO(
+            SubjectReview review
+    ) {
+        return (SubjectReviewByUserDTO) SubjectReviewByUserDTO.builder()
+                .firstname(review.getUser().getFirstname())
+                .lastname(review.getUser().getLastname())
+                .reviewText(review.getReviewText())
+                .hashId(review.getHashId())
+                .id(review.getId())
+                .voteCount(this.countReviewVotes(review))
+                .build();
+
+    }
+
+
     private int countReviewVotes(SubjectReview review) {
         return (int) review.getVotes().stream()
                 .filter(SubjectReviewVote::isUpvoted)
                 .count();
     }
 
-    public int getSubjectAverageScore(Subject subject) {
+    public double getSubjectAverageScore(Subject subject) {
 
-        return subject.getReviews().stream()
+        List<SubjectReview> reviews = subject.getReviews();
+        if( reviews.size() == 0){
+            return 0;
+        }
+        int sum = reviews.stream()
                 .map(SubjectReview::getScore)
                 .map(EReviewScore::getValue)
                 .reduce(0, Integer::sum);
+
+
+        double average = sum / reviews.size();
+
+        return average;
 
     }
 
     public void create(CreateSubjectReviewRequestDTO reviewMessage) {
 
         User user = userService.findByHashId(reviewMessage.getUserHashId());
-        if (user.isBanned()){
+        if (user.isBanned()) {
             throw new UnauthorizedReviewerException("Usuário não autorizado a fazer Avaliações");
         }
         Subject subject = subjectService.findByHashId(reviewMessage.getSubjectHashId());

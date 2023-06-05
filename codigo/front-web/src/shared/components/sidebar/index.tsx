@@ -8,7 +8,7 @@ import Item from './item/item'
 import {ModalType} from "@/shared/components/modal/ModalEnum";
 
 interface  ISidebar{
-    openModal: Function
+    //openModal: Function
 }
 export default function Sidebar(props: ISidebar) {
     return (
@@ -23,7 +23,7 @@ export default function Sidebar(props: ISidebar) {
 
 
             <div className={styles.actionButtonContainer}>
-                <button className={styles.actionButton} onClick={() => props.openModal(ModalType.REVIEW)}>
+                <button className={styles.actionButton}>
 
                     <GoPencil/>
 
