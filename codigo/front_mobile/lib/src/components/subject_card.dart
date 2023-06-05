@@ -17,9 +17,8 @@ class SubjectCard extends StatelessWidget {
         );
       },
 
-      child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Row(
+      child: Card(
+        child: Padding(padding: EdgeInsets.all(12.0), child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
@@ -30,13 +29,13 @@ class SubjectCard extends StatelessWidget {
             flex: 3,
             child: ListTile(
               title: Text(subject.name, style: const TextStyle(fontSize: 18)),
-              subtitle: Text(subject.course),
+              subtitle: Text(subject.campus),
             ),
           ),
-          Text(subject.grade.toString(), style: const TextStyle(fontSize: 36)),
+          Text(subject.score.toString(), style: const TextStyle(fontSize: 36)),
         ],
-      ),
-    ),
+      ),)
+      )
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_mobile/src/components/color_palette.dart';
 import 'package:front_mobile/src/login_page.dart';
 import 'package:get/get.dart';
 
@@ -8,9 +9,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: ColorPalette.mainColor,
+          secondary: ColorPalette.mainColor
+        ),
+      ),
     );
   }
 }

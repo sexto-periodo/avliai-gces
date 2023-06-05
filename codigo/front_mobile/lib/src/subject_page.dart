@@ -23,7 +23,7 @@ class SubjectPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 50),
               child: Text(
-                subject.grade.toString(),
+                subject.score.toString(),
                 style: const TextStyle(fontSize: 48),
                 textAlign: TextAlign.center,
               ),

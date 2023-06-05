@@ -1,12 +1,12 @@
 class Subject {
-  double id;
   String hashId;
   String name;
-  String course;
-  String campus;
-  String shortDesc;
   String picUrl;
-  double grade;
+  String campus;
+  String courseID;
+  String shortDesc;
+  String longDesc;
+  double score;
 
-  Subject(this.id, this.hashId, this.name, this.course,this.campus, this.shortDesc, this.picUrl, this.grade);
+  Subject(this.hashId, this.name, this.picUrl, this.campus, this.courseID, this.shortDesc, this.longDesc, this.score);
 }
