@@ -41,7 +41,7 @@ export default function Disciplina() {
         subjectService.getSubjectByHashId(subjectHashId).then((subject) => setSubject(subject)).then(
 
         () => subjectReviewService.getReviewsBySubjectHashId(subjectHashId)
-            .then((reviews) => console.log(reviews)))
+            .then((reviews) => setReviews(reviews)))
     }, [])
 
 
@@ -115,11 +115,11 @@ export default function Disciplina() {
                             </Button>
                         </div>
                         <div>
-                            {/*{*/}
-                            {/*    reviews.map((item, key) =>*/}
-                            {/*        <SubjectReview review={item} key={key}/>*/}
-                            {/*    )*/}
-                            {/*}*/}
+                            {
+                                reviews.map((item, key) =>
+                                    <SubjectReview review={item} key={key}/>
+                                )
+                            }
                         </div>
 
 
