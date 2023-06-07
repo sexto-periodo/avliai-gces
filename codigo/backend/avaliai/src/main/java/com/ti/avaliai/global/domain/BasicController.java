@@ -85,11 +85,12 @@ public abstract class BasicController {
         );
     }
 
-    private static <T> ResponseEntity<T> buildErrorResponse(List messages, HttpStatus httpStatus) {
+    private static <T> ResponseEntity<T> buildErrorResponse(String messages, HttpStatus httpStatus) {
         return new ResponseEntity(BaseErrorResponse.builder()
                 .status(httpStatus.value())
                 .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                 .reason(httpStatus.getReasonPhrase())
+                .error(messages)
                 .build(),
                 httpStatus);
     }
@@ -128,6 +129,6 @@ public abstract class BasicController {
                 ex instanceof AlreadyExistingEmailException) {
             httpStatus = HttpStatus.CONFLICT;
         }
-        return buildErrorResponse(List.of(ex.getMessage()), httpStatus);
+        return buildErrorResponse(ex.getMessage(), httpStatus);
     }
 }

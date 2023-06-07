@@ -19,24 +19,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import Confetti from 'react-confetti'
 import useWindowSize from 'react-use/lib/useWindowSize'
 
-const confetti = (props: any) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { width, height } = useWindowSize()
-    return (
-        <Confetti
-            width={width}
-            height={height}
-            run={props.run}
-        />
-    )
-}
-
 interface IModalControl {
     show: boolean
     modalType: ModalType
 }
 
-export default function Disciplinas() {
+export default function Disciplina() {
 
 
     const subjectService: SubjectService = new SubjectService()
@@ -46,20 +34,16 @@ export default function Disciplinas() {
     const [subject, setSubject] = useState<ISubjectDTO>({} as ISubjectDTO);
     const [reviews, setReviews] = useState<ISubjectReviewDTO[]>([]);
 
-    const [viewConfetti, setViewConfetti] = useState<boolean>(false);
-
     const router = useRouter();
     const {subjectHashId} = router.query
 
-
     useEffect(() => {
-        subjectService.getSubjectByHashId(subjectHashId).then((subject) => setSubject(subject))
-        subjectReviewService.getReviewsBySubjectHashId(subjectHashId).then((reviews) => setReviews(reviews))
+        subjectService.getSubjectByHashId(subjectHashId).then((subject) => setSubject(subject)).then(
+
+        () => subjectReviewService.getReviewsBySubjectHashId(subjectHashId)
+            .then((reviews) => console.log(reviews)))
     }, [])
 
-    useEffect(() => {
-        setViewConfetti(false)
-    }, [viewConfetti])
 
     const [showModal, setShowModal] = useState<IModalControl>({
         show: false,
@@ -73,8 +57,13 @@ export default function Disciplinas() {
     function closeModal() {
         console.log("Fechando Modal")
         successReviewRequest()
-        setShowModal({show: false, modalType: ModalType.REVIEW})
+        subjectReviewService.getReviewsBySubjectHashId(subjectHashId)
+            .then((reviews) => console.log(reviews)).then(
+            () => setShowModal({show: false, modalType: ModalType.REVIEW})
+        )
+
     }
+
     function successReviewRequest(){
         toast.success('Avaliação enviada com sucesso!', {
             position: "top-right",
@@ -126,11 +115,11 @@ export default function Disciplinas() {
                             </Button>
                         </div>
                         <div>
-                            {
-                                reviews.map((item, key) =>
-                                    <SubjectReview key={key} review={item}/>
-                                )
-                            }
+                            {/*{*/}
+                            {/*    reviews.map((item, key) =>*/}
+                            {/*        <SubjectReview review={item} key={key}/>*/}
+                            {/*    )*/}
+                            {/*}*/}
                         </div>
 
 

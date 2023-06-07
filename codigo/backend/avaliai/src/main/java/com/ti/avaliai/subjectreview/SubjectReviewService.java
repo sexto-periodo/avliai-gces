@@ -55,12 +55,8 @@ public class SubjectReviewService {
 
         User user = userService.getUser();
         List<SubjectReview> reviews = subjectReviewRepository.findAllBySubject(subject);
-        SubjectReview reviewByUser = reviews.stream()
-                .filter(r -> r.getId() == user.getId())
-                .findFirst()
-                .get();
 
-        SubjectReviewByUserDTO reviewByUserDTO = subjectReviewToSubjectReviewByUserDTO(reviewByUser);
+
 
         List<SubjectReviewDTO> reviewsDTO = reviews.stream()
                 .map(subjectReview ->
@@ -68,7 +64,11 @@ public class SubjectReviewService {
                 )
                 .collect(Collectors.toList());
 
-        reviewsDTO.add(0, reviewByUserDTO);
+        Optional<SubjectReview> reviewByUser = subjectReviewRepository.findBySubjectAndUser(subject,user);
+        if( reviewByUser.isPresent() ){
+            SubjectReviewByUserDTO reviewByUserDTO = subjectReviewToSubjectReviewByUserDTO(reviewByUser.get());
+            reviewsDTO.add(0, reviewByUserDTO);
+        }
         return reviewsDTO;
 
     }
