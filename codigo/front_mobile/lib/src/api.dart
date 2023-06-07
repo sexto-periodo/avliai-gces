@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'api/base_api.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -27,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _connectionStatus = '';
 
   Future<void> fetchData() async {
-    final url = Uri.parse('http://192.168.0.14:8080/avaliai/university');
+    final url = Uri.parse(BaseApi.baseURL + 'university');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
