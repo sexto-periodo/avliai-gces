@@ -146,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => HomePage.fromBase64(userToken)));
+              builder: (context) => AppBarWidget.fromBase64(userToken)));
     } else {
       showDialog(
           context: context,
