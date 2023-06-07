@@ -80,7 +80,7 @@ public class SubjectReviewService {
                 subjectReviewRepository.findBySubjectAndUser(subject, user);
 
         if( subjectReview.isPresent() ){
-            throw new AlreadyReviewedByUserException("Disciplina já avaliada pelo usuário", HttpStatus.BAD_REQUEST);
+            throw new AlreadyReviewedByUserException("Disciplina já avaliada pelo usuário", HttpStatus.CONFLICT);
         }else{
             rabbitMQProducer.sendReviewMessage(request);
         }

@@ -11,19 +11,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @ApiResponses(value = {
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse404.class))),
@@ -66,7 +61,7 @@ public abstract class BasicController {
 
         return new ResponseEntity(
                 BaseSucessResponse.builder()
-                        .sucsses(true)
+                        .success(true)
                         .status(status.value())
                         .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                         .reason(status.getReasonPhrase())
@@ -77,7 +72,7 @@ public abstract class BasicController {
     private static <T> ResponseEntity<T> buildSucessResponseWithoutPayload201(HttpStatus status){
         return new ResponseEntity(
                 NoPayloadSuccessResponse201.builder()
-                        .sucsses(true)
+                        .success(true)
                         .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                         .reason(status.getReasonPhrase())
                         .timestamp(LocalDateTime.now())
@@ -85,18 +80,19 @@ public abstract class BasicController {
         );
     }
 
-    private static <T> ResponseEntity<T> buildErrorResponse(String messages, HttpStatus httpStatus) {
-        return new ResponseEntity(BaseErrorResponse.builder()
-                .status(httpStatus.value())
+    private static <T> ResponseEntity<T> buildErrorResponse(String message, HttpStatus httpStatus) {
+        return new ResponseEntity(
+                BaseErrorResponse.builder()
+                .success(false)
                 .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath())
                 .reason(httpStatus.getReasonPhrase())
-                .error(messages)
+                .error(message)
                 .build(),
                 httpStatus);
     }
 
     @ExceptionHandler(value = {Exception.class})
-    public ResponseEntity<BaseErrorResponse> handleException(Exception ex) {
+    public ResponseEntity<BaseErrorResponse<HttpException>> handleException(Exception ex) {
 
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 

@@ -11,19 +11,27 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class BaseResponse<T> {
-
-
-    public boolean sucsses;
+    public boolean success;
     public int status;
     public String path;
     public String reason;
     public LocalDateTime timestamp;
+    public String error;
 
-    public BaseResponse(boolean sucsses, int status, String path, String reason, LocalDateTime timestamp) {
-        this.sucsses = sucsses;
+    public BaseResponse(boolean success, int status, String path, String reason, LocalDateTime timestamp, String error) {
+        this.success = success;
         this.status = status;
         this.path = path;
         this.reason = reason;
         this.timestamp = timestamp;
+        this.error = error;
+    }
+    public BaseResponse(boolean success, int status, String path, String reason, LocalDateTime timestamp) {
+        this.success = success;
+        this.status = status;
+        this.path = path;
+        this.reason = reason;
+        this.timestamp = timestamp;
+        this.error = "";
     }
 }
