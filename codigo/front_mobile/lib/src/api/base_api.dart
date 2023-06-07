@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:front_mobile/src/shared/config.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,61 +14,71 @@ class BaseApi {
   var authRoute = '${baseURL}auth';
 }
 
+// ===============================================
+
 class AuthApi extends BaseApi {
   Future<http.Response> register(SignUpForm formData) async {
     try {
-      final http.Response response = await http.post(Uri.parse('${super.authRoute}/register'),
-        headers: <String, String>{
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          
-        },
-        body: jsonEncode(<String, String>{
-          'firstname': formData.firstname,
-          'lastname': formData.lastname,
-          'email': formData.email,
-          'password': formData.password,
-          'academicRegister': formData.academicRegister,
-          'universityHashId': formData.universityHashId,
-          'courseHashId': formData.courseHashId,
-          'role': formData.role
-        }));
-       switch (response.statusCode) {
-      case 200:
-        return response;
-      default:
-        throw Exception(response.reasonPhrase);
-    }
-    } on Exception catch(_) {
-      rethrow;
-    }
-  }
-
-  Future<http.Response> login(String email, String password) async {
-    try {
-      final http.Response response = await http.post(Uri.parse('${super.authRoute}/authenticate'),
-      headers: <String, String>{
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          
-        },
-      body: jsonEncode(
-        <String, String>{
-          'email': email,
-          'password': password
-        }
-      )
-      );
-
+      final http.Response response =
+          await http.post(Uri.parse('${super.authRoute}/register'),
+              headers: <String, String>{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: jsonEncode(<String, String>{
+                'firstname': formData.firstname,
+                'lastname': formData.lastname,
+                'email': formData.email,
+                'password': formData.password,
+                'academicRegister': formData.academicRegister,
+                'universityHashId': formData.universityHashId,
+                'courseHashId': formData.courseHashId,
+                'role': formData.role
+              }));
       switch (response.statusCode) {
         case 200:
           return response;
         default:
           throw Exception(response.reasonPhrase);
       }
-    } on Exception catch(_) {
+    } on Exception catch (_) {
       rethrow;
     }
+  }
+
+  Future<UserAuth> login(String email, String password) async {
+    try {
+      final http.Response response = await http.post(
+          Uri.parse('${super.authRoute}/authenticate'),
+          headers: <String, String>{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode(
+              <String, String>{'email': email, 'password': password}));
+
+      switch (response.statusCode) {
+        case 200:
+          return UserAuth.fromJson(jsonDecode(response.body));
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+}
+
+class UserAuth {
+  final String access_token;
+  final String refresh_token;
+
+  const UserAuth({required this.access_token, required this.refresh_token});
+
+  factory UserAuth.fromJson(Map<String, dynamic> json) {
+    return UserAuth(
+        access_token: json['access_token'],
+        refresh_token: json['refresh_token']);
   }
 }
 
@@ -95,15 +103,105 @@ class SignUpForm {
       required this.role});
 }
 
-
-class UserAuth {
-  final String access_token;
-  final String refresh_token;
-
-  const UserAuth({required this.access_token, required this.refresh_token});
-  
-
-  factory UserAuth.fromJson(Map<String, dynamic> json) {
-    return UserAuth(access_token: json['access_token'], refresh_token: json['refresh_token']);
+// ====================================
+class UserApi extends BaseApi {
+  Future<User> getUser() async {
+    try {
+      final http.Response response =
+          await http.get(Uri.parse(super.userRoute));
+          switch (response.statusCode) {
+            case 200:
+              return User.fromJson(jsonDecode(response.body));
+            default:
+              throw Exception(response.reasonPhrase);
+          }
+    } on Exception catch (_) {
+      rethrow;
+    }
   }
 }
+
+class User {
+  final int id;
+  final String firstname;
+  final String lastname;
+  final String email;
+  final String hashId;
+  final String universityHashId;
+  final String courseHashId;
+  final String role;
+
+  const User({required this.id, required this.firstname, required this.lastname, required this.email, required this.hashId, required this.universityHashId, required this.courseHashId, required this.role});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(id: json['id'], firstname: json['firstname'], lastname: json['lastname'], email: json['email'], hashId: json['hashId'], universityHashId: json['universityHashId'], courseHashId: json['courseHashId'], role: json['role']);
+  }
+}
+
+// ====================================
+
+class UniversityApi extends BaseApi{
+  Future<List<University>> getUniversities() async {
+    try {
+      final http.Response response =
+          await http.get(Uri.parse(super.universityRoute));
+          switch (response.statusCode) {
+            case 200:
+              Iterable list = jsonDecode(response.body);
+              List<University> universities = List<University>.from(list.map((e) =>  University.fromJson(e)));
+              return universities;
+            default:
+              throw Exception(response.reasonPhrase);
+          }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<List<Course>> getCoursesByUniversityHashId(String hashId) async {
+    try {
+      final http.Response response =
+          await http.get(Uri.parse('${super.courseRoute}/university/$hashId'));
+          switch (response.statusCode) {
+            case 200:
+              Iterable list = jsonDecode(response.body);
+              List<Course> courses = List<Course>.from(list.map((e) =>  Course.fromJson(e)));
+              return courses;
+            default:
+              throw Exception(response.reasonPhrase);
+          }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+}
+
+class Course {
+  final int id;
+  final String hashId;
+  final String name;
+  final int overtime;
+  final bool statusCurriculum;
+
+  const Course({required this.id, required this.hashId, required this.name, required this.overtime, required this.statusCurriculum});
+
+  factory Course.fromJson(Map<String, dynamic> json) {
+    return Course(id: json['id'], hashId: json['hashId'], name: json['name'], overtime: json['overtime'], statusCurriculum: json['statusCurriculum']);
+  }
+}
+
+class University {
+  final int id;
+  final String hashId;
+  final String name;
+  final String cnpj;
+
+  const University({required this.id, required this.hashId, required this.name, required this.cnpj});
+
+  factory University.fromJson(Map<String, dynamic> json) {
+    return University(id: json['id'], hashId: json['hashId'], name: json['name'], cnpj: json['cnpj']);
+  }
+}
+
+
+

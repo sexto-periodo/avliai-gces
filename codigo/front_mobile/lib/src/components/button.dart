@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:front_mobile/src/components/color_palette.dart';
-import 'package:front_mobile/src/login_page.dart';
 
 class button extends StatelessWidget {
   const button({super.key});

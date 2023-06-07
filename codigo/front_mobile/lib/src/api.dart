@@ -4,9 +4,11 @@ import 'package:http/http.dart' as http;
 
 import 'api/base_api.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,12 +16,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -29,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _connectionStatus = '';
 
   Future<void> fetchData() async {
-    final url = Uri.parse(BaseApi.baseURL + 'university');
+    final url = Uri.parse('${BaseApi.baseURL}university');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -51,25 +55,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('API'),
+        title: const Text('API'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              child: Text('Fetch Data'),
               onPressed: fetchData,
+              child: const Text('Fetch Data'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(_connectionStatus),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             if (_posts.isNotEmpty)
               Column(
               children: _posts.map((post) => Text(post['title'] ?? 'Title not available')).toList(),
               )
             else
-              Text('No data available'),
+              const Text('No data available'),
           ],
         ),
       ),

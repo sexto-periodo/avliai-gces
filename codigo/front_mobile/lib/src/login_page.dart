@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:front_mobile/src/api/base_api.dart';
 import 'package:front_mobile/src/home_page.dart';
 import 'package:front_mobile/src/userRegistration.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 
 import 'components/color_palette.dart';
+
+const storage = FlutterSecureStorage();
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,8 +16,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   String _email = '';
   String _password = '';
@@ -58,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
+                  controller: _emailController,
+                  decoration: const InputDecoration(
                     labelText: 'Email Acadêmico',
                     border: OutlineInputBorder(),
                   ),
@@ -73,9 +74,9 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
                 TextFormField(
-                  controller: passwordController,
+                  controller: _passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Senha',
                     border: OutlineInputBorder(),
                   ),
@@ -120,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => userRegistration()),
+                              builder: (context) => const UserRegistration()),
                         );
                       },
                       child: Text("Criar nova conta",
@@ -137,45 +138,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void onLoginButtonPressed(BuildContext context) async {
-    await _submit(context);
-  }
-
-  Future<void> _submit(BuildContext context) async {
-    Database bd = await _recuperarBancoDados();
-    String sql = "SELECT * FROM usuarios";
-
-    List usuarios =
-        await bd.rawQuery(sql); //conseguimos escrever a query que quisermos
-    for (var usu in usuarios) {
-      print(" id: " +
-          usu['id'].toString() +
-          " email: " +
-          usu['email'] +
-          " senha: " +
-          usu['senha'].toString());
-
-      if (usu["email"] == emailController.text &&
-          usu["senha"] == passwordController.text) {
-        Navigator.push(
+    UserAuth authTokens = await AuthApi().login(_email, _password);
+    String userToken = authTokens.access_token.toString();
+    if (authTokens != null) {
+      storage.write(key: "userAuth", value: userToken);
+      Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
-        );
-        print("usuario encontrado");
-      } else {
-        print("usuario nao encontrado");
-      }
+          MaterialPageRoute(
+              builder: (context) => HomePage.fromBase64(userToken)));
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+              title: Text('Erro'),
+              content: Text(
+                  'Usuário não encontrado. Verique se o email e senha estão corretos.')));
     }
   }
 }
 
-Future<Database> _recuperarBancoDados() async {
-  final caminhoBancoDados = await getDatabasesPath();
-  final localBancoDados = join(caminhoBancoDados, "banco3.bd");
-  var bd = await openDatabase(localBancoDados, version: 1,
-      onCreate: (db, dbVersaoRecente) {
-    String sql =
-        "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR, senha VARCHAR) ";
-    db.execute(sql);
-  });
-  return bd;
-}
