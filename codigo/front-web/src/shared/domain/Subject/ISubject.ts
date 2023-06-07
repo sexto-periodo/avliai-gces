@@ -7,17 +7,9 @@ export interface ISubjectDTO{
     campus: string;
     courseHashId: string;
     universityHashId: string
+    course: string
+    university: string
     shortDescription: string,
     longDescription: string,
     score: number
 }
-
-export interface ISubject{
-    name?: string
-    score?:number
-    shortDescription?: string
-    longDescription?: string
-    imageUrl?: string
-    university?: String
-}
-

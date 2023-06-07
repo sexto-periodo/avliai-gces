@@ -50,6 +50,10 @@ public class SubjectService {
         return subjectToSubjectDTO(subjectRepository.findSubjectById(id));
     }
 
+    public Subject findById(long id) {
+        return subjectRepository.findSubjectById(id);
+    }
+
     public void delete(long id) {
         if (!subjectRepository.existsById(id))
             throw new EntityNotFoundException("Não conseguimos encontrar a disciplina");
@@ -80,19 +84,25 @@ public class SubjectService {
         List<Subject> subjects = subjectRepository.findAllByCourse(course);
 
         return subjects.stream()
-                .map(subject ->
-                        subjectToSubjectDTO(subject)
-                )
+                .map(this::subjectToSubjectDTO)
                 .collect(Collectors.toList());
 
     }
 
     public Subject findByHashId(String hashId) {
-        return subjectRepository.findByHashId(hashId)
+        Subject subject = subjectRepository.findByHashId(hashId)
                 .orElseThrow(() ->
                         new EntityNotFoundException("Não conseguimos encontrar a disciplina")
                 );
+        return subject;
     }
+
+    public SubjectDTO findByHashIdDTO(String hashId) {
+        Subject subject = findByHashId(hashId);
+        return subjectToSubjectDTO(subject);
+    }
+
+
 
     private SubjectDTO subjectToSubjectDTO(Subject subject) {
         return SubjectDTO.builder()
@@ -101,7 +111,10 @@ public class SubjectService {
                 .imageUrl(subject.getImageUrl())
                 .name(subject.getName())
                 .campus(subject.getCampus())
+                .course(subject.getCourse().getName())
                 .courseHashId(subject.getCourse().getHashId())
+                .university(subject.getCourse().getUniversity().getName())
+                .universityHashId(subject.getCourse().getUniversity().getHashId())
                 .shortDescription(subject.getShortDescription())
                 .longDescription(subject.getLongDescription())
                 .score(subjectReviewService.getSubjectAverageScore(subject))

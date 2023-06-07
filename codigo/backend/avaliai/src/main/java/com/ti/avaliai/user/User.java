@@ -11,6 +11,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class User implements UserDetails {
     private String firstname;
     @Column(name = "lastname")
     private String lastname;
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     @Column(name = "password")
     private String password;
@@ -53,10 +54,19 @@ public class User implements UserDetails {
     @Column(name = "role")
     private Role role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @Column(name = "is_deleted")
+    private boolean isDeleted = false;
+
+    @Column(name = "is_banned")
+    private boolean isBanned = false;
+
+    @Column(name = "delete_date")
+    private LocalDateTime deleteDate;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<SubjectReview> subjectReviews;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private  List<SubjectReviewVote> votes;
 
     @OneToMany(mappedBy = "user")

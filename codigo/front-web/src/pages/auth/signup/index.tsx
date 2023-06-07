@@ -32,6 +32,11 @@ export interface ISignUpForm{
     course: ICourseDTO | null
     role: string
 }
+
+interface IDegreeInfo{
+    university: IUniversityDTO,
+    course: ICourseDTO
+}
 export default function SignUp() {
 
 
@@ -51,6 +56,8 @@ export default function SignUp() {
         overtime: 0,
         statusCurriculum: false
     });
+    
+    const [degreeInfo, setDegreeInfo]= useState<IDegreeInfo>()
 
     const [ signUpFormData, setSignUpFormData ] = useState<ISignUpForm>({
         academicRegister: "",
@@ -65,7 +72,7 @@ export default function SignUp() {
 
 
     const router = useRouter()
-    const { user, setUser, login } = useAuth();
+    const { user, setUser, login, startUserSession } = useAuth();
     const universityService: UniversityService = new UniversityService();
     const courseService: CourseService = new CourseService();
     const userService: UserService = new UserService();
@@ -90,9 +97,9 @@ export default function SignUp() {
         }
 
         try {
-            await authService.register(signUpFormData);
-            await login(signUpFormData.email, signUpFormData.password)
-            router.push('/')
+            authService.register(signUpFormData)
+                .then((userAuth: UserAuth) => startUserSession(userAuth))
+                .then(() =>  router.push('/'))
         } catch (err) {
             console.log(err)
         }
@@ -106,6 +113,7 @@ export default function SignUp() {
     };
     const handleCourseChange = (event: SelectChangeEvent) => {
         let selectedCourse = courses.find(c => c.hashId === event.target.value);
+        setSignUpFormData({...signUpFormData, course: selectedCourse as ICourseDTO});
         setSelectedCourse(selectedCourse as ICourseDTO);
     };
 
@@ -121,7 +129,6 @@ export default function SignUp() {
                         onSubmit={handleSubmit}
                     >
                         <div>
-
                             <TextField
                                 sx={{mr: 1, width: '19ch'}}
 

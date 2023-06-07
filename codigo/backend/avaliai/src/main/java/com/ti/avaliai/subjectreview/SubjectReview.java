@@ -40,7 +40,7 @@ public class SubjectReview {
     @Column(name = "review_text", columnDefinition = "TEXT")
     private String reviewText;
 
-    @OneToMany(mappedBy = "subjectReview", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "subjectReview", fetch = FetchType.EAGER)
     private List<SubjectReviewVote> votes;
 
 }

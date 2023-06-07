@@ -3,9 +3,18 @@ package com.ti.avaliai.auth;
 import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
 import com.ti.avaliai.auth.dto.AuthenticationResponseDTO;
 import com.ti.avaliai.auth.dto.RegisterRequestDTO;
+import com.ti.avaliai.global.response.error.ErrorResponse400;
+import com.ti.avaliai.global.response.error.ErrorResponse404;
+import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse200;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +24,10 @@ import java.io.IOException;
 @CrossOrigin
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@ApiResponses(value = {
+        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse404.class))),
+        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse400.class))),
+})
 public class AuthenticationController {
 
   private final AuthenticationService service;
@@ -39,6 +52,13 @@ public class AuthenticationController {
   ) throws IOException {
     service.refreshToken(request, response);
   }
+
+  @PostMapping("/validate-session")
+  public ResponseEntity<NoPayloadSuccessResponse200> validateSession() {
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
+
+
 
 
 }

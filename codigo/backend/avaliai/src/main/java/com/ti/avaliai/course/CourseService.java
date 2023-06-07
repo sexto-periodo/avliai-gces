@@ -106,8 +106,8 @@ public class CourseService {
 
     }
 
-    public Course findByHashId(String coursHashId) {
-        return courseRepository.findByHashId(coursHashId)
-                .orElseThrow(() -> new EntityNotFoundException("Universidade não encontrada"));
+    public Course findByHashId(String hashId) {
+        return courseRepository.findByHashId(hashId)
+                .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado"));
     }
 }

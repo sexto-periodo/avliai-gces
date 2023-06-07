@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './subjectReview.module.scss'
-import {ISubjectReview} from "@/shared/domain/Subject/ISubjectReview";
+import {ISubjectReviewDTO} from "@/shared/domain/SubjectReview/ISubjectReview";
 import Vote from "@/shared/components/subject-review/vote/vote";
+import Image from "next/image";
 
 
 interface ISubjectReviewCard{
-    review: ISubjectReview,
+    review: ISubjectReviewDTO,
 }
 export default function SubjectReview(props: ISubjectReviewCard){
     return(
@@ -15,7 +16,7 @@ export default function SubjectReview(props: ISubjectReviewCard){
 
               <div className={styles.headerLeft}>
                     <div className={styles.userImageContainer}>
-                        <img src={props.review.reviewerImage} alt=""/>
+                        <Image src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.RpAlj7580QO8X3YctCdTbgHaHa%26pid%3DApi&f=1&ipt=b32d13546c6157ac90d55fb68d2d6555c3a0ad35fdc50fbe5bfe2ffaabd90a20&ipo=images" alt=""/>
                     </div>
                     <div className={styles.userInfoText}>
                         <h4>Usuário anonimo</h4>
@@ -24,9 +25,9 @@ export default function SubjectReview(props: ISubjectReviewCard){
 
               <div className={styles.headerRight}>
                     <Vote
-                        downvote={props.review.downvotedByUser}
-                        upvote={props.review.upvotedByUser}
-                        votes={props.review.votes}
+                        downvote={true}
+                        upvote={false}
+                        votes={props.review.voteCount}
                     />
               </div>
           </div>

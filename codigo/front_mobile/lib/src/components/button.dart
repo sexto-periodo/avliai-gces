@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:front_mobile/src/components/color_palette.dart';
-import 'package:front_mobile/src/login_page.dart';
 
 class button extends StatelessWidget {
   const button({super.key});
@@ -34,17 +33,18 @@ class button extends StatelessWidget {
 }
 
 class buttonRegistration extends StatelessWidget {
-  const buttonRegistration({super.key});
+  const buttonRegistration(
+      {super.key, required Text child, required Null Function() onPressed});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         print('Login');
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const LoginPage()),
-        );
+        //  Navigator.push(
+        //  context,
+        // MaterialPageRoute(builder: (context) => LoginPage()),
+        //);
       },
       child: Container(
         alignment: Alignment.center,

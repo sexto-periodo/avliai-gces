@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    container_name: database
+    container_name: avaliai_database
     image: postgres:14.1
     networks:
       - avaliai_net
@@ -18,6 +18,21 @@ services:
       - database_avaliai_data:/var/lib/postgresql/data
     restart: always
 
+  rabbitmq:
+    container_name: avaliai_rabbitmq
+    image: rabbitmq:management
+    networks:
+      - avaliai_net
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    volumes:
+      - rabbitmq_avaliai_vol:/var/lib/rabbitmq
+
+
   backend:
     container_name: avaliai_backend
     build:
@@ -29,10 +44,12 @@ services:
       - "8080"
     depends_on:
       - database
+      - rabbitmq
     networks:
       - avaliai_net
 
     environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -70,6 +87,6 @@ networks:
 volumes:
   database_avaliai:
   database_avaliai_data:
-  #rabbitmq_avaliai_vol:
+  rabbitmq_avaliai_vol:
 
 

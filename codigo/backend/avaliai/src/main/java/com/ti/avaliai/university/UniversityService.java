@@ -42,7 +42,8 @@ public class UniversityService {
     }
 
     public University findOneById(long id) {
-        return universityRepository.findUniversityById(id);
+        return universityRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Universidade não encontrada"));
     }
 
     public void delete(long id) {

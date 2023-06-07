@@ -30,18 +30,6 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         title: const Text('Perfil'),
         backgroundColor: ColorPalette.mainColor,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          },
-        ),
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 15, top: 20, right: 15),

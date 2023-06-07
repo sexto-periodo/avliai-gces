@@ -27,7 +27,7 @@ public class SubjectController extends BasicController {
     @Operation(method = "GET", summary = "Buscar por Disciplinas", description = "Buscar por Disciplinas.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
-    public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> getSubject() {
+    public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> getSubjects() {
         List<SubjectDTO> subjectsResponse = subjectService.getSubjects();
         return ok(subjectsResponse);
     }
@@ -41,12 +41,11 @@ public class SubjectController extends BasicController {
         return created();
     }
 
-
-    @Operation(method = "GET", summary = "Busca uma Disciplina pelo id", description = "Busca uma Disciplina pelo id.")
+    @Operation(method = "GET", summary = "Busca uma Disciplina pelo HashId", description = "Busca uma Disciplina pelo HashId.")
     @ApiResponse(responseCode = "200", description = "OK")
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<SubjectDTO> findOneById(@PathVariable("id") long id) {
-        SubjectDTO response = subjectService.findOneById(id);
+    @GetMapping(path = "/{hashId}")
+    public ResponseEntity<SubjectDTO> findByHashId(@PathVariable("hashId") String hashId) {
+        SubjectDTO response = subjectService.findByHashIdDTO(hashId);
         return ok(response);
     }
 
