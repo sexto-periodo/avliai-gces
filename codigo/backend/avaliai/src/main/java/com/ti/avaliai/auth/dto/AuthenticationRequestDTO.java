@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationRequestDTO {
 
-  @Schema(description = "E-mail do Usuário.", example = "email@sga.pucminas.br")
+  @Schema(description = "E-mail do Usuário.", example = "admin@sga.pucminas.br")
   @NotNull(message = "O E-mail do usuario deve ser informado")
   @JsonProperty("email")
   private String email;
 
-  @Schema(description = "Senha do Usuário.", example = "senha1234")
+  @Schema(description = "Senha do Usuário.", example = "1234")
   @NotNull(message = "A senha do usuario deve ser informado")
   @JsonProperty("password")
   private String password;

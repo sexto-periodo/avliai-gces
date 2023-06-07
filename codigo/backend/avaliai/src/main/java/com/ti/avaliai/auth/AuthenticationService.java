@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -55,12 +56,12 @@ public class AuthenticationService {
   public AuthenticationResponseDTO register(RegisterRequestDTO request) {
 
     if(!academicMailService.isValidEmail(request.getEmail())){
-      throw new InvalidEmailException("E-mail acadêmico inválido");
+      throw new InvalidEmailException("E-mail acadêmico inválido", HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
 
     if(userService.existsByEmail(request.getEmail())){
-      throw new InvalidEmailException("E-mail já cadastrado");
+      throw new InvalidEmailException("E-mail já cadastrado", HttpStatus.CONFLICT);
     }
 
     var user = User.builder()

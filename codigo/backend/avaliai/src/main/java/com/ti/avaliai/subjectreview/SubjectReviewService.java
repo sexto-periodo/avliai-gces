@@ -2,6 +2,7 @@ package com.ti.avaliai.subjectreview;
 
 
 import com.ti.avaliai.course.CourseService;
+import com.ti.avaliai.global.domain.exceptions.AlreadyReviewedByUserException;
 import com.ti.avaliai.global.domain.exceptions.UnauthorizedReviewerException;
 import com.ti.avaliai.rabbit.producer.RabbitMQProducer;
 import com.ti.avaliai.subject.Subject;
@@ -17,10 +18,12 @@ import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -71,7 +74,16 @@ public class SubjectReviewService {
     }
 
     public void send(CreateSubjectReviewRequestDTO request) {
-        rabbitMQProducer.sendReviewMessage(request);
+        Subject subject = subjectService.findByHashId(request.getSubjectHashId());
+        User user = userService.getUser();
+        Optional<SubjectReview> subjectReview =
+                subjectReviewRepository.findBySubjectAndUser(subject, user);
+
+        if( subjectReview.isPresent() ){
+            throw new AlreadyReviewedByUserException("Disciplina já avaliada pelo usuário", HttpStatus.BAD_REQUEST);
+        }else{
+            rabbitMQProducer.sendReviewMessage(request);
+        }
     }
 
     private SubjectReviewDTO subjectReviewToSubjectReviewDTO(
@@ -129,8 +141,9 @@ public class SubjectReviewService {
 
         User user = userService.findByHashId(reviewMessage.getUserHashId());
         if (user.isBanned()) {
-            throw new UnauthorizedReviewerException("Usuário não autorizado a fazer Avaliações");
+            throw new UnauthorizedReviewerException("Usuário não autorizado a fazer Avaliações", HttpStatus.UNAUTHORIZED);
         }
+
         Subject subject = subjectService.findByHashId(reviewMessage.getSubjectHashId());
 
         SubjectReview subjectReview = SubjectReview.builder()
