@@ -1,15 +1,20 @@
 package com.ti.avaliai.subjectreview;
 
 import com.ti.avaliai.global.domain.BasicController;
+import com.ti.avaliai.global.response.error.*;
 import com.ti.avaliai.global.response.success.BaseSucessResponse;
 import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
 import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
 import com.ti.avaliai.subjectreview.dto.SubjectReviewDTO;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

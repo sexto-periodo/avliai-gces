@@ -7,6 +7,7 @@ import theme from '../shared/theme/theme';
 import '@/styles/global.css'
 import {createTheme, ThemeProvider, styled} from '@mui/material/styles';
 import AppLayout from "@/shared/layout/app-layout/AppLayout";
+import React from "react";
 
 const noAuthRequired = ['/auth/signin', '/auth/signup']
 

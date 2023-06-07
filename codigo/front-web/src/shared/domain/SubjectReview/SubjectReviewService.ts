@@ -1,6 +1,9 @@
 import {AuthService} from "@/shared/services/Auth/AuthService";
 
-import {ISubjectReviewDTO} from "@/shared/domain/SubjectReview/ISubjectReview";
+import {
+    ICreateSubjectReviewRequestDTO,
+    ISubjectReviewDTO
+} from "@/shared/domain/SubjectReview/ISubjectReview";
 
 export class SubjectReviewService {
 
@@ -15,6 +18,18 @@ export class SubjectReviewService {
             .then(data => {
                 console.log(data);
                 return data as ISubjectReviewDTO[];
+            });
+    }
+
+    postReviewCreateMessage(body: ICreateSubjectReviewRequestDTO) {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review`, {
+            method: 'POST',
+            headers: this.authService.buildDefaultHeaderApplicationJson(),
+            body: JSON.stringify(body)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
             });
     }
 }

@@ -5,7 +5,7 @@ import lombok.NonNull;
 
 import java.time.LocalDateTime;
 
-public class BaseSucessResponse<T> extends BaseResponse {
+public class BaseSucessResponse<T> extends BaseResponse<T> {
 
     @NonNull
     protected T object;

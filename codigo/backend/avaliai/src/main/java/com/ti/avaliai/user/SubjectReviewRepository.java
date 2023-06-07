@@ -5,8 +5,11 @@ import com.ti.avaliai.subjectreview.SubjectReview;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SubjectReviewRepository extends JpaRepository<SubjectReview, Integer> {
 
     List<SubjectReview> findAllBySubject(Subject subject);
+
+    Optional<SubjectReview> findBySubjectAndUser(Subject subject, User user);
 }
