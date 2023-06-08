@@ -174,8 +174,9 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>com/avaliai/**/*DTO.*</exclude>
+                        <exclude>com/ti/avaliai/**/*DTO.*</exclude>
                         <exclude>**/config/*</exclude>
+                        <exclude>**/dto/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
