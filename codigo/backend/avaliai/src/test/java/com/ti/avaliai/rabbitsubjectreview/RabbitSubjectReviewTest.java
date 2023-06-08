@@ -51,7 +51,7 @@ public class RabbitSubjectReviewTest {
     @Autowired
     private QueueStatusProcessorService queueStatusProcessorService;
 
-    private void sendMessage(User user) {
+    private void sendGenericReviewMessage(User user) {
         CreateSubjectReviewRequestDTO message = CreateSubjectReviewRequestDTO.builder()
                 .userHashId(user.getHashId())
                 .subjectHashId(EXISTING_SUBJECT_HASH_ID)
@@ -76,8 +76,8 @@ public class RabbitSubjectReviewTest {
     @BeforeAll
     void enqueueSubjectReviewRequest() {
         setup();
-        sendMessage(userTestUtils.createDefaultTestUser());
-        sendMessage(userTestUtils.createRandomTestUser());
+        sendGenericReviewMessage(userTestUtils.createDefaultTestUser());
+        sendGenericReviewMessage(userTestUtils.createRandomTestUser());
     }
 
 
