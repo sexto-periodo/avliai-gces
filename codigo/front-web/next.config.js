@@ -2,7 +2,6 @@
 const nextConfig = {
     trailingSlash: true,
     reactStrictMode: false,
-    disableStaticImages: true,
     images: {
         remotePatterns: [
             {

@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import {ISubjectDTO} from '@/shared/domain/Subject/ISubject'
 import styles from './subjectDetails.module.scss'
 import {AiFillStar} from "react-icons/ai";
 import { BiDotsVerticalRounded } from 'react-icons/bi';
+import Image from "next/image";
 
 export default function SubjectDetails(props: ISubjectDTO) {
-
+    useEffect(() => {
+        console.log(props.imageUrl)
+        console.log(props)
+    }, [])
     return (
         <div className={styles.subjectDetailsContainer}>
                 <div className={styles.header}>
@@ -30,7 +34,7 @@ export default function SubjectDetails(props: ISubjectDTO) {
                 <div className={styles.content}>
 
                     <div className={styles.coverImageContainer}>
-                        <img src={props.imageUrl} alt=""/>
+                        <Image width={200} height={200} src={props.imageUrl} alt="" loading="eager" />
                     </div>
 
 

@@ -118,7 +118,20 @@ export default function Disciplina() {
                 <div className={styles.subjectMainContainer}>
 
                     <div className={styles.leftView}>
-                        <SubjectDetails {...subject}/>
+                        <SubjectDetails
+                            id={subject.id}
+                            hashId={subject.hashId}
+                            name={subject.name}
+                            imageUrl={subject.imageUrl}
+                            campus={subject.campus}
+                            courseHashId={subject.courseHashId}
+                            universityHashId={subject.universityHashId}
+                            course={subject.course}
+                            university={subject.university}
+                            shortDescription={subject.shortDescription}
+                            longDescription={subject.longDescription}
+                            score={subject.score}
+                        />
                     </div>
 
                     <div className={styles.rightView}>

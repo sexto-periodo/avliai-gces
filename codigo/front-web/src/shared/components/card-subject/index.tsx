@@ -17,14 +17,10 @@ export default function CardSubject(props: ISubjectDTO) {
             pathname: `subject/${props.hashId}`,
         })
     }
-    useEffect(() => {
-        console.log(props.imageUrl)
-        console.log(props)
-    }, [])
     return (
         <div className={styles.cardContainer} onClick={subjectDetails}>
             <div className={styles.cardImageContainer}>
-                <img  src={`${props.imageUrl}`} alt="" loading="eager" />
+                <Image width={200} height={200} src={`${props.imageUrl}`} alt="" loading="eager" />
             </div>
             <div className={styles.cardContentContainer}>
                 <div className={styles.primaryInfo}>
