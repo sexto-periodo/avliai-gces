@@ -18,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
 
@@ -79,7 +80,6 @@ public class RabbitSubjectReviewTest {
         sendGenericReviewMessage(userTestUtils.createDefaultTestUser());
         sendGenericReviewMessage(userTestUtils.createRandomTestUser());
     }
-
 
     @DisplayName(value = "Teste de Sucesso - Verificar o consumo e cadastro de avaliação")
     @Test

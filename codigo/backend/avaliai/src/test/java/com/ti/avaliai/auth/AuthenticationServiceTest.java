@@ -5,11 +5,10 @@ import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import com.ti.avaliai.global.domain.exceptions.InvalidEmailException;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
 
@@ -17,6 +16,8 @@ import static com.ti.avaliai.user.Role.ADMIN;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class AuthenticationServiceTest {
 
     private static final int ALREADY_EXISTING_USERS = 0;
@@ -31,9 +32,16 @@ public class AuthenticationServiceTest {
     private AcademicMailService academicMailService;
 
     @BeforeEach
-    void setup(){
+    public void  setup(){
         userService.deleteAll();
     }
+
+
+    @AfterAll
+    void clear(){
+        userService.deleteAll();
+    }
+
 
 
     @DisplayName(value = "Teste de Sucesso - Cadastrar um novo usuário com sucesso")
