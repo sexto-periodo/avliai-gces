@@ -19,6 +19,7 @@
   grid-template-rows: 1fr 1fr;
   place-items: center;
   margin: 10px 0;
+  color: var(--md-ref-palette-secondary20);
 
   .iconContainer {
     display: grid;
@@ -34,7 +35,10 @@
   }
 
   .labelContainer {
-    font-size: 18px;
+    font-size: 15px;
+    text-decoration: none;
+    text-underline: none;
+    font-weight: bold;
   }
 }
 

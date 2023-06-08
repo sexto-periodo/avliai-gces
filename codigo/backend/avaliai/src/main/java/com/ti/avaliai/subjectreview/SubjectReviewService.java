@@ -62,8 +62,8 @@ public class SubjectReviewService {
                 )
                 .collect(Collectors.toList());
 
-        Optional<SubjectReview> reviewByUser = subjectReviewRepository.findBySubjectAndUser(subject,user);
-        if( reviewByUser.isPresent() ){
+        Optional<SubjectReview> reviewByUser = subjectReviewRepository.findBySubjectAndUser(subject, user);
+        if (reviewByUser.isPresent()) {
             SubjectReviewByUserDTO reviewByUserDTO = subjectReviewToSubjectReviewByUserDTO(reviewByUser.get());
             reviewsDTO = reviewsDTO.stream().filter(r -> r.getHashId() != reviewByUserDTO.getHashId()).collect(Collectors.toList());
             reviewsDTO.add(0, reviewByUserDTO);
@@ -72,21 +72,21 @@ public class SubjectReviewService {
 
     }
 
-    public boolean haveUserAlreadyReviewedSubject(String subjectHashId){
+    public boolean haveUserAlreadyReviewedSubject(String subjectHashId) {
         Subject subject = subjectService.findByHashId(subjectHashId);
         User user = userService.getUser();
         Optional<SubjectReview> subjectReview =
                 subjectReviewRepository.findBySubjectAndUser(subject, user);
-        if(subjectReview.isPresent()){
+        if (subjectReview.isPresent()) {
             return true;
         }
         return false;
     }
 
     public void send(CreateSubjectReviewRequestDTO request) {
-        if( haveUserAlreadyReviewedSubject(request.getSubjectHashId()) ){
+        if (haveUserAlreadyReviewedSubject(request.getSubjectHashId())) {
             throw new AlreadyReviewedByUserException("Disciplina já avaliada pelo usuário", HttpStatus.CONFLICT);
-        }else{
+        } else {
             rabbitMQProducer.sendReviewMessage(request);
         }
     }
@@ -127,7 +127,7 @@ public class SubjectReviewService {
     public double getSubjectAverageScore(Subject subject) {
 
         List<SubjectReview> reviews = subject.getReviews();
-        if( reviews.size() == 0){
+        if (reviews.size() == 0) {
             return 0;
         }
         int sum = reviews.stream()
@@ -166,5 +166,14 @@ public class SubjectReviewService {
 
     public List<SubjectReview> findAll() {
         return subjectReviewRepository.findAll();
+    }
+
+    public List<SubjectReviewDTO> findAllByLoggedUser() {
+        User user = userService.getUser();
+        return subjectReviewRepository.findAllByUser(user).stream()
+                .map(subjectReview ->
+                        subjectReviewToSubjectReviewByUserDTO(subjectReview)
+                )
+                .collect(Collectors.toList());
     }
 }

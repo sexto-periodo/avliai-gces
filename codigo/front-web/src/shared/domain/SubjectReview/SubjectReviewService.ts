@@ -43,4 +43,16 @@ export class SubjectReviewService {
                 return data as boolean;
             });
     }
+
+    getReviewsByUser(): Promise<ISubjectReviewDTO[]> {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review/user`, {
+            method: 'GET',
+            headers: this.authService.buildDefaultHeaderApplicationJson(),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                return data as ISubjectReviewDTO[];
+            });
+    }
 }

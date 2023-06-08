@@ -54,6 +54,14 @@ public class SubjectReviewController extends BasicController {
         return ok(response);
     }
 
+    @Operation(method = "GET", summary = "Buscar por avaliaições feitas pelo usuário logado.", description = "Buscar por avaliaições feitas pelo usuário logado.")
+    @ApiResponse(responseCode = "200", description = "OK")
+    @GetMapping(value = "/user")
+    public ResponseEntity<BaseSucessResponse<List<SubjectReviewDTO>>> getReviewsByUser() {
+        List<SubjectReviewDTO> reviews = subjectReviewService.findAllByLoggedUser();
+        return ok(reviews);
+    }
+
 
 
 }

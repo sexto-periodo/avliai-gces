@@ -31,6 +31,10 @@ public class UserDTO {
     @JsonProperty("lastname")
     private String lastname;
 
+    @Schema(description = "Url da foto de perfil do usuário", example = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.aceshowbiz.com%2Fimages%2Fstill%2Fkung-fu-panda-2-08.jpg&f=1&nofb=1&ipt=b0ef3563fa8a56eb6e3ee09720f694197c3d6e76117904d8150c15de130c8ff1&ipo=images")
+    @JsonProperty("profilePhotoUrl")
+    private String profilePhotoUrl;
+
     @Schema(description = "E-mail do usuário")
     @JsonProperty("email")
     private String email;

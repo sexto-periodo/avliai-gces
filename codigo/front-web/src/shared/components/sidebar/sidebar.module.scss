@@ -17,6 +17,10 @@
 .sidebarContainer {
   color: var(--md-ref-palette-secondary20);
   padding: 30px 10px;
+  li{
+    text-decoration: none;
+
+  }
   .sandwichMenuContainer {
     display: grid;
     place-items: center;

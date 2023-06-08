@@ -42,6 +42,9 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "profile_photo_url",columnDefinition = "TEXT")
+    private String profilePhotoUrl;
+
     @OneToOne
     @JoinColumn(name = "fk_university")
     private University university;

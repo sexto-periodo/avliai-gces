@@ -2,6 +2,7 @@ package com.ti.avaliai.user;
 
 import com.ti.avaliai.subject.Subject;
 import com.ti.avaliai.subjectreview.SubjectReview;
+import com.ti.avaliai.subjectreview.dto.SubjectReviewDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface SubjectReviewRepository extends JpaRepository<SubjectReview, In
     List<SubjectReview> findAllBySubject(Subject subject);
 
     Optional<SubjectReview> findBySubjectAndUser(Subject subject, User user);
+
+    List<SubjectReview> findAllByUser(User user);
 }
