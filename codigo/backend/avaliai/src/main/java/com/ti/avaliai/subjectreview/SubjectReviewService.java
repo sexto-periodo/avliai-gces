@@ -56,8 +56,6 @@ public class SubjectReviewService {
         User user = userService.getUser();
         List<SubjectReview> reviews = subjectReviewRepository.findAllBySubject(subject);
 
-
-
         List<SubjectReviewDTO> reviewsDTO = reviews.stream()
                 .map(subjectReview ->
                         subjectReviewToSubjectReviewDTO(subjectReview)
@@ -67,19 +65,26 @@ public class SubjectReviewService {
         Optional<SubjectReview> reviewByUser = subjectReviewRepository.findBySubjectAndUser(subject,user);
         if( reviewByUser.isPresent() ){
             SubjectReviewByUserDTO reviewByUserDTO = subjectReviewToSubjectReviewByUserDTO(reviewByUser.get());
+            reviewsDTO = reviewsDTO.stream().filter(r -> r.getHashId() != reviewByUserDTO.getHashId()).collect(Collectors.toList());
             reviewsDTO.add(0, reviewByUserDTO);
         }
         return reviewsDTO;
 
     }
 
-    public void send(CreateSubjectReviewRequestDTO request) {
-        Subject subject = subjectService.findByHashId(request.getSubjectHashId());
+    public boolean haveUserAlreadyReviewedSubject(String subjectHashId){
+        Subject subject = subjectService.findByHashId(subjectHashId);
         User user = userService.getUser();
         Optional<SubjectReview> subjectReview =
                 subjectReviewRepository.findBySubjectAndUser(subject, user);
+        if(subjectReview.isPresent()){
+            return true;
+        }
+        return false;
+    }
 
-        if( subjectReview.isPresent() ){
+    public void send(CreateSubjectReviewRequestDTO request) {
+        if( haveUserAlreadyReviewedSubject(request.getSubjectHashId()) ){
             throw new AlreadyReviewedByUserException("Disciplina já avaliada pelo usuário", HttpStatus.CONFLICT);
         }else{
             rabbitMQProducer.sendReviewMessage(request);
