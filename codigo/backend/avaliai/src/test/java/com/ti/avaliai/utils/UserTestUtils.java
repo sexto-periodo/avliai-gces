@@ -5,7 +5,12 @@ import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 import static com.ti.avaliai.user.Role.ADMIN;
 
@@ -46,5 +51,49 @@ public class UserTestUtils {
 
         authenticationService.register(user);
         return userService.findByEmail(user.getEmail());
+    }
+
+    public void setUserContextHolder(User user){
+        Authentication authentication = new Authentication() {
+            @Override
+            public Collection<? extends GrantedAuthority> getAuthorities() {
+                return null;
+            }
+
+            @Override
+            public Object getCredentials() {
+                return null;
+            }
+
+            @Override
+            public Object getDetails() {
+                return null;
+            }
+
+            @Override
+            public Object getPrincipal() {
+                return user;
+            }
+
+            @Override
+            public boolean isAuthenticated() {
+                return true;
+            }
+
+            @Override
+            public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+
+            }
+
+            @Override
+            public String getName() {
+                return null;
+            }
+        };
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+
+    public void clearUserContextHolder(){
+        SecurityContextHolder.clearContext();
     }
 }

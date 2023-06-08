@@ -125,6 +125,14 @@ public class AuthenticationService {
     tokenRepository.saveAll(validUserTokens);
   }
 
+  public void logout(User user){
+    this.revokeAllUserTokens(user);
+  }
+
+  public void clearAllTokens(){
+    tokenRepository.deleteAll();
+  }
+
   public void refreshToken(
           HttpServletRequest request,
           HttpServletResponse response

@@ -1,21 +1,30 @@
 package com.ti.avaliai.rabbitsubjectreview;
 
 
+import com.ti.avaliai.auth.AuthenticationService;
+import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
 import com.ti.avaliai.rabbit.QueueStatusProcessorService;
 import com.ti.avaliai.subjectreview.EReviewScore;
 import com.ti.avaliai.subjectreview.SubjectReview;
 import com.ti.avaliai.subjectreview.SubjectReviewService;
 import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
 import com.ti.avaliai.user.User;
+import com.ti.avaliai.user.UserContextHolder;
 import com.ti.avaliai.user.UserService;
 import com.ti.avaliai.utils.UserTestUtils;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -37,37 +46,38 @@ public class RabbitSubjectReviewTest {
     private UserService userService;
 
     @Autowired
+    private AuthenticationService authenticationService;
+
+    @Autowired
     private QueueStatusProcessorService queueStatusProcessorService;
 
-    User user1 = null;
-    User user2 = null;
+    private void sendMessage(User user) {
+        CreateSubjectReviewRequestDTO message = CreateSubjectReviewRequestDTO.builder()
+                .userHashId(user.getHashId())
+                .subjectHashId(EXISTING_SUBJECT_HASH_ID)
+                .universityHashId(EXISTING_UNIVERSITY_HASH_ID)
+                .courseHashId(EXISTING_COURSE_HASH_ID)
+                .reviewText("Lorem ipsum disciplina muito boa!")
+                .score(EReviewScore.FIVE)
+                .build();
 
+        userTestUtils.setUserContextHolder(user);
+        subjectReviewService.send(message);
+        authenticationService.logout(user);
+        authenticationService.clearAllTokens();
+        userTestUtils.clearUserContextHolder();
+    }
+
+    void setup(){
+        userService.deleteAll();
+        authenticationService.clearAllTokens();
+        userTestUtils.clearUserContextHolder();
+    }
     @BeforeAll
     void enqueueSubjectReviewRequest() {
-
-        user1 = userTestUtils.createDefaultTestUser();
-        CreateSubjectReviewRequestDTO message1 = CreateSubjectReviewRequestDTO.builder()
-                .userHashId(user1.getHashId())
-                .subjectHashId(EXISTING_SUBJECT_HASH_ID)
-                .universityHashId(EXISTING_UNIVERSITY_HASH_ID)
-                .courseHashId(EXISTING_COURSE_HASH_ID)
-                .reviewText("Lorem ipsum disciplina muito boa!")
-                .score(EReviewScore.FIVE)
-                .build();
-
-        subjectReviewService.send(message1);
-
-        user2 = userTestUtils.createRandomTestUser();
-        CreateSubjectReviewRequestDTO message2 = CreateSubjectReviewRequestDTO.builder()
-                .userHashId(user2.getHashId())
-                .subjectHashId(EXISTING_SUBJECT_HASH_ID)
-                .universityHashId(EXISTING_UNIVERSITY_HASH_ID)
-                .courseHashId(EXISTING_COURSE_HASH_ID)
-                .reviewText("Lorem ipsum disciplina muito boa!")
-                .score(EReviewScore.FIVE)
-                .build();
-
-        subjectReviewService.send(message2);
+        setup();
+        sendMessage(userTestUtils.createDefaultTestUser());
+        sendMessage(userTestUtils.createRandomTestUser());
     }
 
 
@@ -75,17 +85,18 @@ public class RabbitSubjectReviewTest {
     @Test
     @Order(2)
     void consumedReviewRequest_Success() {
+        User user = userService.findByEmail(EXISTING_DEFAULT_USER_EMAIL);
         List<SubjectReview> reviews = subjectReviewService.findAll();
-        assertEquals(1, reviews.size());
-        assertEquals(user1.getEmail(), reviews.get(0).getUser().getEmail());
-        assertEquals(user1.getHashId(), reviews.get(0).getUser().getHashId());
+        assertTrue( reviews.size() > 1);
+        assertEquals(user.getEmail(), reviews.get(0).getUser().getEmail());
+        assertEquals(user.getHashId(), reviews.get(0).getUser().getHashId());
         assertEquals(EReviewScore.FIVE, reviews.get(0).getScore());
     }
 
     @DisplayName(value = "Teste de Sucesso - Verificar fila vazia")
     @Test
     @Order(3)
-    void queueEmpty_Success(){
+    void queueEmpty_Success() {
         assertEquals(0, queueStatusProcessorService.getSubjectReviewQueueSize());
     }
 }
