@@ -27,7 +27,7 @@ public class SubjectDTO {
     private String name;
 
     @Schema(description = "URL da imagem da disciplina", example = "https://example.com/image.jpg")
-    @JsonProperty("picUrl")
+    @JsonProperty("imageUrl")
     private String imageUrl;
 
     @Schema(description = "Campus da disciplina", example = "Campus A")

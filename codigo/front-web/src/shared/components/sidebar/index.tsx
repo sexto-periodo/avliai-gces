@@ -15,20 +15,20 @@ export default function Sidebar(props: ISidebar) {
         <aside className={styles.sidebarContainer}>
 
 
-            <div className={styles.sandwichMenuContainer}>
-                <span>
-                    <GiHamburgerMenu/>
-                </span>
-            </div>
+            {/*<div className={styles.sandwichMenuContainer}>*/}
+            {/*    <span>*/}
+            {/*        <GiHamburgerMenu/>*/}
+            {/*    </span>*/}
+            {/*</div>*/}
 
 
-            <div className={styles.actionButtonContainer}>
-                <button className={styles.actionButton}>
+            {/*<div className={styles.actionButtonContainer}>*/}
+            {/*    <button className={styles.actionButton}>*/}
 
-                    <GoPencil/>
+            {/*        <GoPencil/>*/}
 
-                </button>
-            </div>
+            {/*    </button>*/}
+            {/*</div>*/}
 
             <div>
                 <ul>

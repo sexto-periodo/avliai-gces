@@ -24,7 +24,8 @@
     display: grid;
     place-items: center;
     border-radius: 300px;
-    padding: 3px 15px;
+    padding: 5px 18px;
+    transition: 200ms;
 
     &:hover {
       background-color: var(--md-ref-palette-primary80);
@@ -33,7 +34,7 @@
   }
 
   .labelContainer {
-    font-size: 12px;
+    font-size: 18px;
   }
 }
 

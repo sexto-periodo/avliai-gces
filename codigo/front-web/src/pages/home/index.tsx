@@ -78,7 +78,21 @@ export default function Home() {
                     >
                         {subjects.map((item, key) => (
                             <CardSubject
-                                key={key} {...item}/>
+                                key={key}
+
+                                id={item.id}
+                                hashId={item.hashId}
+                                name={item.name}
+                                imageUrl={item.imageUrl}
+                                campus={item.campus}
+                                courseHashId={item.courseHashId}
+                                universityHashId={item.universityHashId}
+                                course={item.course}
+                                university={item.university}
+                                shortDescription={item.shortDescription}
+                                longDescription={item.longDescription}
+                                score={item.score}
+                            />
                         ))}
                     </Masonry>
                 </div>
