@@ -13,8 +13,7 @@ export default function CardSubject(props: ISubjectDTO) {
     };
     const subjectDetails = () => {
         router.push({
-            pathname: '/subject',
-            query: params
+            pathname: `subject/${props.hashId}`,
         })
     }
     return (

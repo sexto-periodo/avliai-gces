@@ -23,6 +23,11 @@ interface IModalControl {
     show: boolean
     modalType: ModalType
 }
+export async function getServerSideProps(context: any) {
+    return {
+        props: {},
+    };
+}
 
 export default function Disciplina() {
 
@@ -36,7 +41,7 @@ export default function Disciplina() {
     const [isSubjectAlreadyReviewedByUser, setIsSubjectAlreadyReviewedByUser] = useState<boolean>(false);
 
     const router = useRouter();
-    const {subjectHashId} = router.query
+    const subjectHashId = router.query.slug;
 
     useEffect(() => {
         subjectService.getSubjectByHashId(subjectHashId).then((subject) => setSubject(subject));

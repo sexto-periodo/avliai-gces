@@ -14,7 +14,7 @@ import {IUser} from '@/shared/domain/User/User';
 import {IUniversityDTO} from "@/shared/domain/University/IUniversity";
 import {UniversityService} from "@/shared/domain/University/UniversityService";
 
-export default function Disciplinas() {
+export default function Home() {
 
     const subjectService: SubjectService = new SubjectService()
     const universityService: UniversityService = new UniversityService()
