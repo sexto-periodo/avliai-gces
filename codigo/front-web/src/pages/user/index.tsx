@@ -164,7 +164,7 @@ export default function Home() {
                         {
                             userReviews.map((item, key) => {
                                     return (
-                                            <SubjectReview review={item} />
+                                            <SubjectReview key={key} review={item} />
                                     )
                                 }
                             )
