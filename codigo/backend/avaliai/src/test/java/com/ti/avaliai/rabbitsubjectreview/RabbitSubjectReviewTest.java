@@ -2,30 +2,22 @@ package com.ti.avaliai.rabbitsubjectreview;
 
 
 import com.ti.avaliai.auth.AuthenticationService;
-import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
 import com.ti.avaliai.rabbit.QueueStatusProcessorService;
 import com.ti.avaliai.subjectreview.EReviewScore;
 import com.ti.avaliai.subjectreview.SubjectReview;
 import com.ti.avaliai.subjectreview.SubjectReviewService;
 import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
 import com.ti.avaliai.user.User;
-import com.ti.avaliai.user.UserContextHolder;
 import com.ti.avaliai.user.UserService;
 import com.ti.avaliai.utils.UserTestUtils;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

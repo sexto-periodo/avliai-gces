@@ -1,8 +1,5 @@
 package com.ti.avaliai.usertest;
 
-import com.ti.avaliai.global.domain.exceptions.AlreadyReviewedByUserException;
-import com.ti.avaliai.subjectreview.EReviewScore;
-import com.ti.avaliai.subjectreview.SubjectReview;
 import com.ti.avaliai.user.UserService;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.dto.UpdateUserRequestDTO;
@@ -13,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
