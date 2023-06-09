@@ -32,8 +32,7 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 
 @Service
 public class AuthenticationService {
-
-
+  private static final String DEFAULT_PROFILE_PHOTO_URL = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=170667a&w=0&h=zP3l7WJinOFaGb2i1F4g8IS2ylw0FlIaa6x3tP9sebU=";
   @Autowired
   private UserRepository repository;
   @Autowired
@@ -73,6 +72,7 @@ public class AuthenticationService {
             .university(universityService.findByHashId(request.getUniversityHashId()))
             .course(courseService.findByHashId(request.getCourseHashId()))
             .hashId(generateHash())
+            .profilePhotoUrl(DEFAULT_PROFILE_PHOTO_URL)
         .build();
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);
@@ -123,6 +123,14 @@ public class AuthenticationService {
       token.setRevoked(true);
     });
     tokenRepository.saveAll(validUserTokens);
+  }
+
+  public void logout(User user){
+    this.revokeAllUserTokens(user);
+  }
+
+  public void clearAllTokens(){
+    tokenRepository.deleteAll();
   }
 
   public void refreshToken(

@@ -110,7 +110,7 @@ export class AuthService {
     getUserData(): Promise<IUser> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
-            headers: this.buildDefaultHeaderPlainText(),
+            headers: this.buildDefaultHeaderApplicationJson(),
         })
             .then(res => res.json())
             .then(data => {

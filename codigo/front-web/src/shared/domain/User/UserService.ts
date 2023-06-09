@@ -1,7 +1,8 @@
-import { getCookie, hasCookie } from 'cookies-next';
+import {getCookie, hasCookie, setCookie} from 'cookies-next';
 import {ICourseDTO} from "@/shared/domain/Course/ICourseDTO";
-import {IUser} from "@/shared/domain/User/User";
+import {IUser, IUserUpdateDataForm, IUserUpdateResponse} from "@/shared/domain/User/User";
 import {AuthService} from "@/shared/services/Auth/AuthService";
+import resolveUrlLoader from "next/dist/build/webpack/loaders/resolve-url-loader";
 
 const USER_DATA_COOKIE = 'user_data';
 
@@ -30,5 +31,25 @@ export class UserService{
         return null
     }
 
+    updateUserDataCookie(user: IUser){
+        setCookie(USER_DATA_COOKIE, JSON.stringify(user))
+    }
 
+
+    updateUserData(userFormData: IUserUpdateDataForm):Promise<IUser>{
+        const body = JSON.stringify(userFormData);
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
+            method: 'PUT',
+            headers: this.authService.buildDefaultHeaderApplicationJson(),
+            body: body
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                    if ( data ){
+                        this.updateUserDataCookie(data);
+                    }
+                    return data;
+                }
+            )
+    }
 }

@@ -46,6 +46,22 @@ public class SubjectReviewController extends BasicController {
         return ok();
     }
 
+    @Operation(method = "GET", summary = "Verifica se uma disciplina ja foi avaliada pelo usuário.", description = "verifica se uma disciplina ja foi avaliada pelo usuário.")
+    @ApiResponse(responseCode = "200", description = "OK")
+    @GetMapping(value = "/subject/already-reviewed-by-user/{subjectHashId}")
+    public ResponseEntity<BaseSucessResponse<Boolean>> haveSubjectAlreadyReviewedByUser(@PathVariable("subjectHashId") String subjectHashId) {
+        boolean response  = subjectReviewService.haveUserAlreadyReviewedSubject(subjectHashId);
+        return ok(response);
+    }
+
+    @Operation(method = "GET", summary = "Buscar por avaliaições feitas pelo usuário logado.", description = "Buscar por avaliaições feitas pelo usuário logado.")
+    @ApiResponse(responseCode = "200", description = "OK")
+    @GetMapping(value = "/user")
+    public ResponseEntity<BaseSucessResponse<List<SubjectReviewDTO>>> getReviewsByUser() {
+        List<SubjectReviewDTO> reviews = subjectReviewService.findAllByLoggedUser();
+        return ok(reviews);
+    }
+
 
 
 }

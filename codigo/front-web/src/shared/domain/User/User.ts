@@ -7,9 +7,10 @@ export interface IUser {
     lastname: string;
     hashId: string;
     email: string;
-    universityHashId: string ;
-    courseHashId: string;
-    role: string;
+    profilePhotoUrl: string
+    universityHashId: string
+    courseHashId: string
+    role: string
 }
 
 export interface UserAuth {
@@ -27,4 +28,15 @@ export interface IUserCreateRequest{
     universityHashId: string
     courseHashId: string
     role:string
+}
+
+export interface IUserUpdateDataForm{
+    firstname: string;
+    lastname: string;
+    profilePhotoUrl: string
+}
+
+export interface IUserUpdateResponse{
+    user: IUser,
+    success: boolean
 }

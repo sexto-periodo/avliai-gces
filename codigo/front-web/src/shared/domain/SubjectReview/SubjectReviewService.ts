@@ -32,4 +32,27 @@ export class SubjectReviewService {
                 console.log(data);
             });
     }
+    haveSubjectAlreadyReviewedByUser(subjectHashId: string | string[] | undefined): Promise<boolean> {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review/subject/already-reviewed-by-user/${subjectHashId}`, {
+            method: 'GET',
+            headers: this.authService.buildDefaultHeaderPlainText(),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                return data as boolean;
+            });
+    }
+
+    getReviewsByUser(): Promise<ISubjectReviewDTO[]> {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review/user`, {
+            method: 'GET',
+            headers: this.authService.buildDefaultHeaderApplicationJson(),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                return data as ISubjectReviewDTO[];
+            });
+    }
 }

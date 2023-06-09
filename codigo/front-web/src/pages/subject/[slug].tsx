@@ -23,6 +23,11 @@ interface IModalControl {
     show: boolean
     modalType: ModalType
 }
+export async function getServerSideProps(context: any) {
+    return {
+        props: {},
+    };
+}
 
 export default function Disciplina() {
 
@@ -33,15 +38,16 @@ export default function Disciplina() {
 
     const [subject, setSubject] = useState<ISubjectDTO>({} as ISubjectDTO);
     const [reviews, setReviews] = useState<ISubjectReviewDTO[]>([]);
+    const [isSubjectAlreadyReviewedByUser, setIsSubjectAlreadyReviewedByUser] = useState<boolean>(false);
 
     const router = useRouter();
-    const {subjectHashId} = router.query
+    const subjectHashId = router.query.slug;
 
     useEffect(() => {
-        subjectService.getSubjectByHashId(subjectHashId).then((subject) => setSubject(subject)).then(
+        subjectService.getSubjectByHashId(subjectHashId).then((subject) => setSubject(subject));
+        subjectReviewService.getReviewsBySubjectHashId(subjectHashId).then((reviews) => setReviews(reviews))
+        subjectReviewService.haveSubjectAlreadyReviewedByUser(subjectHashId).then((reviewed) => setIsSubjectAlreadyReviewedByUser(reviewed));
 
-        () => subjectReviewService.getReviewsBySubjectHashId(subjectHashId)
-            .then((reviews) => setReviews(reviews)))
     }, [])
 
 
@@ -58,16 +64,29 @@ export default function Disciplina() {
         console.log("Fechando Modal")
         successReviewRequest()
         subjectReviewService.getReviewsBySubjectHashId(subjectHashId)
-            .then((reviews) => console.log(reviews)).then(
+            .then((reviews) => setReviews(reviews)).then(
             () => setShowModal({show: false, modalType: ModalType.REVIEW})
-        )
+        ).then(() => setIsSubjectAlreadyReviewedByUser(true));
 
     }
 
-    function successReviewRequest(){
+    function successReviewRequest() {
         toast.success('Avaliação enviada com sucesso!', {
             position: "top-right",
             autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    }
+
+    function reviewerBlockedAlert(){
+        toast.info('Você ja avaliou essa disciplina.', {
+            position: "top-right",
+            autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -99,20 +118,57 @@ export default function Disciplina() {
                 <div className={styles.subjectMainContainer}>
 
                     <div className={styles.leftView}>
-                        <SubjectDetails {...subject}/>
+                        <SubjectDetails
+                            id={subject.id}
+                            hashId={subject.hashId}
+                            name={subject.name}
+                            imageUrl={subject.imageUrl}
+                            campus={subject.campus}
+                            courseHashId={subject.courseHashId}
+                            universityHashId={subject.universityHashId}
+                            course={subject.course}
+                            university={subject.university}
+                            shortDescription={subject.shortDescription}
+                            longDescription={subject.longDescription}
+                            score={subject.score}
+                        />
                     </div>
 
                     <div className={styles.rightView}>
                         <div className={styles.reviewButtonContainer}>
-                            <Button variant="contained"
-                                    disableElevation
-                                    type="submit"
-                                    sx={{ml: 1, mr: 1, mt: 0}}
-                                    style={{borderRadius: 30, width: 200, height: 50}}
-                                    onClick={() => openModal(ModalType.REVIEW)}
-                            >
-                                Avaliar!
-                            </Button>
+
+                            {
+                                isSubjectAlreadyReviewedByUser ?
+                                    <Button variant="contained"
+                                            disableElevation
+                                            type="submit"
+                                            sx={{ml: 1, mr: 1, mt: 0}}
+                                            style={{
+                                                borderRadius: 30,
+                                                width: 200,
+                                                height: 50
+                                            }}
+                                            disabled={true}
+                                            onClick={() => reviewerBlockedAlert()}
+                                    >
+                                        Avaliar!
+                                    </Button>
+                                    :
+                                    <Button variant="contained"
+                                            disableElevation
+                                            type="submit"
+                                            sx={{ml: 1, mr: 1, mt: 0}}
+                                            style={{
+                                                borderRadius: 30,
+                                                width: 200,
+                                                height: 50
+                                            }}
+                                            onClick={() => openModal(ModalType.REVIEW)}
+                                    >
+                                        Avaliar!
+                                    </Button>
+                            }
+
                         </div>
                         <div>
                             {
@@ -137,6 +193,19 @@ export default function Disciplina() {
             <ToastContainer
                 position="top-right"
                 autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
