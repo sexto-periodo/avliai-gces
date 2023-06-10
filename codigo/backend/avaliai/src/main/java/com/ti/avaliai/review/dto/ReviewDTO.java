@@ -1,9 +1,8 @@
-package com.ti.avaliai.subjectreview.dto;
+package com.ti.avaliai.review.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -13,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Schema(description = "DTO para disciplina")
-public class SubjectReviewDTO {
+public class ReviewDTO {
 
     @Schema(description = "ID da Avaliação.", example = "1")
     @JsonProperty("id")

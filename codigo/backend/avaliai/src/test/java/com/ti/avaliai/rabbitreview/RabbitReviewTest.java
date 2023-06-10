@@ -1,12 +1,12 @@
-package com.ti.avaliai.rabbitsubjectreview;
+package com.ti.avaliai.rabbitreview;
 
 
 import com.ti.avaliai.auth.AuthenticationService;
 import com.ti.avaliai.rabbit.QueueStatusProcessorService;
-import com.ti.avaliai.subjectreview.EReviewScore;
-import com.ti.avaliai.subjectreview.SubjectReview;
-import com.ti.avaliai.subjectreview.SubjectReviewService;
-import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
+import com.ti.avaliai.review.EReviewScore;
+import com.ti.avaliai.review.Review;
+import com.ti.avaliai.review.ReviewService;
+import com.ti.avaliai.review.dto.CreateReviewRequestDTO;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserService;
 import com.ti.avaliai.utils.UserTestUtils;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class RabbitSubjectReviewTest {
+public class RabbitReviewTest {
 
     private static final String EXISTING_SUBJECT_HASH_ID = "17da1ae431f965d839ec8eb93087fb2b";
     private static final String EXISTING_UNIVERSITY_HASH_ID = "543b45c583bfff6c30e44a751103a24f";
@@ -30,7 +30,7 @@ public class RabbitSubjectReviewTest {
     private static final String EXISTING_DEFAULT_USER_EMAIL = "testuser@sga.pucminas.br";
 
     @Autowired
-    private SubjectReviewService subjectReviewService;
+    private ReviewService reviewService;
 
     @Autowired
     private UserTestUtils userTestUtils;
@@ -45,7 +45,7 @@ public class RabbitSubjectReviewTest {
     private QueueStatusProcessorService queueStatusProcessorService;
 
     private void sendGenericReviewMessage(User user) {
-        CreateSubjectReviewRequestDTO message = CreateSubjectReviewRequestDTO.builder()
+        CreateReviewRequestDTO message = CreateReviewRequestDTO.builder()
                 .userHashId(user.getHashId())
                 .subjectHashId(EXISTING_SUBJECT_HASH_ID)
                 .universityHashId(EXISTING_UNIVERSITY_HASH_ID)
@@ -55,7 +55,7 @@ public class RabbitSubjectReviewTest {
                 .build();
 
         userTestUtils.setUserContextHolder(user);
-        subjectReviewService.send(message);
+        reviewService.send(message);
         authenticationService.logout(user);
         authenticationService.clearAllTokens();
         userTestUtils.clearUserContextHolder();
@@ -67,7 +67,7 @@ public class RabbitSubjectReviewTest {
         userTestUtils.clearUserContextHolder();
     }
     @BeforeAll
-    void enqueueSubjectReviewRequest() {
+    void enqueueReviewRequest() {
         setup();
         sendGenericReviewMessage(userTestUtils.createDefaultTestUser());
         sendGenericReviewMessage(userTestUtils.createRandomTestUser());
@@ -78,7 +78,7 @@ public class RabbitSubjectReviewTest {
     @Order(2)
     void consumedReviewRequest_Success() {
         User user = userService.findByEmail(EXISTING_DEFAULT_USER_EMAIL);
-        List<SubjectReview> reviews = subjectReviewService.findAll();
+        List<Review> reviews = reviewService.findAll();
         assertTrue( reviews.size() > 1);
         assertEquals(user.getEmail(), reviews.get(0).getUser().getEmail());
         assertEquals(user.getHashId(), reviews.get(0).getUser().getHashId());
@@ -89,6 +89,6 @@ public class RabbitSubjectReviewTest {
     @Test
     @Order(3)
     void queueEmpty_Success() {
-        assertEquals(0, queueStatusProcessorService.getSubjectReviewQueueSize());
+        assertEquals(0, queueStatusProcessorService.getReviewQueueSize());
     }
 }

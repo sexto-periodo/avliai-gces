@@ -1,7 +1,7 @@
-package com.ti.avaliai.subjectreview;
+package com.ti.avaliai.review;
 
 import com.ti.avaliai.subject.Subject;
-import com.ti.avaliai.subjectreviewvote.SubjectReviewVote;
+import com.ti.avaliai.vote.Vote;
 import com.ti.avaliai.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,8 +16,8 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "t_subject_review")
-public class SubjectReview {
+@Table(name = "t_review")
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -40,7 +40,7 @@ public class SubjectReview {
     @Column(name = "review_text", columnDefinition = "TEXT")
     private String reviewText;
 
-    @OneToMany(mappedBy = "subjectReview", fetch = FetchType.EAGER)
-    private List<SubjectReviewVote> votes;
+    @OneToMany(mappedBy = "review", fetch = FetchType.EAGER)
+    private List<Vote> votes;
 
 }

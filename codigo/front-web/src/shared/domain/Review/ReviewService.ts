@@ -1,28 +1,28 @@
 import {AuthService} from "@/shared/services/Auth/AuthService";
 
 import {
-    ICreateSubjectReviewRequestDTO,
-    ISubjectReviewDTO
-} from "@/shared/domain/SubjectReview/ISubjectReview";
+    ICreateReviewRequestDTO,
+    IReviewDTO
+} from "@/shared/domain/Review/IReview";
 
-export class SubjectReviewService {
+export class ReviewService {
 
     authService: AuthService = new AuthService();
 
-    getReviewsBySubjectHashId(subjectHashId: string | string[] | undefined): Promise<ISubjectReviewDTO[]> {
-        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review/subject/${subjectHashId}`, {
+    getReviewsBySubjectHashId(subjectHashId: string | string[] | undefined): Promise<IReviewDTO[]> {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/review/subject/${subjectHashId}`, {
             method: 'GET',
             headers: this.authService.buildDefaultHeaderPlainText(),
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                return data as ISubjectReviewDTO[];
+                return data as IReviewDTO[];
             });
     }
 
-    postReviewCreateMessage(body: ICreateSubjectReviewRequestDTO) {
-        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review`, {
+    postReviewCreateMessage(body: ICreateReviewRequestDTO) {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/review`, {
             method: 'POST',
             headers: this.authService.buildDefaultHeaderApplicationJson(),
             body: JSON.stringify(body)
@@ -33,7 +33,7 @@ export class SubjectReviewService {
             });
     }
     haveSubjectAlreadyReviewedByUser(subjectHashId: string | string[] | undefined): Promise<boolean> {
-        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review/subject/already-reviewed-by-user/${subjectHashId}`, {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/review/subject/already-reviewed-by-user/${subjectHashId}`, {
             method: 'GET',
             headers: this.authService.buildDefaultHeaderPlainText(),
         })
@@ -44,15 +44,15 @@ export class SubjectReviewService {
             });
     }
 
-    getReviewsByUser(): Promise<ISubjectReviewDTO[]> {
-        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/subject-review/user`, {
+    getReviewsByUser(): Promise<IReviewDTO[]> {
+        return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/review/user`, {
             method: 'GET',
             headers: this.authService.buildDefaultHeaderApplicationJson(),
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                return data as ISubjectReviewDTO[];
+                return data as IReviewDTO[];
             });
     }
 }

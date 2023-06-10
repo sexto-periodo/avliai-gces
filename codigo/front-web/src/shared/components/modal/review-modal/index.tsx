@@ -9,9 +9,9 @@ import {UniversityService} from "@/shared/domain/University/UniversityService";
 import {CourseService} from "@/shared/domain/Course/CourseService";
 import {
     EScore,
-    ICreateSubjectReviewRequestDTO
-} from "@/shared/domain/SubjectReview/ISubjectReview";
-import {SubjectReviewService} from "@/shared/domain/SubjectReview/SubjectReviewService";
+    ICreateReviewRequestDTO
+} from "@/shared/domain/Review/IReview";
+import {ReviewService} from "@/shared/domain/Review/ReviewService";
 
 
 interface IReviewModal extends IModal{
@@ -23,7 +23,7 @@ interface IReviewModal extends IModal{
 export default function ReviewModal(props: IReviewModal) {
 
     const userService: UserService = new UserService();
-    const subjectReviewService: SubjectReviewService = new SubjectReviewService();
+    const subjectReviewService: ReviewService = new ReviewService();
 
     const [value, setValue] = React.useState<number | null>(2);
     const [text, setText] = React.useState<string>("");
@@ -32,10 +32,10 @@ export default function ReviewModal(props: IReviewModal) {
         console.log(value);
     }, [value, text])
 
-    function buildSubjectReviewDTO(){
+    function buildReviewDTO(){
         // @ts-ignore
         let scoreKey = Object.keys(EScore).find(x => EScore[x] == value);
-        let SubjectReviewRequest: ICreateSubjectReviewRequestDTO = {
+        let SubjectReviewRequest: ICreateReviewRequestDTO = {
             reviewText: text,
             universityHashId: props.universityHashId,
             courseHashId: props.courseHashId,
@@ -92,7 +92,7 @@ export default function ReviewModal(props: IReviewModal) {
                         type="submit"
                         sx={{ml:1, mr: 1, mt: 3}}
                         style={{borderRadius: 30, width: 200, height: 50}}
-                        onClick={() => buildSubjectReviewDTO()}
+                        onClick={() => buildReviewDTO()}
                 >
                     Avaliar!
                 </Button>

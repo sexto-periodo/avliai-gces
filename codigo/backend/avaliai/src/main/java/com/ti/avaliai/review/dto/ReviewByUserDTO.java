@@ -1,4 +1,4 @@
-package com.ti.avaliai.subjectreview.dto;
+package com.ti.avaliai.review.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Schema(description = "DTO para disciplina")
-public class SubjectReviewByUserDTO extends  SubjectReviewDTO{
+public class ReviewByUserDTO extends ReviewDTO {
     @Schema(description = "Primeiro nome do usuário", example = "Bruce")
     @JsonProperty("firstname")
     private String firstname;

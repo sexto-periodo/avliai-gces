@@ -5,9 +5,9 @@ import styles from './subject.module.scss'
 import SubjectDetails from "@/shared/components/subject-details";
 import {ISubjectDTO} from "@/shared/domain/Subject/ISubject";
 import SubjectReview from "@/shared/components/subject-review";
-import {ISubjectReviewDTO} from "@/shared/domain/SubjectReview/ISubjectReview";
+import {IReviewDTO} from "@/shared/domain/Review/IReview";
 import {SubjectService} from "@/shared/domain/Subject/SubjectService";
-import {SubjectReviewService} from "@/shared/domain/SubjectReview/SubjectReviewService";
+import {ReviewService} from "@/shared/domain/Review/ReviewService";
 import {useRouter} from "next/router";
 import {ModalType} from "@/shared/components/modal/ModalEnum";
 import ReviewModal from "@/shared/components/modal/review-modal";
@@ -33,11 +33,11 @@ export default function Disciplina() {
 
 
     const subjectService: SubjectService = new SubjectService()
-    const subjectReviewService: SubjectReviewService = new SubjectReviewService()
+    const subjectReviewService: ReviewService = new ReviewService()
 
 
     const [subject, setSubject] = useState<ISubjectDTO>({} as ISubjectDTO);
-    const [reviews, setReviews] = useState<ISubjectReviewDTO[]>([]);
+    const [reviews, setReviews] = useState<IReviewDTO[]>([]);
     const [isSubjectAlreadyReviewedByUser, setIsSubjectAlreadyReviewedByUser] = useState<boolean>(false);
 
     const router = useRouter();

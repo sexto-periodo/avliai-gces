@@ -1,13 +1,13 @@
-package com.ti.avaliai.subjectreviewtest;
+package com.ti.avaliai.reviewtest;
 
 
 import com.ti.avaliai.auth.AuthenticationService;
 import com.ti.avaliai.global.domain.exceptions.AlreadyReviewedByUserException;
 import com.ti.avaliai.subject.SubjectService;
-import com.ti.avaliai.subjectreview.EReviewScore;
-import com.ti.avaliai.subjectreview.SubjectReview;
-import com.ti.avaliai.subjectreview.SubjectReviewService;
-import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
+import com.ti.avaliai.review.EReviewScore;
+import com.ti.avaliai.review.Review;
+import com.ti.avaliai.review.ReviewService;
+import com.ti.avaliai.review.dto.CreateReviewRequestDTO;
 import com.ti.avaliai.user.UserService;
 import com.ti.avaliai.utils.UserTestUtils;
 import org.junit.jupiter.api.*;
@@ -33,7 +33,7 @@ public class SuibjectReviewServiceTest {
     private static final String EXISTING_DEFAULT_USER_EMAIL = "testuser@sga.pucminas.br";
 
     @Autowired
-    private SubjectReviewService subjectReviewService;
+    private ReviewService reviewService;
 
     @Autowired
     private UserTestUtils userTestUtils;
@@ -49,7 +49,7 @@ public class SuibjectReviewServiceTest {
 
 
     private void sendGenericReviewMessage(User user, EReviewScore score) {
-        CreateSubjectReviewRequestDTO message = CreateSubjectReviewRequestDTO.builder()
+        CreateReviewRequestDTO message = CreateReviewRequestDTO.builder()
                 .userHashId(user.getHashId())
                 .subjectHashId(EXISTING_SUBJECT_HASH_ID)
                 .universityHashId(EXISTING_UNIVERSITY_HASH_ID)
@@ -59,7 +59,7 @@ public class SuibjectReviewServiceTest {
                 .build();
 
         userTestUtils.setUserContextHolder(user);
-        subjectReviewService.send(message);
+        reviewService.send(message);
         authenticationService.logout(user);
         authenticationService.clearAllTokens();
         userTestUtils.clearUserContextHolder();
@@ -72,7 +72,7 @@ public class SuibjectReviewServiceTest {
         sendGenericReviewMessage(userTestUtils.createRandomTestUser(), EReviewScore.ONE);
 
 
-        assertTrue(subjectReviewService.findAll().size() >= 1);
+        assertTrue(reviewService.findAll().size() >= 1);
         assertEquals(3, subjectService.findByHashIdDTO(EXISTING_SUBJECT_HASH_ID).getScore());
     }
 
@@ -83,7 +83,7 @@ public class SuibjectReviewServiceTest {
         sendGenericReviewMessage(user, EReviewScore.FIVE);
         sendGenericReviewMessage(userTestUtils.createRandomTestUser(), EReviewScore.ONE);
 
-        CreateSubjectReviewRequestDTO message = CreateSubjectReviewRequestDTO.builder()
+        CreateReviewRequestDTO message = CreateReviewRequestDTO.builder()
                 .userHashId(user.getHashId())
                 .subjectHashId(EXISTING_SUBJECT_HASH_ID)
                 .universityHashId(EXISTING_UNIVERSITY_HASH_ID)
@@ -94,8 +94,8 @@ public class SuibjectReviewServiceTest {
 
         userTestUtils.setUserContextHolder(user);
 
-        assertThrows(AlreadyReviewedByUserException.class, () -> subjectReviewService.send(message));
-        List<SubjectReview> reviews = subjectReviewService.findAll();
+        assertThrows(AlreadyReviewedByUserException.class, () -> reviewService.send(message));
+        List<Review> reviews = reviewService.findAll();
         assertTrue(reviews.size() >= 1 && reviews.size() < 3);
     }
 }

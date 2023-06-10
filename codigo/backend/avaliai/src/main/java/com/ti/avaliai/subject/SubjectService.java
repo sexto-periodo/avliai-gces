@@ -4,7 +4,7 @@ import com.ti.avaliai.course.Course;
 import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
-import com.ti.avaliai.subjectreview.SubjectReviewService;
+import com.ti.avaliai.review.ReviewService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class SubjectService {
     private CourseService courseService;
 
     @Autowired
-    private SubjectReviewService subjectReviewService;
+    private ReviewService reviewService;
 
     public List<SubjectDTO> getSubjects() {
         List<Subject> subjects = subjectRepository.findAll();
@@ -117,7 +117,7 @@ public class SubjectService {
                 .universityHashId(subject.getCourse().getUniversity().getHashId())
                 .shortDescription(subject.getShortDescription())
                 .longDescription(subject.getLongDescription())
-                .score(subjectReviewService.getSubjectAverageScore(subject))
+                .score(reviewService.getSubjectAverageScore(subject))
                 .build();
     }
 }
