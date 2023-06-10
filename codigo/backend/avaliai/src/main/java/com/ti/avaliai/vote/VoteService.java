@@ -46,12 +46,12 @@ public class VoteService {
         Optional<Vote> existVote = voteRepository.findByReviewAndUser(review, user);
         if(existVote.isPresent()){
             existVote.get().setVoted(request.isVoted());
-            existVote.get().setVoteUpdDown(request.isVoteUpDown());
+            existVote.get().setVoteUpDown(request.isVoteUpDown());
             vote = voteRepository.save(existVote.get());
         }else{
             Vote newVote = Vote.builder()
                     .isVoted(request.isVoted())
-                    .voteUpdDown(request.isVoteUpDown())
+                    .voteUpDown(request.isVoteUpDown())
                     .review(review)
                     .user(user)
                     .hashId(generateHash())
@@ -66,7 +66,7 @@ public class VoteService {
         return VoteDTO.builder()
                 .reviewHashId(review.getHashId())
                 .voteCount(this.countReviewVotes(review))
-                .voteUpDown(vote.isVoteUpdDown())
+                .voteUpDown(vote.isVoteUpDown())
                 .isVoted(vote.isVoted())
                 .build();
     }
@@ -74,8 +74,8 @@ public class VoteService {
     public int countReviewVotes(Review review) {
         List<Vote> votes = review.getVotes();
         votes = votes.stream().filter(v -> v.isVoted()).collect(Collectors.toList());
-        long upvotes = votes.stream().filter(Vote::isVoteUpdDown).count();
-        long downvotes = votes.stream().filter(vote -> !vote.isVoteUpdDown()).count();
+        long upvotes = votes.stream().filter(Vote::isVoteUpDown).count();
+        long downvotes = votes.stream().filter(vote -> !vote.isVoteUpDown()).count();
 
         int voteBalance = (int) (upvotes - downvotes);
         return voteBalance;
@@ -83,5 +83,9 @@ public class VoteService {
 
     public boolean existisByReviewAndUser(Review review, User user) {
         return voteRepository.existsByReviewAndUser(review, user);
+    }
+
+    public Vote findByReview(Review review){
+        return voteRepository.findByReview(review);
     }
 }

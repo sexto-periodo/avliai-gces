@@ -13,4 +13,6 @@ public interface VoteRepository extends JpaRepository<Vote, Long> {
     boolean existsByReviewAndUser(Review review, User user);
 
     Vote save(Vote vote);
+
+    Vote findByReview(Review review);
 }

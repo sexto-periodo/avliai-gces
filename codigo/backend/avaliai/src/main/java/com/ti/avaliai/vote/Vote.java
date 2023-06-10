@@ -25,7 +25,7 @@ public class Vote {
     private boolean isVoted;
 
     @Column(name = "vote_up_down", nullable = false)
-    private boolean voteUpdDown;
+    private boolean voteUpDown;
 
     @Column(name = "hash_id", nullable = false, updatable = false)
     private String hashId = generateHash();

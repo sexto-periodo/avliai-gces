@@ -140,7 +140,7 @@ public class ReviewService {
         if(voteService.existisByReviewAndUser(review,user)){
             Vote vote = voteService.findByReviewAndUser(review,user);
             voteDTO.setVoteUpDown(vote.isVoted());
-            voteDTO.setVoteUpDown(vote.isVoteUpdDown());
+            voteDTO.setVoteUpDown(vote.isVoteUpDown());
         }else{
             voteDTO.setVoted(false);
             voteDTO.setVoteUpDown(false);
