@@ -22,9 +22,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.ti.avaliai.utils.HashUtils.generateHash;
 
 @Service
 @Log4j2
@@ -65,8 +69,10 @@ public class SubjectReviewService {
         Optional<SubjectReview> reviewByUser = subjectReviewRepository.findBySubjectAndUser(subject, user);
         if (reviewByUser.isPresent()) {
             SubjectReviewByUserDTO reviewByUserDTO = subjectReviewToSubjectReviewByUserDTO(reviewByUser.get());
-            reviewsDTO = reviewsDTO.stream().filter(r -> r.getHashId() != reviewByUserDTO.getHashId()).collect(Collectors.toList());
-            reviewsDTO.add(0, reviewByUserDTO);
+            reviewsDTO.removeIf(r -> r.getHashId().equals(reviewByUserDTO.getHashId()));
+            Collections.reverse(reviewsDTO);
+            reviewsDTO.add(reviewByUserDTO);
+            Collections.reverse(reviewsDTO);
         }
         return reviewsDTO;
 
@@ -156,6 +162,7 @@ public class SubjectReviewService {
                 .user(user)
                 .reviewText(reviewMessage.getReviewText())
                 .score(reviewMessage.getScore())
+                .hashId(generateHash())
                 .build();
 
         subjectReviewRepository.save(subjectReview);
