@@ -1,8 +1,10 @@
-package com.ti.avaliai.review;
+package com.ti.avaliai.vote;
 
 import com.ti.avaliai.global.domain.BasicController;
+import com.ti.avaliai.global.response.success.BaseSucessResponse;
 import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
 import com.ti.avaliai.vote.VoteService;
+import com.ti.avaliai.vote.dto.VoteDTO;
 import com.ti.avaliai.vote.dto.VoteRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -25,9 +27,9 @@ public class VoteController extends BasicController {
     @Operation(method = "PUT", summary = "Atualizar ou criar voto em uma avaliação.", description = "Atualizar ou criar voto em uma avaliação.")
     @ApiResponse(responseCode = "200", description = "OK")
     @PutMapping
-    public ResponseEntity<NoPayloadSuccessResponse201> updateReviewVote(@RequestBody @Valid VoteRequestDTO request) {
-        voteService.vote(request);
-        return ok();
+    public ResponseEntity<BaseSucessResponse<VoteDTO>> updateReviewVote(@RequestBody @Valid VoteRequestDTO request) {
+        VoteDTO response = voteService.vote(request);
+        return ok(response);
     }
 
 }

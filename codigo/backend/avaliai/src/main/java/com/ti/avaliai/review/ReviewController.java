@@ -25,7 +25,7 @@ public class ReviewController extends BasicController {
     @Autowired
     private ReviewService reviewService;
 
-    @Operation(method = "GET", summary = "Buscar por avaliaição através do HashId de Disciplina.", description = "Buscar por avaliaição através do HashId de Disciplina.")
+    @Operation(method = "GET", summary = "Buscar por avaliaições através do HashId de Disciplina.", description = "Buscar por avaliaição através do HashId de Disciplina.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(value = "/subject/{subjectHashId}")
     public ResponseEntity<BaseSucessResponse<List<ReviewDTO>>> getReviewsBySubjectHashId(@PathVariable("subjectHashId") String subjectHashId) {

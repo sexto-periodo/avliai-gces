@@ -16,6 +16,8 @@ import com.ti.avaliai.vote.Vote;
 import com.ti.avaliai.university.UniversityService;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserService;
+import com.ti.avaliai.vote.VoteService;
+import com.ti.avaliai.vote.dto.VoteDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,6 +53,9 @@ public class ReviewService {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private VoteService voteService;
 
     public List<ReviewDTO> findAllBySubjectHashId(String subjectHashId) {
         SubjectDTO subjectDTO = subjectService.findByHashIdDTO(subjectHashId);
@@ -99,13 +104,15 @@ public class ReviewService {
     private ReviewDTO reviewToReviewDTO(
             Review review
     ) {
-        return ReviewDTO.builder()
+
+        ReviewDTO reviewDTO = ReviewDTO.builder()
                 .reviewText(review.getReviewText())
                 .hashId(review.getHashId())
                 .id(review.getId())
-                .voteCount(this.countReviewVotes(review))
+                .vote(buildVoteDTOByReview(review))
                 .build();
 
+        return reviewDTO;
     }
 
     private ReviewByUserDTO reviewToReviewByUserDTO(
@@ -117,18 +124,29 @@ public class ReviewService {
                 .reviewText(review.getReviewText())
                 .hashId(review.getHashId())
                 .id(review.getId())
-                .voteCount(this.countReviewVotes(review))
+                .vote(buildVoteDTOByReview(review))
                 .build();
 
     }
 
+    private VoteDTO buildVoteDTOByReview(Review review){
 
-    private int countReviewVotes(Review review) {
-        long upvotes = review.getVotes().stream().filter(Vote::isUpvoted).count();
-        long downvotes = review.getVotes().stream().filter(vote -> !vote.isUpvoted()).count();
+        User user = userService.getUser();
 
-        int voteBalance = (int) (upvotes - downvotes);
-        return voteBalance;
+        VoteDTO voteDTO = VoteDTO.builder()
+                .voteCount(voteService.countReviewVotes(review))
+                .reviewHashId(review.getHashId())
+                .build();
+        if(voteService.existisByReviewAndUser(review,user)){
+            Vote vote = voteService.findByReviewAndUser(review,user);
+            voteDTO.setVoteUpDown(vote.isVoted());
+            voteDTO.setVoteUpDown(vote.isVoteUpdDown());
+        }else{
+            voteDTO.setVoted(false);
+            voteDTO.setVoteUpDown(false);
+        }
+
+        return voteDTO;
     }
 
     public double getSubjectAverageScore(Subject subject) {
@@ -141,7 +159,6 @@ public class ReviewService {
                 .map(Review::getScore)
                 .map(EReviewScore::getValue)
                 .reduce(0, Integer::sum);
-
 
         double average = sum / reviews.size();
 

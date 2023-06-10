@@ -6,6 +6,7 @@ import {
 } from "@/shared/domain/Review/IReview";
 import Vote from "@/shared/components/subject-review/vote/vote";
 import Image from "next/image";
+import {IVoteDTO} from "@/shared/domain/Vote/IVote";
 
 
 interface IReviewCard{
@@ -41,9 +42,10 @@ export default function Review(props: IReviewCard){
 
               <div className={styles.headerRight}>
                     <Vote
-                        downvote={true}
-                        upvote={false}
-                        votes={props.review.voteCount}
+                        reviewHashId={props.review.hashId}
+                        voteUpDown={props.review.vote.voteUpDown}
+                        isVoted={props.review.vote.isVoted}
+                        voteCount={props.review.vote.voteCount}
                     />
               </div>
           </div>

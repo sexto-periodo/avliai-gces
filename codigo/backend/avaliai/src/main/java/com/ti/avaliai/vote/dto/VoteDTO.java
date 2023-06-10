@@ -12,8 +12,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Schema(description = "DTO para upvote ou downvote")
-public class VoteRequestDTO {
+@Schema(description = "DTO para Votos")
+public class VoteDTO {
 
     @Schema(description = "Voto adicionado ou removido", example = "true")
     @JsonProperty("isVoted")
@@ -24,7 +24,10 @@ public class VoteRequestDTO {
     private boolean voteUpDown;
 
     @Schema(description = "HashId da Avaliação", example = "9198136f262aa656367a6227ec5fbdad")
-    @JsonProperty("reviewHashId")
+    @JsonProperty("subjectReviewHashId")
     private String reviewHashId;
 
+    @Schema(description = "Contagem de votos.", example = "10")
+    @JsonProperty("voteCount")
+    private int voteCount;
 }

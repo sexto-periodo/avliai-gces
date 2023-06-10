@@ -1,8 +1,11 @@
+import {IVoteDTO} from "@/shared/domain/Vote/IVote";
+
 export interface IReviewDTO {
     id: number,
     hashId: string,
-    voteCount: number,
     reviewText: string,
+    vote: IVoteDTO
+
 }
 
 export interface IReviewByUserDTO extends IReviewDTO {

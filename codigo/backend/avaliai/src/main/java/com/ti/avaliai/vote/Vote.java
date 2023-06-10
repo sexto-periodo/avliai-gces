@@ -21,8 +21,11 @@ public class Vote {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Column(name = "is_upvoted", nullable = true)
-    private boolean isUpvoted;
+    @Column(name = "is_voted", nullable = false)
+    private boolean isVoted;
+
+    @Column(name = "vote_up_down", nullable = false)
+    private boolean voteUpdDown;
 
     @Column(name = "hash_id", nullable = false, updatable = false)
     private String hashId = generateHash();
