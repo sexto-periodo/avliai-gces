@@ -36,7 +36,7 @@ public class Subject {
     @Column(name ="campus")
     private String campus;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_course")
     private Course course;
 
@@ -46,6 +46,6 @@ public class Subject {
     @Column(name = "long_description", columnDefinition = "TEXT")
     private String longDescription;
 
-    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
     private List<SubjectReview> reviews;
 }

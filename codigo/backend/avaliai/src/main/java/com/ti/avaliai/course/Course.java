@@ -33,7 +33,7 @@ public class Course {
     @Column(name="overtime")
     private int overtime;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     private List<Subject> subjects;
 
     @Column(name = "status_curriculum")
@@ -42,7 +42,7 @@ public class Course {
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_university")
     private University university;
 

@@ -66,10 +66,10 @@ public class User implements UserDetails {
     @Column(name = "delete_date")
     private LocalDateTime deleteDate;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<SubjectReview> subjectReviews;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private  List<SubjectReviewVote> votes;
 
     @OneToMany(mappedBy = "user")
