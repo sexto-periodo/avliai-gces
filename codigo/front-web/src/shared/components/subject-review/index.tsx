@@ -21,6 +21,8 @@ export default function Review(props: IReviewCard){
         if(byUser.firstname){
             setUsername(`${byUser.firstname} ${byUser.lastname}`)
         }
+        console.log("Será?")
+        console.log(props.review.vote.isVoted)
     }, []);
 
     return(

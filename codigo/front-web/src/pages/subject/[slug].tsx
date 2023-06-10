@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react'
 import styles from './subject.module.scss'
 import SubjectDetails from "@/shared/components/subject-details";
 import {ISubjectDTO} from "@/shared/domain/Subject/ISubject";
-import SubjectReview from "@/shared/components/subject-review";
+import Review from "@/shared/components/subject-review";
 import {IReviewDTO} from "@/shared/domain/Review/IReview";
 import {SubjectService} from "@/shared/domain/Subject/SubjectService";
 import {ReviewService} from "@/shared/domain/Review/ReviewService";
@@ -173,7 +173,7 @@ export default function Disciplina() {
                         <div>
                             {
                                 reviews.map((item, key) =>
-                                    <SubjectReview review={item} key={key}/>
+                                    <Review review={item} key={key}/>
                                 )
                             }
                         </div>

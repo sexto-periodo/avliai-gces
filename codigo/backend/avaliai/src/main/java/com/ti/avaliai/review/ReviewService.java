@@ -137,9 +137,10 @@ public class ReviewService {
                 .voteCount(voteService.countReviewVotes(review))
                 .reviewHashId(review.getHashId())
                 .build();
+
         if(voteService.existisByReviewAndUser(review,user)){
             Vote vote = voteService.findByReviewAndUser(review,user);
-            voteDTO.setVoteUpDown(vote.isVoted());
+            voteDTO.setVoted(vote.isVoted());
             voteDTO.setVoteUpDown(vote.isVoteUpDown());
         }else{
             voteDTO.setVoted(false);

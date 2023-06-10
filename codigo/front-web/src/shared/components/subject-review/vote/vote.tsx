@@ -9,18 +9,24 @@ export default function Vote(props: IVoteDTO) {
 
     const voteService: VoteService = new VoteService()
 
-    const [vote, setVote] = useState<boolean>(false);
-    const [upvoteDownvote, setUpvoteDownvote] = useState<boolean>(false);
-    const [voteCount, setVoteCount] = useState<number>(0);
+    const [vote, setVote] = useState<boolean>(props.isVoted);
+    const [upvoteDownvote, setUpvoteDownvote] = useState<boolean>(props.voteUpDown);
+    const [voteCount, setVoteCount] = useState<number>(props.voteCount);
 
     useEffect(() => {
-        setUpvoteDownvote(props.voteUpDown)
-        setVote(props.isVoted)
+        setUpvoteDownvote(s => props.voteUpDown)
+        setVote(s => props.isVoted)
+        setVoteCount(s => props.voteCount)
+
+        console.log("Estado inicial do vote")
+        console.log(props.isVoted)
     }, []);
 
     function updateVote(newVote: boolean) {
-        let keepVote = !(newVote == upvoteDownvote);
-
+        let keepVote = true
+        if(vote && newVote == upvoteDownvote){
+            keepVote = false;
+        }
 
         let voteRequest: IVoteRequestDTO = {
             reviewHashId: props.reviewHashId,
