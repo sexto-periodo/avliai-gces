@@ -5,7 +5,7 @@ import {IUser, IUserUpdateDataForm} from "@/shared/domain/User/User";
 import {UserService} from "@/shared/domain/User/UserService";
 import Image from 'next/image';
 import {ReviewService} from "@/shared/domain/Review/ReviewService";
-import {ISubjectReviewDTO} from "@/shared/domain/Review/IReview";
+import {IReviewDTO} from "@/shared/domain/Review/IReview";
 import SubjectReview from "@/shared/components/subject-review";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -27,7 +27,7 @@ export default function Home() {
         lastname: "",
         profilePhotoUrl: "",
     })
-    const [userReviews, setUserReviews] = useState<ISubjectReviewDTO[]>([] as ISubjectReviewDTO[]);
+    const [userReviews, setUserReviews] = useState<IReviewDTO[]>([] as IReviewDTO[]);
 
     useEffect(() => {
         let user: IUser = userService.getUserData() as IUser
