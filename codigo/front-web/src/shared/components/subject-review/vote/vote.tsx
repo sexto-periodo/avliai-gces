@@ -17,9 +17,6 @@ export default function Vote(props: IVoteDTO) {
         setUpvoteDownvote(s => props.voteUpDown)
         setVote(s => props.isVoted)
         setVoteCount(s => props.voteCount)
-
-        console.log("Estado inicial do vote")
-        console.log(props.isVoted)
     }, []);
 
     function updateVote(newVote: boolean) {
