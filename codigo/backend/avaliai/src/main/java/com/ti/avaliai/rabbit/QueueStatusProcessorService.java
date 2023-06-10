@@ -17,7 +17,7 @@ public class QueueStatusProcessorService {
     private List<Queue> rabbitQueues;
 
     @Value("${rabbitmq.queue}")
-    private String subjectReviewQueue;
+    private String reviewQueue;
 
     public void getCounts() {
         Properties props;
@@ -29,10 +29,10 @@ public class QueueStatusProcessorService {
         }
     }
 
-    public int getSubjectReviewQueueSize(){
+    public int getReviewQueueSize(){
         Properties props;
         Integer messageCount;
-        props = admin.getQueueProperties(subjectReviewQueue);
+        props = admin.getQueueProperties(reviewQueue);
         int count = Integer.parseInt(props.get("QUEUE_MESSAGE_COUNT").toString());
         return count;
     }

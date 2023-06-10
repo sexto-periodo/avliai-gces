@@ -1,7 +1,7 @@
-package com.ti.avaliai.subjectreview.dto;
+package com.ti.avaliai.review.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ti.avaliai.subjectreview.EReviewScore;
+import com.ti.avaliai.review.EReviewScore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateSubjectReviewRequestDTO {
+public class CreateReviewRequestDTO {
 
     @Schema(description = "Texto da Avaliação.", example = "Lorem ipsum disciplina muito boa!")
     @JsonProperty("reviewText")

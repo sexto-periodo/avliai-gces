@@ -1,16 +1,19 @@
-export interface ISubjectReviewDTO {
+import {IVoteDTO} from "@/shared/domain/Vote/IVote";
+
+export interface IReviewDTO {
     id: number,
     hashId: string,
-    voteCount: number,
     reviewText: string,
+    vote: IVoteDTO
+
 }
 
-export interface ISubjectReviewByUserDTO extends ISubjectReviewDTO {
+export interface IReviewByUserDTO extends IReviewDTO {
     firstname: string
     lastname: string
 }
 
-export interface ICreateSubjectReviewRequestDTO {
+export interface ICreateReviewRequestDTO {
     reviewText: string,
     score: string,
     userHashId: string,

@@ -4,8 +4,8 @@ import styles from './user.module.scss'
 import {IUser, IUserUpdateDataForm} from "@/shared/domain/User/User";
 import {UserService} from "@/shared/domain/User/UserService";
 import Image from 'next/image';
-import {SubjectReviewService} from "@/shared/domain/SubjectReview/SubjectReviewService";
-import {ISubjectReviewDTO} from "@/shared/domain/SubjectReview/ISubjectReview";
+import {ReviewService} from "@/shared/domain/Review/ReviewService";
+import {IReviewDTO} from "@/shared/domain/Review/IReview";
 import SubjectReview from "@/shared/components/subject-review";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -19,7 +19,7 @@ import Masonry from "@mui/lab/Masonry";
 export default function Home() {
 
     const userService: UserService = new UserService();
-    const subjectReviewService: SubjectReviewService = new SubjectReviewService();
+    const subjectReviewService: ReviewService = new ReviewService();
 
     const [user, setUser] = useState<IUser>({} as IUser);
     const [userFormData, setUserFormData] = useState<IUserUpdateDataForm>({
@@ -27,7 +27,7 @@ export default function Home() {
         lastname: "",
         profilePhotoUrl: "",
     })
-    const [userReviews, setUserReviews] = useState<ISubjectReviewDTO[]>([] as ISubjectReviewDTO[]);
+    const [userReviews, setUserReviews] = useState<IReviewDTO[]>([] as IReviewDTO[]);
 
     useEffect(() => {
         let user: IUser = userService.getUserData() as IUser

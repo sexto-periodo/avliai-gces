@@ -2,8 +2,8 @@ package com.ti.avaliai.user;
 
 
 import com.ti.avaliai.course.Course;
-import com.ti.avaliai.subjectreview.SubjectReview;
-import com.ti.avaliai.subjectreviewvote.SubjectReviewVote;
+import com.ti.avaliai.review.Review;
+import com.ti.avaliai.vote.Vote;
 import com.ti.avaliai.token.Token;
 import com.ti.avaliai.university.University;
 import jakarta.persistence.*;
@@ -66,11 +66,11 @@ public class User implements UserDetails {
     @Column(name = "delete_date")
     private LocalDateTime deleteDate;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<SubjectReview> subjectReviews;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Review> reviews;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private  List<SubjectReviewVote> votes;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private  List<Vote> votes;
 
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;

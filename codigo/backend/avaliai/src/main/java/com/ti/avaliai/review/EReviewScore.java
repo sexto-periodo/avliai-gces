@@ -1,4 +1,4 @@
-package com.ti.avaliai.subjectreview;
+package com.ti.avaliai.review;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

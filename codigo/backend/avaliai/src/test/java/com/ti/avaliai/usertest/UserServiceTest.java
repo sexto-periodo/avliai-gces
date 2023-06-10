@@ -26,7 +26,7 @@ public class UserServiceTest {
     @Autowired
     private UserTestUtils userTestUtils;
 
-    @DisplayName(value = "Teste de Sucesso - Utualizar os dados do usuário possiveis")
+    @DisplayName(value = "Teste de Sucesso - Atualizar os dados do usuário possiveis")
     @Test
     void updateUserInfo_Success() {
         User user = userTestUtils.createDefaultTestUser();
@@ -46,7 +46,7 @@ public class UserServiceTest {
         assertEquals(KNOWN_USER_LASTNAME, userDTO.getLastname());
     }
 
-    @DisplayName(value = "Teste de Sucesso - Utualizar somente o campo Firstname")
+    @DisplayName(value = "Teste de Sucesso - Atualizar somente o campo Firstname")
     @Test
     void updateOnlyFirstnameUserInfo_Success() {
         User user = userTestUtils.createDefaultTestUser();
@@ -64,7 +64,7 @@ public class UserServiceTest {
         assertEquals(user.getLastname(), userDTO.getLastname());
     }
 
-    @DisplayName(value = "Teste de Sucesso - Utualizar somente o campo Lastname")
+    @DisplayName(value = "Teste de Sucesso - Atualizar somente o campo Lastname")
     @Test
     void updateOnlyLastnameUserInfo_Success() {
         User user = userTestUtils.createDefaultTestUser();
@@ -82,7 +82,7 @@ public class UserServiceTest {
         assertEquals(user.getFirstname(), userDTO.getFirstname());
     }
 
-    @DisplayName(value = "Teste de Sucesso - Utualizar somente o campo profilePhotoUrl")
+    @DisplayName(value = "Teste de Sucesso - Atualizar somente o campo profilePhotoUrl")
     @Test
     void updateOnlyProfilePhotoUrlUserInfo_Success() {
         User user = userTestUtils.createDefaultTestUser();

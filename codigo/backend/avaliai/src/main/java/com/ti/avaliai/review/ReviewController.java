@@ -1,20 +1,15 @@
-package com.ti.avaliai.subjectreview;
+package com.ti.avaliai.review;
 
 import com.ti.avaliai.global.domain.BasicController;
-import com.ti.avaliai.global.response.error.*;
 import com.ti.avaliai.global.response.success.BaseSucessResponse;
 import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
-import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
-import com.ti.avaliai.subjectreview.dto.SubjectReviewDTO;
+import com.ti.avaliai.review.dto.CreateReviewRequestDTO;
+import com.ti.avaliai.review.dto.ReviewDTO;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,26 +18,26 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path = "/subject-review")
-@Tag(name = "SubjectReview - Endpoints de Avalição de Disciplinas")
-public class SubjectReviewController extends BasicController {
+@RequestMapping(path = "/review")
+@Tag(name = "Review - Endpoints de Avalição de Disciplinas")
+public class ReviewController extends BasicController {
 
     @Autowired
-    private SubjectReviewService subjectReviewService;
+    private ReviewService reviewService;
 
-    @Operation(method = "GET", summary = "Buscar por avaliaição através do HashId de Disciplina.", description = "Buscar por avaliaição através do HashId de Disciplina.")
+    @Operation(method = "GET", summary = "Buscar por avaliaições através do HashId de Disciplina.", description = "Buscar por avaliaição através do HashId de Disciplina.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(value = "/subject/{subjectHashId}")
-    public ResponseEntity<BaseSucessResponse<List<SubjectReviewDTO>>> getReviewsBySubjectHashId(@PathVariable("subjectHashId") String subjectHashId) {
-        List<SubjectReviewDTO> reviews = subjectReviewService.findAllBySubjectHashId(subjectHashId);
+    public ResponseEntity<BaseSucessResponse<List<ReviewDTO>>> getReviewsBySubjectHashId(@PathVariable("subjectHashId") String subjectHashId) {
+        List<ReviewDTO> reviews = reviewService.findAllBySubjectHashId(subjectHashId);
         return ok(reviews);
     }
 
     @Operation(method = "POST", summary = "Postar requisição de avaliação de Disciplina a fila.", description = "Postar requisição de avaliação de Disciplina a fila.")
     @ApiResponse(responseCode = "200", description = "OK")
     @PostMapping
-    public ResponseEntity<NoPayloadSuccessResponse201> getReviewsBySubjectHashId(@RequestBody @Valid CreateSubjectReviewRequestDTO request) {
-        subjectReviewService.send(request);
+    public ResponseEntity<NoPayloadSuccessResponse201> getReviewsBySubjectHashId(@RequestBody @Valid CreateReviewRequestDTO request) {
+        reviewService.send(request);
         return ok();
     }
 
@@ -50,18 +45,15 @@ public class SubjectReviewController extends BasicController {
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(value = "/subject/already-reviewed-by-user/{subjectHashId}")
     public ResponseEntity<BaseSucessResponse<Boolean>> haveSubjectAlreadyReviewedByUser(@PathVariable("subjectHashId") String subjectHashId) {
-        boolean response  = subjectReviewService.haveUserAlreadyReviewedSubject(subjectHashId);
+        boolean response  = reviewService.haveUserAlreadyReviewedSubject(subjectHashId);
         return ok(response);
     }
 
     @Operation(method = "GET", summary = "Buscar por avaliaições feitas pelo usuário logado.", description = "Buscar por avaliaições feitas pelo usuário logado.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(value = "/user")
-    public ResponseEntity<BaseSucessResponse<List<SubjectReviewDTO>>> getReviewsByUser() {
-        List<SubjectReviewDTO> reviews = subjectReviewService.findAllByLoggedUser();
+    public ResponseEntity<BaseSucessResponse<List<ReviewDTO>>> getReviewsByUser() {
+        List<ReviewDTO> reviews = reviewService.findAllByLoggedUser();
         return ok(reviews);
     }
-
-
-
 }

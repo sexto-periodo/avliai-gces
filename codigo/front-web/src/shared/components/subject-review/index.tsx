@@ -1,22 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import styles from './subjectReview.module.scss'
 import {
-    ISubjectReviewByUserDTO,
-    ISubjectReviewDTO
-} from "@/shared/domain/SubjectReview/ISubjectReview";
+    IReviewByUserDTO,
+    IReviewDTO
+} from "@/shared/domain/Review/IReview";
 import Vote from "@/shared/components/subject-review/vote/vote";
 import Image from "next/image";
+import {IVoteDTO} from "@/shared/domain/Vote/IVote";
 
 
-interface ISubjectReviewCard{
-    review: ISubjectReviewByUserDTO | ISubjectReviewDTO,
+interface IReviewCard{
+    review: IReviewByUserDTO | IReviewDTO,
 }
-export default function SubjectReview(props: ISubjectReviewCard){
+export default function Review(props: IReviewCard){
 
-    const [username, setUsername] = useState<string>("Uniário Anônimo");
+    const [username, setUsername] = useState<string>("Usuário Anônimo");
 
     useEffect(() => {
-        let byUser = props.review as ISubjectReviewByUserDTO;
+        let byUser = props.review as IReviewByUserDTO;
         if(byUser.firstname){
             setUsername(`${byUser.firstname} ${byUser.lastname}`)
         }
@@ -41,9 +42,10 @@ export default function SubjectReview(props: ISubjectReviewCard){
 
               <div className={styles.headerRight}>
                     <Vote
-                        downvote={true}
-                        upvote={false}
-                        votes={props.review.voteCount}
+                        reviewHashId={props.review.hashId}
+                        voteUpDown={props.review.vote.voteUpDown}
+                        isVoted={props.review.vote.isVoted}
+                        voteCount={props.review.vote.voteCount}
                     />
               </div>
           </div>
