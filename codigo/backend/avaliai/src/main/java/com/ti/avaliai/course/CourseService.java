@@ -29,59 +29,6 @@ public class CourseService {
     @Autowired
     private UniversityService universityService;
 
-    public List<CourseDTO> getCourses() {
-        List<Course> courses = courseRepository.findAll();
-        List<CourseDTO> courseDTOs = new ArrayList<>();
-
-        courses.forEach(course -> {
-            courseDTOs.add(courseToCourseDTO(course));
-        });
-        return courseDTOs;
-    }
-
-    public void create(CourseCreateRequestDTO courseCreateRequest) {
-
-        Course course = Course.builder()
-                .name(courseCreateRequest.getName())
-                .university(universityService.findOneById(courseCreateRequest.getUniversityId()))
-                .overtime(courseCreateRequest.getOvertime())
-                .hashId(generateHash())
-                .isDeleted(false)
-                .statusCurriculum(true)
-                .build();
-        courseRepository.save(course);
-    }
-
-    public CourseDTO findOneById(long id) {
-        return courseToCourseDTO(
-                courseRepository.findById(id).orElseThrow(
-                        () -> new EntityNotFoundException("Curso de id " + id + " não encontrado", HttpStatus.NOT_FOUND)
-                )
-        );
-
-    }
-
-    public void delete(long id) {
-        if (!courseRepository.existsById(id))
-            throw new EntityNotFoundException("Não conseguimos encontrar o curso", HttpStatus.NOT_FOUND);
-        courseRepository.deleteById(id);
-    }
-
-    @Transactional
-    public CourseDTO update(CourseUpdateRequestDTO courseUpdateRequest) {
-        Course course = courseRepository
-                .findById(courseUpdateRequest.getId())
-                .orElseThrow(() -> new EntityNotFoundException(
-                        "Não conseguimos encontrar o curso", HttpStatus.NOT_FOUND));
-
-        course.setSubjects(subjectService.findAllByIdIn(courseUpdateRequest.getSubjects()));
-        course.setOvertime(courseUpdateRequest.getOvertime());
-        course.setName(courseUpdateRequest.getName());
-
-        courseRepository.save(course);
-        return courseToCourseDTO(course);
-    }
-
     private CourseDTO courseToCourseDTO(Course course) {
         return CourseDTO.builder()
                 .hashId(course.getHashId())
@@ -104,7 +51,6 @@ public class CourseService {
                         courseToCourseDTO(course)
                 )
                 .collect(Collectors.toList());
-
     }
 
     public Course findByHashId(String hashId) {

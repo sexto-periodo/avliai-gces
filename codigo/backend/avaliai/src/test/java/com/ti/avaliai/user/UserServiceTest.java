@@ -1,7 +1,5 @@
-package com.ti.avaliai.usertest;
+package com.ti.avaliai.user;
 
-import com.ti.avaliai.user.UserService;
-import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.dto.UpdateUserRequestDTO;
 import com.ti.avaliai.user.dto.UserDTO;
 import com.ti.avaliai.utils.UserTestUtils;

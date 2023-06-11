@@ -2,14 +2,10 @@ package com.ti.avaliai.university;
 
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.success.BaseSucessResponse;
-import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
-import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
 import com.ti.avaliai.university.dto.UniversityDTO;
-import com.ti.avaliai.university.dto.UniversityUpdateRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,46 +24,16 @@ public class UniversityController extends BasicController {
     @Operation(method = "GET", summary = "Buscar por Universidade", description = "Buscar por Universidades.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
-    public ResponseEntity<BaseSucessResponse<List<UniversityDTO>>> getUniversity() {
-        List<UniversityDTO> universitiesResponse = universityService.getUniversities();
-        return ok(universitiesResponse);
+    public ResponseEntity<BaseSucessResponse<List<UniversityDTO>>> findAll() {
+        List<UniversityDTO> response = universityService.findAll();
+        return ok(response);
     }
-
-
-    @Operation(method = "POST", summary = "Cria uma nova Universidade", description = "Cria uma nova Universidade.")
-    @ApiResponse(responseCode = "201", description = "CREATED")
-    @PostMapping
-    public ResponseEntity<NoPayloadSuccessResponse201> createUniversity(@RequestBody @Valid UniversityCreateRequestDTO universityCreateRequest) {
-        universityService.create(universityCreateRequest);
-        return created();
-    }
-
 
     @Operation(method = "GET", summary = "Busca uma Universidade pelo HashId", description = "Busca uma Universidade pelo id.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(path = "{hashId}")
     public ResponseEntity<UniversityDTO> findOneByHashId(@PathVariable("hashId") String hashId) {
-        UniversityDTO response = universityService.findOneByHashId(hashId);
+        UniversityDTO response = universityService.findByHashIdDTO(hashId);
         return ok(response);
     }
-
-    @Operation(method = "GET", summary = "Deleta uma Universidadde pelo id", description = "Deleta uma Universidade pelo id.")
-    @ApiResponse(responseCode = "200", description = "OK")
-    @DeleteMapping(path = "{id}")
-    public ResponseEntity<BaseSucessResponse> deleteUniversity(@PathVariable("id") long id) {
-        universityService.delete(id);
-        return deleted();
-    }
-
-    @Operation(method = "PUT", summary = "Atualiza uma Universidade", description = "Atualiza uma Universidade.")
-    @ApiResponse(responseCode = "200", description = "OK")
-    @PutMapping
-    public ResponseEntity<BaseSucessResponse<UniversityDTO>> updateUniversity(@RequestBody UniversityUpdateRequestDTO universityUpdateRequest ) {
-
-        UniversityDTO response = universityService.update(universityUpdateRequest);
-        return ok(response);
-    }
-
-
-
 }
