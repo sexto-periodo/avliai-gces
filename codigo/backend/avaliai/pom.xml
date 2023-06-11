@@ -175,6 +175,9 @@
                 <configuration>
                     <excludes>
                         <exclude>com/ti/avaliai/**/*DTO.*</exclude>
+                        <exclude>com/ti/avaliai/**/*Controller.*</exclude>
+                        <exclude>com/ti/avaliai/**/*Repository.*</exclude>
+                        <exclude>com/ti/avaliai/**/*Builder.*</exclude>
                         <exclude>**/config/*</exclude>
                         <exclude>**/dto/*</exclude>
                     </excludes>
