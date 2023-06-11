@@ -158,13 +158,13 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 | **Análise** | **Design**                                                                 | **Implementação** |
 | --- |----------------------------------------------------------------------------|-------------------|
-| Persistência | Banco de dados não relacional                                              | Firebase          |
+| Persistência | Banco de dados  relacional                                              | PostgreSQL          |
 | Front end | Interface de comunicação com o usuário web                                 | TypesCript, React, Sass                  |
 | Back end | Plataforma de desenvolvimento orientada a objeto                           | Spring boot       |
 | Integração |                                                                            |                   |
 | Log do sistema | Implementação dos recursos de log do componente de persistência            | Rest APIs         | |
-| Teste de Software | Camada para tratar as exceções criando interações diferentes para usuários | Visual Studio     |
-| Deploy | Configuração da IDE de deploy                                              | Visual Studio     |
+| Teste de Software | Camada para tratar as exceções criando interações diferentes para usuários | IntelliJ     |
+| Deploy | Configuração da IDE de deploy                                              | IntelliJ     |
 
 <a name="modelagem"></a>
 
@@ -172,7 +172,7 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 A arquitetura do sistema Avaliaí utiliza o protocolo de rede HTTP para se comunicar com outros serviços e ferramentas. A requisição do usuário passa pelo RabbitMQ, um serviço de mensagens aberto que notificará o restante da aplicação, modelada em arquitetura MVC (Model, View, Controller). A primeira camada, view, composta pelos frameworks Next.JS (web) e Flutter (mobile), se comunica com o controller, composto pelo serviço Firebase e o framework Spring. Esse último  se comunica com a camada de dados, em PostgreSQL. Todo esse processo é disponibilizado em containers, tarefa realizada pelo Docker.
 
-![Arquitetura Avaliaí drawio (2)](https://user-images.githubusercontent.com/84593164/225097440-178d9a83-8ecf-4572-8cff-ebf7ee79e209.png)
+![AvaliAi Architecture-1-1](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/9087c626-9407-434d-923e-2bd1c180a8a3)
 
 **Figura 1 - Visão Geral da Solução**
 
