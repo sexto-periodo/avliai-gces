@@ -3,25 +3,25 @@
   {
     "_class": "com.ti.avaliai.university.University",
     "@id": 1,
-    "hashId": "543b45c583bfff6c30e44a751103a24f",
-    "name": "PUC Minas",
-    "cnpj": "17.178.195/0001-67",
-    "courses": [
-      {
-        "id":1
-      }
-    ],
+    "hashId": "e6379fe087f9853f4c55a6bcb3f22093",
+    "name": "AvaliAi University",
+    "cnpj": "12.345.678/0001-91",
+    "courses": [{
+      "id":1
+    }],
     "isDeleted": false
   },
   {
     "_class": "com.ti.avaliai.university.University",
     "@id": 2,
-    "hashId": "e6379fe087f9853f4c55a6bcb3f22093",
-    "name": "AvaliAi University",
-    "cnpj": "12.345.678/0001-91",
-    "courses": [{
-      "id":2
-    }],
+    "hashId": "543b45c583bfff6c30e44a751103a24f",
+    "name": "PUC Minas",
+    "cnpj": "17.178.195/0001-67",
+    "courses": [
+      {
+        "id":2
+      }
+    ],
     "isDeleted": false
   },
   {

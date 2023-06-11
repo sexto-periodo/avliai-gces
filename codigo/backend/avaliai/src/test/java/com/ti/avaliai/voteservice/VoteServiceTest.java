@@ -15,10 +15,7 @@ import com.ti.avaliai.utils.UserTestUtils;
 import com.ti.avaliai.vote.Vote;
 import com.ti.avaliai.vote.VoteService;
 import com.ti.avaliai.vote.dto.VoteRequestDTO;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
@@ -60,7 +57,7 @@ public class VoteServiceTest {
     private VoteService voteService;
 
     @BeforeAll
-    void  setup(){
+    void setup() {
         reviewTestUtils.createGenericReview(userTestUtils.createDefaultTestUser(), EReviewScore.FIVE);
         reviewTestUtils.createGenericReview(userTestUtils.createRandomTestUser(), EReviewScore.ONE);
     }

@@ -59,7 +59,7 @@ public class ReviewService {
 
     public List<ReviewDTO> findAllBySubjectHashId(String subjectHashId) {
         SubjectDTO subjectDTO = subjectService.findByHashIdDTO(subjectHashId);
-        Subject subject = subjectService.findById(subjectDTO.getId());
+        Subject subject = subjectService.findByHashId(subjectDTO.getHashId());
 
         User user = userService.getUser();
         List<Review> reviews = reviewRepository.findAllBySubject(subject);
