@@ -2,29 +2,28 @@ cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: 
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Couto Martins de Paula
+    given-names: Gabriel Victor
+  - family-names: Fernandes Machado
+    given-names: Pedro Henrique
+  - family-names: de Souza e Sousa
+    given-names: Luís Antônio
+  - family-names: Santos Soares
+    given-names: Luiz Gustavo
+  - family-names: Guerra Prata Lima
+    given-names: João Victor
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Noberta de Brito
+    given-names: Aline
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Silva Tavares
+    given-names: Cleiton
 keywords:
-  - 
-  - 
+  - avaliação
+  - disciplinas
+  - avaliai
 repository-code: 
 license: CC-BY-4.0
 version: 1.0.0
