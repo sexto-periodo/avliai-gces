@@ -363,9 +363,7 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 | **Cenários(s):** | Cenário 4 |
 | **Ambiente:** | Sistema em operação normal |
 | **Estímulo:** | Cobertura do sistema e sua extensão de testes |
-| **Mecanismo:** | Através da ferramenta Jacoco, foram geradas informações a respeito da cobertura de testes do sistema. É possível identificar que a cobertura (coverage) excede os 60% determinados:
-![jacoco](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/d374a7c8-2ff3-46dd-9907-ade1f49db731)
-|
+| **Mecanismo:** | Através da ferramenta Jacoco, foram geradas informações a respeito da cobertura de testes do sistema. É possível identificar que a cobertura (coverage) excede os 60% determinados|
 | **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
 
 **Considerações sobre a arquitetura:**
@@ -377,7 +375,7 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 
 Evidências dos testes realizados
 
-_Apresente imagens, descreva os testes de tal forma que se comprove a realização da avaliação._
+![jacoco](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/d374a7c8-2ff3-46dd-9907-ade1f49db731)
 
 <a name="referencias"></a>
 # 5. REFERÊNCIAS
