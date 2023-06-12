@@ -342,26 +342,28 @@ _Esta seção descreve a avaliação da arquitetura apresentada, baseada no mét
 
 _Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos não funcionais sendo satisfeitos. Os requisitos a seguir são apenas exemplos de possíveis requisitos, devendo ser revistos, adequados a cada projeto e complementados de forma a terem uma especificação completa e auto-explicativa._
 
-**Cenário 1 - Acessibilidade:** Suspendisse consequat consectetur velit. Sed sem risus, dictum dictum facilisis vitae, commodo quis leo. Vivamus nulla sem, cursus a mollis quis, interdum at nulla. Nullam dictum congue mauris. Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+**Cenário 1 - Disponibilidade:** O sistema deve ser implementado em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%.
 
-**Cenário 2 - Interoperabilidade:** Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ut accumsan erat. Pellentesque in enim tempus, iaculis sem in, semper arcu.
+**Cenário 2 - Disponibilidade:** O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo..
 
-**Cenário 3 - Manutenibilidade:** Phasellus magna tellus, consectetur quis scelerisque eget, ultricies eu ligula. Sed rhoncus fermentum nisi, a ullamcorper leo fringilla id. Nulla lacinia sem vel magna ornare, non tincidunt ipsum rhoncus. Nam euismod semper ante id tristique. Mauris vel elit augue.
+**Cenário 3 - Desempenho:** O tempo médio de resposta do servidor deve ser inferior a 500 ms..
 
-**Cenário 4 - Segurança:** Suspendisse consectetur porta tortor non convallis. Sed lobortis erat sed dignissim dignissim. Nunc eleifend elit et aliquet imperdiet. Ut eu quam at lacus tincidunt fringilla eget maximus metus. Praesent finibus, sapien eget molestie porta, neque turpis congue risus, vel porttitor sapien tortor ac nulla. Aliquam erat volutpat.
+**Cenário 4 - Testabilidade:** A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos.
+
+**Cenário 5 - Segurança:** O sistema deve utilizar Spring Security com JWT para garantir criptografia dos dados dos clientes.
 
 ## 4.2. Avaliação
 
 _Apresente as medidas registradas na coleta de dados. O que não for possível quantificar apresente uma justificativa baseada em evidências qualitativas que suportam o atendimento do requisito não-funcional. Apresente uma avaliação geral da arquitetura indicando os pontos fortes e as limitações da arquitetura proposta._
 
-| **Atributo de Qualidade:** | Segurança |
+| **Atributo de Qualidade:** | Testabilidade |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
+| **Requisito de Qualidade** | A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos. |
+| **Preocupação:** | A cobertura de testes do sistema deve exceder 60% para garantir que a aplicação funciona corretamente, sem bugs ou falhas críticos. |
 | **Cenários(s):** | Cenário 4 |
 | **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
+| **Estímulo:** | Cobertura do sistema e sua extensão de testes |
+| **Mecanismo:** | Através da ferramenta Jacoco, foram geradas informações a respeito da cobertura de testes do sistema. É possível identificar que a cobertura (coverage) excede os 60% determinados |
 | **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
 
 **Considerações sobre a arquitetura:**
@@ -369,7 +371,7 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 | **Riscos:** | Não existe |
 | --- | --- |
 | **Pontos de Sensibilidade:** | Não existe |
-| _ **Tradeoff** _ **:** | Não existe |
+| _ **Tradeoff** _ **:** | Muito tempo foi gasto para a preparação e implementação dos testes, mas com o fim de garantir que o sistema estivesse funcionando corretamente |
 
 Evidências dos testes realizados
 
