@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.2.19
+  material_floating_search_bar: ^0.3.7
   http: ^0.13.3
    
 
@@ -42,6 +44,7 @@ dependencies:
   path: ^1.8.3
   flutter_dotenv: ^5.1.0
   flutter_secure_storage: ^8.0.0
+  readmore: ^2.2.0
   
  
 dev_dependencies:
@@ -99,3 +102,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+
+  android: true
+
+  color: "#6750A4"

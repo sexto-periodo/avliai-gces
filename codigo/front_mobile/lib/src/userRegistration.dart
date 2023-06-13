@@ -4,6 +4,7 @@ import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/login_page.dart';
 
 import 'components/color_palette.dart';
+import 'package:http/http.dart' as http;
 
 class UserRegistration extends StatefulWidget {
   const UserRegistration({super.key});
@@ -163,7 +164,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                       }
                     },
                     decoration: InputDecoration(
-                      labelText: 'Select University',
+                      labelText: 'Selecione uma Universidade',
                     ),
                   ),
                   const SizedBox(
@@ -185,7 +186,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                       }
                     },
                     decoration: InputDecoration(
-                      labelText: 'Select Course',
+                      labelText: 'Selecione um Curso',
                     ),
                   ),
                   const SizedBox(
@@ -232,64 +233,39 @@ class _UserRegistrationState extends State<UserRegistration> {
                 const SizedBox(
                   height: 10,
                 ),
-                buttonRegistration(),
+                const buttonRegistration(),
                 const SizedBox(
                   height: 5,
                 ),
                 */
-                  ElevatedButton(
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(6),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 10)
-                          ],
-                        ),
-                        child: const Text(
-                          'Cadastrar',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      onPressed: () => {handleSubmit()}),
+                
+                   Container(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                          onPressed: () => {handleSubmit()},
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorPalette.mainColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              )),
+                          child: const Text(
+                            'Cadastrar',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24,
+                            ),
+                          )),
+                    )),
                 ],
               ),
             ),
           ),
         ));
   }
-
-//   _salvarDados(String emailController, String passwordController) async {
-//     Database bd = await _recuperarBancoDados();
-//     Map<String, dynamic> dadosUsuario = {
-//       "email": emailController,
-//       "senha": passwordController
-//     };
-//     int id = await bd.insert("usuarios", dadosUsuario);
-//     print("Salvo: $id ");
-//   }
-
-//   _recuperarBancoDados() async {
-//     final caminhoBancoDados = await getDatabasesPath();
-//     final localBancoDados = join(caminhoBancoDados, "banco3.bd");
-//     var bd = await openDatabase(localBancoDados, version: 1,
-//         onCreate: (db, dbVersaoRecente) {
-//       String sql =
-//           "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR, senha VARCHAR) ";
-//       db.execute(sql);
-//     });
-//     return bd;
-//     //print("aberto: " + bd.isOpen.toString() );
-//   }
-
-// }
 
   handleSubmit() async {
     String uniHash = _selectedUniversity!.hashId.toString();
@@ -304,6 +280,13 @@ class _UserRegistrationState extends State<UserRegistration> {
         universityHashId: uniHash,
         courseHashId: cHash,
         role: 'USER');
-    await AuthApi().register(newUser);
+    http.Response response = await AuthApi().register(newUser);
+
+    if (response.statusCode == 200) {
+       Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => LoginPage()));
+    }
   }
 }

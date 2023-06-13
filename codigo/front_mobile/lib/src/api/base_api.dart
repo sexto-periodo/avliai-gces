@@ -1,7 +1,14 @@
 import 'dart:convert';
-
 import 'package:front_mobile/src/shared/config.dart';
 import 'package:http/http.dart' as http;
+import '../_subject.dart';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+const storage = FlutterSecureStorage();
+
+
+
+
 
 class BaseApi {
   static var baseURL = Config.apiURL;
@@ -12,6 +19,14 @@ class BaseApi {
   var courseRoute = '${baseURL}course';
   var userRoute = '${baseURL}user';
   var authRoute = '${baseURL}auth';
+
+  Map<String, String> authHeaders(String authToken) {
+    return <String, String>{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $authToken'
+          };
+  }
 }
 
 // ===============================================
@@ -105,19 +120,25 @@ class SignUpForm {
 
 // ====================================
 class UserApi extends BaseApi {
-  Future<User> getUser() async {
+  Future<User> getUser(String authToken) async {
     try {
       final http.Response response =
-          await http.get(Uri.parse(super.userRoute));
+          await http.get(Uri.parse(super.userRoute),
+          headers: super.authHeaders(authToken));
           switch (response.statusCode) {
             case 200:
-              return User.fromJson(jsonDecode(response.body));
+              return User.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
             default:
               throw Exception(response.reasonPhrase);
           }
     } on Exception catch (_) {
       rethrow;
     }
+  }
+
+  void SaveLoggedUser(String authToken) async {
+    User user =  await this.getUser(authToken);
+    storage.write(key: 'loggedUser', value: User.serialize(user));
   }
 }
 
@@ -136,6 +157,20 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return User(id: json['id'], firstname: json['firstname'], lastname: json['lastname'], email: json['email'], hashId: json['hashId'], universityHashId: json['universityHashId'], courseHashId: json['courseHashId'], role: json['role']);
   }
+
+  static Map<String, dynamic> toMap(User user) => <String, dynamic> {
+    'id': user.id,
+    'firstname': user.firstname,
+    'lastname': user.lastname,
+    'email': user.email,
+    'hashId': user.hashId,
+    'universityHashId': user.universityHashId,
+    'courseHashId': user.courseHashId,
+    'role': user.role
+  };
+
+  static String serialize(User user) => jsonEncode(User.toMap(user));
+  static User deserialize(String json) => User.fromJson(jsonDecode(json));
 }
 
 // ====================================
@@ -147,7 +182,7 @@ class UniversityApi extends BaseApi{
           await http.get(Uri.parse(super.universityRoute));
           switch (response.statusCode) {
             case 200:
-              Iterable list = jsonDecode(response.body);
+              Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
               List<University> universities = List<University>.from(list.map((e) =>  University.fromJson(e)));
               return universities;
             default:
@@ -161,12 +196,32 @@ class UniversityApi extends BaseApi{
   Future<List<Course>> getCoursesByUniversityHashId(String hashId) async {
     try {
       final http.Response response =
-          await http.get(Uri.parse('${super.courseRoute}/university/$hashId'));
+          await http.get(Uri.parse('${super.courseRoute}/university/$hashId'),
+          );
           switch (response.statusCode) {
             case 200:
-              Iterable list = jsonDecode(response.body);
+              Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
               List<Course> courses = List<Course>.from(list.map((e) =>  Course.fromJson(e)));
               return courses;
+            default:
+              throw Exception(response.reasonPhrase);
+          }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+
+  Future<List<Subject>> getSubjects(String authToken) async {
+    try {
+      final http.Response response =
+          await http.get(Uri.parse(super.subjectRoute),
+          headers: super.authHeaders(authToken));
+          switch (response.statusCode) {
+            case 200:
+              Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
+              List<Subject> subjects = List<Subject>.from(list.map((e) =>  Subject.fromJson(e)));
+              return subjects;
             default:
               throw Exception(response.reasonPhrase);
           }
