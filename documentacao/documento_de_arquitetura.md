@@ -158,13 +158,13 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 | **Análise** | **Design**                                                                 | **Implementação** |
 | --- |----------------------------------------------------------------------------|-------------------|
-| Persistência | Banco de dados não relacional                                              | Firebase          |
+| Persistência | Banco de dados  relacional                                              | PostgreSQL          |
 | Front end | Interface de comunicação com o usuário web                                 | TypesCript, React, Sass                  |
 | Back end | Plataforma de desenvolvimento orientada a objeto                           | Spring boot       |
 | Integração |                                                                            |                   |
 | Log do sistema | Implementação dos recursos de log do componente de persistência            | Rest APIs         | |
-| Teste de Software | Camada para tratar as exceções criando interações diferentes para usuários | Visual Studio     |
-| Deploy | Configuração da IDE de deploy                                              | Visual Studio     |
+| Teste de Software | Camada para tratar as exceções criando interações diferentes para usuários | IntelliJ     |
+| Deploy | Configuração da IDE de deploy                                              | IntelliJ     |
 
 <a name="modelagem"></a>
 
@@ -172,7 +172,7 @@ _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se
 
 A arquitetura do sistema Avaliaí utiliza o protocolo de rede HTTP para se comunicar com outros serviços e ferramentas. A requisição do usuário passa pelo RabbitMQ, um serviço de mensagens aberto que notificará o restante da aplicação, modelada em arquitetura MVC (Model, View, Controller). A primeira camada, view, composta pelos frameworks Next.JS (web) e Flutter (mobile), se comunica com o controller, composto pelo serviço Firebase e o framework Spring. Esse último  se comunica com a camada de dados, em PostgreSQL. Todo esse processo é disponibilizado em containers, tarefa realizada pelo Docker.
 
-![Arquitetura Avaliaí drawio (2)](https://user-images.githubusercontent.com/84593164/225097440-178d9a83-8ecf-4572-8cff-ebf7ee79e209.png)
+![AvaliAi Architecture-1-1](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/9087c626-9407-434d-923e-2bd1c180a8a3)
 
 **Figura 1 - Visão Geral da Solução**
 
@@ -342,27 +342,29 @@ _Esta seção descreve a avaliação da arquitetura apresentada, baseada no mét
 
 _Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos não funcionais sendo satisfeitos. Os requisitos a seguir são apenas exemplos de possíveis requisitos, devendo ser revistos, adequados a cada projeto e complementados de forma a terem uma especificação completa e auto-explicativa._
 
-**Cenário 1 - Acessibilidade:** Suspendisse consequat consectetur velit. Sed sem risus, dictum dictum facilisis vitae, commodo quis leo. Vivamus nulla sem, cursus a mollis quis, interdum at nulla. Nullam dictum congue mauris. Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+**Cenário 1 - Disponibilidade:** O sistema deve ser implementado em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%.
 
-**Cenário 2 - Interoperabilidade:** Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ut accumsan erat. Pellentesque in enim tempus, iaculis sem in, semper arcu.
+**Cenário 2 - Desempenho:** O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo.
 
-**Cenário 3 - Manutenibilidade:** Phasellus magna tellus, consectetur quis scelerisque eget, ultricies eu ligula. Sed rhoncus fermentum nisi, a ullamcorper leo fringilla id. Nulla lacinia sem vel magna ornare, non tincidunt ipsum rhoncus. Nam euismod semper ante id tristique. Mauris vel elit augue.
+**Cenário 3 - Desempenho:** O tempo médio de resposta do servidor deve ser inferior a 500 ms.
 
-**Cenário 4 - Segurança:** Suspendisse consectetur porta tortor non convallis. Sed lobortis erat sed dignissim dignissim. Nunc eleifend elit et aliquet imperdiet. Ut eu quam at lacus tincidunt fringilla eget maximus metus. Praesent finibus, sapien eget molestie porta, neque turpis congue risus, vel porttitor sapien tortor ac nulla. Aliquam erat volutpat.
+**Cenário 4 - Testabilidade:** A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos.
+
+**Cenário 5 - Segurança:** O sistema deve utilizar Spring Security com JWT para garantir criptografia dos dados dos clientes.
 
 ## 4.2. Avaliação
 
 _Apresente as medidas registradas na coleta de dados. O que não for possível quantificar apresente uma justificativa baseada em evidências qualitativas que suportam o atendimento do requisito não-funcional. Apresente uma avaliação geral da arquitetura indicando os pontos fortes e as limitações da arquitetura proposta._
 
-| **Atributo de Qualidade:** | Segurança |
+| **Atributo de Qualidade:** | Disponibilidade |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
-| **Cenários(s):** | Cenário 4 |
+| **Requisito de Qualidade** | O sistema deve ser implementado em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%. |
+| **Preocupação:** | O sistema deve estar disponível para acesso imediato de usuários em 95% do tempo |
+| **Cenários(s):** | Cenário 1 |
 | **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Estímulo:** | Disponibilidade e tempo de ativo |
+| **Mecanismo:** | Foi utilizada a ferramenta StatusCake para monitorar o tempo de disponibilidade total |
+| **Medida de Resposta:** | Disponibilidade |
 
 **Considerações sobre a arquitetura:**
 
@@ -373,7 +375,97 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 
 Evidências dos testes realizados
 
-_Apresente imagens, descreva os testes de tal forma que se comprove a realização da avaliação._
+![uptime](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/d0c0586a-45e1-4b5c-b01a-15f2d47c6053)
+(referente à URL https://avaliai.web.app/)
+
+
+| **Atributo de Qualidade:** | Desempenho |
+| --- | --- |
+| **Requisito de Qualidade** | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo. |
+| **Preocupação:** | O sistema deve suportar uma quantidade razoável de usuários simultaneamente |
+| **Cenários(s):** | Cenário 2 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Desempenho do sistema e capacidade de usuários online |
+| **Mecanismo:** | Utilizando a ferramenta de testes JMeter e criando threads de usuários, foi possível simular requisições de 50 usuários simultaneamente no sistema |
+| **Medida de Resposta:** | Desempenho |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Não existe |
+
+Evidências dos testes realizados
+
+![cenario3](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/bfdec90e-03a3-49d9-9483-7f482e82e146)
+
+
+| **Atributo de Qualidade:** | Desempenho |
+| --- | --- |
+| **Requisito de Qualidade** | O tempo médio de resposta do servidor deve ser inferior a 500 ms. |
+| **Preocupação:** | O servidor e as APIs devem ter um tempo de resposta menor que 500 ms para garantir o desempenho da aplicação |
+| **Cenários(s):** | Cenário 3 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Desempenho do sistema e tempo de resposta de requisições de APIs |
+| **Mecanismo:** | Utilizando o JMeter, testou-se o tempo de resposta média do servidor mediante a requisição simultânea de 60 usuários |
+| **Medida de Resposta:** | Desempenho |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Não existe |
+
+Evidências dos testes realizados
+
+![media](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/bed32664-3fc6-4cb2-a02d-5c4fb49dc3c9)
+
+![minmax](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/5cc4478c-7973-4af4-861e-5d6348bc36ee)
+
+| **Atributo de Qualidade:** | Testabilidade |
+| --- | --- |
+| **Requisito de Qualidade** | A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos. |
+| **Preocupação:** | A cobertura de testes do sistema deve exceder 60% para garantir que a aplicação funciona corretamente, sem bugs ou falhas críticos. |
+| **Cenários(s):** | Cenário 4 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Cobertura do sistema e sua extensão de testes |
+| **Mecanismo:** | Através da ferramenta Jacoco, foram geradas informações a respeito da cobertura de testes do sistema. É possível identificar que a cobertura (coverage) excede os 60% determinados|
+| **Medida de Resposta:** | Testabilidade e cobertura de testes. |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Muito tempo foi gasto para a preparação e implementação dos testes, mas com o fim de garantir que o sistema estivesse funcionando corretamente |
+
+Evidências dos testes realizados
+
+![jacoco](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/d374a7c8-2ff3-46dd-9907-ade1f49db731)
+
+| **Atributo de Qualidade:** | Segurança |
+| --- | --- |
+| **Requisito de Qualidade** | O sistema deve utilizar Spring Security com JWT para garantir criptografia dos dados dos clientes. | 
+| **Preocupação:** | O usuário deve ter dados como a senha protegidos por criptografia para garantir sua segurança. |
+| **Cenários(s):** | Cenário 5 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Segurança do usuário e proteção de seus dados |
+| **Mecanismo:** | Utilizando o Spring Security em conjunto com o JWT, juntamente com funções nativas do Spring Boot e do Java, foi possível criptografar a senha do usuário. |
+| **Medida de Resposta:** | Segurança. |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Para garantir a segurança, o sistema abdica de um pouco do desempenho |
+
+Evidências dos testes realizados
+
+![senha](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/a393cee1-c2c0-4cec-b931-2a0a2efb00ae)
+
 
 <a name="referencias"></a>
 # 5. REFERÊNCIAS
