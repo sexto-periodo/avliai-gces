@@ -1,7 +1,7 @@
 package com.ti.avaliai.subject;
 
 import com.ti.avaliai.course.Course;
-import com.ti.avaliai.subjectreview.SubjectReview;
+import com.ti.avaliai.review.Review;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,5 +47,5 @@ public class Subject {
     private String longDescription;
 
     @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
-    private List<SubjectReview> reviews;
+    private List<Review> reviews;
 }

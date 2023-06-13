@@ -4,6 +4,7 @@ package com.ti.avaliai.user;
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.success.BaseSucessResponse;
 import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse200;
+import com.ti.avaliai.user.dto.UpdateUserRequestDTO;
 import com.ti.avaliai.user.dto.UserDTO;
 import com.ti.avaliai.user.dto.UserDeleteRequestDTO;
 import com.ti.avaliai.user.dto.VerifyEmailRequestDTO;
@@ -35,6 +36,13 @@ public class UserController extends BasicController {
     @ApiResponse(responseCode = "200", description = "OK")
     public ResponseEntity<BaseSucessResponse<UserDTO>> getUser() {
         return ok(this.userService.getUserDTO());
+    }
+
+    @PutMapping
+    @Operation(method = "PUT", summary = "Atualiza os dados do usuário logado.", description = "Atualiza os dados do usuário logado.")
+    @ApiResponse(responseCode = "200", description = "OK")
+    public ResponseEntity<BaseSucessResponse<UserDTO>> updateUser(@RequestBody UpdateUserRequestDTO request) {
+        return ok(this.userService.updateUser(request));
     }
 
     @GetMapping(value = "/all")

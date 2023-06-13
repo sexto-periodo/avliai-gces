@@ -1,6 +1,6 @@
 package com.ti.avaliai.rabbit.producer;
 
-import com.ti.avaliai.subjectreview.dto.CreateSubjectReviewRequestDTO;
+import com.ti.avaliai.review.dto.CreateReviewRequestDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class RabbitMQProducer {
     @Value("${rabbitmq.routingKey}")
     private String routingKey;
 
-    public void sendReviewMessage(CreateSubjectReviewRequestDTO message) {
+    public void sendReviewMessage(CreateReviewRequestDTO message) {
         rabbitTemplate.convertAndSend(exchange, routingKey, message);
         log.info("Avaliação postada com sucesso na Fila.");
     }

@@ -14,7 +14,7 @@ import {IUser} from '@/shared/domain/User/User';
 import {IUniversityDTO} from "@/shared/domain/University/IUniversity";
 import {UniversityService} from "@/shared/domain/University/UniversityService";
 
-export default function Disciplinas() {
+export default function Home() {
 
     const subjectService: SubjectService = new SubjectService()
     const universityService: UniversityService = new UniversityService()
@@ -78,7 +78,21 @@ export default function Disciplinas() {
                     >
                         {subjects.map((item, key) => (
                             <CardSubject
-                                key={key} {...item}/>
+                                key={key}
+
+                                id={item.id}
+                                hashId={item.hashId}
+                                name={item.name}
+                                imageUrl={item.imageUrl}
+                                campus={item.campus}
+                                courseHashId={item.courseHashId}
+                                universityHashId={item.universityHashId}
+                                course={item.course}
+                                university={item.university}
+                                shortDescription={item.shortDescription}
+                                longDescription={item.longDescription}
+                                score={item.score}
+                            />
                         ))}
                     </Masonry>
                 </div>

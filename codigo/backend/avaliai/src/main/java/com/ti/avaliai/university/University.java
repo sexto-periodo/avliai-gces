@@ -30,7 +30,7 @@ public class University {
     @Column(name = "cnpj")
     private String cnpj;
 
-    @OneToMany(mappedBy = "university", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
     private List<Course> courses;
 
     @Column(name = "is_deleted")

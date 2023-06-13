@@ -1,16 +1,53 @@
 import {Rating, TextField} from '@mui/material';
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './reviewModal.module.scss'
 import {MdClose} from "react-icons/md";
 import Button from "@mui/material/Button";
+import {IModal} from "@/shared/components/modal/IModal";
+import {UserService} from "@/shared/domain/User/UserService";
+import {UniversityService} from "@/shared/domain/University/UniversityService";
+import {CourseService} from "@/shared/domain/Course/CourseService";
+import {
+    EScore,
+    ICreateReviewRequestDTO
+} from "@/shared/domain/Review/IReview";
+import {ReviewService} from "@/shared/domain/Review/ReviewService";
 
-interface IModal {
-    onClose: Function
+
+interface IReviewModal extends IModal{
+    subjectHashId: string;
+    courseHashId: string;
+    universityHashId: string;
 }
 
-export default function ReviewModal(props: IModal) {
+export default function ReviewModal(props: IReviewModal) {
+
+    const userService: UserService = new UserService();
+    const subjectReviewService: ReviewService = new ReviewService();
 
     const [value, setValue] = React.useState<number | null>(2);
+    const [text, setText] = React.useState<string>("");
+
+    useEffect(() => {
+        console.log(value);
+    }, [value, text])
+
+    function buildReviewDTO(){
+        // @ts-ignore
+        let scoreKey = Object.keys(EScore).find(x => EScore[x] == value);
+        let SubjectReviewRequest: ICreateReviewRequestDTO = {
+            reviewText: text,
+            universityHashId: props.universityHashId,
+            courseHashId: props.courseHashId,
+            subjectHashId: props.subjectHashId,
+            userHashId: userService.getUserData()?.hashId || "",
+            score: scoreKey || "FIVE",
+        }
+
+        subjectReviewService.postReviewCreateMessage(SubjectReviewRequest)
+            .then(() => props.onClose());
+    }
+
 
     return (
         <div className={styles.reviewModalContainer}>
@@ -36,7 +73,9 @@ export default function ReviewModal(props: IModal) {
             </div>
             <div className={styles.reviewTextContainer}>
                 <TextField fullWidth label="Justifique sua avaliação" id="fullWidth" multiline
-                           rows={10}/>
+                           rows={10}
+                            onChange={(e) => setText(e.target.value)}
+                />
             </div>
             <div className={styles.reviewButtonsContainer}>
                 <Button variant="outlined"
@@ -53,7 +92,7 @@ export default function ReviewModal(props: IModal) {
                         type="submit"
                         sx={{ml:1, mr: 1, mt: 3}}
                         style={{borderRadius: 30, width: 200, height: 50}}
-                        onClick={() => props.onClose()}
+                        onClick={() => buildReviewDTO()}
                 >
                     Avaliar!
                 </Button>

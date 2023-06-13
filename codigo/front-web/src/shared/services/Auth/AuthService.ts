@@ -88,11 +88,11 @@ export class AuthService {
         setCookie(USER_DATA_COOKIE, JSON.stringify(user));
     }
 
-    getUserAuth() : UserAuth | null {
+    getUserAuth() : UserAuth | null{
         if (hasCookie(USER_AUTH_COOKIE)) {
             return JSON.parse(<string>getCookie(USER_AUTH_COOKIE)) as UserAuth
         }
-        return null;
+        return null
     }
 
     haveAuthStateChanged() {
@@ -110,7 +110,7 @@ export class AuthService {
     getUserData(): Promise<IUser> {
         return fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/user`, {
             method: 'GET',
-            headers: this.buildDefaultHeaderPlainText(),
+            headers: this.buildDefaultHeaderApplicationJson(),
         })
             .then(res => res.json())
             .then(data => {

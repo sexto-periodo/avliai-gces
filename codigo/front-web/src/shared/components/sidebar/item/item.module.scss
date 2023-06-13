@@ -19,12 +19,14 @@
   grid-template-rows: 1fr 1fr;
   place-items: center;
   margin: 10px 0;
+  color: var(--md-ref-palette-secondary20);
 
   .iconContainer {
     display: grid;
     place-items: center;
     border-radius: 300px;
-    padding: 3px 15px;
+    padding: 5px 18px;
+    transition: 200ms;
 
     &:hover {
       background-color: var(--md-ref-palette-primary80);
@@ -33,7 +35,10 @@
   }
 
   .labelContainer {
-    font-size: 12px;
+    font-size: 15px;
+    text-decoration: none;
+    text-underline: none;
+    font-weight: bold;
   }
 }
 

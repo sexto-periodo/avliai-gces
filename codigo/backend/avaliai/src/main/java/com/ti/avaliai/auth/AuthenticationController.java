@@ -3,8 +3,7 @@ package com.ti.avaliai.auth;
 import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
 import com.ti.avaliai.auth.dto.AuthenticationResponseDTO;
 import com.ti.avaliai.auth.dto.RegisterRequestDTO;
-import com.ti.avaliai.global.response.error.ErrorResponse400;
-import com.ti.avaliai.global.response.error.ErrorResponse404;
+import com.ti.avaliai.global.response.error.*;
 import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse200;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,7 +25,10 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @ApiResponses(value = {
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse404.class))),
-        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse400.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse400.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse401.class))),
+        @ApiResponse(responseCode = "422", description = "Not Processable Entity", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse422.class))),
+        @ApiResponse(responseCode = "409", description = "Conflict", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse409.class))),
 })
 public class AuthenticationController {
 

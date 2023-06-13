@@ -5,6 +5,7 @@ import com.ti.avaliai.global.response.success.BaseSucessResponse;
 import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
 import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
+import com.ti.avaliai.subject.dto.SubjectUpdateRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,48 +22,22 @@ import java.util.List;
 @Tag(name = "Subject - Endpoints de Disciplinas")
 public class SubjectController extends BasicController {
 
-    @Autowired
-    private SubjectService subjectService;
-
-    @Operation(method = "GET", summary = "Buscar por Disciplinas", description = "Buscar por Disciplinas.")
+    @Operation(method = "GET", summary = "Busca todas as disciplinas.", description = "Busca todas as disciplinas.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
-    public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> getSubjects() {
-        List<SubjectDTO> subjectsResponse = subjectService.getSubjects();
-        return ok(subjectsResponse);
+    public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> faindAll() {
+        List<SubjectDTO> response = subjectService.findAll();
+        return ok(response);
     }
 
-
-    @Operation(method = "POST", summary = "Cria uma nova Disciplina", description = "Cria uma nova Disciplina.")
-    @ApiResponse(responseCode = "201", description = "CREATED")
-    @PostMapping
-    public ResponseEntity<NoPayloadSuccessResponse201> createSubject(@RequestBody @Valid SubjectCreateRequestDTO subjectCreateRequest) {
-        subjectService.create(subjectCreateRequest);
-        return created();
-    }
+    @Autowired
+    private SubjectService subjectService;
 
     @Operation(method = "GET", summary = "Busca uma Disciplina pelo HashId", description = "Busca uma Disciplina pelo HashId.")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping(path = "/{hashId}")
     public ResponseEntity<SubjectDTO> findByHashId(@PathVariable("hashId") String hashId) {
         SubjectDTO response = subjectService.findByHashIdDTO(hashId);
-        return ok(response);
-    }
-
-    @Operation(method = "DELETE", summary = "Deleta uma Disciplina pelo id", description = "Deleta uma Disciplina pelo id.")
-    @ApiResponse(responseCode = "200", description = "OK")
-    @DeleteMapping(path = "{id}")
-    public ResponseEntity<BaseSucessResponse> deleteSubject(@PathVariable("id") long id) {
-        subjectService.delete(id);
-        return deleted();
-    }
-
-    @Operation(method = "PUT", summary = "Atualiza uma Disciplina", description = "Atualiza uma Disciplina.")
-    @ApiResponse(responseCode = "200", description = "OK")
-    @PutMapping
-    public ResponseEntity<BaseSucessResponse<SubjectDTO>> updateSubject( @RequestBody SubjectDTO subjectUpdateRequest ) {
-
-        SubjectDTO response = subjectService.update(subjectUpdateRequest);
         return ok(response);
     }
 

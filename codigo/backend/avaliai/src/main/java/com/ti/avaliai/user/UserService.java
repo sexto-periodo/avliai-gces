@@ -2,11 +2,9 @@ package com.ti.avaliai.user;
 
 import com.ti.avaliai.academicmail.AcademicMailService;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
-import com.ti.avaliai.user.dto.UserDTO;
-import com.ti.avaliai.user.dto.UserDeleteRequestDTO;
-import com.ti.avaliai.user.dto.VerifyEmailRequestDTO;
-import com.ti.avaliai.user.dto.VerifyEmailResponseDTO;
+import com.ti.avaliai.user.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,7 +25,7 @@ public class UserService {
 
     public User findByEmail(String email) {
         return this.userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
-                "Não conseguimos encontrar o usuário com este email"));
+                "Não conseguimos encontrar o usuário com este email", HttpStatus.NOT_FOUND));
     }
 
     public void deleteUser(UserDeleteRequestDTO userDeleteRequest) {
@@ -62,6 +60,7 @@ public class UserService {
                 .hashId(user.getHashId())
                 .id(user.getId())
                 .lastname(user.getLastname())
+                .profilePhotoUrl(user.getProfilePhotoUrl())
                 .role(user.getRole())
                 .build();
     }
@@ -85,6 +84,14 @@ public class UserService {
 
     public User findByHashId(String hashId) {
         return userRepository.findByHashId(hashId)
-                .orElseThrow(() -> new EntityNotFoundException("Usuário do HashId "+hashId+" não encontrado."));
+                .orElseThrow(() -> new EntityNotFoundException("Usuário do HashId "+hashId+" não encontrado.", HttpStatus.NOT_FOUND));
+    }
+
+    public UserDTO updateUser(UpdateUserRequestDTO request) {
+        User user = getUser();
+        user.setFirstname(request.getFirstname());
+        user.setLastname(request.getLastname());
+        user.setProfilePhotoUrl(request.getProfilePhotoUrl());
+        return userToUserDTO(userRepository.save(user));
     }
 }

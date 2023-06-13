@@ -54,11 +54,10 @@ public class AvaliaiApplication {
 					.email("manager@sga.pucminas.br")
 					.password("password")
 					.role(MANAGER)
-					.universityHashId("543b45c583bfff6c30e44a751103a24f")
+					.universityHashId("e6379fe087f9853f4c55a6bcb3f22093")
 					.courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
 					.build();
 			System.out.println("Manager token: " + service.register(manager).getAccessToken());
-
 		};
 	}
 

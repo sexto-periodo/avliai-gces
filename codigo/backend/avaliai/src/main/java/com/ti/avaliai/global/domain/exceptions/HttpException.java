@@ -2,6 +2,7 @@ package com.ti.avaliai.global.domain.exceptions;
 
 import org.springframework.http.HttpStatus;
 
+
 public class HttpException extends RuntimeException{
 
     private HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
