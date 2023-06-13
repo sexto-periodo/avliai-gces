@@ -24,6 +24,7 @@ public class SubjectServiceTest {
     private static final String EXISTING_SUBJECT_HASH_ID = "17da1ae431f965d839ec8eb93087fb2b";
     private static final String NON_EXISTING_SUBJECT_HASH_ID = "76ce8550a7e5d90946f83f59e6b459cf";
     private static final String EXISTING_COURSE_HASH_ID = "1f061de68a7a0da8378fd30974dd1a98";
+    private static final int ALREADY_EXISTING_SUBJECTS = 47;
 
     @Test
     public void sameObject_Success() {
@@ -46,7 +47,7 @@ public class SubjectServiceTest {
 
     @DisplayName(value = "Teste de Sucesso - Buscar todas as disciplinas indicadas pela lista de ids")
     @Test
-    public void updateSubject_Failure() {
+    public void updateSubject_Success() {
         List<Long> ids = new ArrayList<>();
         ids.add(1L);
         ids.add(2L);
@@ -57,6 +58,14 @@ public class SubjectServiceTest {
 
         List<Subject> subjects = subjectService.findAllByIdIn(ids);
         assertTrue(subjects.size() == 6);
+    }
+
+    @DisplayName(value = "Teste de Sucesso - Buscar todas as disciplinas do sistema")
+    @Test
+    public void findAllSubjects_Success() {
+        List<SubjectDTO> subjectDTOs = subjectService.findAll();
+
+        assertTrue(subjectDTOs.size() >= ALREADY_EXISTING_SUBJECTS);
     }
 
 }

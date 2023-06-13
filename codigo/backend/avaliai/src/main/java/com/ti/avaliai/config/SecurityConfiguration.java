@@ -60,6 +60,7 @@ public class SecurityConfiguration {
                 .requestMatchers(GET,"/course/university/**").permitAll()
                 .requestMatchers(GET,"/university").permitAll()
                 .requestMatchers(POST,"/user/verify-email").permitAll()
+                .requestMatchers(GET,"/subject").permitAll()
 
                 .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
 

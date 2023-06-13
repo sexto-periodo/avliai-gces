@@ -22,6 +22,14 @@ import java.util.List;
 @Tag(name = "Subject - Endpoints de Disciplinas")
 public class SubjectController extends BasicController {
 
+    @Operation(method = "GET", summary = "Busca todas as disciplinas.", description = "Busca todas as disciplinas.")
+    @ApiResponse(responseCode = "200", description = "OK")
+    @GetMapping
+    public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> faindAll() {
+        List<SubjectDTO> response = subjectService.findAll();
+        return ok(response);
+    }
+
     @Autowired
     private SubjectService subjectService;
 

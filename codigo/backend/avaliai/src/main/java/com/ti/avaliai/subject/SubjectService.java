@@ -57,7 +57,6 @@ public class SubjectService {
     }
 
 
-
     private SubjectDTO subjectToSubjectDTO(Subject subject) {
         return SubjectDTO.builder()
                 .hashId(subject.getHashId())
@@ -73,6 +72,14 @@ public class SubjectService {
                 .longDescription(subject.getLongDescription())
                 .score(reviewService.getSubjectAverageScore(subject))
                 .build();
+    }
+
+    public List<SubjectDTO> findAll() {
+        List<Subject> subjects = subjectRepository.findAll();
+        List<SubjectDTO> subjectDTOs =
+                subjects.stream()
+                        .map(s -> subjectToSubjectDTO(s)).collect(Collectors.toList());
+        return subjectDTOs;
     }
 }
 

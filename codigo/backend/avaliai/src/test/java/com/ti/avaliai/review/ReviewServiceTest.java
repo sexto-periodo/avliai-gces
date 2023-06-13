@@ -1,13 +1,10 @@
-package com.ti.avaliai.reviewtest;
+package com.ti.avaliai.review;
 
 
 import com.ti.avaliai.auth.AuthenticationService;
 import com.ti.avaliai.global.domain.exceptions.AlreadyReviewedByUserException;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
 import com.ti.avaliai.subject.SubjectService;
-import com.ti.avaliai.review.EReviewScore;
-import com.ti.avaliai.review.Review;
-import com.ti.avaliai.review.ReviewService;
 import com.ti.avaliai.review.dto.CreateReviewRequestDTO;
 import com.ti.avaliai.user.UserService;
 import com.ti.avaliai.utils.ReviewTestUtils;
