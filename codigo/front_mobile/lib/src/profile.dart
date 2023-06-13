@@ -55,15 +55,20 @@ class _ProfileState extends State<Profile> {
                           SizedBox(height: 50),
                           CircleAvatar(
                             backgroundImage: NetworkImage(
-                                'https://images.unsplash.com/photo-1605559911160-a3d95d213904'),
+                                'https://placehold.co/400x400.png'),
                             radius: 80,
+                            backgroundColor: ColorPalette.mainColor,
                           ),
                           SizedBox(height: 20),
                           Text(
                             '${loggedUser?.firstname} ${loggedUser?.lastname}',
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 12),
+                          Text(
+                            '${loggedUser?.email}',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ]
                       );
                     }
