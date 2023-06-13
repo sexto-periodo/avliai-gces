@@ -344,9 +344,9 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 
 **Cenário 1 - Disponibilidade:** O sistema deve ser implementado em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%.
 
-**Cenário 2 - Disponibilidade:** O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo..
+**Cenário 2 - Desempenho:** O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo.
 
-**Cenário 3 - Desempenho:** O tempo médio de resposta do servidor deve ser inferior a 500 ms..
+**Cenário 3 - Desempenho:** O tempo médio de resposta do servidor deve ser inferior a 500 ms.
 
 **Cenário 4 - Testabilidade:** A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos.
 
@@ -356,6 +356,69 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 
 _Apresente as medidas registradas na coleta de dados. O que não for possível quantificar apresente uma justificativa baseada em evidências qualitativas que suportam o atendimento do requisito não-funcional. Apresente uma avaliação geral da arquitetura indicando os pontos fortes e as limitações da arquitetura proposta._
 
+| **Atributo de Qualidade:** | Disponibilidade |
+| --- | --- |
+| **Requisito de Qualidade** | O sistema deve ser implementado em tecnologias móveis e/ou híbridas, suportando duas plataformas, disponibilidade de 95%. |
+| **Preocupação:** | O sistema deve estar disponível para acesso imediato de usuários em 95% do tempo |
+| **Cenários(s):** | Cenário 1 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Disponibilidade e tempo de ativo |
+| **Mecanismo:** | ... |
+| **Medida de Resposta:** | Disponibilidade |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Não existe |
+
+Evidências dos testes realizados
+
+Imagem aqui
+
+| **Atributo de Qualidade:** | Desempenho |
+| --- | --- |
+| **Requisito de Qualidade** | O sistema deve permitir pelo menos 50 clientes conectados ao mesmo tempo. |
+| **Preocupação:** | O sistema deve suportar uma quantidade razoável de usuários simultaneamente |
+| **Cenários(s):** | Cenário 2 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Desempenho do sistema e usuários online |
+| **Mecanismo:** | ... |
+| **Medida de Resposta:** | Desempenho |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Não existe |
+
+Evidências dos testes realizados
+
+Imagem aqui
+
+| **Atributo de Qualidade:** | Desempenho |
+| --- | --- |
+| **Requisito de Qualidade** | O tempo médio de resposta do servidor deve ser inferior a 500 ms. |
+| **Preocupação:** | O servidor e as APIs devem ter um tempo de resposta menor que 500 ms para garantir o desempenho da aplicação |
+| **Cenários(s):** | Cenário 3 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Desempenho do sistema e requisição de APIs |
+| **Mecanismo:** | ... |
+| **Medida de Resposta:** | Desempenho |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Não existe |
+
+Evidências dos testes realizados
+
+Imagem aqui
+
 | **Atributo de Qualidade:** | Testabilidade |
 | --- | --- |
 | **Requisito de Qualidade** | A cobertura de testes deve ser de pelo menos 60% das funcionalidades e requisitos. |
@@ -364,7 +427,7 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 | **Ambiente:** | Sistema em operação normal |
 | **Estímulo:** | Cobertura do sistema e sua extensão de testes |
 | **Mecanismo:** | Através da ferramenta Jacoco, foram geradas informações a respeito da cobertura de testes do sistema. É possível identificar que a cobertura (coverage) excede os 60% determinados|
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Medida de Resposta:** | Testabilidade e cobertura de testes. |
 
 **Considerações sobre a arquitetura:**
 
@@ -376,6 +439,27 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 Evidências dos testes realizados
 
 ![jacoco](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/d374a7c8-2ff3-46dd-9907-ade1f49db731)
+
+| **Atributo de Qualidade:** | Segurança |
+| --- | --- |
+| **Requisito de Qualidade** | O sistema deve utilizar Spring Security com JWT para garantir criptografia dos dados dos clientes. | 
+| **Preocupação:** | O usuário deve ter dados como a senha protegidos por criptografia para garantir sua segurança. |
+| **Cenários(s):** | Cenário 5 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Segurança do usuário |
+| **Mecanismo:** | Utilizando o Spring Security em conjunto com o JWT, juntamente com funções nativas do Spring Boot e do Java, foi possível criptografar a senha do usuário. |
+| **Medida de Resposta:** | Segurança. |
+
+**Considerações sobre a arquitetura:**
+
+| **Riscos:** | Não existe |
+| --- | --- |
+| **Pontos de Sensibilidade:** | Não existe |
+| _ **Tradeoff** _ **:** | Para garantir a segurança, o sistema abdica um pouco do desempenho |
+
+Evidências dos testes realizados
+
+Imagem aqui
 
 <a name="referencias"></a>
 # 5. REFERÊNCIAS
