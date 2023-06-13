@@ -363,7 +363,7 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 | **Cenários(s):** | Cenário 1 |
 | **Ambiente:** | Sistema em operação normal |
 | **Estímulo:** | Disponibilidade e tempo de ativo |
-| **Mecanismo:** | ... |
+| **Mecanismo:** | Foi utilizada a ferramenta StatusCake para monitorar o tempo de disponibilidade total |
 | **Medida de Resposta:** | Disponibilidade |
 
 **Considerações sobre a arquitetura:**
@@ -375,9 +375,8 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 
 Evidências dos testes realizados
 
-![media](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/bed32664-3fc6-4cb2-a02d-5c4fb49dc3c9)
-
-![minmax](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/5cc4478c-7973-4af4-861e-5d6348bc36ee)
+![uptime](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/d0c0586a-45e1-4b5c-b01a-15f2d47c6053)
+(referente à URL https://avaliai.web.app/)
 
 
 | **Atributo de Qualidade:** | Desempenho |
@@ -421,7 +420,9 @@ Evidências dos testes realizados
 
 Evidências dos testes realizados
 
-Imagem aqui
+![media](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/bed32664-3fc6-4cb2-a02d-5c4fb49dc3c9)
+
+![minmax](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/5cc4478c-7973-4af4-861e-5d6348bc36ee)
 
 | **Atributo de Qualidade:** | Testabilidade |
 | --- | --- |
