@@ -383,8 +383,8 @@ Imagem aqui
 | **Preocupação:** | O sistema deve suportar uma quantidade razoável de usuários simultaneamente |
 | **Cenários(s):** | Cenário 2 |
 | **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Desempenho do sistema e usuários online |
-| **Mecanismo:** | ... |
+| **Estímulo:** | Desempenho do sistema e capacidade de usuários online |
+| **Mecanismo:** | Utilizando a ferramenta de testes JMeter, foi possível simular requisições de 50 usuários simultaneamente no sistema |
 | **Medida de Resposta:** | Desempenho |
 
 **Considerações sobre a arquitetura:**
@@ -404,8 +404,8 @@ Imagem aqui
 | **Preocupação:** | O servidor e as APIs devem ter um tempo de resposta menor que 500 ms para garantir o desempenho da aplicação |
 | **Cenários(s):** | Cenário 3 |
 | **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Desempenho do sistema e requisição de APIs |
-| **Mecanismo:** | ... |
+| **Estímulo:** | Desempenho do sistema e tempo de resposta de requisições de APIs |
+| **Mecanismo:** | Utilizando o JMeter, testou-se o tempo de resposta média do servidor mediante a requisição simultânea de 60 usuários |
 | **Medida de Resposta:** | Desempenho |
 
 **Considerações sobre a arquitetura:**
