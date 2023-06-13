@@ -47,6 +47,17 @@ public class AvaliaiApplication {
 					.role(ADMIN)
 					.build();
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());
+
+			var manager = RegisterRequestDTO.builder()
+					.firstname("Admin")
+					.lastname("Admin")
+					.email("manager@sga.pucminas.br")
+					.password("password")
+					.role(MANAGER)
+					.universityHashId("e6379fe087f9853f4c55a6bcb3f22093")
+					.courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+					.build();
+			System.out.println("Manager token: " + service.register(manager).getAccessToken());
 		};
 	}
 

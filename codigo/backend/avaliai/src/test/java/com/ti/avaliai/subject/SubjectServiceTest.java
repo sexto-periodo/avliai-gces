@@ -62,7 +62,7 @@ public class SubjectServiceTest {
 
     @DisplayName(value = "Teste de Sucesso - Buscar todas as disciplinas do sistema")
     @Test
-    public void findAllSubjects_Failure() {
+    public void findAllSubjects_Success() {
         List<SubjectDTO> subjectDTOs = subjectService.findAll();
 
         assertTrue(subjectDTOs.size() >= ALREADY_EXISTING_SUBJECTS);

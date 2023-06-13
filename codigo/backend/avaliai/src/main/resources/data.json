@@ -1,4 +1,3 @@
-
 [
   {
     "_class": "com.ti.avaliai.university.University",
@@ -8,7 +7,20 @@
     "cnpj": "17.178.195/0001-67",
     "courses": [
       {
-        "id":1
+        "id": 1
+      }
+    ],
+    "isDeleted": false
+  },
+  {
+    "_class": "com.ti.avaliai.university.University",
+    "@id": 2,
+    "hashId": "e6379fe087f9853f4c55a6bcb3f22093",
+    "name": "AvaliAi University",
+    "cnpj": "12.345.678/0001-91",
+    "courses": [
+      {
+        "id": 2
       }
     ],
     "isDeleted": false
@@ -20,53 +32,147 @@
     "name": "Engenharia de Software",
     "overtime": 10,
     "subjects": [
-      { "id": 1 },
-      { "id": 2 },
-      { "id": 3 },
-      { "id": 4 },
-      { "id": 5 },
-      { "id": 6 },
-      { "id": 7 },
-      { "id": 8 },
-      { "id": 9 },
-      { "id": 10 },
-      { "id": 11 },
-      { "id": 12 },
-      { "id": 13 },
-      { "id": 14 },
-      { "id": 15 },
-      { "id": 16 },
-      { "id": 17 },
-      { "id": 18 },
-      { "id": 19 },
-      { "id": 20 },
-      { "id": 21 },
-      { "id": 22 },
-      { "id": 23 },
-      { "id": 24 },
-      { "id": 25 },
-      { "id": 26 },
-      { "id": 27 },
-      { "id": 28 },
-      { "id": 29 },
-      { "id": 30 },
-      { "id": 31 },
-      { "id": 32 },
-      { "id": 33 },
-      { "id": 34 },
-      { "id": 35 },
-      { "id": 36 },
-      { "id": 37 },
-      { "id": 38 },
-      { "id": 39 },
-      { "id": 40 },
-      { "id": 41 },
-      { "id": 42 },
-      { "id": 43 },
-      { "id": 44 },
-      { "id": 45 },
-      { "id": 46 },
-      { "id": 47 }
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      },
+      {
+        "id": 11
+      },
+      {
+        "id": 12
+      },
+      {
+        "id": 13
+      },
+      {
+        "id": 14
+      },
+      {
+        "id": 15
+      },
+      {
+        "id": 16
+      },
+      {
+        "id": 17
+      },
+      {
+        "id": 18
+      },
+      {
+        "id": 19
+      },
+      {
+        "id": 20
+      },
+      {
+        "id": 21
+      },
+      {
+        "id": 22
+      },
+      {
+        "id": 23
+      },
+      {
+        "id": 24
+      },
+      {
+        "id": 25
+      },
+      {
+        "id": 26
+      },
+      {
+        "id": 27
+      },
+      {
+        "id": 28
+      },
+      {
+        "id": 29
+      },
+      {
+        "id": 30
+      },
+      {
+        "id": 31
+      },
+      {
+        "id": 32
+      },
+      {
+        "id": 33
+      },
+      {
+        "id": 34
+      },
+      {
+        "id": 35
+      },
+      {
+        "id": 36
+      },
+      {
+        "id": 37
+      },
+      {
+        "id": 38
+      },
+      {
+        "id": 39
+      },
+      {
+        "id": 40
+      },
+      {
+        "id": 41
+      },
+      {
+        "id": 42
+      },
+      {
+        "id": 43
+      },
+      {
+        "id": 44
+      },
+      {
+        "id": 45
+      },
+      {
+        "id": 46
+      },
+      {
+        "id": 47
+      }
     ],
     "statusCurriculum": true,
     "isDeleted": false,
@@ -74,7 +180,19 @@
       "id": 1
     }
   },
-
+  {
+    "_class": "com.ti.avaliai.course.Course",
+    "@id": 2,
+    "hashId": "eb5ed7359d0bc0df70e6b7abf8584c5e",
+    "name": "Ciência da Computação",
+    "overtime": 10,
+    "subjects": [],
+    "statusCurriculum": true,
+    "isDeleted": false,
+    "university": {
+      "id": 2
+    }
+  },
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 1,
@@ -87,7 +205,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -101,7 +219,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -115,7 +233,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -129,7 +247,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -143,7 +261,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -157,7 +275,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -171,7 +289,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -185,7 +303,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -195,7 +313,11 @@
     "imageUrl": "https://www.uml-diagrams.org/examples/class-diagram-example-hasp-licensing-domain.png",
     "campus": "Praça da Liberdade",
     "shortDescription": "A disciplina de Programação Modular aborda a técnica de dividir um programa em módulos independentes e reutilizáveis. Os alunos aprenderão a criar interfaces claras e coesas entre os módulos, permitindo uma melhor organização e manutenção do código. Eles também explorarão conceitos como encapsulamento, coesão e acoplamento, fundamentais para o desenvolvimento de software modularizado.",
-    "longDescription": "A disciplina de Programação Modular tem como objetivo fornecer aos alunos uma compreensão aprofundada dos princípios e práticas envolvidos no desenvolvimento de software modular. Os estudantes aprenderão a decompor um programa em módulos independentes, que podem ser desenvolvidos e testados separadamente. Eles explorarão técnicas de design de interfaces, visando a criação de módulos com baixo acoplamento e alta coesão. Além disso, os alunos serão apresentados a padrões de projeto que promovem a modularidade, como o padrão de projeto Observer ou o padrão de Injeção de Dependência. Ao final do curso, os estudantes estarão aptos a aplicar os princípios da programação modular em seus projetos, resultando em um código mais organizado, reutilizável e de fácil manutenção."
+    "longDescription": "A disciplina de Programação Modular tem como objetivo fornecer aos alunos uma compreensão aprofundada dos princípios e práticas envolvidos no desenvolvimento de software modular. Os estudantes aprenderão a decompor um programa em módulos independentes, que podem ser desenvolvidos e testados separadamente. Eles explorarão técnicas de design de interfaces, visando a criação de módulos com baixo acoplamento e alta coesão. Além disso, os alunos serão apresentados a padrões de projeto que promovem a modularidade, como o padrão de projeto Observer ou o padrão de Injeção de Dependência. Ao final do curso, os estudantes estarão aptos a aplicar os princípios da programação modular em seus projetos, resultando em um código mais organizado, reutilizável e de fácil manutenção.",
+    "course": {
+      "id": 1
+    },
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -205,7 +327,11 @@
     "imageUrl": "https://novonegocio.com.br/wp-content/uploads/2011/01/Como-Montar-Uma-Lan-House.jpg",
     "campus": "Praça da Liberdade",
     "shortDescription": "A disciplina de Laboratório de Programação Modular oferece aos alunos a oportunidade de aplicar os conceitos e técnicas aprendidos na disciplina de Programação Modular em projetos práticos. Os estudantes trabalharão em equipe para desenvolver soluções de software modularizadas, aplicando boas práticas de design e implementação. Eles também terão a chance de aprimorar suas habilidades de trabalho em equipe, colaboração e resolução de problemas.",
-    "longDescription": "A disciplina de Laboratório de Programação Modular é uma extensão da disciplina de Programação Modular, na qual os alunos têm a oportunidade de colocar em prática os conceitos e técnicas aprendidos. Durante o laboratório, os estudantes trabalharão em equipes multidisciplinares, simulando um ambiente de desenvolvimento real. Eles aplicarão metodologias ágeis, como Scrum ou Kanban, para planejar, desenvolver e entregar os projetos dentro de prazos e requisitos definidos. Além disso, os alunos aprenderão a colaborar efetivamente em equipe, utilizando ferramentas de controle de versão, realizando revisões de código e gerenciando conflitos. O laboratório proporcionará uma experiência prática valiosa, permitindo que os estudantes adquiram habilidades técnicas e não técnicas essenciais para o sucesso na indústria de desenvolvimento de software."
+    "longDescription": "A disciplina de Laboratório de Programação Modular é uma extensão da disciplina de Programação Modular, na qual os alunos têm a oportunidade de colocar em prática os conceitos e técnicas aprendidos. Durante o laboratório, os estudantes trabalharão em equipes multidisciplinares, simulando um ambiente de desenvolvimento real. Eles aplicarão metodologias ágeis, como Scrum ou Kanban, para planejar, desenvolver e entregar os projetos dentro de prazos e requisitos definidos. Além disso, os alunos aprenderão a colaborar efetivamente em equipe, utilizando ferramentas de controle de versão, realizando revisões de código e gerenciando conflitos. O laboratório proporcionará uma experiência prática valiosa, permitindo que os estudantes adquiram habilidades técnicas e não técnicas essenciais para o sucesso na indústria de desenvolvimento de software.",
+    "course": {
+      "id": 1
+    },
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -219,7 +345,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -229,7 +355,11 @@
     "imageUrl": "https://png.pngtree.com/thumb_back/fh260/background/20220427/pngtree-tiny-business-people-with-digital-devices-testing-demo-software-image_1091430.jpg",
     "campus": "Praça da Liberdade",
     "shortDescription": "A disciplina de Testes de Software aborda as técnicas e práticas utilizadas para verificar e validar a qualidade de software. Os alunos aprenderão a projetar e executar testes eficientes, identificar e relatar defeitos, e entender a importância dos testes no ciclo de vida do desenvolvimento de software.",
-    "longDescription": "A disciplina de Testes de Software tem como objetivo fornecer aos alunos uma compreensão aprofundada dos conceitos e técnicas relacionados aos testes de software. Os estudantes aprenderão a planejar, projetar e executar diferentes tipos de testes, como testes unitários, testes de integração, testes de sistema e testes de aceitação. Eles explorarão metodologias de teste, ferramentas e técnicas para identificar e relatar defeitos de forma eficiente. Além disso, os alunos entenderão a importância dos testes no ciclo de vida do desenvolvimento de software, incluindo a integração contínua e a prática de DevOps. Ao final do curso, os estudantes estarão aptos a garantir a qualidade e confiabilidade de software por meio de uma abordagem sistemática de testes."
+    "longDescription": "A disciplina de Testes de Software tem como objetivo fornecer aos alunos uma compreensão aprofundada dos conceitos e técnicas relacionados aos testes de software. Os estudantes aprenderão a planejar, projetar e executar diferentes tipos de testes, como testes unitários, testes de integração, testes de sistema e testes de aceitação. Eles explorarão metodologias de teste, ferramentas e técnicas para identificar e relatar defeitos de forma eficiente. Além disso, os alunos entenderão a importância dos testes no ciclo de vida do desenvolvimento de software, incluindo a integração contínua e a prática de DevOps. Ao final do curso, os estudantes estarão aptos a garantir a qualidade e confiabilidade de software por meio de uma abordagem sistemática de testes.",
+    "course": {
+      "id": 1
+    },
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -239,7 +369,11 @@
     "imageUrl": "https://media.istockphoto.com/id/1330669820/vector/smart-house-system-programming-software-engineering-development-of-building-construction.jpg?s=612x612&w=0&k=20&c=qGcNZYm9jccT9Zixp9IcCozURFufzE1HeWrrLvvO2XU=",
     "campus": "Praça da Liberdade",
     "shortDescription": "A disciplina de Arquitetura de Software aborda os princípios, conceitos e práticas envolvidos na criação de arquiteturas de software escaláveis e robustas. Os alunos aprenderão a projetar e comunicar a estrutura do sistema, considerando requisitos funcionais e não funcionais, padrões de design e melhores práticas da indústria.",
-    "longDescription": "A disciplina de Arquitetura de Software tem como objetivo proporcionar aos alunos uma compreensão aprofundada dos fundamentos da arquitetura de software. Os estudantes aprenderão os princípios e conceitos chave para a criação de arquiteturas eficientes e escaláveis, levando em consideração requisitos funcionais e não funcionais. Eles explorarão padrões de design arquitetural, como arquitetura em camadas, arquitetura cliente-servidor, arquitetura orientada a serviços, entre outros. Além disso, os alunos aprenderão a comunicar e documentar a arquitetura do sistema por meio de diagramas e modelos apropriados. Ao final do curso, os estudantes estarão preparados para projetar arquiteturas de software que atendam às necessidades de escalabilidade, desempenho, segurança e manutenibilidade."
+    "longDescription": "A disciplina de Arquitetura de Software tem como objetivo proporcionar aos alunos uma compreensão aprofundada dos fundamentos da arquitetura de software. Os estudantes aprenderão os princípios e conceitos chave para a criação de arquiteturas eficientes e escaláveis, levando em consideração requisitos funcionais e não funcionais. Eles explorarão padrões de design arquitetural, como arquitetura em camadas, arquitetura cliente-servidor, arquitetura orientada a serviços, entre outros. Além disso, os alunos aprenderão a comunicar e documentar a arquitetura do sistema por meio de diagramas e modelos apropriados. Ao final do curso, os estudantes estarão preparados para projetar arquiteturas de software que atendam às necessidades de escalabilidade, desempenho, segurança e manutenibilidade.",
+    "course": {
+      "id": 1
+    },
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -249,7 +383,11 @@
     "imageUrl": "https://d1ltgr77xghfz9.cloudfront.net/wp-content/uploads/sites/2/2016/07/software-de-modelagem-de-processos-gratuito-1024x688.jpg",
     "campus": "Praça da Liberdade",
     "shortDescription": "A disciplina de Modelagem de Processos de Negócios ensina aos alunos técnicas e ferramentas para analisar, projetar e otimizar processos de negócios. Os estudantes aprenderão a mapear fluxos de trabalho, identificar gargalos e propor melhorias para aumentar a eficiência e eficácia das operações empresariais.",
-    "longDescription": "A disciplina de Modelagem de Processos de Negócios tem como objetivo capacitar os alunos a compreender, analisar e otimizar processos de negócios em organizações. Os estudantes aprenderão a mapear fluxos de trabalho utilizando notações e técnicas específicas, como BPMN (Business Process Model and Notation) e UML (Unified Modeling Language). Eles explorarão abordagens para identificar gargalos, ineficiências e oportunidades de melhoria nos processos existentes. Além disso, os alunos aprenderão a propor soluções e estratégias para otimizar a eficiência e eficácia das operações empresariais. A disciplina abordará também a integração da modelagem de processos com a implementação de sistemas de informação, proporcionando aos estudantes uma visão abrangente do ciclo de vida de projetos de melhoria de processos."
+    "longDescription": "A disciplina de Modelagem de Processos de Negócios tem como objetivo capacitar os alunos a compreender, analisar e otimizar processos de negócios em organizações. Os estudantes aprenderão a mapear fluxos de trabalho utilizando notações e técnicas específicas, como BPMN (Business Process Model and Notation) e UML (Unified Modeling Language). Eles explorarão abordagens para identificar gargalos, ineficiências e oportunidades de melhoria nos processos existentes. Além disso, os alunos aprenderão a propor soluções e estratégias para otimizar a eficiência e eficácia das operações empresariais. A disciplina abordará também a integração da modelagem de processos com a implementação de sistemas de informação, proporcionando aos estudantes uma visão abrangente do ciclo de vida de projetos de melhoria de processos.",
+    "course": {
+      "id": 1
+    },
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -259,7 +397,11 @@
     "imageUrl": "https://media.istockphoto.com/id/1061714240/pt/foto/mathematics-lesson-differential-and-integral-calculus-chalkboard.jpg?s=2048x2048&w=is&k=20&c=k7_IHNcoDkRnfQkMU10gbKhE4NuN-W1QJCELTVywGZg=",
     "campus": "Praça da Liberdade",
     "shortDescription": "A disciplina de Cálculo I introduz os fundamentos do cálculo diferencial e integral. Os alunos aprenderão conceitos como limites, derivadas e integrais, e aplicarão esses conhecimentos para resolver problemas de taxa de variação, otimização e área sob a curva.",
-    "longDescription": "A disciplina de Cálculo I tem como objetivo introduzir os alunos aos conceitos fundamentais do cálculo diferencial e integral. Os estudantes explorarão os limites, a continuidade e a diferenciação de funções, aprendendo a calcular derivadas e interpretar sua significância geométrica e física. Além disso, os alunos serão apresentados às técnicas básicas de integração e às aplicações do cálculo na resolução de problemas do mundo real. A disciplina abordará tópicos como taxa de variação, otimização de funções, análise de curvas e cálculo da área sob a curva. Ao final do curso, os estudantes estarão familiarizados com as ferramentas e métodos do cálculo diferencial e integral, preparando-os para disciplinas mais avançadas nas áreas de ciências exatas e engenharia."
+    "longDescription": "A disciplina de Cálculo I tem como objetivo introduzir os alunos aos conceitos fundamentais do cálculo diferencial e integral. Os estudantes explorarão os limites, a continuidade e a diferenciação de funções, aprendendo a calcular derivadas e interpretar sua significância geométrica e física. Além disso, os alunos serão apresentados às técnicas básicas de integração e às aplicações do cálculo na resolução de problemas do mundo real. A disciplina abordará tópicos como taxa de variação, otimização de funções, análise de curvas e cálculo da área sob a curva. Ao final do curso, os estudantes estarão familiarizados com as ferramentas e métodos do cálculo diferencial e integral, preparando-os para disciplinas mais avançadas nas áreas de ciências exatas e engenharia.",
+    "course": {
+      "id": 1
+    },
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -269,7 +411,11 @@
     "imageUrl": "https://i.pinimg.com/736x/bc/4d/0b/bc4d0b81cdb7ca11301e9c32b0149673.jpg",
     "campus": "Praça da Liberdade",
     "shortDescription": "A disciplina de Cálculo II dá continuidade ao estudo do cálculo diferencial e integral. Os alunos aprofundarão seus conhecimentos sobre integração, sequências e séries, e aprenderão técnicas avançadas para resolver problemas mais complexos.",
-    "longDescription": "A disciplina de Cálculo II tem como objetivo aprofundar os conhecimentos dos alunos sobre o cálculo diferencial e integral. Os estudantes explorarão técnicas avançadas de integração, como integração por partes, substituição trigonométrica e frações parciais. Além disso, eles aprenderão sobre sequências e séries, incluindo séries de potências, séries geométricas e séries de Taylor. A disciplina abordará aplicações do cálculo em problemas de física, economia e engenharia, permitindo que os estudantes vejam a relevância e o poder do cálculo em diversas áreas. Ao final do curso, os alunos estarão preparados para enfrentar desafios mais complexos que envolvam o uso do cálculo diferencial e integral, bem como para prosseguir com estudos mais avançados na área de matemática e disciplinas relacionadas."
+    "longDescription": "A disciplina de Cálculo II tem como objetivo aprofundar os conhecimentos dos alunos sobre o cálculo diferencial e integral. Os estudantes explorarão técnicas avançadas de integração, como integração por partes, substituição trigonométrica e frações parciais. Além disso, eles aprenderão sobre sequências e séries, incluindo séries de potências, séries geométricas e séries de Taylor. A disciplina abordará aplicações do cálculo em problemas de física, economia e engenharia, permitindo que os estudantes vejam a relevância e o poder do cálculo em diversas áreas. Ao final do curso, os alunos estarão preparados para enfrentar desafios mais complexos que envolvam o uso do cálculo diferencial e integral, bem como para prosseguir com estudos mais avançados na área de matemática e disciplinas relacionadas.",
+    "course": {
+      "id": 1
+    },
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -283,7 +429,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -297,9 +443,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 19,
@@ -312,9 +457,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 20,
@@ -327,9 +471,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 21,
@@ -342,9 +485,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 22,
@@ -357,9 +499,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 23,
@@ -372,9 +513,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 24,
@@ -387,9 +527,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 25,
@@ -402,9 +541,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 26,
@@ -417,9 +555,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 27,
@@ -432,9 +569,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 28,
@@ -447,9 +583,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 29,
@@ -462,9 +597,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 30,
@@ -477,9 +611,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 31,
@@ -492,9 +625,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 32,
@@ -507,9 +639,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 33,
@@ -522,9 +653,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 34,
@@ -537,9 +667,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 35,
@@ -552,9 +681,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 36,
@@ -567,9 +695,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 37,
@@ -582,9 +709,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 38,
@@ -597,9 +723,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 39,
@@ -612,9 +737,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 40,
@@ -627,9 +751,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 41,
@@ -642,9 +765,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 42,
@@ -657,9 +779,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 43,
@@ -672,9 +793,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 44,
@@ -687,9 +807,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 45,
@@ -702,9 +821,8 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
-
   {
     "_class": "com.ti.avaliai.subject.Subject",
     "id": 46,
@@ -717,7 +835,7 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   },
   {
     "_class": "com.ti.avaliai.subject.Subject",
@@ -731,6 +849,6 @@
     "course": {
       "id": 1
     },
-    "reviews":[]
+    "reviews": []
   }
 ]
