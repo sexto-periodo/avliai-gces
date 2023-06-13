@@ -375,7 +375,10 @@ _Apresente as medidas registradas na coleta de dados. O que não for possível q
 
 Evidências dos testes realizados
 
-Imagem aqui
+![media](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/bed32664-3fc6-4cb2-a02d-5c4fb49dc3c9)
+
+![minmax](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/5cc4478c-7973-4af4-861e-5d6348bc36ee)
+
 
 | **Atributo de Qualidade:** | Desempenho |
 | --- | --- |
@@ -384,7 +387,7 @@ Imagem aqui
 | **Cenários(s):** | Cenário 2 |
 | **Ambiente:** | Sistema em operação normal |
 | **Estímulo:** | Desempenho do sistema e capacidade de usuários online |
-| **Mecanismo:** | Utilizando a ferramenta de testes JMeter, foi possível simular requisições de 50 usuários simultaneamente no sistema |
+| **Mecanismo:** | Utilizando a ferramenta de testes JMeter e criando threads de usuários, foi possível simular requisições de 50 usuários simultaneamente no sistema |
 | **Medida de Resposta:** | Desempenho |
 
 **Considerações sobre a arquitetura:**
@@ -396,7 +399,8 @@ Imagem aqui
 
 Evidências dos testes realizados
 
-Imagem aqui
+![cenario3](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/bfdec90e-03a3-49d9-9483-7f482e82e146)
+
 
 | **Atributo de Qualidade:** | Desempenho |
 | --- | --- |
