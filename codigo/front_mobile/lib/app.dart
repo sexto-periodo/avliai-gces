@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:front_mobile/src/components/appbar_widget.dart';
 import 'package:front_mobile/src/components/color_palette.dart';
 import 'package:front_mobile/src/login_page.dart';
@@ -15,7 +16,12 @@ import 'package:front_mobile/src/home_page.dart';
 const storage = FlutterSecureStorage();
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: ColorPalette.mainColor, // navigation bar color
+    statusBarColor: ColorPalette.mainColor, // status bar color
+  ));
   runApp(const App());
 }
 

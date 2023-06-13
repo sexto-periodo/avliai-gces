@@ -21,10 +21,10 @@ class SubjectCard extends StatelessWidget {
         child: Padding(padding: EdgeInsets.all(12.0), child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Image.network(subject.picUrl),
-          ),
+          // Expanded(
+          //   flex: 2,
+          //   child: Image.network(subject.picUrl),
+          // ),
           Expanded(
             flex: 3,
             child: ListTile(

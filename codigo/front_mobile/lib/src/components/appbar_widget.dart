@@ -7,6 +7,8 @@ import 'package:front_mobile/src/login_page.dart';
 import 'package:front_mobile/src/new_subj_page.dart';
 import 'package:front_mobile/src/profile.dart';
 
+import 'color_palette.dart';
+
 class AppBarWidget extends StatefulWidget {
 
   final String authToken;

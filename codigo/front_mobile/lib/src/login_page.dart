@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:front_mobile/src/components/appbar_widget.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:front_mobile/src/api/base_api.dart';
 import 'package:front_mobile/src/home_page.dart';
 import 'package:front_mobile/src/userRegistration.dart';
 
 import 'components/color_palette.dart';
 
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 const storage = FlutterSecureStorage();
 
 class LoginPage extends StatefulWidget {
@@ -143,6 +143,7 @@ class _LoginPageState extends State<LoginPage> {
     String userToken = authTokens.access_token.toString();
     if (authTokens != null) {
       storage.write(key: "userAuth", value: userToken);
+      UserApi().SaveLoggedUser(userToken);
       Navigator.push(
           context,
           MaterialPageRoute(
