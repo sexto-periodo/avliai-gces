@@ -446,7 +446,7 @@ Evidências dos testes realizados
 | **Preocupação:** | O usuário deve ter dados como a senha protegidos por criptografia para garantir sua segurança. |
 | **Cenários(s):** | Cenário 5 |
 | **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Segurança do usuário |
+| **Estímulo:** | Segurança do usuário e proteção de seus dados |
 | **Mecanismo:** | Utilizando o Spring Security em conjunto com o JWT, juntamente com funções nativas do Spring Boot e do Java, foi possível criptografar a senha do usuário. |
 | **Medida de Resposta:** | Segurança. |
 
@@ -455,11 +455,12 @@ Evidências dos testes realizados
 | **Riscos:** | Não existe |
 | --- | --- |
 | **Pontos de Sensibilidade:** | Não existe |
-| _ **Tradeoff** _ **:** | Para garantir a segurança, o sistema abdica um pouco do desempenho |
+| _ **Tradeoff** _ **:** | Para garantir a segurança, o sistema abdica de um pouco do desempenho |
 
 Evidências dos testes realizados
 
-Imagem aqui
+![senha](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai/assets/84593164/a393cee1-c2c0-4cec-b931-2a0a2efb00ae)
+
 
 <a name="referencias"></a>
 # 5. REFERÊNCIAS
