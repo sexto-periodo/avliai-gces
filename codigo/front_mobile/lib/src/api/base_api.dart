@@ -244,7 +244,25 @@ class UniversityApi extends BaseApi {
       rethrow;
     }
   }
+
+  Future<Subject> getSubjectById(String authToken, String hashId) async{
+    try {
+      final http.Response response = await http.get(
+          Uri.parse('${super.subjectRoute}/$hashId'),
+          headers: super.authHeaders(authToken));
+      switch (response.statusCode) {
+        case 200:
+
+          return Subject.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
 }
+
 
 class Course {
   final int id;

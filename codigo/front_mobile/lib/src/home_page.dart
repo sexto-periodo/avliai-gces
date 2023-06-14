@@ -22,13 +22,14 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 }
 
+
 class HomePageState extends State<HomePage> {
-  late Future<List<Subject>> futureFubjects;
+  late Future<List<Subject>> futureSubjects;
 
   @override
   void initState() {
     super.initState();
-    futureFubjects = fetchSubjects();
+    futureSubjects = fetchSubjects();
   }
 
   Future<List<Subject>>fetchSubjects() async {
@@ -36,6 +37,15 @@ class HomePageState extends State<HomePage> {
 
     return await UniversityApi().getSubjects(authToken!);
   }
+
+  void updateHomePage() {
+  setState(() {
+
+    futureSubjects = fetchSubjects();
+    // Update the state of the home page here
+    // You can modify any variables that you want to change
+  });
+}
 
   // List<Subject> filtered = [];
 
@@ -67,7 +77,7 @@ class HomePageState extends State<HomePage> {
         body: Padding(
             padding: const EdgeInsets.only(left: 15, top: 24, right: 15),
             child: FutureBuilder(
-                future: futureFubjects,
+                future: futureSubjects,
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
@@ -100,6 +110,7 @@ class HomePageState extends State<HomePage> {
                             itemBuilder: (context, index) {
                               return SubjectCard(
                                 subject: subjects![index],
+                                onBackButtonPressed: updateHomePage,
                               );
                             },
                           ),

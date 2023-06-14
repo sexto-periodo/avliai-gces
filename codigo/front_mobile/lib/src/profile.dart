@@ -43,6 +43,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Perfil'), automaticallyImplyLeading: false),
       body: Container(
           padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
           child: FutureBuilder(

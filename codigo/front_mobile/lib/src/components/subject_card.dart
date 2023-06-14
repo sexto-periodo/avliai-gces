@@ -5,7 +5,8 @@ import 'package:front_mobile/src/subject_page.dart';
 import 'color_palette.dart';
 
 class SubjectCard extends StatelessWidget {
-  const SubjectCard({super.key, required this.subject});
+  final VoidCallback onBackButtonPressed;
+  const SubjectCard({super.key, required this.subject, required this.onBackButtonPressed });
 
   final Subject subject;
 
@@ -16,7 +17,7 @@ class SubjectCard extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => SubjectPage(subject: subject)));
+                  builder: (context) => SubjectPage(subject: subject, onBackButtonPressed: onBackButtonPressed,)));
         },
         child: Card(
             color: ColorPalette.mainColor,
