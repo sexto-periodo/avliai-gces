@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:front_mobile/src/components/color_palette.dart';
+import 'api/base_api.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import 'api/base_api.dart';
-
+import 'components/review_card.dart';
 const storage = FlutterSecureStorage();
 
 class Profile extends StatefulWidget {
@@ -18,11 +18,13 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   Future<User>? futureUser;
+  late Future<List<Review>> futureReviews;
 
   @override
   void initState() {
     super.initState();
     futureUser = getUserInfo();
+    futureReviews = fetchReviews();
   }
 
   Future<User> getUserInfo() async {
@@ -31,18 +33,55 @@ class _ProfileState extends State<Profile> {
     return User.deserialize(userString!);
   }
 
+  Future<List<Review>> fetchReviews() async{
+    String? authToken = await storage.read(key: 'userAuth');
+
+    return await ReviewApi().getReviewsByUser(authToken!);
+
+  }
+
   @override
-  // ignore: dead_code, dead_code
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Perfil'), automaticallyImplyLeading: false),
       body: Container(
           padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
-          child: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
-            child: Center(
-              child:  FutureBuilder<User>(
+          child: FutureBuilder(
+                future: futureReviews,
+                builder: (BuildContext context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    final List<Review>? reviews = snapshot.data;
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 10,
+                          child: ListView.builder(
+                            itemCount: reviews!.length + 1,
+                            itemBuilder: (context, index) {
+                              if (index == 0) {
+                                return profileHeader(futureUser!);
+                              }
+                              return ReviewCard(review: reviews[index - 1], hasVote: false,);
+                            },
+                          ),
+                        )
+                      ],  
+                    );
+                  }
+                })
+          ),
+    );
+  }
+}
+
+Widget profileHeader(Future<User> futureUser) {
+  return Container(
+    child: FutureBuilder<User>(
                   future: futureUser,
                   builder: (BuildContext context, snapshot) {
 
@@ -73,9 +112,6 @@ class _ProfileState extends State<Profile> {
                       );
                     }
                   },
-                )
-            ),
-          ),
-    ));
-  }
+                ),
+  );
 }

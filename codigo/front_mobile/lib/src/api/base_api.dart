@@ -4,28 +4,26 @@ import 'package:http/http.dart' as http;
 import '../_subject.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 const storage = FlutterSecureStorage();
-
-
-
-
 
 class BaseApi {
   static var baseURL = Config.apiURL;
 
   var universityRoute = '${baseURL}university';
   var subjectRoute = '${baseURL}subject';
-  var reviewRoute = '${baseURL}subject-review';
+  var reviewRoute = '${baseURL}review';
   var courseRoute = '${baseURL}course';
   var userRoute = '${baseURL}user';
   var authRoute = '${baseURL}auth';
+  var voteRoute = '${baseURL}vote';
 
   Map<String, String> authHeaders(String authToken) {
     return <String, String>{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer $authToken'
-          };
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $authToken'
+    };
   }
 }
 
@@ -118,26 +116,25 @@ class SignUpForm {
       required this.role});
 }
 
-// ====================================
+// ===============================================
 class UserApi extends BaseApi {
   Future<User> getUser(String authToken) async {
     try {
-      final http.Response response =
-          await http.get(Uri.parse(super.userRoute),
+      final http.Response response = await http.get(Uri.parse(super.userRoute),
           headers: super.authHeaders(authToken));
-          switch (response.statusCode) {
-            case 200:
-              return User.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
-            default:
-              throw Exception(response.reasonPhrase);
-          }
+      switch (response.statusCode) {
+        case 200:
+          return User.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+        default:
+          throw Exception(response.reasonPhrase);
+      }
     } on Exception catch (_) {
       rethrow;
     }
   }
 
   void SaveLoggedUser(String authToken) async {
-    User user =  await this.getUser(authToken);
+    User user = await this.getUser(authToken);
     storage.write(key: 'loggedUser', value: User.serialize(user));
   }
 }
@@ -152,42 +149,59 @@ class User {
   final String courseHashId;
   final String role;
 
-  const User({required this.id, required this.firstname, required this.lastname, required this.email, required this.hashId, required this.universityHashId, required this.courseHashId, required this.role});
+  const User(
+      {required this.id,
+      required this.firstname,
+      required this.lastname,
+      required this.email,
+      required this.hashId,
+      required this.universityHashId,
+      required this.courseHashId,
+      required this.role});
 
   factory User.fromJson(Map<String, dynamic> json) {
-    return User(id: json['id'], firstname: json['firstname'], lastname: json['lastname'], email: json['email'], hashId: json['hashId'], universityHashId: json['universityHashId'], courseHashId: json['courseHashId'], role: json['role']);
+    return User(
+        id: json['id'],
+        firstname: json['firstname'],
+        lastname: json['lastname'],
+        email: json['email'],
+        hashId: json['hashId'],
+        universityHashId: json['universityHashId'],
+        courseHashId: json['courseHashId'],
+        role: json['role']);
   }
 
-  static Map<String, dynamic> toMap(User user) => <String, dynamic> {
-    'id': user.id,
-    'firstname': user.firstname,
-    'lastname': user.lastname,
-    'email': user.email,
-    'hashId': user.hashId,
-    'universityHashId': user.universityHashId,
-    'courseHashId': user.courseHashId,
-    'role': user.role
-  };
+  static Map<String, dynamic> toMap(User user) => <String, dynamic>{
+        'id': user.id,
+        'firstname': user.firstname,
+        'lastname': user.lastname,
+        'email': user.email,
+        'hashId': user.hashId,
+        'universityHashId': user.universityHashId,
+        'courseHashId': user.courseHashId,
+        'role': user.role
+      };
 
   static String serialize(User user) => jsonEncode(User.toMap(user));
   static User deserialize(String json) => User.fromJson(jsonDecode(json));
 }
 
-// ====================================
+// ===============================================
 
-class UniversityApi extends BaseApi{
+class UniversityApi extends BaseApi {
   Future<List<University>> getUniversities() async {
     try {
       final http.Response response =
           await http.get(Uri.parse(super.universityRoute));
-          switch (response.statusCode) {
-            case 200:
-              Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
-              List<University> universities = List<University>.from(list.map((e) =>  University.fromJson(e)));
-              return universities;
-            default:
-              throw Exception(response.reasonPhrase);
-          }
+      switch (response.statusCode) {
+        case 200:
+          Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
+          List<University> universities =
+              List<University>.from(list.map((e) => University.fromJson(e)));
+          return universities;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
     } on Exception catch (_) {
       rethrow;
     }
@@ -195,41 +209,60 @@ class UniversityApi extends BaseApi{
 
   Future<List<Course>> getCoursesByUniversityHashId(String hashId) async {
     try {
-      final http.Response response =
-          await http.get(Uri.parse('${super.courseRoute}/university/$hashId'),
-          );
-          switch (response.statusCode) {
-            case 200:
-              Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
-              List<Course> courses = List<Course>.from(list.map((e) =>  Course.fromJson(e)));
-              return courses;
-            default:
-              throw Exception(response.reasonPhrase);
-          }
+      final http.Response response = await http.get(
+        Uri.parse('${super.courseRoute}/university/$hashId'),
+      );
+      switch (response.statusCode) {
+        case 200:
+          Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
+          List<Course> courses =
+              List<Course>.from(list.map((e) => Course.fromJson(e)));
+          return courses;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
     } on Exception catch (_) {
       rethrow;
     }
   }
 
-
   Future<List<Subject>> getSubjects(String authToken) async {
     try {
-      final http.Response response =
-          await http.get(Uri.parse(super.subjectRoute),
+      final http.Response response = await http.get(
+          Uri.parse(super.subjectRoute),
           headers: super.authHeaders(authToken));
-          switch (response.statusCode) {
-            case 200:
-              Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
-              List<Subject> subjects = List<Subject>.from(list.map((e) =>  Subject.fromJson(e)));
-              return subjects;
-            default:
-              throw Exception(response.reasonPhrase);
-          }
+      switch (response.statusCode) {
+        case 200:
+          Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
+          List<Subject> subjects =
+              List<Subject>.from(list.map((e) => Subject.fromJson(e)));
+          return subjects;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<Subject> getSubjectById(String authToken, String hashId) async{
+    try {
+      final http.Response response = await http.get(
+          Uri.parse('${super.subjectRoute}/$hashId'),
+          headers: super.authHeaders(authToken));
+      switch (response.statusCode) {
+        case 200:
+
+          return Subject.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
     } on Exception catch (_) {
       rethrow;
     }
   }
 }
+
 
 class Course {
   final int id;
@@ -238,10 +271,20 @@ class Course {
   final int overtime;
   final bool statusCurriculum;
 
-  const Course({required this.id, required this.hashId, required this.name, required this.overtime, required this.statusCurriculum});
+  const Course(
+      {required this.id,
+      required this.hashId,
+      required this.name,
+      required this.overtime,
+      required this.statusCurriculum});
 
   factory Course.fromJson(Map<String, dynamic> json) {
-    return Course(id: json['id'], hashId: json['hashId'], name: json['name'], overtime: json['overtime'], statusCurriculum: json['statusCurriculum']);
+    return Course(
+        id: json['id'],
+        hashId: json['hashId'],
+        name: json['name'],
+        overtime: json['overtime'],
+        statusCurriculum: json['statusCurriculum']);
   }
 }
 
@@ -251,12 +294,224 @@ class University {
   final String name;
   final String cnpj;
 
-  const University({required this.id, required this.hashId, required this.name, required this.cnpj});
+  const University(
+      {required this.id,
+      required this.hashId,
+      required this.name,
+      required this.cnpj});
 
   factory University.fromJson(Map<String, dynamic> json) {
-    return University(id: json['id'], hashId: json['hashId'], name: json['name'], cnpj: json['cnpj']);
+    return University(
+        id: json['id'],
+        hashId: json['hashId'],
+        name: json['name'],
+        cnpj: json['cnpj']);
   }
 }
 
+// ===============================================
 
+class ReviewApi extends BaseApi {
+  Future<http.Response> addReview(ReviewForm review, String authToken) async {
+    try {
+      final http.Response response =
+          await http.post(Uri.parse('${super.reviewRoute}'),
+              headers: super.authHeaders(authToken),
+              body: jsonEncode(<String, String>{
+                "reviewText": review.reviewText,
+                "score": review.score,
+                "userHashId": review.userHashId,
+                "subjectHashId": review.subjectHashId,
+                "universityHashId": review.universityHashId,
+                "courseHashId": review.courseHashId
+              }));
 
+      switch (response.statusCode) {
+        case 200:
+          return response;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<List<Review>> getReviewsByUser(String authToken) async {
+    List<Review> reviews = [];
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${super.reviewRoute}/user'),
+        headers: super.authHeaders(authToken),
+      );
+
+      switch (response.statusCode) {
+        case 200:
+          final List<dynamic> list =
+              jsonDecode(utf8.decode(response.bodyBytes));
+          reviews = list.map((e) => Review.fromJson(e)).toList().cast<Review>();
+          return reviews;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<List<Review>> getReviewsBySubject(
+      String authToken, String subjectHashId) async {
+    List<Review> reviews = [];
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${super.reviewRoute}/subject/$subjectHashId'),
+        headers: super.authHeaders(authToken),
+      );
+
+      switch (response.statusCode) {
+        case 200:
+          final List<dynamic> list =
+              jsonDecode(utf8.decode(response.bodyBytes));
+          reviews = list.map((e) => Review.fromJson(e)).toList().cast<Review>();
+          return reviews;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<bool> checkIfAlreadyReviwed(
+      String authToken, String subjectHashId) async {
+    try {
+      final http.Response response = await http.get(
+        Uri.parse(
+            '${super.reviewRoute}/subject/already-reviewed-by-user/$subjectHashId'),
+        headers: super.authHeaders(authToken),
+      );
+
+      switch (response.statusCode) {
+        case 200:
+          String body = response.body;
+          return (body.toLowerCase() == "true" || body.toLowerCase() == "1")
+              ? true
+              : (body.toLowerCase() == "false" || body.toLowerCase() == "0"
+                  ? false
+                  : throw Exception);
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<http.Response> vote(String authToken, VoteForm vote) async {
+    try {
+      final http.Response response =
+          await http.post(Uri.parse('${super.voteRoute}'),
+              headers: super.authHeaders(authToken),
+              body: jsonEncode(<String, String>{
+                "isVoted": vote.isVoted.toString(),
+                "voteUpDown": vote.voteUpDown.toString(),
+                "reviewHashId": vote.reviewHashId
+              }));
+
+      switch (response.statusCode) {
+        case 200:
+          return response;
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+}
+
+class Review {
+  final int id;
+  final String hashId;
+  final String reviewText;
+  final Vote vote;
+  final String firstname;
+  final String lastname;
+
+  const Review(
+      {required this.id,
+      required this.hashId,
+      required this.reviewText,
+      required this.vote,
+      required this.firstname,
+      required this.lastname});
+
+  factory Review.fromJson(Map<String, dynamic> json) {
+    return Review(
+        id: json['id'],
+        hashId: json['hashId'],
+        reviewText: json['reviewText'],
+        vote: Vote.fromJson(json['vote']),
+        firstname: json['firstname'] ?? 'Usuário',
+        lastname: json['lastname'] ?? 'Anônimo');
+  }
+}
+
+class Vote {
+  final bool isVoted;
+  final bool voteUpDown;
+  final String subjectReviewHashId;
+  final int voteCount;
+
+  const Vote(
+      {required this.isVoted,
+      required this.voteUpDown,
+      required this.subjectReviewHashId,
+      required this.voteCount});
+
+  factory Vote.fromJson(Map<String, dynamic> json) {
+    return Vote(
+        isVoted: json['isVoted'],
+        voteUpDown: json['voteUpDown'],
+        subjectReviewHashId: json['subjectReviewHashId'],
+        voteCount: json['voteCount']);
+  }
+}
+
+class VoteForm {
+  final bool isVoted;
+  final bool voteUpDown;
+  final String reviewHashId;
+
+  const VoteForm(
+      {required this.isVoted,
+      required this.voteUpDown,
+      required this.reviewHashId});
+}
+
+class ReviewForm {
+  final String reviewText;
+  final String score;
+  final String userHashId;
+  final String subjectHashId;
+  final String universityHashId;
+  final String courseHashId;
+
+  const ReviewForm(
+      {required this.reviewText,
+      required this.score,
+      required this.userHashId,
+      required this.subjectHashId,
+      required this.universityHashId,
+      required this.courseHashId});
+
+  factory ReviewForm.fromJson(Map<String, dynamic> json) {
+    return ReviewForm(
+        reviewText: json['reviewText'],
+        score: json['score'],
+        userHashId: json['userHashId'],
+        subjectHashId: json['subjectHashId'],
+        universityHashId: json['universityHashId'],
+        courseHashId: json['courseHashId']);
+  }
+}
