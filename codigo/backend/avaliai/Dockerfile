@@ -1,19 +1,12 @@
-FROM maven:3-openjdk-17 AS MAVEN_BUILD
+FROM maven:3.8.4-openjdk-17 as maven-builder
+COPY src /app/src
+COPY pom.xml /app
 
-ENV JWT_SECRET ${JWT_SECRET}
-ENV POSTGRES_USER ${POSTGRES_USER}
-ENV POSTGRES_PASSWORD ${POSTGRES_PASSWORD}
-ENV POSTGRES_DB ${POSTGRES_DB}
+RUN mvn -f /app/pom.xml clean package -DskipTests
+FROM openjdk:17-alpine
 
-COPY pom.xml /build/
-COPY src /build/src/
+COPY --from=maven-builder app/target/avaliai-0.0.1-SNAPSHOT.jar /app-service/avaliai-0.0.1-SNAPSHOT.jar
+WORKDIR /app-service
 
-WORKDIR /build/
-RUN mvn package
-
-FROM openjdk:18
-
-WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/avaliai-0.0.1-SNAPSHOT.jar /app/
-
-ENTRYPOINT ["java", "-jar", "avaliai-0.0.1-SNAPSHOT.jar"]
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","avaliai-0.0.1-SNAPSHOT.jar"]

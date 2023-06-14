@@ -26,12 +26,14 @@ public class Course {
 
     @Column(name = "hash_id", updatable = false)
     private String hashId = generateHash();
+
     @Column(name="name")
     private String name;
+
     @Column(name="overtime")
     private int overtime;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course")
     private List<Subject> subjects;
 
     @Column(name = "status_curriculum")
@@ -41,7 +43,7 @@ public class Course {
     private boolean isDeleted = false;
 
     @ManyToOne
-    @JoinColumn(name = "fk_university", nullable = false)
+    @JoinColumn(name = "fk_university")
     private University university;
 
 }

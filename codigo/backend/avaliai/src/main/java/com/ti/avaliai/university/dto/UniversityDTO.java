@@ -1,14 +1,11 @@
 package com.ti.avaliai.university.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ti.avaliai.course.Course;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,10 +29,6 @@ public class UniversityDTO {
     @Schema(description = "CNPJ da universidade", example = "12.345.678/0001-90")
     @JsonProperty("cnpj")
     private String cnpj;
-
-    @Schema(description = "Lista de cursos oferecidos pela universidade")
-    @JsonProperty("courses")
-    private List<Course> courses;
 
 
 }
