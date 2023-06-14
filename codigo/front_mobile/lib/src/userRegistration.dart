@@ -283,10 +283,16 @@ class _UserRegistrationState extends State<UserRegistration> {
     http.Response response = await AuthApi().register(newUser);
 
     if (response.statusCode == 200) {
-       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => LoginPage()));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Cadastro realizado com sucesso')),
+      );
+
+       Navigator.pop(context);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Falha ao cadastrar')),
+      );
+
     }
   }
 }
