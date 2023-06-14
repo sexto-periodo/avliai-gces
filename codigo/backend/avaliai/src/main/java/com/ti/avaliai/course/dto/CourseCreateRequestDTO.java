@@ -2,8 +2,11 @@ package com.ti.avaliai.course.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ti.avaliai.subject.Subject;
+import com.ti.avaliai.university.University;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,17 +20,24 @@ import java.util.List;
 @Builder
 public class CourseCreateRequestDTO {
 
-    @Schema(required = true, description = "Nome do Curso.", example = "Engenharia de Diagramas")
+    @Schema(description = "Nome do Curso.", example = "Engenharia de Diagramas")
     @NotBlank(message = "O nome do Curso deve ser informado.")
     @JsonProperty("name")
     private String name;
 
-    @Schema(required = true, description = "Duração do Curso.", example = "10")
-    @NotBlank(message = "A duração do Curso deve ser informada.")
+    @Schema(description = "Duração do Curso.", example = "10")
+    @NotNull(message = "A duração do Curso deve ser informada.")
     @JsonProperty("overtime")
     private int overtime;
 
-    private List<Subject> subjects;
+    @Schema(description = "Status do curso.", example = "true")
+    @NotNull(message = "O Status do curso deve ser informado.")
+    @JsonProperty("statusCurriculum")
     private boolean statusCurriculum;
+
+    @Schema(description = "Id da universidade.", example = "10")
+    @NotNull(message = "A universidade deve ser informada.")
+    @JsonProperty("universityId")
+    private Long universityId;
 
 }

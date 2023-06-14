@@ -13,8 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class UniversityCreateRequestDTO {
+
     private String name;
     private String cnpj;
-    private List<Course> courses;
+    private List<Long> courses;
 
 }

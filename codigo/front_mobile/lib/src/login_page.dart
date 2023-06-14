@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:front_mobile/src/components/appbar_widget.dart';
+import 'package:front_mobile/src/api/base_api.dart';
 import 'package:front_mobile/src/home_page.dart';
-import 'package:front_mobile/src/components/text.dart';
 import 'package:front_mobile/src/userRegistration.dart';
 
-import 'components/button.dart';
 import 'components/color_palette.dart';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+const storage = FlutterSecureStorage();
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,8 +17,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   String _email = '';
   String _password = '';
@@ -59,15 +60,14 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
+                  controller: _emailController,
+                  decoration: const InputDecoration(
                     labelText: 'Email Acadêmico',
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (value) {
                     setState(() {
                       _email = value;
-                      print(_email);
                     });
                   },
                 ),
@@ -75,9 +75,9 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
                 TextFormField(
-                  controller: passwordController,
+                  controller: _passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Senha',
                     border: OutlineInputBorder(),
                   ),
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                          onPressed: onLoginButtonPressed,
+                          onPressed: () => onLoginButtonPressed(context),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: ColorPalette.mainColor,
                               shape: RoundedRectangleBorder(
@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => userRegistration()),
+                              builder: (context) => const UserRegistration()),
                         );
                       },
                       child: Text("Criar nova conta",
@@ -138,12 +138,24 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void onLoginButtonPressed() {
-    if (_email == 'admin@admin.com' && _password == 'admin') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
+  void onLoginButtonPressed(BuildContext context) async {
+    UserAuth authTokens = await AuthApi().login(_email, _password);
+    String userToken = authTokens.access_token.toString();
+    if (authTokens != null) {
+      storage.write(key: "userAuth", value: userToken);
+      UserApi().SaveLoggedUser(userToken);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => AppBarWidget.fromBase64(userToken)));
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+              title: Text('Erro'),
+              content: Text(
+                  'Usuário não encontrado. Verique se o email e senha estão corretos.')));
     }
   }
 }
+

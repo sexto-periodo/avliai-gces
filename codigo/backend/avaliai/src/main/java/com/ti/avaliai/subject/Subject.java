@@ -1,11 +1,14 @@
 package com.ti.avaliai.subject;
 
 import com.ti.avaliai.course.Course;
+import com.ti.avaliai.review.Review;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 import static com.ti.avaliai.utils.HashUtils.generateHash;
 
@@ -14,11 +17,11 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "t_subeject")
+@Table(name = "t_subject")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column
+    @Column(name="id")
     private long id;
 
     @Column(name="hash_id")
@@ -27,17 +30,22 @@ public class Subject {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "pic_url")
-    private String picUrl;
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @Column(name ="campus")
     private String campus;
 
-    @Column(name = "grade")
-    private double grade;
-
-    @ManyToOne
-    @JoinColumn(name = "fk_course", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_course")
     private Course course;
 
+    @Column(name = "short_description", columnDefinition = "TEXT")
+    private String shortDescription;
+
+    @Column(name = "long_description", columnDefinition = "TEXT")
+    private String longDescription;
+
+    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+    private List<Review> reviews;
 }

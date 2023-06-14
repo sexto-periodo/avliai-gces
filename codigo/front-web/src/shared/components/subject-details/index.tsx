@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
-import {ISubject} from '@/shared/models/ISubject'
+import React, {useEffect, useState} from 'react'
+import {ISubjectDTO} from '@/shared/domain/Subject/ISubject'
 import styles from './subjectDetails.module.scss'
 import {AiFillStar} from "react-icons/ai";
 import { BiDotsVerticalRounded } from 'react-icons/bi';
+import Image from "next/image";
 
-interface ISubjectDetails {
-    subject: ISubject
-}
-
-export default function SubjectDetails(props: ISubjectDetails) {
-
+export default function SubjectDetails(props: ISubjectDTO) {
+    useEffect(() => {
+        console.log(props.imageUrl)
+        console.log(props)
+    }, [])
     return (
         <div className={styles.subjectDetailsContainer}>
                 <div className={styles.header}>
                     <div className={styles.headerLeft}>
-                        <h2>{props.subject.name}</h2>
-                        <h3>{props.subject.university}</h3>
+                        <h2>{props.name}</h2>
+                        <h3>{props.university}</h3>
                         <div className={styles.scoreWrapper}>
                             <div className={styles.scoreBox}>
                                 <p className={styles.score}>
-                                    {props.subject.score}
+                                    {props.score}
                                 </p>
                                 <p className={styles.starIcon}><AiFillStar/></p>
                             </div>
@@ -34,7 +34,7 @@ export default function SubjectDetails(props: ISubjectDetails) {
                 <div className={styles.content}>
 
                     <div className={styles.coverImageContainer}>
-                        <img src={props.subject.imageUrl} alt=""/>
+                        <Image width={200} height={200} src={props.imageUrl} alt="" loading="eager" />
                     </div>
 
 
@@ -44,7 +44,7 @@ export default function SubjectDetails(props: ISubjectDetails) {
 
                     <div className={styles.descriptionContainer}>
                         <p>
-                            {props.subject.longDescription}
+                            {props.longDescription}
                         </p>
                     </div>
                 </div>

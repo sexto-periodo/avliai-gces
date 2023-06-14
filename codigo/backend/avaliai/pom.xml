@@ -15,8 +15,16 @@
     <description>Projeto de TI5 - AvaliAi</description>
     <properties>
         <java.version>17</java.version>
+        <!-- JaCoCo Properties -->
+        <jacoco.version>0.8.7</jacoco.version>
+<!--        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>-->
+<!--        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>-->
+<!--        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>-->
+<!--        <sonar.language>java</sonar.language>-->
     </properties>
     <dependencies>
+
+        <!--▌║█║▌│║▌│║▌║▌█║Spring Dependencies ▌│║▌║▌│║║▌█║▌║█-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -30,20 +38,35 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--▌║█║▌│║▌│║▌║▌█║Postgres Dependencies ▌│║▌║▌│║║▌█║▌║█-->
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!--▌║█║▌│║▌│║▌║▌█║Lombok Dependencies ▌│║▌║▌│║║▌█║▌║█-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!--▌║█║▌│║▌│║▌║▌█║Spring Security Dependencies ▌│║▌║▌│║║▌█║▌║█-->
         <dependency>
-        <groupId>io.jsonwebtoken</groupId>
-        <artifactId>jjwt-api</artifactId>
-        <version>0.11.5</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -55,6 +78,13 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>0.11.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
+        <!--▌║█║▌│║▌│║▌║▌█║Test Dependencies ▌│║▌║▌│║║▌█║▌║█-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,30 +92,24 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--▌║█║▌│║▌│║▌║▌█║Swagger Dependencies ▌│║▌║▌│║║▌█║▌║█-->
+        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.0.4</version>
         </dependency>
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>4.3.0</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
@@ -95,6 +119,39 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+
+        <!--▌║█║▌│║▌│║▌║▌█║Rest Dependencies ▌│║▌║▌│║║▌█║▌║█-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.14.2</version>
+        </dependency>
+
+        <!--▌║█║▌│║▌│║▌║▌█║Test Dependencies ▌│║▌║▌│║║▌█║▌║█-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -110,6 +167,36 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/ti/avaliai/**/*DTO.*</exclude>
+                        <exclude>com/ti/avaliai/**/*Controller.*</exclude>
+                        <exclude>com/ti/avaliai/**/*Repository.*</exclude>
+                        <exclude>com/ti/avaliai/**/*Builder.*</exclude>
+                        <exclude>**/config/*</exclude>
+                        <exclude>**/dto/*</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

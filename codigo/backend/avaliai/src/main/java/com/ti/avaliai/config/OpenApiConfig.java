@@ -13,27 +13,26 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
-                        name = "Alibou",
-                        email = "contact@aliboucoding.com",
-                        url = "https://aliboucoding.com/course"
+                        name = "Avaliai",
+                        url = "https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-1-ti5-5104100-avaliai"
                 ),
-                description = "OpenApi documentation for Spring Security",
-                title = "OpenApi specification - Alibou",
+                description = "API do Projeto AvaliAí",
+                title = "AvaliAí Backend",
                 version = "1.0",
                 license = @License(
-                        name = "Licence name",
-                        url = "https://some-url.com"
+                        name = " CC-BY-4.0",
+                        url = "https://creativecommons.org/licenses/by/4.0/"
                 ),
-                termsOfService = "Terms of service"
+                termsOfService = "Nossos termos de serviço"
         ),
         servers = {
                 @Server(
-                        description = "Local ENV",
+                        description = "Ambiente Local",
                         url = "http://localhost:8080/avaliai"
                 ),
                 @Server(
-                        description = "PROD ENV",
-                        url = "https://aliboucoding.com/course"
+                        description = "Ambiente de Produção",
+                        url = "https://avaliai.web.app"
                 )
         },
         security = {

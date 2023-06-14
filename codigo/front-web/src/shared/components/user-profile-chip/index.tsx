@@ -1,5 +1,6 @@
 import styles from './userProfileChip.module.scss'
 import React from "react";
+import Image from 'next/image'
 
 
 export interface IUserProfileChip {
@@ -17,7 +18,7 @@ export const UserProfileChip = (props: IUserProfileChip) => {
             <div className={styles.userProfileContainer}>
                 <div className={styles.userProfileImageContainer}
                      style={{width: props.imageSize, height: props.imageSize}}>
-                    <img src={props.userProfilePhoto} alt=""/>
+                    <Image width={60} height={60} src={props.userProfilePhoto} alt=""/>
                 </div>
                 <div className={styles.userInfoBox}>
                     <p>{props.username}</p>

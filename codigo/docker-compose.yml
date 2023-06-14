@@ -1,0 +1,92 @@
+version: '3'
+services:
+  database:
+    container_name: avaliai_database
+    image: postgres:14.1
+    networks:
+      - avaliai_net
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - database_avaliai:/var/lib/postgresql
+      - database_avaliai_data:/var/lib/postgresql/data
+    restart: always
+
+  rabbitmq:
+    container_name: avaliai_rabbitmq
+    image: rabbitmq:management
+    networks:
+      - avaliai_net
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    volumes:
+      - rabbitmq_avaliai_vol:/var/lib/rabbitmq
+
+
+  backend:
+    container_name: avaliai_backend
+    build:
+      context: ./backend/avaliai
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    depends_on:
+      - database
+      - rabbitmq
+    networks:
+      - avaliai_net
+
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - JWT_SECRET=${JWT_SECRET}
+      - HASURA_ADMIN_SECRET=${HASURA_ADMIN_SECRET}
+
+  frontend:
+    container_name: avaliai_frontend_web
+    build:
+      context: ./front-web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    depends_on:
+      - backend
+    networks:
+      - avaliai_net
+    environment:
+      - NEXT_PUBLIC_FIREBASE_API_KEY=${NEXT_PUBLIC_FIREBASE_API_KEY}
+      - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}
+      - NEXT_PUBLIC_FIREBASE_PROJECT_ID=${NEXT_PUBLIC_FIREBASE_PROJECT_ID}
+      - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}
+      - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID}
+      - NEXT_PUBLIC_FIREBASE_APP_ID=${NEXT_PUBLIC_FIREBASE_APP_ID}
+      - NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=${NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID}
+      - NEXT_PUBLIC_BACKEND_BASE_URL=${NEXT_PUBLIC_BACKEND_BASE_URL}
+
+networks:
+  avaliai_net:
+
+
+volumes:
+  database_avaliai:
+  database_avaliai_data:
+  rabbitmq_avaliai_vol:
+
+
