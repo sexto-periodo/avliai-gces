@@ -65,7 +65,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.only(left: 15, top: 24, right: 15),
             child: FutureBuilder(
                 future: futureFubjects,
                 builder: (BuildContext context, snapshot) {

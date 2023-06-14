@@ -320,6 +320,7 @@ class ReviewApi extends BaseApi {
   }
 
   Future<List<Review>> getReviewsByUser(String authToken) async {
+    List<Review> reviews = [];
     try {
       final http.Response response = await http.get(
         Uri.parse('${super.reviewRoute}/user'),
@@ -328,9 +329,9 @@ class ReviewApi extends BaseApi {
 
       switch (response.statusCode) {
         case 200:
-          Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
-          List<Review> reviews =
-              List<Review>.from(list.map((e) => Subject.fromJson(e)));
+          final List<dynamic> list =
+              jsonDecode(utf8.decode(response.bodyBytes));
+          reviews = list.map((e) => Review.fromJson(e)).toList().cast<Review>();
           return reviews;
         default:
           throw Exception(response.reasonPhrase);
@@ -342,6 +343,7 @@ class ReviewApi extends BaseApi {
 
   Future<List<Review>> getReviewsBySubject(
       String authToken, String subjectHashId) async {
+    List<Review> reviews = [];
     try {
       final http.Response response = await http.get(
         Uri.parse('${super.reviewRoute}/subject/$subjectHashId'),
@@ -350,9 +352,9 @@ class ReviewApi extends BaseApi {
 
       switch (response.statusCode) {
         case 200:
-          Iterable list = jsonDecode(utf8.decode(response.bodyBytes));
-          List<Review> reviews =
-              List<Review>.from(list.map((e) => Subject.fromJson(e)));
+          final List<dynamic> list =
+              jsonDecode(utf8.decode(response.bodyBytes));
+          reviews = list.map((e) => Review.fromJson(e)).toList().cast<Review>();
           return reviews;
         default:
           throw Exception(response.reasonPhrase);
@@ -373,7 +375,12 @@ class ReviewApi extends BaseApi {
 
       switch (response.statusCode) {
         case 200:
-          return response.body as bool;
+          String body = response.body;
+          return (body.toLowerCase() == "true" || body.toLowerCase() == "1")
+              ? true
+              : (body.toLowerCase() == "false" || body.toLowerCase() == "0"
+                  ? false
+                  : throw Exception);
         default:
           throw Exception(response.reasonPhrase);
       }
@@ -410,43 +417,25 @@ class Review {
   final String hashId;
   final String reviewText;
   final Vote vote;
+  final String firstname;
+  final String lastname;
 
   const Review(
       {required this.id,
       required this.hashId,
       required this.reviewText,
-      required this.vote});
+      required this.vote,
+      required this.firstname,
+      required this.lastname});
 
   factory Review.fromJson(Map<String, dynamic> json) {
     return Review(
         id: json['id'],
         hashId: json['hashId'],
         reviewText: json['reviewText'],
-        vote: json['vote']);
-  }
-}
-
-class ReviewByUser extends Review {
-  final String firstname;
-  final String lastname;
-
-  const ReviewByUser(
-      {required int id,
-      required String hashId,
-      required String reviewText,
-      required Vote vote,
-      required this.firstname,
-      required this.lastname})
-      : super(id: id, hashId: hashId, reviewText: reviewText, vote: vote);
-
-  factory ReviewByUser.fromJson(Map<String, dynamic> json) {
-    return ReviewByUser(
-        id: json['id'],
-        hashId: json['hashId'],
-        reviewText: json['reviewText'],
-        vote: json['vote'],
-        firstname: json['firstname'],
-        lastname: json['lastname']);
+        vote: Vote.fromJson(json['vote']),
+        firstname: json['firstname'] ?? 'Usuário',
+        lastname: json['lastname'] ?? 'Anônimo');
   }
 }
 
@@ -461,6 +450,14 @@ class Vote {
       required this.voteUpDown,
       required this.subjectReviewHashId,
       required this.voteCount});
+
+  factory Vote.fromJson(Map<String, dynamic> json) {
+    return Vote(
+        isVoted: json['isVoted'],
+        voteUpDown: json['voteUpDown'],
+        subjectReviewHashId: json['subjectReviewHashId'],
+        voteCount: json['voteCount']);
+  }
 }
 
 class VoteForm {
@@ -468,7 +465,10 @@ class VoteForm {
   final bool voteUpDown;
   final String reviewHashId;
 
-  const VoteForm({required this.isVoted, required this.voteUpDown, required this.reviewHashId});
+  const VoteForm(
+      {required this.isVoted,
+      required this.voteUpDown,
+      required this.reviewHashId});
 }
 
 class ReviewForm {
