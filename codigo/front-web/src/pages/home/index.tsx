@@ -48,9 +48,9 @@ export default function Home() {
             <div className={styles.container}>
                 <div className={styles.pageFunctionsWrapper}>
                     <div className={styles.chipFilters}>
-                        <h1>CHIP</h1>
-                        <h1>CHIP</h1>
-                        <h1>CHIP</h1>
+                        {/*<h1>CHIP</h1>*/}
+                        {/*<h1>CHIP</h1>*/}
+                        {/*<h1>CHIP</h1>*/}
                     </div>
                     <div className={styles.searchInputContainer}>
 

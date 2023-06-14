@@ -43,16 +43,6 @@ export default function Sidebar(props: ISidebar) {
                             </Item>
                         </Link>
                     </li>
-                    <li>
-                        <Item label="Item 1">
-                            <MdContactMail/>
-                        </Item>
-                    </li>
-                    <li>
-                        <Item label="Item 1">
-                            <MdFactCheck/>
-                        </Item>
-                    </li>
                 </ul>
             </div>
         </aside>
