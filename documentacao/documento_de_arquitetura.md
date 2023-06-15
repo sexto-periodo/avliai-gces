@@ -27,8 +27,7 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, 
-mostrar algum resultado relevante do trabalho (até 10 linhas)._
+_**Resumo**. AvaliAí é uma plataforma de avaliação de disciplinas universitárias. Com AvaliAí, os alunos podem avaliar suas disciplinas no decorrer do semestre, compartilhando sua experiência e fornecendo feedbacks detalhados para as universidades. Motivado a partir da necessidade de um ambiente capaz de unir estudantes universitários para discutir sobre disciplinas, motivando-os a compartilhar suas opiniões e avaliá-las, auxiliando na escolha de futuros alunos. Ambos aplicativo e versão web foram realizados com êxito, cumprindo com o projeto e proposta iniciais, satisfazendo os requisitos principais e garantindo um espaço informal para alunos discutirem sobre disciplinas universitárias
 
 ---
 
