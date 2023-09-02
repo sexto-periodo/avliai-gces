@@ -5,7 +5,6 @@ import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.global.domain.exceptions.AlreadyReviewedByUserException;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
 import com.ti.avaliai.global.domain.exceptions.UnauthorizedReviewerException;
-import com.ti.avaliai.rabbit.producer.RabbitMQProducer;
 import com.ti.avaliai.subject.Subject;
 import com.ti.avaliai.subject.SubjectService;
 import com.ti.avaliai.subject.dto.SubjectDTO;
@@ -41,9 +40,6 @@ public class ReviewService {
 
     @Autowired
     private SubjectService subjectService;
-
-    @Autowired
-    private RabbitMQProducer rabbitMQProducer;
 
     @Autowired
     private UserService userService;
@@ -97,7 +93,7 @@ public class ReviewService {
         if (haveUserAlreadyReviewedSubject(request.getSubjectHashId())) {
             throw new AlreadyReviewedByUserException("Disciplina já avaliada pelo usuário", HttpStatus.CONFLICT);
         } else {
-            rabbitMQProducer.sendReviewMessage(request);
+            this.create(request);
         }
     }
 
