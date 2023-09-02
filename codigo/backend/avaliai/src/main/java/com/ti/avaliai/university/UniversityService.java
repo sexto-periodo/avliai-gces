@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UniversityService {
+public class UniversityService{
 
     @Autowired
-    private UniversityRepository universityRepository;
+    private IUniversityRepository universityRepository;
 
     @Autowired
     private CourseService courseService;
@@ -48,7 +48,12 @@ public class UniversityService {
                 .orElseThrow(() -> new EntityNotFoundException("Universidade do hashId"+hashId+" não encontrada", HttpStatus.NOT_FOUND));
     }
 
-    public void save(University university) {
-        universityRepository.save(university);
+    public University save(University university) {
+        return universityRepository.save(university);
+    }
+
+    public University findByName(String name) {
+        return universityRepository.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Universidade "+name+" não encontrada", HttpStatus.NOT_FOUND));
     }
 }

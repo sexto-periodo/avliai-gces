@@ -8,9 +8,9 @@ import java.util.Optional;
 
 
 @Repository
-public interface AcademicMailRepository extends JpaRepository<AcademicMail, Long> {
+public interface AcademicMailRepository extends JpaRepository<AcademicEmail, Long> {
 
-    Optional<AcademicMail> findByHashId(String hashId);
-    Optional<AcademicMail> findByDomain(String domain);
-    List<AcademicMail> getAllByValidTrue();
+    Optional<AcademicEmail> findByHashId(String hashId);
+    Optional<AcademicEmail> findByDomain(String domain);
+    List<AcademicEmail> getAllByValidTrue();
 }

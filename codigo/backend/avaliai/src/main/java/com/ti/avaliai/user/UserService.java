@@ -1,6 +1,6 @@
 package com.ti.avaliai.user;
 
-import com.ti.avaliai.academicmail.AcademicMailService;
+import com.ti.avaliai.academicmail.AcademicEmailService;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
 import com.ti.avaliai.user.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private AcademicMailService academicMailService;
+    private AcademicEmailService academicEmailService;
 
     public List<User> getAllUsers() {
         return this.userRepository.findAll();
@@ -38,7 +38,7 @@ public class UserService {
 
     public VerifyEmailResponseDTO verifyEmail(VerifyEmailRequestDTO verifyEmailRequestDTO) {
         return VerifyEmailResponseDTO.builder()
-                .validEmail(academicMailService.isValidEmail(verifyEmailRequestDTO.getEmail()))
+                .validEmail(academicEmailService.isValidEmail(verifyEmailRequestDTO.getEmail()))
                 .email(verifyEmailRequestDTO.getEmail())
                 .build();
     }

@@ -12,8 +12,8 @@ import static com.ti.avaliai.utils.HashUtils.generateHash;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "t_academic_mail")
-public class AcademicMail {
+@Table(name = "t_academic_email")
+public class AcademicEmail {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
