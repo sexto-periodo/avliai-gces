@@ -47,4 +47,8 @@ public class UniversityService {
         return universityRepository.findByHashId(hashId)
                 .orElseThrow(() -> new EntityNotFoundException("Universidade do hashId"+hashId+" não encontrada", HttpStatus.NOT_FOUND));
     }
+
+    public void save(University university) {
+        universityRepository.save(university);
+    }
 }

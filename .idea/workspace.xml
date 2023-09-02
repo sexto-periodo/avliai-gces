@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1078930-ce64-4c0a-bc1a-6e2715f2b522" name="Changes" comment="feat: curso controller, repository, service">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="f1078930-ce64-4c0a-bc1a-6e2715f2b522" name="Changes" comment="security(firebase): remoção da relação do código com o firebase&#10;&#10;- remoção do firebase&#10;- Remoção de variáveis de ambiente críticas do firebase&#10;- projeto firebase deletado">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,14 +16,45 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="doc-test" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="adequacao-gces" />
+                    <option name="lastUsedInstant" value="1693603689" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1693603688" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="4f9rwqjz" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2OQoSXSjGDKGJ8LG4hALIsN7Cxb" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -31,8 +62,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/jvgpl/OneDrive/Documentos/plf-es-2023-1-ti5-5104100-avaliai/codigo/backend/avaliai"
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "adequacao-gces",
+    "last_opened_file_path": "/home/gabriel/Codes/Curso/avliai-gces/codigo/backend/avaliai"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -51,7 +85,15 @@
       <option name="project" value="LOCAL" />
       <updated>1681524041539</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="security(firebase): remoção da relação do código com o firebase&#10;&#10;- remoção do firebase&#10;- Remoção de variáveis de ambiente críticas do firebase&#10;- projeto firebase deletado">
+      <option name="closed" value="true" />
+      <created>1693605649435</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693605649436</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -67,6 +109,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: curso controller, repository, service" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: curso controller, repository, service" />
+    <MESSAGE value="security(firebase): remoção da relação do código com o firebase&#10;&#10;- remoção do firebase&#10;- Remoção de variáveis de ambiente críticas do firebase&#10;- projeto firebase deletado" />
+    <option name="LAST_COMMIT_MESSAGE" value="security(firebase): remoção da relação do código com o firebase&#10;&#10;- remoção do firebase&#10;- Remoção de variáveis de ambiente críticas do firebase&#10;- projeto firebase deletado" />
   </component>
 </project>

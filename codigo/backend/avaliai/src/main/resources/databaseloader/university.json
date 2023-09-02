@@ -1,0 +1,12 @@
+{
+  "university": [
+    {
+      "name": "PUC Minas",
+      "cnpj": "17.178.195/0001-67"
+    },
+    {
+      "name": "AvaliAi University",
+      "cnpj": "12.345.678/0001-91"
+    }
+  ]
+}
