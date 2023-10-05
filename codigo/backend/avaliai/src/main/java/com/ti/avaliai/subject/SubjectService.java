@@ -3,25 +3,21 @@ package com.ti.avaliai.subject;
 import com.ti.avaliai.course.Course;
 import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
-import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
-import com.ti.avaliai.subject.dto.SubjectDTO;
 import com.ti.avaliai.review.ReviewService;
-import com.ti.avaliai.subject.dto.SubjectUpdateRequestDTO;
-
+import com.ti.avaliai.subject.dto.SubjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @Service
 public class SubjectService {
 
     @Autowired
-    private SubjectRepository subjectRepository;
+    private ISubjectRepository subjectRepository;
 
     @Autowired
     private CourseService courseService;
@@ -74,12 +70,19 @@ public class SubjectService {
                 .build();
     }
 
-    public List<SubjectDTO> findAll() {
+    public List<SubjectDTO> findAllDTO() {
         List<Subject> subjects = subjectRepository.findAll();
         List<SubjectDTO> subjectDTOs =
                 subjects.stream()
                         .map(s -> subjectToSubjectDTO(s)).collect(Collectors.toList());
         return subjectDTOs;
     }
-}
 
+    public Subject save(Subject subject) {
+        return subjectRepository.save(subject);
+    }
+
+    public List<Subject> findAll() {
+        return subjectRepository.findAll();
+    }
+}

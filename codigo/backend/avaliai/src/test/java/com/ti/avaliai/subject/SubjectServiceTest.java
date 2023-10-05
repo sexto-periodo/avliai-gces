@@ -1,9 +1,7 @@
 package com.ti.avaliai.subject;
 
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
-import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
-import com.ti.avaliai.subject.dto.SubjectUpdateRequestDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +61,7 @@ public class SubjectServiceTest {
     @DisplayName(value = "Teste de Sucesso - Buscar todas as disciplinas do sistema")
     @Test
     public void findAllSubjects_Success() {
-        List<SubjectDTO> subjectDTOs = subjectService.findAll();
+        List<SubjectDTO> subjectDTOs = subjectService.findAllDTO();
 
         assertTrue(subjectDTOs.size() >= ALREADY_EXISTING_SUBJECTS);
     }

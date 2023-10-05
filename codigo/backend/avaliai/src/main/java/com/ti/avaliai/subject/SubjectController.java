@@ -2,14 +2,10 @@ package com.ti.avaliai.subject;
 
 import com.ti.avaliai.global.domain.BasicController;
 import com.ti.avaliai.global.response.success.BaseSucessResponse;
-import com.ti.avaliai.global.response.success.NoPayloadSuccessResponse201;
-import com.ti.avaliai.subject.dto.SubjectCreateRequestDTO;
 import com.ti.avaliai.subject.dto.SubjectDTO;
-import com.ti.avaliai.subject.dto.SubjectUpdateRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +22,7 @@ public class SubjectController extends BasicController {
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
     public ResponseEntity<BaseSucessResponse<List<SubjectDTO>>> faindAll() {
-        List<SubjectDTO> response = subjectService.findAll();
+        List<SubjectDTO> response = subjectService.findAllDTO();
         return ok(response);
     }
 

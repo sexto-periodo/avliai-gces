@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface SubjectRepository extends JpaRepository<Subject,Long>{
+public interface ISubjectRepository extends JpaRepository<Subject, Long> {
 
     @Query("SELECT sub FROM Subject sub WHERE sub.name = ?1")
     Optional<Subject> findSubjectByName(String name);

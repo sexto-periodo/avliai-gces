@@ -1,0 +1,14 @@
+{
+  "academic_email":[
+    {
+      "institution": "PUC Minas",
+      "domain": "sga.pucminas.br",
+      "isValid": true
+    },
+    {
+      "institution": "PUC Minas",
+      "domain": "pucminas.br",
+      "isValid": true
+    }
+  ]
+}

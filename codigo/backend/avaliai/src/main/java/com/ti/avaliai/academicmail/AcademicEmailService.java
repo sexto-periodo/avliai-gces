@@ -10,21 +10,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AcademicMailService {
+public class AcademicEmailService {
 
     @Autowired
     private AcademicMailRepository academicMailRepository;
 
-    public void create(AcademicMail academicMail){
-        academicMailRepository.save(academicMail);
+    public void create(AcademicEmail academicEMail){
+        academicMailRepository.save(academicEMail);
     }
 
-    public AcademicMail findByDomain(String domain){
+    public AcademicEmail findByDomain(String domain){
         return academicMailRepository.findByDomain(domain)
                 .orElseThrow(() -> new EntityNotFoundException("Dominio de E-mail acadêmico não encontrado", HttpStatus.NOT_FOUND));
     }
 
-    public AcademicMail findByHashId(String hashId){
+    public AcademicEmail findByHashId(String hashId){
         return academicMailRepository.findByHashId(hashId)
                 .orElseThrow(() -> new EntityNotFoundException("Dominio de E-mail acadêmico não encontrado", HttpStatus.NOT_FOUND));
     }
@@ -45,9 +45,12 @@ public class AcademicMailService {
     }
 
     private List<String> getValidAcceptedDomains(){
-        List<AcademicMail> domains = academicMailRepository.getAllByValidTrue();
-        List<String> validDomains = domains.stream().map(AcademicMail::getDomain).collect(Collectors.toList());
+        List<AcademicEmail> domains = academicMailRepository.getAllByValidTrue();
+        List<String> validDomains = domains.stream().map(AcademicEmail::getDomain).collect(Collectors.toList());
         return validDomains;
     }
 
+    public AcademicEmail save(AcademicEmail academicEmail) {
+        return academicMailRepository.save(academicEmail);
+    }
 }

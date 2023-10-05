@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Course,Long>{
+public interface ICourseRepository extends JpaRepository<Course, Long> {
 
     Optional<Course> findById(Long id);
 
@@ -17,4 +17,8 @@ public interface CourseRepository extends JpaRepository<Course,Long>{
     List<Course> findAllByUniversity(University university);
 
     Optional<Course> findByHashId(String hashId);
+
+    boolean existsByHashId(String hashId);
+
+    Optional<Course> findByName(String name);
 }

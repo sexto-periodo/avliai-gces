@@ -1,0 +1,14 @@
+{
+  "course": [
+    {
+      "name": "Engenharia de Software",
+      "overtime": 10,
+      "statusCurriculum": true
+    },
+    {
+      "name": "Ciência da Computação",
+      "overtime": 10,
+      "statusCurriculum": true
+    }
+  ]
+}

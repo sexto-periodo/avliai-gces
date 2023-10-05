@@ -31,6 +31,4 @@ public class ReviewDTO {
     @Schema(description = "Status dos votos da avaliação.")
     @JsonProperty("vote")
     private VoteDTO vote;
-
-
 }

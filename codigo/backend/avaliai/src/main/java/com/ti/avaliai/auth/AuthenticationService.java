@@ -2,7 +2,7 @@ package com.ti.avaliai.auth;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ti.avaliai.academicmail.AcademicMailService;
+import com.ti.avaliai.academicmail.AcademicEmailService;
 import com.ti.avaliai.auth.dto.AuthenticationRequestDTO;
 import com.ti.avaliai.auth.dto.AuthenticationResponseDTO;
 import com.ti.avaliai.auth.dto.RegisterRequestDTO;
@@ -48,13 +48,13 @@ public class AuthenticationService {
   @Autowired
   private CourseService courseService;
   @Autowired
-  private AcademicMailService academicMailService;
+  private AcademicEmailService academicEmailService;
   @Autowired
   private UserService userService;
 
   public AuthenticationResponseDTO register(RegisterRequestDTO request) {
 
-    if(!academicMailService.isValidEmail(request.getEmail())){
+    if(!academicEmailService.isValidEmail(request.getEmail())){
       throw new InvalidEmailException("E-mail acadêmico inválido", HttpStatus.UNPROCESSABLE_ENTITY);
     }
 

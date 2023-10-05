@@ -1,6 +1,6 @@
 package com.ti.avaliai.auth;
 
-import com.ti.avaliai.academicmail.AcademicMailService;
+import com.ti.avaliai.academicmail.AcademicEmailService;
 import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import com.ti.avaliai.global.domain.exceptions.InvalidEmailException;
 import com.ti.avaliai.user.User;
@@ -29,7 +29,7 @@ public class AuthenticationServiceTest {
     private UserService userService;
 
     @Autowired
-    private AcademicMailService academicMailService;
+    private AcademicEmailService academicEmailService;
 
     @BeforeEach
     public void  setup(){
@@ -63,7 +63,7 @@ public class AuthenticationServiceTest {
 
         assertEquals(1,users.size());
         assertEquals("User", users.get(0).getFirstname());
-        boolean validEmails = users.stream().allMatch((u) -> academicMailService.isValidEmail(u.getEmail()) );
+        boolean validEmails = users.stream().allMatch((u) -> academicEmailService.isValidEmail(u.getEmail()) );
         assertTrue(validEmails);
     }
 
