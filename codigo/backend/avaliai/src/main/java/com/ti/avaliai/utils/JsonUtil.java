@@ -33,6 +33,15 @@ public class JsonUtil {
         return list;
     }
 
+    public <T> T objectFromJson(String dataGroup, String pathResource, Type type) {
+        String json = readResourceJson(dataGroup, pathResource);
+        Gson gson =  new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+                .create();
+
+        return gson.fromJson(json, type);
+    }
+
 
     public String readResourceJson(String dataGroup, String pathResource) {
         JSONObject jsonDataObject = null;

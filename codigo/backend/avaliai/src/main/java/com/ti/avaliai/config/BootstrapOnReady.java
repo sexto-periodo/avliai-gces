@@ -3,6 +3,8 @@ package com.ti.avaliai.config;
 import com.google.gson.reflect.TypeToken;
 import com.ti.avaliai.academicmail.AcademicEmail;
 import com.ti.avaliai.academicmail.AcademicEmailService;
+import com.ti.avaliai.auth.AuthenticationService;
+import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import com.ti.avaliai.course.Course;
 import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.databaseloader.DatabaseLoaderService;
@@ -20,6 +22,9 @@ import org.springframework.context.event.EventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ti.avaliai.user.Role.ADMIN;
+import static com.ti.avaliai.user.Role.MANAGER;
 
 @Log
 @Configuration
@@ -44,6 +49,9 @@ public class BootstrapOnReady {
 
     @Autowired
     private AcademicEmailService academicEmailService;
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
 
     @EventListener(ApplicationReadyEvent.class)
@@ -83,6 +91,7 @@ public class BootstrapOnReady {
 
         this.relationCourseUniversity();
         this.relationSubjectCourse();
+        this.dumpBaseUsers();
     }
 
     private void createUniversity(University university) {
@@ -118,7 +127,7 @@ public class BootstrapOnReady {
     }
 
     @Transactional
-    private void relationCourseUniversity(){
+    private void relationCourseUniversity() {
         University university = universityService.findByName("PUC Minas");
         List<Course> courses = courseService.findAll();
         university.setCourses(courses);
@@ -126,10 +135,42 @@ public class BootstrapOnReady {
     }
 
     @Transactional
-    private void relationSubjectCourse(){
+    private void relationSubjectCourse() {
         Course course = courseService.findByName("Engenharia de Software");
         List<Subject> subjects = subjectService.findAll();
         course.setSubjects(subjects);
         courseService.save(course);
     }
+
+    private void dumpBaseUsers() {
+        University university = universityService.findByName("PUC Minas");
+        Course engsoft = courseService.findByName("Engenharia de Software");
+        Course cc = courseService.findByName("Ciência da Computação");
+
+        RegisterRequestDTO admin = RegisterRequestDTO.builder()
+                .firstname("Admin")
+                .lastname("Admin")
+                .email("admin@sga.pucminas.br")
+                .password("1234")
+                .universityHashId(university.getHashId())
+                .courseHashId(engsoft.getHashId())
+                .role(ADMIN)
+                .build();
+
+        RegisterRequestDTO manager = RegisterRequestDTO.builder()
+                .firstname("Admin")
+                .lastname("Admin")
+                .email("manager@sga.pucminas.br")
+                .password("password")
+                .role(MANAGER)
+                .universityHashId(university.getHashId())
+                .courseHashId(cc.getHashId())
+                .build();
+
+        authenticationService.register(admin);
+        authenticationService.register(manager);
+    }
+
+    ;
+
 }

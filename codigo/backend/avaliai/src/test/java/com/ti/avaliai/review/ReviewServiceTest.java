@@ -1,36 +1,44 @@
 package com.ti.avaliai.review;
 
 
-import com.ti.avaliai.auth.AuthenticationService;
 import com.ti.avaliai.global.domain.exceptions.AlreadyReviewedByUserException;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
-import com.ti.avaliai.subject.SubjectService;
 import com.ti.avaliai.review.dto.CreateReviewRequestDTO;
-import com.ti.avaliai.user.UserService;
+import com.ti.avaliai.subject.SubjectService;
+import com.ti.avaliai.user.User;
 import com.ti.avaliai.utils.ReviewTestUtils;
+import com.ti.avaliai.utils.TestUtils;
 import com.ti.avaliai.utils.UserTestUtils;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.ti.avaliai.user.User;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
+import org.springframework.test.context.jdbc.SqlGroup;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@SqlGroup({
+        @Sql(scripts = "classpath:persistence/avaliai/university/before_test_university.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/course/before_test_course.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/academicemail/before_test_academic_email.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/subject/before_test_subject.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+})
 public class ReviewServiceTest {
 
     // Calcular upvotes e downvotes corretamente
 
-    private static final String EXISTING_SUBJECT_HASH_ID = "17da1ae431f965d839ec8eb93087fb2b";
-    private static final String EXISTING_UNIVERSITY_HASH_ID = "543b45c583bfff6c30e44a751103a24f";
-    private static final String EXISTING_COURSE_HASH_ID = "eb5ed7359d0bc0df70e6b7abf8584c5e";
+    private static final String EXISTING_SUBJECT_HASH_ID = "757b88dbb65e4e13b3319cd8b6a9e2b2";
+    private static final String EXISTING_UNIVERSITY_HASH_ID = "1d145f9110ce4e61af7f2363279816f5";
+    private static final String EXISTING_COURSE_HASH_ID = "534bf4699af840ffb99f95a1f7d44243";
     private static final String NON_EXISTING_REVIEW_HASH_ID = "acdb9dcd1c4fea1c7c9a6e3889f79df3";
-    private static final String EXISTING_DEFAULT_USER_EMAIL = "testuser@sga.pucminas.br";
 
     @Autowired
     private ReviewService reviewService;
@@ -39,19 +47,18 @@ public class ReviewServiceTest {
     private UserTestUtils userTestUtils;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private SubjectService subjectService;
-
-    @Autowired
-    private AuthenticationService authenticationService;
 
     @Autowired
     private ReviewTestUtils reviewTestUtils;
 
+    @Autowired
+    private DataSource dataSource;
 
-
+    @AfterEach
+    public void clearDatabase() {
+        TestUtils.clearDatabase(new JdbcTemplate(dataSource));
+    }
 
     @DisplayName(value = "Teste de Sucesso - Media de avaliação calulada corretamente")
     @Test

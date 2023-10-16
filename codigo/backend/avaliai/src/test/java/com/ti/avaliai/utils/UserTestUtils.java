@@ -36,8 +36,8 @@ public class UserTestUtils {
                 .lastname("User")
                 .email(DEFAULT_USER_EMAIL)
                 .password("1234")
-                .universityHashId("543b45c583bfff6c30e44a751103a24f")
-                .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+                .universityHashId("1d145f9110ce4e61af7f2363279816f5")
+                .courseHashId("534bf4699af840ffb99f95a1f7d44243")
                 .role(ADMIN)
                 .build();
 
@@ -54,8 +54,8 @@ public class UserTestUtils {
                 .lastname("User")
                 .email(RANDOM_USER_EMAIL)
                 .password("1234")
-                .universityHashId("543b45c583bfff6c30e44a751103a24f")
-                .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+                .universityHashId("1d145f9110ce4e61af7f2363279816f5")
+                .courseHashId("534bf4699af840ffb99f95a1f7d44243")
                 .role(ADMIN)
                 .build();
 

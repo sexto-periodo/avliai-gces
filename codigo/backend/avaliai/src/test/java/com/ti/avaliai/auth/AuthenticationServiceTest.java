@@ -5,19 +5,27 @@ import com.ti.avaliai.auth.dto.RegisterRequestDTO;
 import com.ti.avaliai.global.domain.exceptions.InvalidEmailException;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserService;
+import com.ti.avaliai.utils.TestUtils;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
+import org.springframework.test.context.jdbc.SqlGroup;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 import static com.ti.avaliai.user.Role.ADMIN;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@SqlGroup({
+        @Sql(scripts = "classpath:persistence/avaliai/university/before_test_university.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/course/before_test_course.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/academicemail/before_test_academic_email.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+})
 public class AuthenticationServiceTest {
 
     private static final int ALREADY_EXISTING_USERS = 0;
@@ -31,18 +39,13 @@ public class AuthenticationServiceTest {
     @Autowired
     private AcademicEmailService academicEmailService;
 
-    @BeforeEach
-    public void  setup(){
-        userService.deleteAll();
+    @Autowired
+    private DataSource dataSource;
+
+    @AfterEach
+    public void clearDatabase() {
+        TestUtils.clearDatabase(new JdbcTemplate(dataSource));
     }
-
-
-    @AfterAll
-    void clear(){
-        userService.deleteAll();
-    }
-
-
 
     @DisplayName(value = "Teste de Sucesso - Cadastrar um novo usuário com sucesso")
     @Test
@@ -52,8 +55,8 @@ public class AuthenticationServiceTest {
                 .lastname("User")
                 .email("user@sga.pucminas.br")
                 .password("1234")
-                .universityHashId("543b45c583bfff6c30e44a751103a24f")
-                .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+                .universityHashId("1d145f9110ce4e61af7f2363279816f5")
+                .courseHashId("534bf4699af840ffb99f95a1f7d44243")
                 .role(ADMIN)
                 .build();
 
@@ -75,8 +78,8 @@ public class AuthenticationServiceTest {
                 .lastname("User")
                 .email("user@gmail.com")
                 .password("1234")
-                .universityHashId("543b45c583bfff6c30e44a751103a24f")
-                .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+                .universityHashId("1d145f9110ce4e61af7f2363279816f5")
+                .courseHashId("534bf4699af840ffb99f95a1f7d44243")
                 .role(ADMIN)
                 .build();
 
@@ -94,8 +97,8 @@ public class AuthenticationServiceTest {
                 .lastname("User")
                 .email("user1@sga.pucminas.br")
                 .password("1234")
-                .universityHashId("543b45c583bfff6c30e44a751103a24f")
-                .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+                .universityHashId("1d145f9110ce4e61af7f2363279816f5")
+                .courseHashId("534bf4699af840ffb99f95a1f7d44243")
                 .role(ADMIN)
                 .build();
 
@@ -104,8 +107,8 @@ public class AuthenticationServiceTest {
                 .lastname("User")
                 .email("user1@sga.pucminas.br")
                 .password("1234")
-                .universityHashId("543b45c583bfff6c30e44a751103a24f")
-                .courseHashId("eb5ed7359d0bc0df70e6b7abf8584c5e")
+                .universityHashId("1d145f9110ce4e61af7f2363279816f5")
+                .courseHashId("534bf4699af840ffb99f95a1f7d44243")
                 .role(ADMIN)
                 .build();
 

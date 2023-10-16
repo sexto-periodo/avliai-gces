@@ -2,6 +2,7 @@ package com.ti.avaliai.university;
 
 import com.ti.avaliai.course.CourseService;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
+import com.ti.avaliai.university.dto.UniversityCreateRequestDTO;
 import com.ti.avaliai.university.dto.UniversityDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UniversityService{
+public class UniversityService {
 
     @Autowired
     private IUniversityRepository universityRepository;
@@ -40,12 +41,12 @@ public class UniversityService{
 
     public UniversityDTO findByHashIdDTO(String hashId) {
         return universityToUniversityDTO(universityRepository.findByHashId(hashId)
-                .orElseThrow(() -> new EntityNotFoundException("Universidade do hashId"+hashId+" não encontrada", HttpStatus.NOT_FOUND)));
+                .orElseThrow(() -> new EntityNotFoundException("Universidade do hashId" + hashId + " não encontrada", HttpStatus.NOT_FOUND)));
     }
 
     public University findByHashId(String hashId) {
         return universityRepository.findByHashId(hashId)
-                .orElseThrow(() -> new EntityNotFoundException("Universidade do hashId"+hashId+" não encontrada", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new EntityNotFoundException("Universidade do hashId" + hashId + " não encontrada", HttpStatus.NOT_FOUND));
     }
 
     public University save(University university) {
@@ -54,6 +55,17 @@ public class UniversityService{
 
     public University findByName(String name) {
         return universityRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Universidade "+name+" não encontrada", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new EntityNotFoundException("Universidade " + name + " não encontrada", HttpStatus.NOT_FOUND));
+    }
+
+    public UniversityDTO create(UniversityCreateRequestDTO universityCreateRequestDTO) {
+        University university = University.builder()
+                .cnpj(universityCreateRequestDTO.getCnpj())
+                .name(universityCreateRequestDTO.getName())
+                .build();
+
+        University savedUniversity = universityRepository.save(university);
+
+        return universityToUniversityDTO(savedUniversity);
     }
 }
