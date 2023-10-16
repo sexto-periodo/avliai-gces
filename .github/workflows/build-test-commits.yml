@@ -14,8 +14,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v2
         with:
-          # checkout full tree
-        fetch-depth: 0
+          fetch-depth: 0
       - run: |
           for commit in $(git rev-list ${{ github.event.before}}..${{ github.sha}}); do
               git checkout $commit
