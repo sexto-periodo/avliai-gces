@@ -42,7 +42,7 @@ public class SubjectService {
     public Subject findByHashId(String hashId) {
         Subject subject = subjectRepository.findByHashId(hashId)
                 .orElseThrow(() ->
-                        new EntityNotFoundException("Não conseguimos encontrar a disciplina", HttpStatus.NOT_FOUND)
+                        new EntityNotFoundException("Não conseguimos encontrar a disciplina do hashId " + hashId, HttpStatus.NOT_FOUND)
                 );
         return subject;
     }

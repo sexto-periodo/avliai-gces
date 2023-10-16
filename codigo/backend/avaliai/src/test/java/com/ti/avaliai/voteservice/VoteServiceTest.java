@@ -7,31 +7,40 @@ import com.ti.avaliai.review.EReviewScore;
 import com.ti.avaliai.review.Review;
 import com.ti.avaliai.review.ReviewService;
 import com.ti.avaliai.review.dto.ReviewDTO;
-import com.ti.avaliai.subject.SubjectService;
 import com.ti.avaliai.user.User;
 import com.ti.avaliai.user.UserService;
 import com.ti.avaliai.utils.ReviewTestUtils;
+import com.ti.avaliai.utils.TestUtils;
 import com.ti.avaliai.utils.UserTestUtils;
 import com.ti.avaliai.vote.Vote;
 import com.ti.avaliai.vote.VoteService;
 import com.ti.avaliai.vote.dto.VoteRequestDTO;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
+import org.springframework.test.context.jdbc.SqlGroup;
 
+import javax.sql.DataSource;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@SqlGroup({
+        @Sql(scripts = "classpath:persistence/avaliai/university/before_test_university.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/course/before_test_course.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/academicemail/before_test_academic_email.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/subject/before_test_subject.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+})
 public class VoteServiceTest {
 
-    private static final String EXISTING_SUBJECT_HASH_ID = "17da1ae431f965d839ec8eb93087fb2b";
-    private static final String EXISTING_UNIVERSITY_HASH_ID = "543b45c583bfff6c30e44a751103a24f";
-    private static final String EXISTING_COURSE_HASH_ID = "eb5ed7359d0bc0df70e6b7abf8584c5e";
     private static final String EXISTING_DEFAULT_USER_EMAIL = "testuser@sga.pucminas.br";
     private static final String EXISTING_RANDOM_USER_EMAIL = "randomuser@sga.pucminas.br";
 
@@ -45,9 +54,6 @@ public class VoteServiceTest {
     private UserService userService;
 
     @Autowired
-    private SubjectService subjectService;
-
-    @Autowired
     private AuthenticationService authenticationService;
 
     @Autowired
@@ -56,10 +62,18 @@ public class VoteServiceTest {
     @Autowired
     private VoteService voteService;
 
-    @BeforeAll
+    @Autowired
+    private DataSource dataSource;
+
+    @BeforeEach
     void setup() {
         reviewTestUtils.createGenericReview(userTestUtils.createDefaultTestUser(), EReviewScore.FIVE);
         reviewTestUtils.createGenericReview(userTestUtils.createRandomTestUser(), EReviewScore.ONE);
+    }
+
+    @AfterEach
+    public void clearDatabase() {
+        TestUtils.clearDatabase(new JdbcTemplate(dataSource));
     }
 
 
@@ -110,6 +124,7 @@ public class VoteServiceTest {
         List<Review> reviews = reviewService.findAll();
         Review review = reviews.get(0);
         User user = userService.findByEmail(EXISTING_DEFAULT_USER_EMAIL);
+        upvoteReview(user, review);
         Vote actualVote = voteService.findByReviewAndUser(review, user);
 
         VoteRequestDTO voteRequestUpdate = VoteRequestDTO

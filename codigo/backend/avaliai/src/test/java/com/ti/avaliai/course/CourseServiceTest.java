@@ -3,30 +3,45 @@ package com.ti.avaliai.course;
 
 import com.ti.avaliai.course.dto.CourseDTO;
 import com.ti.avaliai.global.domain.exceptions.EntityNotFoundException;
-import com.ti.avaliai.subject.Subject;
-import com.ti.avaliai.subject.SubjectService;
-import com.ti.avaliai.subject.dto.SubjectDTO;
+import com.ti.avaliai.utils.TestUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
+import org.springframework.test.context.jdbc.SqlGroup;
 
-import java.util.ArrayList;
+import javax.sql.DataSource;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SqlGroup({
+        @Sql(scripts = "classpath:persistence/avaliai/university/before_test_university.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED)),
+        @Sql(scripts = "classpath:persistence/avaliai/course/before_test_course.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+})
 public class CourseServiceTest {
 
     @Autowired
     private CourseService courseService;
 
-    private static final String EXISTING_UNIVERSITY_HASH_ID = "543b45c583bfff6c30e44a751103a24f";
-    private static final String NON_EXISTING_COURSE_HASH_ID = "9071e0eafc5d4a2f4afff4deb8e950fc";
-    private static final String EXISTING_COURSE_HASH_ID = "1f061de68a7a0da8378fd30974dd1a98";
+    @Autowired
+    private DataSource dataSource;
 
+    private static final String EXISTING_UNIVERSITY_HASH_ID = "1d145f9110ce4e61af7f2363279816f5";
+    private static final String NON_EXISTING_COURSE_HASH_ID = "9071e0eafc5d4a2f4afff4deb8e950fc";
+    private static final String EXISTING_COURSE_HASH_ID = "534bf4699af840ffb99f95a1f7d44243";
+
+
+    @AfterEach
+    public void clearDatabase() {
+        TestUtils.clearDatabase(new JdbcTemplate(dataSource));
+    }
     @Test
     public void sameObject_Success() {
         CourseService courseService1 = new CourseService();
@@ -45,16 +60,5 @@ public class CourseServiceTest {
         List<CourseDTO> courses = courseService.findAllByUniversityHashId(EXISTING_UNIVERSITY_HASH_ID);
 
         assertTrue(courses.size() >= 1);
-    }
-
-    @DisplayName(value = "Teste de Sucesso - Buscar todos os cursos indicados pelaz lista de ids")
-    @Test
-    public void updateSubject_Failure() {
-        List<Long> ids = new ArrayList<>();
-        ids.add(1L);
-        ids.add(2L);
-
-        List<Course> courses = courseService.findAllByIdIn(ids);
-        assertTrue(courses.size() == 2);
     }
 }

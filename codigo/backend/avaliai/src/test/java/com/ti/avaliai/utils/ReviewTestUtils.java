@@ -13,10 +13,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ReviewTestUtils {
-    private static final String EXISTING_SUBJECT_HASH_ID = "17da1ae431f965d839ec8eb93087fb2b";
-    private static final String EXISTING_UNIVERSITY_HASH_ID = "543b45c583bfff6c30e44a751103a24f";
-    private static final String EXISTING_COURSE_HASH_ID = "eb5ed7359d0bc0df70e6b7abf8584c5e";
-    private static final String EXISTING_DEFAULT_USER_EMAIL = "testuser@sga.pucminas.br";
+    private static final String EXISTING_SUBJECT_HASH_ID = "757b88dbb65e4e13b3319cd8b6a9e2b2";
+    private static final String EXISTING_UNIVERSITY_HASH_ID = "1d145f9110ce4e61af7f2363279816f5";
+    private static final String EXISTING_COURSE_HASH_ID = "534bf4699af840ffb99f95a1f7d44243";
 
     @Autowired
     private ReviewService reviewService;
