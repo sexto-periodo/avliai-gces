@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1078930-ce64-4c0a-bc1a-6e2715f2b522" name="Changes" comment="security(firebase): remoção da relação do código com o firebase&#10;&#10;- remoção do firebase&#10;- Remoção de variáveis de ambiente críticas do firebase&#10;- projeto firebase deletado">
-      <change afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/test/resources/mock/university/university.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/test/resources/persistence/avaliai/university/before_test_university.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/AvaliaiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/AvaliaiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/config/BootstrapOnReady.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/config/BootstrapOnReady.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/university/UniversityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/university/UniversityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/utils/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/java/com/ti/avaliai/utils/JsonUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/main/resources/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/test/java/com/ti/avaliai/academicmail/AcademicEmailServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/test/java/com/ti/avaliai/academicmail/AcademicEmailServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/test/java/com/ti/avaliai/rabbitreview/RabbitReviewTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigo/backend/avaliai/src/test/java/com/ti/avaliai/university/UniversityServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/backend/avaliai/src/test/java/com/ti/avaliai/university/UniversityServiceTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="f1078930-ce64-4c0a-bc1a-6e2715f2b522" name="Changes" comment="security(firebase): remoção da relação do código com o firebase&#10;&#10;- remoção do firebase&#10;- Remoção de variáveis de ambiente críticas do firebase&#10;- projeto firebase deletado" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,10 +75,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "android.gradle.sync.needed": "true",
-    "git-widget-placeholder": "backend-test-refactoring",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/gabriel/Codes/Curso/avliai-gces/codigo/backend/avaliai",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -121,6 +111,9 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
