@@ -19,10 +19,11 @@ jobs:
         uses: actions/setup-java@v1 # Configura o Java 1.8
         with:
           java-version: 17
-          path: "codigo/backend/avaliai"
 
       - name: Build
+        working-directory: "codigo/backend/avaliai"
         run: mvn package -Dmaven.test.skip=true # Compila o código fonte
 
       - name: Unit Test
+        working-directory: "codigo/backend/avaliai"
         run: mvn test # Executada os testes de unidade
