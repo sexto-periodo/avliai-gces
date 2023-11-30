@@ -1,4 +1,4 @@
-name: Github CI
+name: Build and Test commits
 on:
   push:
     branches: '**'
