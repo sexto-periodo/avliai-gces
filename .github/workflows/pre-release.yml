@@ -1,9 +1,9 @@
-name: Release
+name: Dev Release
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   build:
@@ -14,25 +14,26 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Zip Repository
-      run: zip -r my_repo_release.zip .
+      run: zip -r my_repo_dev_release.zip .
 
     - name: Upload Release Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: avaliai_gces_release
-        path: avaliai_gces_release.zip
+        name: my_repo_dev_release
+        path: my_repo_dev_release.zip
 
-    - name: Bump Version (Release)
+    - name: Bump Version (Dev Release)
       id: version
       run: |
-        current_version=$(npm version patch --json | jq -r .version)
+        current_version=$(npm version patch --preid=dev --json | jq -r .version)
         echo "Version from npm: $current_version"
         echo "::set-output name=new_version::$current_version"
 
-    - name: Create Release
+    - name: Create Dev Release
       uses: softprops/action-gh-release@v1
       with:
-        files: ./my_repo_release.zip
-        name: Release ${{ steps.version.outputs.new_version }}
+        files: ./my_repo_dev_release.zip
+        prerelease: true
+        name: Dev Release ${{ steps.version.outputs.new_version }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
