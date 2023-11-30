@@ -1,15 +1,38 @@
-name: Bump version
+name: Release
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@master
-      - name: Increment version and generate tag
-        uses: laputansoft/github-tag-action@v4.6
-        with:
-          github_token: ${{ env.github-token }}
-          tag: ${{ steps.package-version.outputs.version }}
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Zip Repository
+      run: zip -r my_repo_release.zip .
+
+    - name: Upload Release Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: avaliai_gces_release
+        path: avaliai_gces_release.zip
+
+    - name: Bump Version (Release)
+      id: version
+      run: |
+        current_version=$(npm version patch --json | jq -r .version)
+        echo "Version from npm: $current_version"
+        echo "::set-output name=new_version::$current_version"
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./my_repo_release.zip
+        name: Release ${{ steps.version.outputs.new_version }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
