@@ -1,0 +1,39 @@
+name: Dev Release
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Zip Repository
+      run: zip -r my_repo_dev_release.zip .
+
+    - name: Upload Release Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my_repo_dev_release
+        path: my_repo_dev_release.zip
+
+    - name: Bump Version (Dev Release)
+      id: version
+      run: |
+        current_version=$(npm version patch --preid=dev --json | jq -r .version)
+        echo "Version from npm: $current_version"
+        echo "::set-output name=new_version::$current_version"
+
+    - name: Create Dev Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./my_repo_dev_release.zip
+        prerelease: true
+        name: Dev Release ${{ steps.version.outputs.new_version }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
